@@ -1,0 +1,37 @@
+{switch name="vo2.type_id"}
+{case value="13"}
+<ul class="teleplay-ul">
+{maccms:actor num="4" paging="no" area="大陆,内地" order="asc" by="sort"}
+<li>
+<a href="{$vo|mac_url_actor_detail}" target="_blank"><img class="scrollLoading" data-url="{$vo.actor_pic|mac_url_img}" width="120" height="145" src="{$maccms.path_tpl}images/pic.png" alt="{$vo.actor_name}"><i></i><p>{$vo.actor_name}</p></a>
+</li>
+{/maccms:actor}
+</ul>
+{/case}
+{case value="14"}
+<ul class="teleplay-ul">
+{maccms:actor num="4" paging="no" area="香港,台湾" order="asc" by="sort"}
+<li>
+<a href="{$vo|mac_url_actor_detail}" target="_blank"><img class="scrollLoading" data-url="{$vo.actor_pic|mac_url_img}" width="120" height="145" src="{$maccms.path_tpl}images/pic.png" alt="{$vo.actor_name}"><i></i><p>{$vo.actor_name}</p></a>
+</li>
+{/maccms:actor}
+</ul>
+{/case}
+{case value="15"}
+<ul class="teleplay-ul">
+{maccms:actor num="4" paging="no" area="日本,韩国" order="asc" by="sort"}
+<li>
+<a href="{$vo|mac_url_actor_detail}" target="_blank"><img class="scrollLoading" data-url="{$vo.actor_pic|mac_url_img}" width="120" height="145" src="{$maccms.path_tpl}images/pic.png" alt="{$vo.actor_name}"><i></i><p>{$vo.actor_name}</p></a>
+</li>
+{/maccms:actor}
+</ul>
+{/case}
+{default /}
+<ul class="teleplay-ul">
+{maccms:actor num="4" paging="no" area="美国,英国,欧美" order="asc" by="sort"}
+<li>
+<a href="{$vo|mac_url_actor_detail}" target="_blank"><img class="scrollLoading" data-url="{$vo.actor_pic|mac_url_img}" width="120" height="145" src="{$maccms.path_tpl}images/pic.png" alt="{$vo.actor_name}"><i></i><p>{$vo.actor_name}</p></a>
+</li>
+{/maccms:actor}
+</ul>
+{/switch}

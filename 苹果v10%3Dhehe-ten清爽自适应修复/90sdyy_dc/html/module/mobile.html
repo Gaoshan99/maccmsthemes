@@ -1,0 +1,43 @@
+<div class="fed-back-whits fed-show-xs-block fed-hide-sm">
+<ul class="fed-part-rows">
+{if$maccms.aid==10}
+{maccms:type num="2" ids="parent" order="asc" by="sort" flag="vod" id="vfed"}
+{maccms:type num="4" parent="'.$vfed['type_id'].'" order="asc" by="sort" flag="vod"}
+<li class="fed-padding-x fed-col-xs3 fed-part-rows fed-text-center fed-line-top fed-line-right">
+<a href="{:mac_url_type($vo)}">{$vo.type_name}</a>
+</li>
+{/maccms:type}
+{/maccms:type}
+{elseif$maccms.aid==11}
+{if$obj.childids}
+{if$obj.type_name!='直播'&&$obj.parent.type_name!='直播'}
+{maccms:type num="8" parent="current" order="asc" by="sort" flag="vod"}
+<li class="fed-padding-x fed-col-xs3 fed-part-rows fed-text-center fed-line-top fed-line-right">
+<a href="{:mac_url_type($vo)}">{$vo.type_name}</a>
+</li>
+{/maccms:type}
+{else}
+{maccms:type num="8" parent="current" order="asc" by="sort" flag="vod"}
+<li class="fed-padding-x fed-col-xs3 fed-part-rows fed-text-center fed-line-top fed-line-right">
+<a href="{:mac_url_type($vo)}">{$vo.type_name}</a>
+</li>
+{/maccms:type}
+{/if}
+{/if}
+{elseif$maccms.aid==20}
+{maccms:type num="2" ids="parent" order="asc" by="sort" flag="art" id="vfed"}
+{maccms:type num="4" parent="'.$vfed['type_id'].'" order="asc" by="sort" flag="art"}
+<li class="fed-padding-x fed-col-xs3 fed-part-rows fed-text-center fed-line-top fed-line-right">
+<a href="{:mac_url_type($vo)}">{$vo.type_name}</a>
+</li>
+{/maccms:type}
+{/maccms:type}
+{elseif$maccms.aid==21}
+{maccms:type num="8" parent="current" order="asc" by="sort" flag="art"}
+<li class="fed-padding-x fed-col-xs3 fed-part-rows fed-text-center fed-line-top fed-line-right">
+<a href="{:mac_url_type($vo)}">{$vo.type_name}</a>
+</li>
+{/maccms:type}
+{/if}
+</ul>
+</div>

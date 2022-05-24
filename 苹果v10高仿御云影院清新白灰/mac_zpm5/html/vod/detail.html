@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$obj.vod_name}详情介绍-{$obj.vod_name}在线观看-{$obj.vod_name}迅雷下载 - {$maccms.site_name}</title>
+<meta name="keywords" content="{$obj.vod_name}在线收看,{$obj.vod_name}迅雷下载" />
+<meta name="description" content="{$obj.vod_name}剧情:{$obj.vod_blurb}" />
+{include file="public/include"}
+</head>
+<body>
+<div class="movie-wrap">
+{include file="public/head_de"}
+<div class="details-body">
+<div class="crumbs">
+<span class="fl">您所在的位置：</span>
+<div class="crumbs-all fl">
+<a href="{$maccms.path}" class="blue">首页</a> <span>&gt;</span>
+<a href="{:mac_url_type($obj.type)}" class="blue">{$obj.type.type_name}</a> <span>&gt;</span>
+<a href="javascript:;" class="active-style11">{$obj.vod_name}</a>
+</div>
+</div>
+<div class="details-left fl">
+<div class="vod-r_t"><ul><a class="cur">详细</a></ul></div>
+<div class="vod_r_tool">
+<div class="qr-code-ico"></div>
+<div class="qr-code"><div class="qr-code-box"><div id="ncode"></div></div><p>手机扫一扫轻松观看</p><p><em>{$obj.vod_name}</em></p></div>
+<div class="bdsharebuttonbox" data-tag="share_1">
+<p class="els-ico" id="hony-share-services">
+<a rel="nofollow" class="bds_more" data-cmd="more">更多</a>
+<a rel="nofollow" class="s-sina" data-cmd="tsina"></a>
+<a rel="nofollow" class="s-qzone" data-cmd="qzone"></a>
+<a rel="nofollow" class="s-dou" data-cmd="weixin"></a>
+<a rel="nofollow" class="s-ren" data-cmd="sqq"></a>
+</p>
+</div>
+<script>window._bd_share_config = {common : {bdText : '{$obj.vod_name}',bdDesc : '{$obj.vod_content|mac_filter_html}',bdUrl : 'http://{$maccms.site_url}{:mac_url_vod_detail($obj)}', bdPic : '{$obj.vod_pic|mac_url_img}'},share : [{"bdSize" :4}]} 
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+</div>
+<div class="details-con1">
+<a href="" class="details-pic fl" target="_blank">
+<img class="scrollLoading" data-url="{$obj.vod_pic|mac_url_img}" src="{$maccms.path_tpl}images/pic.png" width="210" height="280" alt="{$obj.vod_name}">
+</a>
+<div class="details-content fr">
+<div class="art-title">
+<h1>{$obj.vod_name}</h1>
+<div class="ext-share">
+<div class="detail-sect">
+<div class="interest-sect user-bt">
+<a rel="nofollow" class="sect-btn" href="javascript:void(0);" onclick="MAC.Fav(location.href,document.name);">收藏</a>
+</div>
+<div class="interest-rss user-bt">
+<a rel="nofollow" class="rss-btn sect-btn mac_ulog" href="javascript:void(0);" data-type="2" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}">订阅</a>
+</div>
+</div>
+</div>
+</div>
+<div class="vod_t">{if condition="($obj.vod_isend == 1) OR ($obj.vod_total == $obj.vod_serial)"}<em>状态：</em>{include file="public/serial2"}{else /}<em>提醒：</em>连载中,待更新{/if}</div>
+<div class="synopsis">
+<p><span>类型：</span>{$obj.vod_class|mac_url_create='class'}</p>
+<p><span>主演：</span>{$obj.vod_actor|mac_url_create='actor'}</p>
+<p><span>地区：</span>{$obj.vod_area|mac_url_create='area'}</p>
+<p class="synopsis-article"><span>简介：</span>{$obj.vod_content|mac_filter_html}</p>
+{include file="public/star2"}
+</div>
+</div>
+</div>
+<div class="details-con2">
+<div class="play_list" id="detail-list">
+<div class="play-title">
+<div class="play-dz fl">播放地址：</div>
+<ul class="playurl">
+{maccms:foreach name="obj.vod_play_list" id="vo"}
+<li {eq name="$key" value="1"}class="current"{/eq}><a rel="nofollow" title="{$vo.player_info.from}" id="{$vo.player_info.from}-pl"><span class="{$vo.player_info.from}">&nbsp;&nbsp;</span>{$vo.player_info.show}</a></li>
+{/maccms:foreach}
+</ul>
+<div class="play-bug"><a rel="nofollow" href="javascript:;" onclick="MAC.Gbook.Report('编号【{$obj.vod_id}】名称【{$obj.vod_name}】不能观看请检查修复，页面地址' + location.href)">不能播放，报错</a></div>
+</div>
+</div>
+{maccms:foreach name="obj.vod_play_list" id="vo"}
+<div class="details-con2-body" id="{$vo.player_info.from}-pl-list" {eq name="$key" value="1"}style="display:block"{else/}style="display:none"{/eq}>
+<div class="details-con2-wrap">
+<ul class="details-con2-list">
+{maccms:foreach name="vo.urls" id="vo2" key="key2"}
+<li {if condition="$key2 gt 25"}rel="h" style="display:none;"{/if}><a target="_blank" href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}" title="{$vo2.name}">{$vo2.name}</a></li>
+{/maccms:foreach}
+{if condition="$key2 gt 25"}<li class="btn"><a href="#" re="{$key2}">查看全部{$key2}集</a></li>{/if}
+</ul>
+</div>
+</div>
+{/maccms:foreach}
+</div>
+{notempty name="$obj.vod_down_from"}
+<script src="{$maccms.path_tpl}js/down.js"></script>
+{maccms:foreach name="obj.vod_down_list" id="vo"}
+<div class="tab-a vod-down w1214" id="downlist_{$vo.sid}">
+<div class="filtrate-container-heads">
+<ul class="fchstar fch12 fl">
+<a class="active">{$obj.vod_name}下载地址</a>
+</ul>
+{if condition="$obj['vod_down_list'][$vo['sid']]['url_count'] gt 8"}<div class="moredown" id="downzk">展开全部</div>{/if}
+</div>
+<div class="down_list">
+<ul id="downul">
+{maccms:foreach name="vo.urls" id="vo2" key="key2"}
+<li><input type="checkbox" name="down_url_list_{$vo.sid-1}" class="down_url" value="{$vo2.url}" file_name="{$vo2.name}" onClick="select();" /><p><strong class="down_part_name">{$vo2.name}</strong><input type="text" class="thunder_url" title="鼠标左键单击可全选后手动复制该条迅雷地址进行分享或其它操作" onClick="this.select()" /></p><span><label class="thunder_down">迅雷下载</label><label class="qqdl">旋风下载</label><label class="kk">看看播放</label></span></li>
+{/maccms:foreach}
+</ul>
+<div class="downtools">
+<input id="allcheck{$vo.sid}" onClick="CheckAll({$vo.sid})" type="checkbox" name="checkall"><em>全选</em><a rel="nofollow" href="javascript:void(0);" target="_self" class="thunder_down_all">迅雷批量下载</a><a rel="nofollow" href="javascript:void(0);" target="_self" class="xf_down_all">旋风批量下载</a>
+</div>
+</div>
+</div>
+{/maccms:foreach}
+{/notempty}
+<div class="details-con3">
+<div class="details-con3-head">
+<ul class="fch1 dch1">
+<li class="active-style8"><i></i>猜你喜欢</li><li>同演员</li><li>同导演</li></ul>
+</div>
+<div class="details-con3-body">
+<div class="dcb" style="display:block;">
+<div class="you-like">
+<ul class="fcb-ul">
+{maccms:vod num="5" type="current" order="desc" by="hits_day"}
+<li>
+<a href="{:mac_url_vod_detail($vo)}" class="fcb-pic" target="_blank"><img class="scrollLoading" data-url="{$vo.vod_pic|mac_url_img}" width="160" height="220" alt="{$vo.vod_name}"></a>
+<div class="movie-headline1"><a href="{:mac_url_vod_detail($vo)}">{$vo.vod_name}</a></div>
+</li>
+{/maccms:vod}
+</ul>
+</div>
+</div>
+<div class="dcb">
+<div class="you-like">
+<ul class="fcb-ul">
+{maccms:vod num="5" type="current" actor="'.$obj['vod_actor'].'" order="desc" by="time"}
+<li>
+<a href="{:mac_url_vod_detail($vo)}" class="fcb-pic" target="_blank"><img class="scrollLoading" data-url="{$vo.vod_pic|mac_url_img}" width="160" height="220" alt="{$vo.vod_name}"></a>
+<div class="movie-headline1"><a href="{:mac_url_vod_detail($vo)}">{$vo.vod_name}</a></div>
+</li>
+{/maccms:vod}
+</ul>
+</div>
+</div>
+<div class="dcb">
+<div class="you-like">
+<ul class="fcb-ul">
+{maccms:vod num="5" type="current" director="'.$obj['vod_director'].'" order="desc" by="time"}
+<li>
+<a href="{:mac_url_vod_detail($vo)}" class="fcb-pic" target="_blank"><img class="scrollLoading" data-url="{$vo.vod_pic|mac_url_img}" width="160" height="220" alt="{$vo.vod_name}"></a>
+<div class="movie-headline1"><a href="{:mac_url_vod_detail($vo)}">{$vo.vod_name}</a></div>
+</li>
+{/maccms:vod}
+</ul>
+</div>
+</div>
+</div>
+<div class="cmt">
+<div class="cmt-title">
+<h2>《{$obj.vod_name}》<em>评论</em></h2>
+</div>
+<div class="mac_comment" id="mac_comment" data-id="{$obj.vod_id}" data-mid="{$maccms.mid}" ></div>
+<script>
+	$(function(){
+		MAC.Comment.Login = {$comment.login};
+		MAC.Comment.Verify = {$comment.verify};
+		MAC.Comment.Init();
+		MAC.Comment.Show(1);
+	});
+</script>
+</div>
+</div>
+</div>
+<div class="details-right fr">
+<div class="test-300"><script src="{$maccms.path_ads}vod3.js"></script></div>
+<div class="recommend-header mt10">
+<div class="fl"><span>最新</span>{$obj.type.type_name}</div><a href="{:mac_url_type($obj,[],'show')}" class="teleplay-more">更多&gt;</a>
+</div>
+<div class="teleplay-content">
+<ul class="teleplay-con-list telclist4 tcl1">
+{maccms:vod num="1" type="current" order="desc" by="time"}
+<li class="list-no1">
+<span></span>
+<i>{$key}</i>
+<a href="{:mac_url_vod_detail($vo)}" class="list-no1-pic" target="_blank"><img class="scrollLoading" data-url="{$vo.vod_pic|mac_url_img}" width="90" height="120" src="{$maccms.path_tpl}images/pic.png" alt="{$vo.vod_name}"></a>
+<div class="list-no1-con">
+<a href="{:mac_url_vod_detail($vo)}" class="no1-tv-title" target="_blank">{$vo.vod_name}</a>
+<p class="top-desc">{$vo.vod_content|mac_filter_html}</p>
+<p class="pview">{include file="public/serial1"}</p>
+<a href="{:mac_url_vod_detail($vo)}" target="_blank" class="top-btn">查看详情</a>
+</div>
+</li>
+{/maccms:vod}
+{maccms:vod num="9" type="current" start="2" order="desc" by="time"}
+<li><i>{$key+1}</i><span class="views">{include file="public/serial1"}</span><a href="{:mac_url_vod_detail($vo)}" target="_blank">{$vo.vod_name}</a></li>
+{/maccms:vod}
+</ul>
+</div>
+<div class="recommend-header mt10">
+<div class="fl"><span>本周</span>排行榜</div><a href="{:mac_url_type($obj,[],'show')}" class="teleplay-more">更多&gt;</a>
+</div>
+<div class="teleplay-content">
+<ul class="teleplay-con-list telclist4 tcl1">
+{maccms:vod num="10" type="current" order="desc" by="hits_week"}
+<li><i>{$key}</i><span class="views">{include file="public/serial1"}</span><a href="{:mac_url_vod_detail($vo)}" target="_blank">{$vo.vod_name}</a></li>
+{/maccms:vod}
+</ul>
+</div>
+<div class="recommend-header mt10">
+<div class="fl"><span>本月</span>排行榜</div><a href="{:mac_url_type($obj,[],'show')}" class="teleplay-more">更多&gt;</a>
+</div>
+<div class="teleplay-content">
+<ul class="teleplay-con-list telclist4 tcl1">
+{maccms:vod num="10" type="current" order="desc" by="hits_month"}
+<li><i>{$key}</i><span class="views">{include file="public/serial1"}</span><a href="{:mac_url_vod_detail($vo)}" target="_blank">{$vo.vod_name}</a></li>
+{/maccms:vod}
+</ul>
+</div>
+</div>
+<div class="clearfix" style="width:100%;"></div>
+</div>
+</div>
+<span style="display:none" class="mac_ulog_set" alt="设置内容页浏览记录" data-type="1" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" data-sid="{$param.sid}" data-nid="{$param.nid}"></span>
+<span style="display:none" class="mac_history_set" alt="设置History历史记录" data-name="{$obj.type.type_name}<em>/</em>{$obj.vod_name}" data-pic="{$obj.vod_pic|mac_url_img}"></span>
+{include file="public/foot_de"}
+</body>
+</html>

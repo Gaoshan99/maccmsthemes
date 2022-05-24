@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="minimum-scale=0.5,maximum-scale=1.0,user-scalable=no, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>在线播放{$obj.vod_name} {$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']} - 高清资源 - {$maccms.site_name}</title>
+<meta name="keywords" content="{$obj.vod_name}{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}免费在线观看,{$obj.vod_name}剧情介绍"/>
+<meta name="description" content="{$obj.vod_name}{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}免费在线观看,{$obj.vod_name}剧情介绍"/>
+ {include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+<div class="detail_right">
+	<div class="detail_right_tab" style="overflow: hidden; background: #fff; margin-top:20px; padding-left:10px;">
+		<div class="gc_vidoe_nav">
+			<a href="/">首页 > </a><a href="{:mac_url_type($obj.type_1)}">{$obj.type_1.type_name} > </a><a href="{:mac_url_vod_play($vo)}"class="select">{$obj.vod_name}</a>
+		</div>
+					<div id="bofang_box"style="height:350px;">
+						{$player_data}{$player_js}
+					</div>		
+		<div class="gc_video_content">
+			<div class="gc_vodeo_left">
+				<div class="play" style="text-align:center;position:relative;background-color:#000;">
+				</div>
+				<div class="watch">
+					<span class="title">{$obj.vod_name}</span>
+					<span class="people"><em>{$obj.vod_hits}</em>次观看</span>
+					<span id="likes_msg" style="color:red;"></span>
+				</div>
+				<div class="dz">
+					<span>采集地址：</span>
+					<p>
+						<a style="color:#05a7ff" href="{:mac_url_vod_play($vo)}" target="_blank">{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['url']}</a>
+						<button value="{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['url']}" class="ybCont">复制地址</button>
+					</p>
+				</div>
+             
+				<div class="dz">
+					<span>边下边看：</span>
+					<a href="{:mac_url_vod_play($vo)}" target="_blank">
+					<textarea rows="2" cols="20" readonly="readonly">{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['url']}</textarea>
+					</a>
+					<button value="{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['url']}" class="ybCont">复制地址</button>
+				</div>
+				<a style="color: #fff;" href="{:mac_url('label/ybguide')}" target="_blank">
+				<div class="dz_3" style="margin: 5px 0;">
+					<span style="line-height: 30px;"> 下载教程</span>
+				</div>
+				</a>
+				<div class="clear">
+				</div>
+				<div class="ps_21 palyAdv">
+				</div>
+				<div class="clear">
+				</div>
+				<div class="videoMore sugetVideo">
+					<p class="moreVideo">
+					相关视频
+					</p>
+					<ul>
+						{maccms:vod num="4" type="current" order="desc" by="hits"}
+						<li>
+						<p class="img">
+							<img class="lazy" src="{:mac_url_img($vo.vod_pic)}" alt="{$vo.vod_name}" title="{$vo.vod_name}">
+							<a href="{:mac_url_vod_play($vo)}"></a>
+						</p>
+						<p>
+							{$vo.vod_name}
+						</p>
+						<p>
+							<i>{$vo.vod_time|date='m-d',###}</i>
+							<strong>{$vo.vod_hits}观看</strong>
+						</p>
+						</li>
+						{/maccms:vod}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+<!-- 正文 -->
+{include file="public/foot"}
+<script type="text/javascript" src="{$maccms.path_tpl}images/clipboard.min.js" charset="utf-8"></script>
+
+<script type="text/javascript">
+	var url = 'http://video.lllwo2o.com:8091/20180510/hey_4017_PPV173_A/650kb/hls/index.m3u8';
+	var ybUrl = 'ybhd://222272373/OWNT6DIAAAAABFQXP6JBOCW2QSTLD26EIM6QFAG7GLNGM/KDCQYP3QQL3GEFWLRCS3EJJL6F6DJSER/hey_4017_PPV173_A.mp4';
+	var picurl = 'http://img.feimanzb.com/2018-5/hey_4017_PPV173_A.jpg';
+	var vid = '11643';
+	var type = '1';//播放器类型-2 优播 1 ck
+    // 实例化类
+	$(function(){
+        if(type==2){
+        	ybInit();//优播
+        }else{
+        	init();//ck播放
+        }
+		$('#nice').click(function(){
+			setLikesAndDislikes(1,vid);
+		});
+		$('#poor').click(function(){
+			setLikesAndDislikes(2,vid);
+		});
+	});
+	function setLikesAndDislikes(t,vid){
+		$.post('/video/ajax_likes',{'t':t,'vid':vid},function(d){
+			if(d && d.code == 0){
+				$(".r"+t).hide();
+                $(".g"+t).show();
+			}
+			setTimeout(function(){
+				$('#likes_msg').html('');
+			},3000);
+			$('#likes_msg').html(d.msg);
+		},'json');
+	}
+    $(function(){
+        //默认只显示4个视频
+        $('#videoMore_right li').each(function(index,element){
+            if(index>=5){
+                $(this).hide();
+            }
+        })
+        //点击更多显示全部视频
+        $('#videos_more').click(function(){
+            $('#videoMore_right li').show();
+            $(this).hide();//隐藏更多
+        })
+    })
+    //复制
+    var clipboard = new Clipboard('.ckCont', {
+        text: function() {
+            return $('.ckCont').val();
+        }
+    });
+    clipboard.on('success', function(e) {
+        alert("复制成功");
+    });
+    //复制
+    var clipboard = new Clipboard('.ybCont', {
+        text: function() {
+            return $('.ybCont').val();
+        }
+    });
+    clipboard.on('success', function(e) {
+        alert("复制成功");
+    });
+</script>
+</body>
+</html>

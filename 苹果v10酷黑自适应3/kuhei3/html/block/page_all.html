@@ -1,0 +1,6 @@
+{if condition="$__PAGING__.page_total gt 1"}
+<div class="stui-page__all">
+	<a class="left" href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_prev}"><i class="iconfont icon-back"></i></a>
+	<a class="right" href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_next}"><i class="iconfont icon-more"></i></a>
+</div>
+{/if}

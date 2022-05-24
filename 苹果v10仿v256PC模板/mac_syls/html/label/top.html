@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>电视剧排行榜 电影排行榜 热门综艺 动漫排行榜 微电影排行 热播榜 - {$maccms.site_name}</title>
+<meta name="keywords" content="{$maccms.site_keywords}" />
+<meta name="description" content="{$maccms.site_description}" />
+{include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+<div class="content-box fn-clear">
+<div class="crumbs">
+<span class="fn-left">您所在的位置：</span>
+<div class="crumbs-all fn-left">
+<a href="{$maccms.path}" class="blue">首页</a> <span>&gt;</span>
+<a href="#" class="active-style11">榜单</a>
+</div>
+</div>
+</div>
+<div class="content-box fn-clear">
+<ul class="serach-ul">
+{maccms:vod num="30" type="1,2,3,4" order="desc" by="hits"}
+<li>
+<a class="list-img" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"><img class="loading" src="{$vo.vod_pic|mac_url_img}" />
+<label class="title">{include file="public/serial1"}</label>
+<i class="iNum {in name="key" value="1,2,3"}iLightNum{/in}"><em>TOP</em>{$key}</i></a>
+<div class="info" style="width:990px">
+<h2><a target="_blank" href="{:mac_url_vod_detail($vo)}">{$vo.vod_name}</a></h2>
+<p class="actor"><em>导演:</em><on>{$vo.vod_director|mac_url_create='director'}</on></p>
+<p class="actor clearfix"><em>主演:</em><on>{$vo.vod_actor|mac_url_create='actor'}</on></p>
+<p class="mcid aleft"><em>类型:</em>{$vo.vod_class|mac_url_create='class'}</p>
+<p class="dq aright"><em>地区：</em>{$vo.vod_area|mac_url_create='area'}</p>
+<p class="plot"><em>剧情:</em>{$vo.vod_blurb}</p>
+</div>
+</li>
+{/maccms:vod}
+</ul>
+{include file="public/foot"}
+<div class="index-top" id="index-top">
+<a rel="nofollow" class="guestbook" target="_blank" href="{:mac_url('gbook/index')}"></a>
+<a class="top"></a>
+</div>
+</body>
+</html>

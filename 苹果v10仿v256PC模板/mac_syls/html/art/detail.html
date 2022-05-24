@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$obj.art_name}  - {$maccms.site_name}</title>
+<meta name="keywords" content="{$obj.art_name},{$maccms.site_name}" />
+<meta name="description" content="{$obj.art_blurb},{$maccms.site_name}" />
+{include file="public/include"}
+</head>
+<body>
+{include file="public/head_1"}
+<div class="content-box fn-clear">
+<div class="crumbs">
+<span class="fn-left">您所在的位置：</span>
+<div class="crumbs-all fn-left">
+<a href="{$maccms.path}" class="blue">首页</a> <span>&gt;</span>
+<a href="{:mac_url_type($obj.type)}" class="blue">{$obj.type.type_name}</a> <span>&gt;</span>
+<a href="javascript:;" class="active-style11">{$obj.art_name}</a>
+</div>
+</div>
+
+<div class="contents-box-l">
+<div class="news-article-tit">
+<h1>{$obj.art_name}</h1>
+<p><span>{$obj.art_time|date='Y-m-d H:i:s',###}</span><span>阅读：{$obj.art_hits}次</span><span>编辑：{$obj.art_author}</span><span>来源：{$obj.art_from}</span></p>
+</div>
+<div class="news-article-daoyu fn-clear"><span class="daoyu-icon-l"><i class="iconfont">&#xe605;</i></span><p><span>{$obj.art_blurb}</span><i class="iconfont">&#xe606;</i></p></div>
+<div class="news-article-con fn-clear mt20">{$obj.art_content}</div>
+<div class="box-news mt20">
+<div class="box-news-nav fn-clear"><h3>猜你喜欢</h3></div>
+<div class="youlike-box fn-clear">
+{maccms:art num="5" type="all" order="desc" by="hits_day"}
+<a href="{:mac_url_art_detail($vo)}" title="{$vo.art_name}" target="_blank">
+<img src="{$vo.art_pic|mac_url_img}" alt="{$vo.art_name}" title="《入戏》第35期何润东专访： 如果还能有第四次合作，希望和孙俪能有好的结果_那年花开月正圆" />
+<span>{$vo.art_name}</span>
+</a>
+{/maccms:art}
+</div>
+</div>
+</div>
+<div class="contents-box-r">
+<div class="piao-fang yingshi-fy mt10">
+<h3>影视风云榜</h3>
+<div class="piao-fang-nav fn-clear" id="J-pf-nav">
+<a href="javascript:;" class="on">精选电影</a>
+<a href="javascript:;">热播电视剧</a>
+</div>
+<div class="piao-fang-con" id="J-pf-con">
+<div class="piao-fang-list" style="display: block">
+<ul>{maccms:vod num="10" type="1" order="desc" by="hits_week"}
+<li class="fn-clear {if condition="$key%2 == 0"}piao-fang-bg{/if}">
+<em {if condition="$key eq 1"}class="first"{elseif condition="($key gt 1) && ($key lt 4)"}class="second"{else /}{/if}>{$key}</em>
+<a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">{$vo.vod_name}</a>
+<span>{$vo.vod_score}</span>
+</li>{/maccms:vod}
+</ul>
+</div>
+<div class="piao-fang-list">
+<ul>{maccms:vod num="10" type="2" order="desc" by="hits_week"}
+<li class="fn-clear {if condition="$key%2 == 0"}piao-fang-bg{/if}">
+<em {if condition="$key eq 1"}class="first"{elseif condition="($key gt 1) && ($key lt 4)"}class="second"{else /}{/if}>{$key}</em>
+<a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">{$vo.vod_name}</a>
+<span>{include file="public/serial1"}</span>
+</li>{/maccms:vod}
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<span style="display:none" class="mac_ulog_set" alt="设置内容页浏览记录" data-type="1" data-mid="{$maccms.mid}" data-id="{$obj.art_id}" data-sid="" data-nid=""></span>
+<span style="display:none" class="mac_history_set" alt="设置History历史记录" data-name="[{$obj.type.type_name}]{$obj.art_name}" data-pic="{$obj.art_pic|mac_url_img}"></span>
+{include file="public/foot"}
+<div class="index-top" id="index-top">
+<a rel="nofollow" class="guestbook" target="_blank" href="{:mac_url('gbook/index')}"></a>
+<a class="top"></a>
+</div>
+<script>v256.newsDetail.init();</script>
+</body>
+</html>

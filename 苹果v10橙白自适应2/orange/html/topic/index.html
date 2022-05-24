@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="seo/vod_play"}   
+	{include file="block/include"}
+</head>
+<body>
+	
+    <div class="container">
+        <div class="row">
+        	{include file="block/head"}
+        	       	
+			<!-- 播放器  -->
+			<div class="navigation_top"></div>
+<div class="main"><div class='leaveNavInfo'><h3><span id='adminleaveword'></span>窝窝看电影电视直播</h3></div><!--直播开始-->
+<iframe src="http://zhibo.97bike.com/live.html" frameborder="0" mce_src="http://zhibo.97bike.com/live.html" width="100%" height="380"></iframe>
+
+<!--<iframe width="100%" height="550" src="http://tv.bingdou.net/live.html" frameborder=0 border=0 marginwidth=0 marginheight=0 scrolling='+s+'></iframe>
+<script>var w = '100%'; //宽度var h = '600'; //高度var s = 'yes'; //是否显示滚动条，yes显示，no不显示document.write('<iframe width='+w+' height='+h+' src="http://www.itv118.com/live.asp" frameborder=0 border=0 marginwidth=0 marginheight=0 scrolling='+s+'></iframe>');</script><!--直播结束--></div>
+<script type="text/javascript">
+	//观看记录显示
+	$(".icon-record1,.seenote").mouseover(function() {
+		$(".seenote").show();
+	})
+	$(".seenote").mouseout(function() {
+		$(".seenote").hide();
+	});
+	      $('#clean').on('click',function(){
+          $.post('./index.php?i=1&c=entry&do=clean&m=hmyx_pc',function(data){
+              alert(data);
+          })
+      });
+
+</script>
+
+<!--/底部-->﻿<div class="navigation_top"></div>
+<div class="footer clearfix">
+免责声明:本网站提供的最新电视剧和电影资源均系收集于各大视频网站，只提供web页面服务，不提供影片资源存储，也不参与录制、上传。</p>
+  
+</p>
+    </div>
+    <script type="text/javascript">$(".MacPlayer").addClass("embed-responsive").css("padding-bottom","56.25%");</script>
+    <span class="mac_hits hits hide" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" data-type="hits"></span>
+	{include file="block/foot"}
+</body>
+</html>

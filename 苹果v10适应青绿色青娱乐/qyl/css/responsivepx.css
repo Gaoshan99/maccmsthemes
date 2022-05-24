@@ -1,0 +1,366 @@
+@media (max-width: 1200px) and (min-width: 810px){.hiddem-m{display: none;}
+.category-count{display: none;}}
+@media (max-width: 960px){#video .left, #album .left, #photo .left, #channel .left{width: 100%;margin-right:0;}
+#video .right, #album .right, #photo .right, #channel .right{width: 0;display: none;}
+.ads-responsive img, .ads-responsive iframe{max-width: 100%;height: auto;}
+#album .content-container, #photo .content-container{max-height: none;}
+div#share-container.content-container{max-height: none;}}
+@media (max-width: 767px){.logo{width: 100%;text-align: center;display: block;float: none;height: 60px;}
+.logo img{width: auto;max-height: 60px;}
+.search{margin: 0 70px 10px 0;float: left;}
+#menu-main{margin-top: 10px;position: absolute;width: 130px;top: 90px;right: 5px;border-radius: 4px;}
+#menu-main ul.navbar-nav li{text-align: center;}
+#menu-main .navbar-menu{color: #ffffff;font-weight: bold;padding: 7px 5px;border: 0;}
+#menu-main .navbar-menu:hover{background: none;}
+ul.videos li{width: 48%;margin: 0 0 0 6px;}
+ul.playlists li{width: 48%;margin: 0 0 0 6px;}
+ul.thumbs li{width: 48%;margin: 5px 0 5px 6px;}
+ul.users li{width: 32.2%;margin: 5px 5px 5px 6px;}
+ul.users-profile li{width: 32.5%;margin: 5px 6px 5px 6px;}
+ul.albums li{width: 31%;margin: 5px 2px 5px 6px;}
+ul.photos li{width: 32%;margin: 5px 2px 5px 4px;}
+ul.models li{width: 48%;margin: 5px 4px 5px 6px;}
+ul.channels li{width: 47.5%;margin: 5px 4px 5px 6px;}
+ul.channels li a img{max-height: 200px;}
+ul.categories li{width: 46%;margin: 0 6px 0 6px;}
+ul.categories li a img{max-height: 250px;}
+ul.links li{width: 33%;}
+.content-left{margin-left: 0;}
+.video-title, .playlist-title{width: 100%;font-weight: bold;text-align: center;overflow: hidden;}
+.video-rating{position: absolute;bottom: 45px;right: 10px;}
+.navbar-brand img{max-height: 40px;}
+.btn-float{float: none;margin: 0 0 10px 10px;}
+.padding-mobile{padding-top: 10px;}
+#video .left{width: 100%;margin-right:0;}
+#video .right{width: 0;display: none;}
+.btn-mb,.btn-group-mb > .btn{padding: 5px 10px;font-size: 12px;line-height: 1.5;border-radius: 3px;}
+#rating{height: 30px;padding-top: 0;padding-bottom: 0;}
+.progress{height: 7px;}
+.blog-left{width: 736px;}
+.blog-right{width: 736px;}
+.blog-video{width: 640px;height: 360px;}
+.blog-photo{width: 590px;}
+#player-advertising{width: 30%;}
+#player-advertising img{width: 100%;height: auto;}}
+@media (max-width: 1024px){.no-text{display: none;}}
+@media (max-width: 641px){.blog-left{width: 618px;}
+.blog-right{width: 618px;}
+.blog-video{width: 580px;height: 310px;}
+.blog-photo{width: 580px;}}
+@media (max-width: 481px){header .nav-top{height: 60px;}
+header .nav-top .container{text-align: center;}
+header .nav-top ul{float: none;width: 100%;text-align: center;}
+header .nav-top ul li{float:none;display:inline-block;*display:inline;/* ie7 fix*/zoom:1;/* hasLayout ie7 trigger*/}
+header .logo{width: 50%;text-align: left;}
+header .search{width: 100%;}
+header #menu-main{top: 58px;z-index: 100;}
+ul.videos li{margin: 5px 0 0 6px;}
+ul.videos li a div.video-thumb img{width:97%;height: 137px;}
+ul.models li{width: 48%;margin: 5px 4px 5px 6px;}
+ul.albums li{width: 212px;margin: 5px 2px 5px 4px;}
+ul.albums li a div.album-thumb img{width: 208px;height: 260px;}
+ul.photos li{width: 216px;margin: 5px 2px 5px 6px;}
+ul.photos li a div.photo-thumb img{width: 212px;height: 264px;}
+ul.categories li{width: 208px;margin: 0 6px 0 6px;}
+ul.categories li a img{width: 204px;height: 250px;}
+ul.channels li{width: 206px;margin: 5px 4px 5px 6px;}
+ul.channels li a img{width: 202px;height: 148px;}
+ul.users li{width: 47%;margin: 5px 3px 5px 6px;}
+ul.links li{width: 49%;}
+img.channel-thumb{float: none;margin: 0 auto;width: 100%;}
+.content-left, .content-right{width: 100%;float: none;}
+.blog-left{width: 458px;}
+.blog-right{width: 458px;}
+.blog-video{width: 426px;height: 260px;}
+.blog-photo{width: 426px;}}
+@media (max-width: 401px){ul.channels li{width: 170px;margin: 5px 4px 5px 6px;}
+ul.channels li a img{width: 166px;height: 122px;}
+ul.categories li{width: 168px;margin: 0 6px 0 6px;}
+ul.categories li a img{width: 164px;height: 202px;}}
+@media (max-width: 321px){header .nav-top{height: 60px;}
+#menu-main{width: 110px;}
+ul.videos li{width: 270px;margin: 5px 0 0 6px;}
+ul.videos li a div.video-thumb img{width: 266px;height: 177px;}
+ul.playlists li{width: 96%;margin: 5px 4px 5px 6px;}
+ul.thumbs li{width: 18%;margin: 5px 6px 5px 6px;}
+ul.users li{width: 47%;margin: 5px 3px 5px 6px;}
+ul.albums li{width: 270px;margin: 5px 2px 5px 6px;}
+ul.albums li a div.album-thumb img{width: 266px;height: 333px;}
+ul.photos li{width: 280px;margin: 5px 4px 5px 6px;}
+ul.photos li a div.photo-thumb img{width: 276px;height: 344px;}
+ul.models li{width: 98%;margin: 5px 4px 5px 6px;}
+ul.categories li{width: 96%;margin: 0 6px 0 6px;}
+ul.channels li{width: 276px;margin: 5px 4px 5px 4px;}
+ul.links li{width: 49%;}
+img.channel-thumb{float: none;margin: 0 auto;width: 100%;}
+.content-left, .content-right{width: 100%;float: none;}
+.blog-left{width: 296px;}
+.blog-right{width: 296px;}
+.blog-video{width: 266px;height: 160px;}
+.blog-photo{width: 266px;}}
+@media (min-width: 768px){.container{width: 758px;}
+.navbar-nav > li > a{padding-left: 10px;padding-right: 10px;margin-left: 0;margin-right: 0;}
+ul.videos li{width: 230px;margin: 0 8px 0 6px;}
+ul.videos li a div.video-thumb img{width: 226px;height: 150px;}
+ul.playlists li{width: 23%;margin: 0 8px 0 6px;}
+ul.videos-profile li{width: 47%;margin: 0 6px 0 6px;}
+ul.thumbs li{width: 21%;margin: 5px 2px 5px 6px;}
+ul.users li{width: 15%;margin: 5px 5px 5px 6px;}
+ul.users-profile li{width: 22%;margin: 5px 6px 5px 6px;}
+ul.albums li{width: 236px;margin: 5px 2px 5px 4px;}
+ul.albums li a div.album-thumb img{width: 232px;height: 290px;}
+ul.albums-profile li{width: 218px;margin: 5px 6px 5px 6px;}
+ul.photos li{width: 236px;margin: 5px 2px 5px 6px;}
+ul.photos li a div.photo-thumb img{width: 232px;height: 290px;}
+ul.models li{width: 172px;height: 270px;margin: 5px 4px 5px 6px;}
+ul.channels li{width: 236px;margin: 5px 4px 5px 4px;}
+ul.channels li a img{width: 230px;height: 168px;}
+ul.categories li{width: 234px;margin: 0 6px 0 4px;}
+ul.categories li a img{width: 230px;height: 282px;}
+ul.links li{width: 33%;}
+.video-title{width: 75%;}
+.dl-horizontal dt{width: 120px;text-align: left;}
+.dl-horizontal dd{margin-left: 130px;}
+.btn-mb,.btn-group-mb > .btn{padding: 10px 16px;font-size: 18px;line-height: 1.3333333;border-radius: 6px;}
+.blog-left{width: 746px;}
+.blog-right{width: 746px;}
+.blog-video{width: 640px;height: 360px;}
+.blog-photo{width: 590px;}}
+@media (min-width: 800px){.container{width: 788px;}
+.navbar-nav > li > a{padding-left: 10px;padding-right: 10px;margin-left: 0;margin-right: 0;}
+ul.videos li{width: 180px;margin: 0 6px 0 6px;}
+ul.videos li a div.video-thumb img{width: 176px;height: 117px;}
+ul.playlists li{width: 20%;margin: 0 6px 0 6px;}
+ul.videos-profile li{margin: 0 6px 0 6px;}
+ul.thumbs li{width: 21%;margin: 5px 2px 5px 6px;}
+ul.users li{width: 15%;margin: 5px 5px 5px 6px;}
+ul.users-profile li{margin: 5px 4px 5px 6px;}
+ul.albums li{width: 184px;margin: 5px 2px 5px 4px;}
+ul.albums li a div.album-thumb img{width: 180px;height: 224px;}
+ul.albums-profile li{width: 164px;margin: 5px 3px 5px 6px;}
+ul.photos li{width: 182px;margin: 5px 6px 5px 6px;}
+ul.photos li a div.photo-thumb img{width: 178px;height: 222px;}
+ul.models li{width: 182px;height: 290px;margin: 5px 2px 5px 6px;}
+ul.channels li{width: 246px;margin: 5px 4px 5px 4px;}
+ul.channels li a img{width: 240px;height: 176px;}
+ul.categories li{width: 180px;margin: 0 6px 0 4px;}
+ul.categories li a img{width: 176px;height: 216px;}
+ul.links li{width: 20%;}
+.blog-left{width: 776px;}
+.blog-right{width: 776px;}
+.blog-video{width: 640px;height: 360px;}
+.blog-photo{width: 590px;}}
+@media (min-width: 854px){.container{width: 834px;}
+.navbar-nav > li > a{padding-left: 10px;padding-right: 10px;}
+ul.videos li{width: 23%;margin: 0 10px 0 6px;}
+ul.playlists li{width: 23%;margin: 0 10px 0 6px;}
+ul.thumbs li{width: 19%;margin: 5px 6px 5px 6px;}
+ul.users li{width: 15%;margin: 5px 5px 5px 6px;}
+ul.albums li{width: 24%;margin: 5px 2px 5px 4px;}
+ul.albums-profile li{width: 164px;margin: 5px 3px 5px 6px;}
+ul.photos li{width: 23.5%;margin: 5px 6px 5px 6px;}
+ul.models li{width: 182px;height: 290px;margin: 5px 2px 5px 6px;}
+ul.channels li{width: 24%;margin: 5px 4px 5px 6px;}
+ul.categories li{width: 23%;margin: 0 6px 0 4px;}
+ul.links li{width: 20%;}
+.blog-left{width: 510px;}
+.blog-right{width: 310px;}
+.blog-video{width: 480px;height: 260px;}
+.blog-photo{width: 590px;}}
+@media (min-width: 960px){.container{width: 942px;}
+.navbar-nav > li > a{padding-left: 20px;padding-right: 20px;}
+ul.videos li{width: 23%;margin: 0 8px 0 6px;}
+ul.playlists li{width: 23%;margin: 0 8px 0 6px;}
+ul.videos-profile li{width: 31%;margin: 0 10px 0 6px;}
+ul.thumbs li{width: 19%;margin: 5px 3px 5px 6px;}
+ul.users li{width: 15%;margin: 5px 8px 5px 6px;}
+ul.users-profile li{margin: 5px 4px 5px 6px;}
+ul.albums li{width: 24%;margin: 5px 2px 5px 4px;}
+ul.albums-profile li{width: 164px;margin: 5px 3px 5px 6px;}
+ul.photos li{width: 18.7%;margin: 5px 6px 5px 6px;}
+ul.photos-profile li{width: 23.2%;margin: 5px 6px 5px 6px;}
+ul.models li{width: 182px;height: 290px;margin: 5px 2px 5px 6px;}
+ul.channels li{width: 19.3%;margin: 5px 4px 5px 4px;}
+ul.categories li{width: 23.4%;margin: 0 6px 0 6px;}
+ul.links li{width: 20%;}
+.ads-square{width: 360px;height: 410px;}
+.blog-left{width: 610px;}
+.blog-right{width: 310px;}
+.blog-video{width: 580px;height: 300px;}
+.blog-photo{width: 590px;}}
+@media (min-width: 992px){.container{width: 982px;}
+ul.videos li{width: 23%;margin: 0 8px 0 6px;}
+ul.playlists li{width: 23%;margin: 0 8px 0 6px;}
+ul.videos-profile li{width: 31%;margin: 0 10px 0 6px;}
+ul.thumbs li{width: 19%;margin: 5px 3px 5px 6px;}
+ul.users li{width: 15%;margin: 5px 8px 5px 6px;}
+ul.users-profile li{margin: 5px 4px 5px 6px;}
+ul.albums li{width: 24%;margin: 5px 2px 5px 4px;}
+ul.albums-profile li{width: 164px;margin: 5px 3px 5px 6px;}
+ul.photos li{width: 18.7%;margin: 5px 6px 5px 6px;}
+ul.photos-profile li{width: 23.2%;margin: 5px 6px 5px 6px;}
+ul.models li{width: 182px;height: 290px;margin: 5px 2px 5px 6px;}
+ul.channels li{width: 19.3%;margin: 5px 4px 5px 4px;}
+ul.categories li{width: 23.4%;margin: 0 6px 0 6px;}
+ul.links li{width: 20%;}
+.ads-square{width: 360px;height: 410px;}
+.blog-left{width: 630px;}
+.blog-right{width: 310px;}
+.blog-video{width: 590px;height: 310px;}
+.blog-photo{width: 590px;}}
+@media (min-width: 1024px){.container{width: 990px;}
+ul.videos li{width: 252px;margin: 0 6px 0 6px;}
+ul.videos li a div.video-thumb img{width: 248px;height: 168px;}
+ul.playlists li{width: 23%;margin: 0 6px 0 6px;}
+ul.thumbs li{width: 19%;margin: 5px 3px 5px 6px;}
+ul.users li{width: 12%;margin: 5px 3px 5px 6px;}
+ul.albums li{width: 194px;margin: 5px 2px 5px 4px;}
+ul.albums li a div.album-thumb img{width: 190px;height: 238px;}
+ul.photos li{width: 230px;margin: 5px 6px 5px 6px;}
+ul.photos li a div.photo-thumb img{width: 226px;height: 282px;}
+ul.photos-profile li{width: 23.4%;margin: 5px 6px 5px 6px;}
+ul.models li{width: 184px;height: 300px;margin: 5px 3px 5px 6px;}
+ul.channels li{width: 232px;margin: 5px 4px 5px 4px;}
+ul.channels li a img{width: 228px;height: 166px;}
+ul.categories li{width: 190px;margin: 0 6px 0 4px;}
+ul.categories li a img{width: 186px;height: 226px;}
+ul.links li{width: 20%;}
+#album.row div#share-container.content-container{max-height: 120px !important;overflow: none;}
+#video.row div#share-container.content-container{max-height: 220px !important;overflow: none;}
+.ads-square{width: 480px;height: 520px;}
+.blog-left{width: 660px;}
+.blog-right{width: 310px;}
+.blog-video{width: 620px;height: 350px;}
+.blog-photo{width: 625px;}}
+@media (min-width: 1150px){.container{width: 1140px;}
+ul.videos li{width: 23%;margin: 0 6px 0 6px;}
+ul.playlists li{width: 23%;margin: 0 6px 0 6px;}
+ul.thumbs li{width: 18%;margin: 5px 6px 5px 6px;}
+ul.users li{width: 12%;margin: 5px 3px 5px 6px;}
+ul.albums li{width: 19%;margin: 5px 2px 5px 4px;}
+ul.photos li{width: 15.8%;margin: 5px 6px 5px 4px;}
+ul.photos-profile li{width: 23.4%;margin: 5px 6px 5px 6px;}
+ul.models li{width: 184px;height: 300px;margin: 5px 3px 5px 6px;}
+ul.channels li{width: 19.3%;margin: 5px 4px 5px 4px;}
+ul.categories li{width: 23.8%;margin: 0 6px 0 4px;}
+ul.links li{width: 20%;}
+.ads-square{width: 480px;height: 468px;}
+.blog-left{width: 810px;}
+.blog-right{width: 310px;}
+.blog-video{width: 640px;height: 360px;}
+.blog-photo{width: 625px;}}
+@media (min-width: 1200px){.container{width: 1190px;}
+.container-item{width: 1190px !important;}
+ul.videos li{width: 23%;margin: 0 12px 0 6px;}
+ul.playlists li{width: 23%;margin: 0 12px 0 6px;}
+ul.videos-profile li{width: 24%;margin: 0 2px 0 6px;}
+ul.thumbs li{width: 19%;margin: 5px 3px 5px 6px;}
+ul.users li{width: 11.5%;margin: 5px 4px 5px 6px;}
+ul.users-profile li{margin: 5px 2px 5px 6px;}
+ul.albums li{width: 19%;margin: 5px 2px 5px 4px;}
+ul.albums-profile li{width: 200px;margin: 5px 3px 5px 6px;}
+ul.photos li{width: 15.8%;margin: 5px 6px 5px 4px;}
+ul.photos-profile li{width: 23.4%;margin: 5px 6px 5px 6px;}
+ul.models li{width: 184px;height: 300px;margin: 5px 3px 5px 6px;}
+ul.channels li{width: 19.3%;margin: 5px 4px 5px 4px;}
+ul.categories li{width: 23.8%;margin: 0 6px 0 4px;}
+ul.links li{width: 20%;}
+.navigation li a{font-weight: bold;}
+.ads-square{width: 480px;height: 368px;}
+.blog-left{width: 860px;}
+.blog-right{width: 310px;}}
+@media (min-width: 1280px){
+.container{width: 1270px;}
+.container-item{width: 1232px !important;}
+ul.videos li{width: 238px;margin: 0 14px 0 6px;}
+ul.videos li a div.video-thumb img{width: 234px;height: 158px;}
+ul.playlists li{width: 23%;margin: 0 14px 0 6px;}
+ul.videos-profile li{width: 24%;margin: 0 2px 0 6px;}
+ul.thumbs li{width: 19%;margin: 5px 3px 5px 6px;}
+ul.users li{width: 11.5%;margin: 5px 6px 5px 6px;}
+ul.users-profile li{margin: 5px 2px 5px 6px;}
+ul.albums li{width: 198px;margin: 5px 4px 5px 4px;}
+ul.albums lig a img{width: 194px;height: 242px;}
+ul.albums-profile li{width: 220px;margin: 5px 3px 5px 6px;}
+ul.photos li{width: 198px;margin: 5px 6px 5px 4px;}
+ul.photos li a div.photo-thumb img{width: 194px;height: 242px;}
+ul.photos-profile li{width: 23.6%;margin: 5px 6px 5px 6px;}
+ul.models li{width: 193px;height: 300px;margin: 5px 10px 5px 6px;}
+ul.channels li{width: 240px;margin: 5px 4px 5px 4px;}
+ul.channels li a img{width: 240px;height: 176px;}
+ul.categories li{width: 196px;margin: 0 6px 0 4px;}
+ul.categories li a img{width: 192px;height: 236px;}
+.ads-square{width: 500px;height: 494px;}
+ul.links li{width: 14%;}
+.blog-left{width: 940px;}
+.blog-right{width: 310px;}}
+@media (min-width: 1366px){.container{width: 1340px;}
+.container-item{width: 1232px !important;}
+ul.videos li{width: 204px;margin: 0 6px 0 8px;}
+ul.videos li a div.video-thumb img{width: 200px;height: 136px;}
+ul.playlists li{width: 16%;margin: 0 6px 0 6px;}
+ul.videos-profile li{margin: 0 2px 0 6px;}
+ul.related li{width: 19%;margin: 0 3px 0 6px;}
+ul.thumbs li{width: 19%;margin: 5px 3px 5px 6px;}
+ul.users li{width: 11.5%;margin: 5px 10px 5px 6px;}
+ul.users-profile li{margin: 5px 6px 5px 6px;}
+ul.albums li{width: 210px;margin: 5px 3px 5px 4px;}
+ul.albums li a div.album-thumb img{width: 206px;height: 258px;}
+ul.albums-profile li{width: 224px;margin: 5px 3px 5px 6px;}
+ul.photos li{width: 210px;margin: 5px 6px 5px 4px;}
+ul.photos li a div.photo-thumb img{width: 206px;height: 258px;}
+ul.photos-profile li{width: 11.7%;margin: 5px 2px 5px 6px;}
+ul.models li{width: 190px;height: 300px;margin: 5px 8px 5px 6px;}
+ul.channels li{width: 254px;margin: 5px 4px 5px 4px;}
+ul.channels li a img{width: 250px;height: 182px;}
+ul.categories li{width: 208px;margin: 0 6px 0 4px;}
+ul.categories li a img{width: 204px;height: 250px;}
+.ads-square{width: 500px;height: 524px;}
+ul.links li{width: 14%;}
+.blog-left{width: 1010px;}
+.blog-right{width: 310px;}}
+@media (min-width: 1440px){.container{width: 1420px;}
+.container-item{width: 1232px !important;}
+ul.videos li{width: 222px;margin: 0 3px 0 6px;}
+ul.videos li a div.video-thumb img{width: 218px;height: 145px;}
+ul.playlists li{width: 29%;margin: 0 3px 0 6px;}
+ul.related li{width: 19%;margin: 0 3px 0 6px;}
+ul.thumbs li{width: 19%;margin: 5px 3px 5px 6px;}
+ul.users li{width: 11.5%;margin: 5px 7px 5px 6px;}
+ul.albums li{width: 224px;margin: 5px 3px 5px 4px;}
+ul.albums li a div.album-thumb img{width: 220px;height: 275px;}
+ul.photos li{width: 222px;margin: 5px 6px 5px 6px;}
+ul.photos li a div.photo-thumb img{width: 218px;height: 273px;}
+ul.models li{width: 190px;height: 300px;margin: 5px 8px 5px 6px;}
+ul.channels li{width: 224px;margin: 5px 4px 5px 4px;}
+ul.channels li a img{width: 220px;height: 160px;}
+ul.links li{width: 14%;}
+ul.categories li{width: 218px;margin: 0 6px 0 6px;}
+ul.categories li a img{width: 214px;height: 262px;}
+.blog-left{width: 1090px;}
+.blog-right{width: 310px;}}
+@media (min-width: 1680px){.container{width: 1660px !important;}
+.container-item{width: 1232px !important;}
+ul.videos li{width: 258px;margin: 0 6px 0 6px;}
+ul.videos li a div.video-thumb img{width: 254px;height: 169px;}
+ul.playlists li{width: 19%;margin: 0 6px 0 6px;}
+ul.videos-profile li{width: 18.9%;margin: 0 7px 0 6px;}
+ul.related li{width: 19%;margin: 0 3px 0 6px;}
+ul.categories li{width: 214px;margin: 0 6px 0 6px;}
+ul.categories li a img{width: 210px;height: 258px;}
+ul.thumbs li{width: 19%;margin: 5px 3px 5px 6px;}
+ul.users li{width: 11.5%;margin: 5px 10px 5px 6px;}
+ul.users-profile li{margin: 5px 4px 5px 6px;}
+ul.albums li{width: 214px;margin: 5px 6px 5px 6px;}
+ul.albums li a div.album-thumb img{width: 210px;height: 263px;}
+ul.albums-profile li{width: 190px;margin: 5px 4px 5px 6px;}
+ul.photos li{width: 192px;margin: 5px 6px 5px 6px;}
+ul.photos li a div.photo-thumb img{width: 188px;height: 235px;}
+ul.photos-profile li{width: 11.7%;margin: 5px 2px 5px 6px;}
+ul.models li{width: 190px;height: 300px;margin: 5px 8px 5px 6px;}
+ul.channels li{width: 264px;margin: 5px 4px 5px 4px;}
+ul.channels li a img{width: 260px;height: 190px;}
+ul.links li{width: 14%;}
+.blog-left{width: 1330px;}
+.blog-right{width: 310px;}
+.ads-square{width: 500px;height: 522px;}}

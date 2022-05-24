@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>{$obj.topic_name}专题详情- {$maccms.site_name}</title>
+<meta name="keywords" content="{$maccms.site_keywords}" />
+<meta name="description" content="{$maccms.site_description}" />
+{include file="public/include"}
+</head>
+<body>
+<div class="movie-wrap">
+{include file="public/head"}
+<div class="special_n" style="background:url({:mac_url_img($obj.topic_pic)}) no-repeat center top;margin-top: 64px">
+<div class="special_box">
+<div class="sharebox">
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare" data="{
+'url':'{:mac_url_topic_detail($obj)}',
+'desc':'{$obj.topic_name}专题',
+'text':'{$obj.topic_content|mac_filter_html}',
+'pic':'{:mac_url_img($obj.topic_pic)}'
+}">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tsohu"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_kaixin001"></a>
+<a class="bds_baidu"></a>
+<a class="bds_tieba"></a>
+<a class="bds_hi"></a>
+<a class="bds_douban"></a>
+<a class="bds_taobao"></a>
+<span id="bds_more" class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6556540" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+</div>   
+<div class="special-info">
+<h2><span id="special-txt">展开更多资料<em>&darr;</em></span><on><a href="javascript:;">{$obj.topic_name}</a></on>详细介绍</h2>
+<div class="special-txt">{$obj.topic_content|mac_filter_html}</div>
+</div>
+<div class="movie-type-content">
+<div class="mtc-inner">
+<ul class="teleplay-content-list movie-content-list">
+{maccms:foreach name="$obj.vod_list"}
+<li>
+<div class="showPlay">
+<a href="{:mac_url_vod_detail($vo)}" class="tcl-pic" target="_blank">
+<div class="tcl-pic1"><img class="scrollLoading" data-url="{:mac_url_img($vo.vod_pic)}" width="200" height="270" src="{$maccms.path_tpl}images/pic.png" alt="{$vo.vod_name}"></div>
+<div class="tcl-pic2"></div>
+<div class="tcl-pic3"></div>
+<p class="tcl-pic4">{include file="public/serial1"}</p>
+</a>
+</div>
+<div class="tcl-title">
+<div class="movie-headline1"><a href="{:mac_url_vod_detail($vo)}" target="_blank">{$vo.vod_name}</a></div>
+<p>{$vo.vod_actor|mac_default='未知'}</p>
+</div>
+</li>         
+{/maccms:foreach}
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="margin-top:-104px;"></div>
+{include file="public/foot_de"}
+</body>
+</html>

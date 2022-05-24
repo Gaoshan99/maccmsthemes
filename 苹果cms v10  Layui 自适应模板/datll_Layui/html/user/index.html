@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>会员中心 - {$maccms.site_name}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />    
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="format-detection" content="telephone=yes"/>
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="keywords" content="会员中心">
+<meta name="description" content="会员中心">
+
+	{include file="user/include" /}
+</head>
+<body>
+{include file="user/head" /}
+<!-- 会员中心 -->
+<div id="member" class="fn-clear">
+	<div id="left">
+		<div class="tou"><img class="face" src="{$obj.user_portrait|mac_default='static/images/touxiang.png'|mac_url_img}" alt="会员头像"><p>{$obj.user_name}<br />{$obj.group.group_name}</p></div>
+		<ul>
+			<li class="hover"><a href="{:url('user/index')}">我的资料</a></li>
+			<li><a href="{:url('user/favs')}">我的收藏</a></li>
+			<li><a href="{:url('user/plays')}">播放记录</a></li>
+			<li><a href="{:url('user/downs')}">下载记录</a></li>
+			<li><a href="{:url('user/buy')}">在线充值</a></li>
+			<li><a href="{:url('user/upgrade')}">升级会员</a></li>
+			<li><a href="{:url('user/orders')}">充值记录</a></li>
+			<li class="nav-item wadda" ><a class="nav-link" href="{:url('user/logout')}" >退出</a></li>
+		</ul>
+	</div>
+	<div id="right">
+		<h2>我的资料</h2>
+		<div id="tab">
+			<div class="list">
+				<ul class="fn-clear">
+					<li class="cur">基本资料</li>
+					<li><a href="{:url('user/info')}">修改信息</a></li>
+					<li><a href="{:url('user/popedom')}">我的权限</a></li>
+				</ul>
+			</div>
+			<div id="listCon">
+				<!-- 基本资料 -->
+				<div class="cur">
+					<p><span class="xiang">用户名：</span>{$obj.user_name}</p>
+					<p><span class="xiang">所属会员组：</span>{$obj.group.group_name}</p>
+					<p><span class="xiang">会员期限：</span>{$obj.user_end_time|mac_day}</p>
+					<p><span class="xiang">QQ号码：</span>{$obj.user_qq}</p>
+					<p><span class="xiang">Email地址：</span>{$obj.user_email}</p>
+					<p><span class="xiang">注册时间：</span>{$obj.user_reg_time|mac_day}</p>
+					<p><span class="xiang">登陆IP：</span>{$obj.user_login_ip|long2ip}</p>
+					<p><span class="xiang">登陆时间：</span>{$obj.user_login_time|mac_day}</p>
+					<p><span class="xiang">账户积分：</span>{$obj.user_points}</p>
+					<p><span class="xiang">推广链接：</span>
+						<input id="url" class="member-input" value="http://{$maccms.site_url}{:mac_url('user/reg')}?uid={$obj.user_id}" size="70">
+				</div>
+ 
+				 
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$(".face").imageUpload({
+		formAction: "{:url('user/portrait')}",
+		inputFileName:'file',
+		browseButtonValue: '修改头像',
+		browseButtonClass:'btn btn-default btn-xs',
+		automaticUpload: true,
+		hideDeleteButton: true,
+		hover:true
+	})
+	$(".face").on("imageUpload.uploadFailed", function (ev, err) {
+		alert(err);
+	});
+</script>
+
+</body>
+</html>

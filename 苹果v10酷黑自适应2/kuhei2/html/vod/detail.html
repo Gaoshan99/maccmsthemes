@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{include file="seo/vod_detail"}   
+	{include file="block/include"}
+</head>
+<body>
+	{include file="block/head"}
+    <div class="container">
+        <div class="row">
+        	<div class="col-lg-wide-75 col-xs-1 padding-0">	
+        		<!-- 详细信息-->	
+			   <div class="stui-pannel stui-pannel-bg clearfix">
+					<div class="stui-pannel-box clearfix">
+						<div class="stui-pannel_bd clearfix">							
+							<div class="stui-content col-pd clearfix">
+								<div class="stui-content__thumb">									
+									<a class="stui-vodlist__thumb picture v-thumb" href="{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}" title="{$obj.vod_name}">
+										<img class="lazyload" src="{$maccms.path_tpl}statics/img/load.gif" data-original="{:mac_url_img($obj.vod_pic)}"/>
+										<span class="play active hidden-xs"></span>
+										<span class="pic-text text-right">{if condition="$obj.vod_remarks neq ''"}{$obj.vod_remarks}{elseif condition="$obj.vod_serial gt 0"}第{$obj.vod_serial}集{else /}已完结{/if}</span>
+									</a>										
+								</div>
+								<div class="stui-content__detail">
+									<h1 class="title">{$obj.vod_name}</h1>
+									<div class="score">	
+										<div class="star"><span class="star-cur" id="score"></span></div>
+										<span class="branch">{$obj.vod_score}</span>																
+									</div>
+									<p class="data hidden-xs">
+										<span class="text-muted">类型：</span>{$obj.vod_class|mac_url_create='class'}
+										<span class="split-line"></span>
+										<span class="text-muted">地区：</span>{$obj.vod_area|mac_url_create='area'}
+										<span class="split-line"></span>
+										<span class="text-muted">年份：</span>{$obj.vod_year|mac_url_create='year'}
+										<span class="split-line"></span>
+										<span class="text-muted">语言：</span>{$obj.vod_lang|mac_url_create='lang'}
+									</p>					
+									<p class="data"><span class="text-muted">主演：</span>{$obj.vod_actor|mac_substring=30|mac_url_create='actor'}</p>
+									<p class="data"><span class="text-muted">导演：</span>{$obj.vod_director|mac_url_create='director'}</p>
+									<p class="data hidden-xs"><span class="text-muted">更新：</span>{$obj.vod_time|date='Y-m-d h:m:s',###}</p>
+									<div class="play-btn clearfix">
+										<div class="share bdsharebuttonbox hidden-sm hidden-xs pull-right"></div>
+										<a class="btn btn-primary" href="{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}">立即播放</a>
+										{if condition="$maccms.user_status eq 1"}
+										<a href="javascript:void(0);" class="mac_ulog btn btn-default" data-type="2" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}">收藏</a>
+										{/if}										
+										<!--<span class="bdsharebuttonbox hidden-xs"><a href="javascript:;" class="btn btn-default bds_btn" data-cmd="more">分享</a></span>-->
+									</div>
+								</div>			    																									
+							</div>						
+						</div>
+					</div>					
+				</div>	
+				<!-- end 详细信息-->	
+				{include file="vod/playlist"}<!-- 播放地址-->	
+				{include file="vod/desc"}<!-- 剧情简介-->	
+				{include file="vod/like"}<!-- 猜你喜欢-->
+				
+				{if condition="$comment.status eq 1"}
+				<div class="stui-pannel stui-pannel-bg clearfix">
+					<div class="stui-pannel-box clearfix">
+						<div class="stui-pannel_bd clearfix">
+							<div class="stui-pannel_hd">
+								<div class="stui-pannel__head clearfix">
+									<h3 class="title">
+										<img src="{$maccms.path_tpl}statics/icon/icon_30.png"/>
+										影片评论
+									</h3>						
+								</div>																		
+							</div>
+							<div class="stui-pannel_bd">
+								<div class="mac_comment" data-id="{$obj.vod_id}" data-mid="{$maccms.mid}" ></div>
+								<script>
+							        $(function(){
+							            MAC.Comment.Login = {$comment.login};
+							            MAC.Comment.Verify = {$comment.verify};
+							            MAC.Comment.Init();
+							            MAC.Comment.Show(1);
+							        });
+							    </script>
+							</div>
+						</div>
+					</div>					
+				</div>		
+				{/if}
+			</div>				
+			<div class="col-lg-wide-25 col-xs-1 stui-pannel-side visible-lg">
+				{include file="vod/code"}<!-- 二维码-->
+				{include file="vod/hot"}<!-- 分类排行-->
+				{include file="vod/topic"}<!-- 专题-->	
+			</div>
+        </div>
+    </div>
+    <script type="text/javascript"> 
+		var str = "{$obj.vod_score}0%";
+		document.getElementById("score").style.width = (str.replace(".", "0."));
+	</script>
+	<script type="text/javascript">
+    	var playli = $(".stui-content__playlist:first li").length;
+    	if(playcolumn>1){  		  		
+    		if(playli>5){
+    			$(".stui-content__playlist").addClass("column"+playcolumn);
+    		}   		
+    	}
+    	if(playli>30){
+			$(".stui-content__playlist").css({"max-height":" 300px","overflow-y":"scroll"});
+		} 
+    </script>
+	<span class="mac_hits hits hide" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}{$obj.art_id}{$obj.topic_id}" data-type="hits"></span>
+    <span class="mac_ulog_set hide" data-type="4" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" data-sid="{$param.sid}" data-nd="{$param.nid}"></span>
+	{include file="block/foot"}
+</body>
+</html>

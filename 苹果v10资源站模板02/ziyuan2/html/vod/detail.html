@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>{$obj.vod_name}剧情介绍--{$maccms.site_name}</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="{$obj.type.type_name}{$obj.vod_name}_{$maccms.site_name}" />
+  <meta name="description" content="{$obj.type.type_name}{$obj.vod_name}_{$maccms.site_name}" />
+  {include file="public/include"}
+ </head>
+ <body>
+  <script language="JavaScript"> 
+eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('p R(4){3 a=t.s(4);3 n=a.q;3 f="";x(3 i=0;i<n;i++){6(a[i].c){f+=a[i].Q;f+="\\r\\n"}}F(f);E("地址全部复制成功！")}p F(9){6(8.l){8.l.P();8.l.A("O",9)}w 6(S.T.W("N")!=-1){8.U=9}w 6(8.z){X{z.M.I.K("J")}L(e){E("被浏览器拒绝！\\n请在浏览器地址栏输入\'H:V\'并回车\\n然后将\'11.1b.1a\'设置为\'1d\'")}3 d=5.j[\'@o.k/u/Y;1\'].h(5.b.C);6(!d)g;3 7=5.j[\'@o.k/u/19;1\'].h(5.b.1c);6(!7)g;7.1e(\'B/G\');3 4=y v();3 1f=y v();3 4=5.j["@o.k/17-18;1"].h(5.b.10);3 m=9;4.Z=m;7.12("B/G",4,m.q*2);3 D=5.b.C;6(!d)g 14;d.A(7,15,D.16)}}p 13(4,c){3 a=t.s(4);3 n=a.q;x(3 i=0;i<n;i++){a[i].c=c}}',62,78,'|||var|str|Components|if|trans|window|txt||interfaces|checked|clip||ed2kcopy|return|createInstance||classes|org|clipboardData|copytext||mozilla|function|length||getElementsByName|document|widget|Object|else|for|new|netscape|setData|text|nsIClipboard|clipid|alert|copyToClipboard|unicode|about|PrivilegeManager|UniversalXPConnect|enablePrivilege|catch|security|Opera|Text|clearData|value|copy|navigator|userAgent|location|config|indexOf|try|clipboard|data|nsISupportsString|signed|setTransferData|checkAll|false|null|kGlobalClipboard|supports|string|transferable|codebase_principal_support|applets|nsITransferable|true|addDataFlavor|len'.split('|'),0,{}))
+</script>
+  {include file="public/head"}
+<div class="container">
+        <div class="nvc">
+            <dl>
+                <dt>
+                    <span>当前位置</span>
+                    <i class="arrow"><b class="a_outer"></b><b class="a_inner"></b></i>
+                </dt>
+                <dd>{$obj.type.type_name}/{$obj.vod_name}</dd>
+            </dl>
+        </div>
+</div>
+  <div class="warp"> 
+   <div class="ibox"> 
+    <div class="vod"> 
+     <div class="vodBox"> 
+      <div class="vodImg">
+       <img class="lazy" src="{$obj.vod_pic|mac_url_img}" alt="{$obj.vod_name}" />
+       <b class="b1"></b>
+       <b class="b2"></b>
+      </div> 
+      <div class="vodInfo"> 
+       <div class="vodh"> 
+        <h2>{$obj.vod_name}</h2>
+        <span>{$obj.vod_remarks}</span>
+        <label>{$obj.vod_score}</label>
+       </div> 
+       <div class="vodinfobox">
+        <ul>
+         <li>别名：<span>{$obj.vod_sub}</span></li>
+         <li>导演：<span>{$obj.vod_director}</span></li>
+         <li>主演：<span>{$obj.vod_actor}</span></li>
+         <li>类型：<span>{$obj.vod_type.type_name} {$obj.vod_class}</span></li>
+         <li>地区：<span>{$obj.vod_area}</span></li>
+         <li>语言：<span>{$obj.vod_lang}</span></li>
+         <li>上映：<span>{$obj.vod_year}</span></li>
+         <li>更新：<span>{$obj.vod_time|mac_day=###,'color'}</span></li>
+                 <li class="cont">
+          <div class="jjText">
+           <span class="cl"></span>
+           <span class="cr"></span>
+          </div></li> 
+         <li class="tags"><span>{$obj.vod_tag}</span></li>
+        </ul> 
+       </div>
+      </div> 
+      <div class="vodAd"><script type="text/javascript" src="{$maccms.path_ads}detail300X320.js"></script></div>
+     </div> 
+    </div> 
+   </div>
+   <!-- 开始 -->
+   <div class="ibox playBox"> 
+    <div class="playBar liketitle">
+     <strong>剧情介绍：</strong>
+    </div> 
+    <div class="vodplayinfo">{$obj.vod_content|mac_filter_html}</div>
+   </div>
+   <!--结束-->
+   <div class="ibox playBox"> 
+    <div class="playBar liketitle">
+     <strong>复制下列地址至浏览器地址栏即可观看正版影片，本站不提供在线正版播放。<font color=red>备注：如有地址错误，请点击→ 向我们报错！我们将在第一时间处理！谢谢！</strong>
+    </div> 
+    <div class="vodplayinfo"> 
+     <div style="padding-left:10px;word-break: break-all; word-wrap:break-word;">
+      {maccms:foreach name="obj.vod_play_list" id="vo" key="key"}
+      <h3>来源：{$vo.player_info.show}</h3>
+      <ul>
+       {maccms:foreach name="vo.urls" id="vo2" key="key2"}<li><input type="checkbox" name="copy_sel" value="{$vo2.url}" checked/>{$vo2.url}</li>{/maccms:foreach}
+      </ul> 
+      <input type="checkbox" name="checkbox" value="checkbox" onclick="checkAll('copy_sel',this.checked)" checked="" />全选 
+      <input type="button" name="Submit" value="直接复制链接" onclick="copy('copy_sel')" />&nbsp;
+      {/maccms:foreach}
+     </div> 
+    </div> 
+   </div> 
+   <div  style="clear:both"></div> 
+  </div>
+  {include file="public/foot"}
+ </body>
+</html>

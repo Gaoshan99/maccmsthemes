@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="renderer" content="webkit">
+<title>{$obj.vod_name}详情介绍-{$obj.vod_name}在线观看-{$obj.vod_name}迅雷下载 - {$maccms.site_name}</title>
+<meta name="keywords" content="{$obj.vod_name}在线收看,{$obj.vod_name}迅雷下载" />
+<meta name="description" content="{$obj.vod_name}剧情:{$obj.vod_blurb}" />
+ {include file="public/include"}
+</head>
+<body>
+<div class="container">
+{include file="public/head"}
+<div class="title">
+<li>当前位置</li>
+<li><a href="{$maccms.path}">首页</a></li>
+<li><a href="{:mac_url_type($obj.type)}">{$obj.type.type_name}</a></li>
+</div>
+<div class="media"><ul>
+<li><a href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}"><img src="{$obj.vod_pic|mac_url_img}"></a></li>
+<li class="media-info">
+{maccms:foreach name="obj.vod_play_list" id="vo" key="key"}
+{maccms:foreach name="vo.urls" id="vo2" key="key2"}
+<dt class="playurl2"><a href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}">{$vo2.name}点击播放</a><dt>
+{/maccms:foreach}
+{/maccms:foreach}
+<dt>片名：{$obj.vod_name}</dt>
+<dt>类型：{$obj.vod_type.type_name} {$obj.vod_class}</dt>
+</li></ul>
+</div>
+<div class="clearfix"></div>
+<div class="title">热播{$obj.type.type_name}<span class="r"><a href="/label/hits.html">更多>></a></span></div>
+<div class="pic"><ul>{maccms:vod num="12" type="current" order="desc" by="hits"}
+<li><a href="{:mac_url_vod_detail($vo)}"><img src="{:mac_url_img($vo.vod_pic)}" title="{$vo.vod_name}"><br />{$vo.vod_name}</a></li>
+{/maccms:vod}</ul>
+</div>
+<div class="title">月播{$obj.type.type_name}<span class="r"><a href="/label/month.html">更多>></a></span></div>
+<div class="pic"><ul>{maccms:vod num="12" type="current" order="desc" by="hits_month"}
+<li><a href="{:mac_url_vod_detail($vo)}"><img src="{:mac_url_img($vo.vod_pic)}" title="{$vo.vod_name}"><br />{$vo.vod_name}</a></li>
+{/maccms:vod}</ul>
+</div>
+<div class="title">推荐{$obj.type.type_name}<span class="r"><a href="/label/score.html">更多>></a></span></div>
+<div class="pic2"><ul>{maccms:vod num="48" type="current" order="desc" by="score"}
+<li><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">{$vo.vod_name}</a></li>
+{/maccms:vod}</ul>
+</div>
+{include file="public/foot"}
+</div>
+</body>
+</html>

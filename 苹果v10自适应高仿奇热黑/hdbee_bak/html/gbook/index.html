@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width ,initial-scale = 1,minimum-scale = 1,maximum-scale = 1,user-scalable =no,"/>
+    <title>留言板 - {$maccms.site_name}</title>
+    {include file="public/include"}
+    <script>
+        $(function(){
+            MAC.Gbook.Login = {$gbook.login};
+            MAC.Gbook.Verify = {$gbook.verify};
+            MAC.Gbook.Init();
+        });
+    </script>
+</head>
+<link href="{$maccms.path}static/css/home.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript">var chenxing ="";</script>
+<body class="home blog" id="body-header-top" data-js="bottom">
+{include file="public/head"}
+
+ <div class="main">
+   <div class="main_inner">
+    <div class="main_left" style="width:100%">
+     <div class="item_title">
+      <h1> 留言求片</h1>
+      <div class="single-cat"> 
+       <span>发布时间：</span> 2017-4-20
+      </div>
+     </div>
+     <div class="content">
+      <div class="content_left">
+       <p style="text-align: center;"><a href="http://{$maccms.site_url}"><span style="color: #ff0000;"><strong>{$maccms.site_name}</strong></span></a>开通会员屏蔽广告咯</p>
+       <p style="text-align: center;">每日签到送积分，每日评论送积分，首次注册送积分</p>
+       <p style="text-align: center;">积分可兑换会员，会员可屏蔽全站广告！</p>
+       <p style="text-align: center;">查看<a href="{:mac_url('label/wangpan')}">积分规则</a></p>
+       <p style="text-align: center;">感谢大家对电影蜜蜂的支持</p>
+       <p style="text-align: center;">如有任何意见或者建议，欢迎大家留言，或者加入影迷交流群<a href="#QQ群链接" target="_blank" rel="nofollow"></a><a class="image_cx_cont" data-lightbox="example-set" href="//pub.idqqimg.com/wpa/images/group.png" title="留言求片"><img class="aligncenter" title="电影蜜蜂-影迷交流群" src="//pub.idqqimg.com/wpa/images/group.png" alt="电影蜜蜂-影迷交流群" border="0" /></a></p>
+       <div class="dtpost-like cl">
+        <a href="javascript:;" data-action="ding" data-id="14428" class="favorite"><i class="fa fa-thumbs-up"></i><span class="count"><em class="ct_ding" style="color: #F58282;">79</em>个赞 </span></a>
+<a class="share-btn collect collect-no" href="javascript:void(0);" style="cursor:hand" onclick="MAC.Fav(location.href,document.name);"><i class="fa fa-star"></i><span class="count">收藏</span</a>
+        <a class="share-fx" href="javascript:;"><i class="fa fa-share-alt"></i><span class="count">分享</span></a>
+        <div class="myshare -mob-share-ui cl">
+         <ul class="-mob-share-list" data-url="http://www.hdbee.net/gbook" data-images="//pub.idqqimg.com/wpa/images/group.png">
+          <li class="-mob-share-qq" data-type="qq"></li>
+          <li class="-mob-share-qzone" data-type="qzone"></li>
+          <li class="-mob-share-weixin" data-type="weixin">
+           <div class="weixin_qrcode">
+            <a class="image_cx_cont" data-lightbox="example-set" href="//pan.baidu.com/share/qrcode?w=200&amp;h=200&amp;url=http://www.hdbee.net/gbook" title="留言求片"><img src="//pan.baidu.com/share/qrcode?w=200&amp;h=200&amp;url=http://www.hdbee.net/gbook" alt="" /></a>
+            <span>微信扫码</span>
+           </div></li>
+          <li class="-mob-share-weibo" data-type="weibo"></li>
+          <li class="-mob-share-douban" data-type="douban"></li>
+         </ul>
+        </div>
+       </div>
+      </div>
+     </div>
+
+    <section class="single-post-comment">
+    {maccms:gbook num="10" paging="yes" order="desc" by="id"}
+    {/maccms:gbook}
+      <h2>留言({$__PAGING__.record_total|intval})</h2>
+      <div class="single-post-comment-reply" id="respond">
+
+
+            <form class="gbook_form">               
+                <textarea class="textarea form-control" data-widearea="enable" id="comment" name="gbook_content" placeholder="你怎么看？"></textarea>
+                <div class="msg_code">
+
+                
+                    {if condition="$gbook.verify eq 1"}
+                    验证码：<input type="text" name="verify" style="height: 30px;" class="mac_verify">
+                    {/if}
+                <input type="button" class="ladda-button comment-submit-btn gbook_submit submit_btn" value="提交留言">
+               
+            </form>
+        </div>
+      </div>
+
+<ul>
+<hr />
+ {maccms:gbook num="20" paging="yes" order="desc" by="id"}
+  <li class="comment even thread-even depth-1" id="comment-283">
+   <div class="comment cf comment_details">
+    <div class="avatar left"> 
+     <a href="javascript:void(0)"> <img src="__STATIC__/images/home/duface.png" class="avatar" width="100" height="100" /> </a>
+    </div>
+    <div id="div-comment-283" class="commenttext">
+     <div class="comment-wrapper">
+      <div class="postmeta"> 
+       <a class="user_info_name" href="javascript:void(0)">{$vo.gbook_name}</a> 
+       <time class="timeago" datetime="{$vo.gbook_time|date='Y-m-d H:i:s',###}"> {$vo.gbook_time|date='Y-m-d H:i:s',###}</time> 
+      </div>
+      <div class="commemt-main">
+       <p>{$vo.gbook_content}</p>
+      </div>
+     </div>
+    </div>
+   </div>
+
+ {if condition="$vo.gbook_reply_time gt 0"}
+   <ul class="children">
+    <li class="comment byuser comment-author-dybee bypostauthor odd alt depth-2" id="comment-284">
+     <div class="comment cf comment_details">
+      <div class="avatar left"> 
+       <a href="javascript:void(0)"> <img src="__STATIC__/images/home/duface.png" class="avatar" width="100" height="100" /> </a>
+      </div>
+      <div id="div-comment-284" class="commenttext">
+       <div class="comment-wrapper">
+        <div class="postmeta"> 
+         <a class="user_info_name" href="javascript:void(0)">管理员回复</a> 
+         <a title="博主" class="vip"></a> 
+         <time class="timeago" datetime="{$vo.gbook_reply_time|date='Y-m-d H:i:s',###}">{$vo.gbook_reply_time|date='Y-m-d H:i:s',###}</time> 
+        </div>
+        <div class="commemt-main">
+         <p> {$vo.gbook_reply}</p>
+        </div>
+       </div>
+      </div>
+     </div></li>
+   </ul></li>
+</ul>
+{/if}
+
+{/maccms:gbook}
+
+
+   
+<div class="comment-pagenav"> 
+
+    {include file="public/paging"}
+</div>
+   </section>
+</div>
+</div></div>
+{include file="public/foot"}
+<script type='text/javascript' src='{$maccms.path_tpl}js/script.js?ver=1.5'></script>
+</body>
+</html>

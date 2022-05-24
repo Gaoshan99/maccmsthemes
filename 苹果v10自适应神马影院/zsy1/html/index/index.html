@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="applicable-device" content="pc,mobile">
+<title>伦理片-伦理电影-午夜伦理片-日本韩国伦理电影</title>
+<meta name="keywords" content="{$maccms.site_keywords}" />
+<meta name="description" content="{$maccms.site_description}" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+{include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+
+<!--<div align="center"><script src="{$maccms.path_ads}index1.js"></script></div>-->
+<div class="main">
+<!--<div class="index-tj clearfix">
+<div class="index-tj-l">
+<h1 class="title index-color clearfix">
+<span class="hitkey">
+{maccms:vod num="5" type="all" order="desc" by="hits_week"}
+<a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" target="_blank">{$vo.vod_name}</a>{/maccms:vod}
+</span>推荐影视</h1>
+<ul>
+{maccms:vod num="12" type="all" order="desc" by="time" level="1,2,3,4,5,6,7,8,9"}
+<li class="p2 m1 {if condition="$key% 6 eq 0"}mmr0 pmr0{/if}"><a class="link-hover" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" target="_blank"><img class="lazy" src="{:mac_url_img($vo.vod_pic)}" alt="{$vo.vod_name}" onerror="this.src='{$maccms.path_tpl}images/nopic.gif'"><span class="video-bg"></span><span class="lzbz"><p class="name">{$vo.vod_name}</p><p class="actor">{$vo.vod_actor}</p><p class="actor">{$vo.type.type_name}</p><p class="actor">{$vo.vod_year}/{$vo.vod_area}</p></span><p class="other"><i>{$vo.vod_time|date='Y-m-d',###}</i></p></a></li>{/maccms:vod}
+</ul>
+</div>
+<div class="index-tj-r">
+<h1 class="title index-color">今日热映</h1>
+<ul>
+{maccms:vod num="10" type="all" order="desc" by="hits_week"}
+<li><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" target="_blank"><span class="bz">{$vo.vod_time|date='m-d',###}</span><gm {if condition="$key lt 4"}class="gs"{/if}>{$key}</gm><span class="az">{$vo.vod_name}</span></a></li>{/maccms:vod}
+</ul>
+</div>
+</div>-->
+<!--<div align="center"><script src="{$maccms.path_ads}index2.js"></script></div>-->
+
+
+  {maccms:type ids="22" order="asc" by="sort" id="vo1" key="key1"}
+<div class="index-tj clearfix">
+<div class="index-tj-l">
+<div class="title index-color clearfix">
+<span class="hitkey">
+
+</span><!---->
+<h1 class="title2">伦理片</h1> <a href="/list/22.html" title="伦理电影" rel="nofollow"><div class="kaoyou"><font size="2" color="#0785D4">更多&nbsp;</font></div> </a>
+</div>
+<ul>
+{maccms:vod num="12" type="'.$vo1['type_id'].'" order="desc" by="time" id="vo3" key="key3"}
+<li class="p2 m1 {if condition="$key3% 6 eq 0"}mmr0 pmr0{/if}"><a class="link-hover" href="{:mac_url_vod_detail($vo3)}" title="{$vo3.vod_name}"><img class="lazy" src="{:mac_url_img($vo3.vod_pic)}" alt="{$vo3.vod_name}" onerror="this.src='{$maccms.path_tpl}images/nopic.gif'" rel="nofollow"><span class="video-bg"></span><span class="lzbz"><p class="name">{$vo3.vod_name}</p><p class="actor">{$vo3.vod_actor}</p><p class="actor">{$vo3.type.type_name}</p><p class="actor">{$vo3.vod_year}/{$vo3.$obj.vod_remarks}</p></span><p class="other"><i>{$vo3.vod_remarks}</i></p></a></li>{/maccms:vod}
+</ul>
+</div>
+<div class="index-tj-r">
+<div class="title index-color">伦理电影排行榜</div>
+<ul>
+{maccms:vod num="10" type="'.$vo1['type_id'].'" order="desc" by="hits_week" id="vo4" key="key4"}
+<li><a href="{:mac_url_vod_detail($vo4)}" title="{$vo4.vod_name}"><span class="bz">{$vo4.vod_time|date='m-d',###}</span><gm {if condition="$key4 lt 4"}class="gs"{/if}>{$key4}</gm><span class="az">{$vo4.vod_name}</span></a></li>{/maccms:vod}
+</ul>
+</div>
+</div>
+<!--{if condition="$key1 eq 2"}<div align="center"><script src="{$maccms.path_ads}index3.js"></script></div>{/if}-->
+{/maccms:type}
+
+  
+{maccms:type ids="1" order="asc" by="sort" id="vo1" key="key1"}
+<div class="index-tj clearfix">
+<div class="index-tj-l">
+<div class="title index-color clearfix">
+<!--<span class="hitkey">
+{maccms:type parent="'.$vo1['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}<a href="{:mac_url_type($vo2,[],'show')}">{$vo2.type_name}</a> {/maccms:type}
+</span>-->
+<a href="{:mac_url_type($vo1)}">{$vo1.type_name}</a> <a href="{:mac_url_type($vo1)}" rel="nofollow"><div class="kaoyou"><font size="2" color="#0785D4">更多&nbsp;</font></div> </a>
+</div>
+<ul>
+{maccms:vod num="12" type="'.$vo1['type_id'].'" order="desc" by="time" id="vo3" key="key3"}
+<li class="p2 m1 {if condition="$key3% 6 eq 0"}mmr0 pmr0{/if}"><a class="link-hover" href="{:mac_url_vod_detail($vo3)}" title="{$vo3.vod_name}"><img class="lazy" src="{:mac_url_img($vo3.vod_pic)}" alt="{$vo3.vod_name}" onerror="this.src='{$maccms.path_tpl}images/nopic.gif'" rel="nofollow"><span class="video-bg"></span><span class="lzbz"><p class="name">{$vo3.vod_name}</p><p class="actor">{$vo3.vod_actor}</p><p class="actor">{$vo3.type.type_name}</p><p class="actor">{$vo3.vod_year}/{$vo3.vod_area}</p></span><p class="other"><i>{$vo3.vod_remarks}</i></p></a></li>{/maccms:vod}
+</ul>
+</div>
+<div class="index-tj-r">
+<div class="title index-color">{$vo1.type_name}排行榜</div>
+<ul>
+{maccms:vod num="10" type="'.$vo1['type_id'].'" order="desc" by="hits_week" id="vo4" key="key4"}
+<li><a href="{:mac_url_vod_detail($vo4)}" title="{$vo4.vod_name}"><span class="bz">{$vo4.vod_time|date='m-d',###}</span><gm {if condition="$key4 lt 4"}class="gs"{/if}>{$key4}</gm><span class="az">{$vo4.vod_name}</span></a></li>{/maccms:vod}
+</ul>
+</div>
+</div>
+<!--{if condition="$key1 eq 2"}<div align="center"><script src="{$maccms.path_ads}index3.js"></script></div>{/if}-->
+{/maccms:type}
+  
+  
+{maccms:type ids="2,4" order="asc" by="sort" id="vo1" key="key1"}
+<div class="index-tj clearfix">
+<div class="index-tj-l">
+<div class="title index-color clearfix">
+<!--<span class="hitkey">
+{maccms:type parent="'.$vo1['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}<a href="{:mac_url_type($vo2,[],'show')}">{$vo2.type_name}</a> {/maccms:type}
+</span>-->
+<a href="{:mac_url_type($vo1)}">{$vo1.type_name}</a> <a href="{:mac_url_type($vo1)}" rel="nofollow"><div class="kaoyou"><font size="2" color="#0785D4">更多&nbsp;</font></div> </a>
+</div>
+<ul>
+{maccms:vod num="6" type="'.$vo1['type_id'].'" order="desc" by="time" id="vo3" key="key3"}
+<li class="p2 m1 {if condition="$key3% 6 eq 0"}mmr0 pmr0{/if}"><a class="link-hover" href="{:mac_url_vod_detail($vo3)}" title="{$vo3.vod_name}"><img class="lazy" src="{:mac_url_img($vo3.vod_pic)}" alt="{$vo3.vod_name}" onerror="this.src='{$maccms.path_tpl}images/nopic.gif'" rel="nofollow"><span class="video-bg"></span><span class="lzbz"><p class="name">{$vo3.vod_name}</p><p class="actor">{$vo3.vod_actor}</p><p class="actor">{$vo3.type.type_name}</p><p class="actor">{$vo3.vod_year}/{$vo3.vod_area}</p></span><p class="other"><i>{$vo3.vod_remarks}</i></p></a></li>{/maccms:vod}
+</ul>
+</div>
+<div class="index-tj-r">
+<div class="title index-color">{$vo1.type_name}排行榜</div>
+<ul>
+{maccms:vod num="5" type="'.$vo1['type_id'].'" order="desc" by="hits_week" id="vo4" key="key4"}
+<li><a href="{:mac_url_vod_detail($vo4)}" title="{$vo4.vod_name}"><span class="bz">{$vo4.vod_time|date='m-d',###}</span><gm {if condition="$key4 lt 4"}class="gs"{/if}>{$key4}</gm><span class="az">{$vo4.vod_name}</span></a></li>{/maccms:vod}
+</ul>
+</div>
+</div>
+<!--{if condition="$key1 eq 2"}<div align="center"><script src="{$maccms.path_ads}index3.js"></script></div>{/if}-->
+{/maccms:type} 
+
+
+<!--<div align="center"><script src="{$maccms.path_ads}index4.js"></script></div>-->
+</div>
+<div class="ylink clearfix">友情连接： 
+{maccms:link num="10" type="all" order="desc" by="id"}
+<a href="{$vo.link_url}" target="_blank">{$vo.link_name}</a>{/maccms:link}
+</div>
+
+
+  <div class="footer clearfix">
+    
+  <p>若本站收录的节目无意侵犯了贵司版权，请给网页底部邮箱地址来信，我们会及时处理和回复，谢谢</p> 
+
+    <a href="/tousu.html" rel="nofollow"><u>版权/内容投诉</u></a>
+</div>
+
+<div style="display:none;">
+
+</div>
+<div class="gotop"><a class="gotopbg" href="javascript:;" title="返回顶部"></a></div>
+  
+</body>
+</html>

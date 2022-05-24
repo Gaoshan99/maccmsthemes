@@ -1,0 +1,19 @@
+<script>
+/*
+百度自动推送介绍https://ziyuan.baidu.com/college/courseinfo?id=267&page=2#h2_article_title19
+请将此文件放到模板的public目录下，然后再foot.html模板里或其他模板中 include 引入即可
+有人访问网页将自动向百度提交网址
+*/
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>

@@ -1,0 +1,14 @@
+<script type="text/javascript">
+var arr = document.cookie.match(new RegExp('(^| )fed_color=([^;]*)(;|$)'));
+if(arr != null) {
+	if(document.getElementById('color')) document.getElementById('color').href = '{$maccms.path_tpl}asset/css/' + unescape(arr[2]) + '.css';
+	else {
+		var style = document.createElement('link');
+		style.id = 'color';
+		style.href = '{$maccms.path_tpl}asset/css/' + unescape(arr[2]) + '.css';
+		style.rel = 'stylesheet';
+		style.type = 'text/css';
+		document.getElementsByTagName('head').item(0).appendChild(style);
+	}
+}
+</script>

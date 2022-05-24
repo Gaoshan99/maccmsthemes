@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}搜索结果 - {$maccms.site_name}</title>
+<meta name="keywords" content="{$obj.vod_name}迅雷下载,{$obj.vod_name}完整版,{$obj.vod_name}百度云,{$obj.vod_name}百度网盘,{$obj.vod_name}电影,{$obj.vod_name}中文版,2018{$obj.vod_name}"/>
+<meta name="description" content="{$maccms.site_name}免费提供2018{$obj.vod_name}迅雷下载和中文完整版{$obj.vod_name}百度云网盘资源,在这里您可以免费获得{$obj.vod_name}剧情介绍,剧照和高清迅雷下载地址 {$obj.vod_name} 导演：{$obj.vod_director}"/>
+<link rel="canonical" href="http://{$maccms.site_url}"/>
+<link rel="icon" href="{$maccms.path_tpl}cropped-dybee-32x32.png" sizes="32x32"/>
+<link rel="icon" href="{$maccms.path_tpl}cropped-dybee-192x192.png" sizes="192x192"/>
+<link rel="apple-touch-icon-precomposed" href="{$maccms.path_tpl}images/cropped-dybee-180x180.png"/>
+<meta name="msapplication-TileImage" content="{$maccms.path_tpl}images/cropped-dybee-270x270.png"/>
+{include file="public/include"}
+</head>
+ <body class="home blog" id="body-header-top" data-js="bottom">
+  <div class="body_rgba"></div>
+{include file="public/head"}
+ <div class="fl">
+   <div class="fl_title">
+    <div class="fl01">
+      搜索结果：{$__PAGING__.record_total}
+    </div>
+   </div>
+   <div class="filter-wrap">
+    <div class="filter-tag">
+     <div class="fl_list">
+      <span> 
+
+      共找到“<strong style="color:#4c8fe8" class="mac_total"></strong>”篇关于“<strong style="color:#4c8fe8;">{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}</strong>”的内容</span>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="update_area">
+   <div class="loading_ajax">
+    <img src="{$maccms.path_tpl}images/loading-bars.svg" alt="加载中..." />
+    <br />请稍后...正在为您加载新内容
+   </div>
+   <div class="update_area_content">
+    <ul class="update_area_lists cl" id="index_ajax_list">
+
+    {maccms:vod num="24" paging="yes" pageurl="vod/search" order="desc" by="time"}	
+     <li class="i_list list_n2"><a target="_blank" class="user_list_kz" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"> <img class="waitpic" src="{$maccms.path_tpl}images/thumb_1.png" data-original="{:mac_url_img($vo.vod_pic)}" width="270" height="370" alt="{$vo.vod_name}" /><span style="background-color:rgba(243,152,0,0.85)" class="pay">{$vo.vod_remarks}</span><span class="dbpf">{$vo.vod_score}</span></a>
+      <div class="user_list_kz_meta">
+       <h2>{$vo.vod_name}</h2>
+       <div class="otherinfo">
+        类型：
+{$obj.vod_class}
+       </div>
+      </div></li>
+       {/maccms:vod}
+</ul>
+
+  <div class="_ajax_paged" id="_ajax_paged"></div>
+    <nav class="navigation pagination" role="navigation">
+     <h2 class="screen-reader-text">文章导航</h2>
+     <div class="nav-links">
+{include file="public/paging"}
+    <script>
+        $('.mac_total').html('{$__PAGING__.record_total}');
+    </script>
+     </div>
+    </nav>
+   </div>
+  </div>
+{include file="public/foot"}
+<script type='text/javascript' src='{$maccms.path_tpl}js/script.js?ver=1.5'></script>
+  </body>
+</html>

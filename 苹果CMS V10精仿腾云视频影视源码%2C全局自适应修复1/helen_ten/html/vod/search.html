@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}搜索结果 - {$maccms.site_name}</title>
+<meta name="keywords" content="{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}搜索结果" />
+<meta name="description" content="{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}搜索结果" />
+{include file="public/include"}
+</head>
+<body>{include file="public/head"}
+<div class="container">
+	<div class="row">
+		<div class="col-lg-wide-75 col-xs-1 padding-0">
+			<div class="stui-pannel stui-pannel-bg clearfix">
+				<div class="stui-pannel-box">
+					<div class="stui-pannel_hd">
+						<div class="stui-pannel__head active bottom-line clearfix">
+							<div class="nav nav-page pull-right">
+							</div>
+							<span class="more text-muted pull-right hidden-xs">找到"
+								<strong style="color:#4c8fe8" class="mac_total"></strong>"个资源</span>
+							<h3 class="title">
+								<img src="{$maccms.path_tpl}images/icon_27.png" />与"{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}"相关的影片</h3></div>
+					</div>
+					<div class="stui-pannel_bd">
+						<ul class="stui-vodlist__media col-pd clearfix">{maccms:vod num="20" paging="yes" pageurl="vod/search" order="desc" by="time"}
+							<li class="active top-line-dot clearfix">
+								<div class="thumb">
+									<a class="v-thumb stui-vodlist__thumb lazyload" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">
+										<img src="{:mac_url_img($vo.vod_pic)}" alt="{$vo.vod_name}">
+										<span class="play hidden-xs"></span>
+										<span class="pic-text text-right">{if condition="$vo.vod_serial gt 0"}第{$vo.vod_serial}集/共{$vo.vod_total}集{else/}{$vo.vod_remarks}{/if}</span>
+									</a>
+								</div>
+								<div class="detail">
+									<h3 class="title"><a href="{:mac_url_vod_detail($vo)}">{$vo.vod_name}</a></h3>
+									<p><span class="text-muted">导演：</span>{$vo.vod_director}&nbsp;</p>
+									<p><span class="text-muted">主演：</span>{$vo.vod_actor}</p>
+									<p><span class="text-muted">类型：</span>{$vo.type.type_name}<span class="lineh"></span><span class="text-muted">地区：</span>{$vo.vod_area}<span class="hidden-xs"><span class="lineh"></span><span class="text-muted">年份：</span>{$vo.vod_year|mac_default}</span></p>
+									<p class="margin-0 hidden-sm hidden-xs"><span class="text-muted">简介：</span>{$vo.vod_blurb}……</p>
+								</div>
+							</li>
+							{/maccms:vod}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- 搜索列表 -->
+			{include file="public/paging"}
+			<!-- 列表翻页-->
+		</div>
+		<script>$('.mac_total').html('{$__PAGING__.record_total}');</script>
+		<div class="col-lg-wide-25 stui-pannel-side hidden-md hidden-sm hidden-xs">
+			<div class="stui-pannel stui-pannel-bg clearfix">
+				<div class="stui-pannel-box">
+					<div class="stui-pannel_hd">
+						<div class="stui-pannel__head active bottom-line clearfix">
+							<h3 class="title">
+								<img src="{$maccms.path_tpl}images/icon_1.png" />电影热播榜</h3></div>
+					</div>
+					<div class="stui-pannel_bd clearfix">{maccms:vod num="1" type="current" order="desc" by="hits_week"}
+						<ul class="stui-vodlist__media active col-pd clearfix">
+							<li>
+								<div class="thumb">
+									<a class="m-thumb stui-vodlist__thumb lazyload" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">
+										<img src="{:mac_url_img($vo.vod_pic)}" alt="{$vo.vod_name}"><span class="pic-tag pic-tag-h">{$key}</span></a>
+								</div>
+								<div class="detail detail-side">
+									<h4 class="title">
+										<a href="{:mac_url_vod_detail($vo)}">
+											<i class="icon iconfont icon-more text-muted pull-right"></i>{$vo.vod_name}</a>
+									</h4>
+									<p class="font-12">
+										<span class="text-muted">类型：</span>{$vo.vod_class}
+										<span class="text-muted">地区：</span>{$vo.vod_area}&nbsp;</p>
+									<p class="font-12 margin-0">
+										<span class="text-muted">主演：</span>{$vo.vod_actor}</p></div>
+							</li>
+						</ul>{/maccms:vod} {maccms:vod num="9" type="current" order="desc" by="hits_week"}
+						<ul class="stui-vodlist__text active col-pd clearfix">
+							<li class="col-xs-1 padding-0">
+								<a class="text-overflow" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">
+									<span class="text-muted pull-right">{if condition="$vo.vod_serial gt 0"}更新至{$vo.vod_serial}集{else/}{$vo.vod_remarks}{/if}</span>
+									<em class="text-red">{$key} .</em>{$vo.vod_name}</a></li>
+						</ul>{/maccms:vod}</div>
+				</div>
+			</div>
+			<div class="stui-pannel stui-pannel-bg clearfix">
+				<div class="stui-pannel-box">
+					<div class="stui-pannel_hd">
+						<div class="stui-pannel__head active bottom-line clearfix">
+							<h3 class="title">
+								<img src="{$maccms.path_tpl}images/icon_2.png" />电视剧热播榜</h3></div>
+					</div>
+					<div class="stui-pannel_bd clearfix">{maccms:vod num="1" type="current" order="desc" by="hits_week"}
+						<ul class="stui-vodlist__media active col-pd clearfix">
+							<li>
+								<div class="thumb">
+									<a class="m-thumb stui-vodlist__thumb lazyload" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" data-original="{:mac_url_img($vo.vod_pic)}">
+										<span class="pic-tag pic-tag-h">1</span></a>
+								</div>
+								<div class="detail detail-side">
+									<h4 class="title">
+										<a href="{:mac_url_vod_detail($vo)}">
+											<i class="icon iconfont icon-more text-muted pull-right"></i>{$vo.vod_name}</a>
+									</h4>
+									<p class="font-12">
+										<span class="text-muted">类型：</span>日韩剧
+										<span class="text-muted">地区：</span>
+										<a target='_blank' href='/index.php?m=vod-search-area-%E6%97%A5%E6%9C%AC'>日本</a>&nbsp;</p>
+									<p class="font-12 margin-0">
+										<span class="text-muted">主演：</span>逢泽莉娜,陈内将...</p></div>
+							</li>
+						</ul>{/maccms:vod} {maccms:vod num="9" type="current" order="desc" by="hits_week"}
+						<ul class="stui-vodlist__text active col-pd clearfix">
+							<li class="col-xs-1 padding-0">
+								<a class="text-overflow" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">
+									<span class="text-muted pull-right">{if condition="$vo.vod_serial gt 0"}更新至{$vo.vod_serial}集{else/}{$vo.vod_remarks}{/if}</span>
+									<em class="text-red">{$key} .</em>{$vo.vod_name}</a></li>
+						</ul>{/maccms:vod}</div>
+				</div>
+			</div>
+			<!-- 列表翻页-->
+		</div>
+	</div>
+</div>
+{include file="public/foot"}
+</body>
+</html>

@@ -1,0 +1,27 @@
+{include file="public/header"}
+{include file="module/banner"}
+{include file="module/mobile"}
+{if$obj.childids}
+{include file="module/newest"}
+{/if}
+<div class="fed-part-rows">
+	<div class="fed-main-left fed-col-xs12 fed-col-md9">
+		
+		<div class="fed-part-layout fed-back-whits fed-margin-right">
+			<div class="fed-list-head fed-part-rows fed-padding">
+				<h2 class="fed-font-xvi">{$obj.type_name}</h2>
+				<ul class="fed-part-tips fed-padding">
+					<li><a class="fed-more" href="{:mac_url_type($obj.parent)}"></a></li>
+				</ul>
+			</div>
+			{maccms:art num="6" paging="yes" half="3" type="current" order="desc" by="time"}
+			{include file="module/inform"}
+			{/maccms:art}
+			{include file="module/paging"}
+		</div>
+	</div>
+	<div class="fed-main-right fed-col-xs12 fed-col-md3">
+		{include file="module/sidebar"}
+	</div>
+</div>
+{include file="public/footer"}

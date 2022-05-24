@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="seo/vod_play"}   
+	{include file="block/include"}
+	<script type="text/javascript" src="{$maccms.path_tpl}statics/js/history.js"></script>
+	<script type="text/javascript">
+		var vod_name = '{$obj.vod_name|mac_substring=10}', vod_url = window.location.href, vod_part='{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}';	
+	</script>
+</head>
+<body>
+	{include file="block/head"}
+    <div class="container">
+        <div class="row">
+        	<div class="col-lg-wide-75 col-xs-1 padding-0">	
+        		<!-- 播放器 -->
+	            <div class="stui-pannel stui-pannel-bg clearfix">
+					<div class="stui-pannel-box">
+						<div class="stui-pannel-bd">												
+							<div class="stui-player col-pd">
+								<div class="stui-player__video clearfix">
+									{$player_data}{$player_js}								
+								</div>							
+								<div class="stui-player__detail detail">
+									<ul class="more-btn">	
+										{if condition="$maccms.user_status eq 1"}
+										<li>
+											<a href="javascript:void(0);" class="mac_ulog btn btn-default" data-type="2" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}">收藏 <i class="icon iconfont icon-favorite hidden-xs"></i></a>										
+										</li>								
+										<li>
+											<a href="javascript:;" class="btn btn-default" onclick="MAC.Gbook.Report('编号【{$obj.vod_id}】名称【{$obj.vod_name}】不能观看请检查修复，页面地址' + location.href)">报错 <i class="icon iconfont icon-close hidden-xs"></i></a>
+										</li>	
+										{else /} 							
+										<li>
+											<a href="javascript:;" class="btn btn-default" onclick="window.location.reload()">刷新 <i class="icon iconfont icon-refresh hidden-xs"></i></a>
+										</li>
+										{/if}
+										<li>
+											<a class="btn btn-default copylink" href="javascript:;">分享 <i class="icon iconfont icon-share hidden-xs"></i></a>
+										</li>
+										<li><a class="btn btn-default" href="{$obj.player_info.link_pre}"><i class="icon iconfont icon-back hidden-xs"></i> 上一集</a></li>
+										<li><a class="btn btn-default" href="{$obj.player_info.link_next}">下一集 <i class="icon iconfont icon-more hidden-xs"></i></a></li>
+									</ul>
+									<h1 class="title">{$obj.vod_name}</h1>
+									<p class="data margin-0">
+										<span class="text-muted">类型：</span>{$obj.vod_class}
+										<span class="split-line"></span>
+										<span class="text-muted">地区：</span>{$obj.vod_area}
+										<span class="split-line"></span>
+										<span class="text-muted">年份：</span>{$obj.vod_year}
+									</p>															
+								</div>
+							</div>
+						</div>
+					</div>					
+				</div>
+				<!-- end 播放器 -->
+				
+				<!-- 手机分享-->
+				<div class="visible-xs" style=" padding:0 20px 10px;">
+					<a class="open-share btn btn-block btn-lg btn-primary" href="javascript:;"><i class="icon iconfont icon-share"></i> 分享给朋友观看</a>
+				</div>
+				<!-- 手机分享 -->
+				
+				{include file="vod/playlist"}<!-- 播放地址-->	
+				{include file="vod/desc"}<!-- 剧情简介-->	
+				{include file="vod/like"}<!-- 猜你喜欢-->
+			</div>				
+			<div class="col-lg-wide-25 col-xs-1 stui-pannel-side visible-lg">
+				{include file="vod/code"}<!-- 二维码-->
+				{include file="vod/hot"}<!-- 分类排行-->
+				{include file="vod/topic"}<!-- 专题-->	
+			</div>
+        </div>
+    </div>
+    <script type="text/javascript">
+		if(playerhigh==1){
+			$(".MacPlayer").addClass("embed-responsive embed-responsive-16by9").css({"padding-bottom":"56.25%","z-index":"99"});
+			$("#playleft,.dplayer-video-wrap").css({"position":"inherit","overflow":"initial"});						
+		}
+		var PlayerHeight = $(".MacPlayer").outerHeight();
+		$(".stui-player__video").css("height",PlayerHeight);
+		var playli = $(".stui-content__playlist:first li").length;
+    	if(playcolumn>1){  		  		
+    		if(playli>5){
+    			$(".stui-content__playlist").addClass("column"+playcolumn);
+    		}   		
+    	}
+    	if(playli>30){
+			$(".stui-content__playlist").css({"max-height":" 300px","overflow-y":"scroll"});
+		} 
+	</script>
+    <span class="mac_hits hits hide" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}{$obj.art_id}{$obj.topic_id}" data-type="hits"></span>
+    <span class="mac_ulog_set hide" data-type="4" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" data-sid="{$param.sid}" data-nd="{$param.nid}"></span>
+	{include file="block/foot"}
+</body>
+</html>

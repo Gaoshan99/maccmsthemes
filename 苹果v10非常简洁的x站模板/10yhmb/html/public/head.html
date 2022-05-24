@@ -1,0 +1,16 @@
+<div class="header">
+<div class="l logo"><a href="{$maccms.path}">{$maccms.site_name}</a></div>
+<div class="r search"><form id="search" name="search" method="get" action="{:mac_url('vod/search')}" onSubmit="return qrsearch();">
+<div class="l input-group">
+<input type="text" name="wd" class="input-text search-input mac_wd" value="{$param.wd}" placeholder="在此处输入片名或演员名称" /><button id="searchbutton" class="input-so search-button mac_search">搜索</button>
+</div></form>
+<div class="r size">今日{:mac_data_count(0,'today','vod')}部<br>共{:mac_data_count(0,'all','vod')}部</div>
+</div>
+</div>
+<div class="nav"><dd><a href="{$maccms.path}" class="{if condition="$maccms.aid eq 1"}focu{/if}">网站首页</a></dd>
+{maccms:type ids="parent" mid="1" order="asc" by="sort"}
+<dd><a href="{:mac_url_type($vo)}" class="{$vo.type_id}={$vo.type_pid} {if condition="($vo.type_id eq MAC_TYPE_ID || $vo.type_id eq MAC_TYPE_PID)"} focu{/if}">{$vo.type_name}</a></dd>
+{/maccms:type}
+</div>
+<div class="clearfix"></div>
+<div class="top_ads"><!-- 广告位 --></div>

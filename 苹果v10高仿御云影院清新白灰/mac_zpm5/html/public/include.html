@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="{$maccms.path_tpl}css/style.css" />
+<script type="text/javascript" src="{$maccms.path_tpl}js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{$maccms.path_tpl}js/jquery.base.js"></script>
+<script type="text/javascript" src="{$maccms.path_tpl}js/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" src="{$maccms.path_tpl}js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="{$maccms.path_tpl}js/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="{$maccms.path_tpl}js/init.js"></script>
+<script type="text/javascript" src="{$maccms.path}static/js/jquery.autocomplete.js"></script>
+<script>var maccms={"path":"__ROOT__","mid":"{$maccms['mid']}","url":"{$maccms['site_url']}","wapurl":"{$maccms['site_wapurl']}","mob_status":"{$maccms['mob_status']}"};var Siteurl='http://{$maccms.site_wapurl}'; var Mvodurl='http://{$maccms.site_wapurl}{:mac_url_vod_detail($obj)}';</script>
+<script src="{$maccms.path_tpl}js/home.js"></script>
+{if condition="($obj.type_id == 3) OR ($obj.type_id == 4)"}
+<script type="text/javascript" src="{$maccms.path_tpl}js/jquery.SuperSlide.2.1.1.js"></script>
+{/if}

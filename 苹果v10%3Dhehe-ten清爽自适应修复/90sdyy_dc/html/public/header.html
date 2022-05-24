@@ -1,0 +1,138 @@
+{include file="public/include"}
+<div class="fed-head-info fed-back-whits fed-min-width fed-box-shadow">
+	<div class="fed-part-case">
+		<div class="fed-navs-left">
+			<a class="fed-navs-logo" href="{$maccms.path}"><img style="width:120px; height:41px;" alt="{$maccms.site_name}" src="{$maccms.path_tpl}asset/img/logo_golden.png" ></a>
+			<a class="fed-navs-title fed-font-xvi{if$maccms.aid==1} fed-text-green{/if} fed-hide-xs fed-hide-sm fed-show-md-block" href="{$maccms.path}">首页</a>
+			{maccms:type ids="parent" order="asc" by="sort" num="4"}
+			<a class="fed-navs-title fed-font-xvi{if$vo.type_id==$obj.type_id||$vo.type_id==$obj.type_1.type_id||$vo.type_id==$obj.parent.type_id} fed-text-green{/if} fed-hide-xs fed-hide-sm fed-show-md-block" href="{:mac_url_type($vo)}">{$vo.type_name}</a>
+			{/maccms:type}
+			<?php $vfedcc = require ('application/extra/maccms.php'); ?>
+			<?php if($vfedcc['gbook']['status']=='1') { ?>
+			<!--
+			<a class="fed-navs-title fed-font-xvi{if$maccms.aid==30} fed-text-green{/if} fed-hide-xs fed-hide-sm fed-show-md-block" href="{:mac_url('topic/index')}">专题</a>
+			<a class="fed-navs-title fed-font-xvi{if$maccms.aid==4} fed-text-green{/if} fed-hide-xs fed-hide-sm fed-show-md-block" href="{:mac_url('gbook/index')}">求片</a>
+			-->
+
+			<?php } else { ?>
+			<!--{if(mac_data_count(0,'all','art'))!=''}
+			<a class="fed-navs-title fed-font-xvi{if$maccms.aid==20} fed-text-green{/if} fed-hide-xs fed-hide-sm fed-show-md-block" href="{:mac_url('art/index')}">资讯</a>
+			{/if}-->
+			<?php } ?>		
+			<a class="fed-navs-title fed-font-xvi fed-navs-navbar fed-event fed-hide-xs" href="javascript:;">导航<span class="fed-part-move fed-edge-info fed-edge-bottom"></span></a>
+			
+		</div>
+		<div class="fed-navs-search fed-back-whits fed-hidden fed-conceal fed-show-sm-block">
+			<a class="fed-navs-close fed-conceal fed-hide-sm" href="javascript:;">取消</a>
+			<form class="fed-navs-form" data-vod="{:mac_url('vod/search')}" data-art="{:mac_url('art/search')}" data-key="{$maccms.search_hot}" autocomplete="off" onkeydown="if(event.keyCode==13){return false}">
+				<?php if($vfedcc['app']['search']=='1') { ?>
+				<input class="fed-navs-input fed-back-ashen fed-event" type="search" placeholder="{if$maccms.aid==13}{$param.wd}{else}请输入关键字{/if}" />
+				<a class="fed-navs-submit fed-back-ashen"><i class="fed-icon-font fed-icon-sousuo"></i></a>
+				<?php } else echo '<a class="fed-text-linex fed-padding fed-visible"> </a>'; ?>
+			</form>
+		</div>
+		<div class="fed-navs-right">
+			<?php if($vfedcc['app']['search']=='1') { ?>
+			<a class="fed-navs-button fed-text-black fed-event fed-hide-sm fed-icon-font fed-icon-sousuo" href="javascript:;"></a>
+		    <?php } ?>
+		    <a class="fed-navs-record fed-text-black fed-event fed-hide-xs fed-show-sm-block" href="javascript:;">看过<span class="fed-part-move fed-edge-info fed-edge-bottom"></span></a>
+			<?php if($vfedcc['user']['status']=='1') { ?>
+			{if$user.user_id==0}
+			<a class="{if$maccms.aid!=6}fed-navs-login {/if}fed-text-black fed-hide-xs fed-show-sm-block" href="{if$maccms.aid!=6}javascript:;{else}{:mac_url('user/login')}{/if}">登录</a>
+			{else}
+			<a class="fed-navs-user fed-text-black fed-event fed-hide-xs fed-show-sm-block" href="javascript:;">我的<span class="fed-part-move fed-edge-info fed-edge-bottom"></span></a>
+			{/if}
+			
+			<?php } ?>
+			<a class="fed-navs-record fed-text-black fed-event fed-hide-sm fed-icon-font fed-icon-lishi" href="javascript:;"></a>
+			{maccms:art num="1" type="all" order="desc" by="time" level="3"}
+			<a class="{if$vo.art_jumpurl==''}fed-navs-code {/if}fed-text-black fed-event" href="{$vo.art_jumpurl|mac_default='javascript:;'}"{if$vo.art_jumpurl} target="_blank"{/if}>{$vo.art_name}</a>
+			{/maccms:art}
+			
+		</div>
+		
+		<div class="fed-pops-navbar fed-box-shadow fed-min-width fed-hidden fed-conceal fed-anim">
+			<div class="fed-pops-channel fed-back-whits fed-part-rows fed-line-top fed-hidden">选择栏目</div>
+		       <!-- <a class="fed-pops-btn fed-back-whits fed-text-black fed-text-center fed-event fed-hide-sm fed-icon-font fed-icon-fenlei" href="javascript:;"></a>-->
+			<ul class="fed-pops-list fed-font-size fed-back-whits fed-part-rows">
+				<li class="fed-col-sm2{if$maccms.aid==1} fed-this{/if} fed-hide-md"><a class="fed-part-eone" href="{$maccms.path}">首页</a></li>
+				
+				{maccms:art num="1" type="all" order="desc" by="time" level="1"}
+				<li class="fed-col-sm2{if$vo.art_id==$obj.art_id} fed-this{/if}"><a class="fed-part-eone" href="{$vo.art_jumpurl|mac_default=mac_url_art_detail($vo)}">{$vo.art_name}</a></li>
+				{/maccms:art}
+				{maccms:vod num="1" type="all" order="desc" by="time" level="1"}
+				<li class="fed-col-sm2{if$vo.vod_id==$obj.vod_id} fed-this{/if}"><a class="fed-part-eone" href="{$vo.vod_jumpurl|mac_default=mac_url_vod_detail($vo)}">{$vo.vod_name}</a></li>
+				{/maccms:vod}
+				
+				{maccms:type ids="parent" order="asc" by="sort" flag="vod"}
+				<li class="fed-col-sm2{if$vo.type_id==$obj.type_id||$vo.type_id==$obj.type_1.type_id||$vo.type_id==$obj.parent.type_id} fed-this{/if}"><a class="fed-part-eone" href="{:mac_url_type($vo)}">{$vo.type_name}</a></li>
+				{/maccms:type}
+				
+				{maccms:type ids="parent" order="asc" by="sort" flag="art"}
+				<li class="fed-col-sm2{if$vo.type_id==$obj.type_id||$vo.type_id==$obj.type_1.type_id||$vo.type_id==$obj.parent.type_id} fed-this{/if}"><a class="fed-part-eone" href="{:mac_url_type($vo)}">{$vo.type_name}</a></li>
+				{/maccms:type}
+				
+				{maccms:topic num="1"}
+				<li class="fed-col-sm2{if$maccms.aid==30} fed-this{/if}"><a class="fed-part-eone" href="{:mac_url_topic_index()}">专题</a></li>
+				{/maccms:topic}
+				
+				<li class="fed-col-sm2{if$maccms.aid==7} fed-this{/if}"><a class="fed-part-eone" href="{:mac_url('map/index')}">最近更新</a></li>
+				
+				<?php if($vfedcc['gbook']['status']=='1') { ?>
+				<li class="fed-col-sm2{if$maccms.aid==4} fed-this{/if}"><a class="fed-part-eone" href="{:mac_url('gbook/index')}">求片</a></li>
+				<?php } ?>
+			</ul>
+		</div>
+		
+		<div class="fed-pops-search fed-hidden fed-conceal fed-anim fed-anim-upbit">
+			<div class="fed-pops-case fed-back-ashen fed-box-shadow">
+				<div class="fed-pops-key">
+				</div>
+				<div class="fed-pops-box">
+				</div>
+			</div>
+		</div>
+		<div class="fed-pops-record fed-box-shadow fed-hidden fed-conceal fed-anim fed-anim-upbit">
+		</div>
+		{maccms:art num="1" type="all" order="desc" by="time" level="3"}
+		<div class="fed-pops-code fed-back-whits fed-box-shadow fed-hidden fed-conceal fed-anim fed-anim-upbit">
+			<div class="fed-pops-cont">
+				{$vo.art_content}
+			</div>
+		</div>
+		{/maccms:art}
+		{if$user.user_id!=0}
+		<div class="fed-pops-user fed-box-shadow fed-back-whits fed-hidden fed-conceal fed-anim fed-anim-upbit">
+			<ul class="fed-pops-list fed-font-size fed-back-whits">
+				<li><a href="{:mac_url('user/index')}">{$user.user_name}</a></li>
+				<li><a href="{:mac_url('user/info')}">修改资料</a></li>
+				<li><a href="{:mac_url('user/favs')}">我的收藏</a></li>
+				<li><a href="{:mac_url('user/plays')}">播放记录</a></li>
+				<li><a href="{:mac_url('user/downs')}">下载记录</a></li>
+				<li><a href="{:mac_url('user/buy')}">充值中心</a></li>
+				<li><a href="{:mac_url('user/upgrade')}">升级会员</a></li>
+				<li><a href="{:mac_url('user/logout')}">退出登录</a></li>
+			</ul>
+	    </div>
+	    {/if}
+	</div>
+</div>
+<div class="fed-tabr-info fed-back-whits fed-min-width fed-line-top fed-hide-sm">
+	<ul class="fed-part-rows">
+		<li class="fed-text-center"><a{if$maccms.aid==1} class="fed-text-green"{/if} href="{$maccms.path}"><i class="fed-icon-font fed-icon-shouye"></i><span class="fed-font-xii">首页</span></a></li>
+		{if(mac_data_count(0,'all','art'))!=''}
+		<li class="fed-text-center"><a{if$maccms.aid==20} class="fed-text-green"{/if} href="{:mac_url('art/index')}"><i class="fed-icon-font fed-icon-zixun"></i><span class="fed-font-xii">影讯</span></a></li>
+		{/if}
+		<?php if($vfedcc['gbook']['status']=='1') { ?>
+		<li class="fed-text-center"><a{if$maccms.aid==4} class="fed-text-green"{/if} href="{:mac_url('gbook/index')}"><i class="fed-icon-font fed-icon-liuyan"></i><span class="fed-font-xii">求片</span></a></li>
+		<?php } ?>
+		{maccms:topic num="1"}
+		<li class="fed-text-center"><a{if$maccms.aid==30} class="fed-text-green"{/if} href="{:mac_url_topic_index()}"><i class="fed-icon-font fed-icon-zhuanti"></i><span class="fed-font-xii">专题</span></a></li>
+		{/maccms:topic}
+		<?php if($vfedcc['user']['status']=='1') { ?>
+		<li class="fed-text-center"><a{if$maccms.aid==6} class="fed-text-green"{/if} href="{if$user.user_id!=''}{:mac_url('user/index')}{else}{:mac_url('user/login')}{/if}"><i class="fed-icon-font fed-icon-yonghu"></i><span class="fed-font-xii">我的</span></a></li>
+		<?php } ?>
+	</ul>
+</div>
+<div class="fed-main-info fed-min-width">
+<div class="fed-part-case">

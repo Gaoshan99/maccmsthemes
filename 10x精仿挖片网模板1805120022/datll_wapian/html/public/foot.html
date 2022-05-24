@@ -1,0 +1,19 @@
+<div class="foornav"> 
+	<a href="/"  class="menu-itema"><span><img src="{$maccms.path_tpl}images/index.png"/>首页</span></a>
+	 {maccms:type ids="parent" order="asc" by="sort" mid="1" }
+ 
+	<a href="{:mac_url_type($vo)}" ><span><img src="{$maccms.path_tpl}images/video.png"/>{$vo.type_name}</span></a>
+     {/maccms:type}
+ 
+</div>
+
+<footer class="footer">
+<div class="branding branding-black">
+	<div class="container" style="text-align: center;">
+		<h2> {$maccms.site_name}- 海量高清VIP视频免费观看       如有想看的视频没有的可联系我添加</h2>
+						<a target="blank" class="gobtn" href="/">联系站长</a>	<a target="blank" class="gobtn" href="https://www.cunshao.com">村少博客</a>	
+			</div>
+</div>
+<p style="padding: 0 4px;">免责声明:本站所有视频均来自互联网收集而来，版权归原创者所有，如果侵犯了你的权益，请通知我们，我们会及时删除侵权内容，谢谢合作！<br/>&copy; 2017 <a href="/">{$maccms.site_name}</a>&nbsp; <a href="http://www.miitbeian.gov.cn">{$maccms.site_icp}</a><br/></p></footer>
+
+

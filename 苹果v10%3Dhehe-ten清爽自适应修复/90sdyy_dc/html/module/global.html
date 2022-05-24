@@ -1,0 +1,22 @@
+<script> var vfed = { 'path': '__ROOT__', 'tips': 'tips', 'tpl': '{$maccms.path_tpl}', 'mid': '{$maccms.mid}', 'aid': '{$maccms.aid}', 'did': '{$obj.vod_id}{$obj.art_id}', 'sid': '{$param.sid}', 'nid': '{$param.nid}' }; </script>
+<script src="{$maccms.path_tpl}asset/js/jquery.js?v=<?php if(strstr($_SERVER['HTTP_HOST'],'.152')==true) echo time(); else echo $version['version']; ?>" type="text/javascript" charset="utf-8"></script>
+<script src="{$maccms.path_tpl}asset/js/global.js?v=<?php if(strstr($_SERVER['HTTP_HOST'],'.152')==true) echo time(); else echo $version['version']; ?>" type="text/javascript" charset="utf-8"></script>
+{if$msg!=''}<script src="{$maccms.path_tpl}asset/js/attach.js" type="text/javascript" charset="utf-8"></script>{/if}{include file="module/langon"}{include file="module/quicks"}
+{if$maccms.aid==13||$maccms.aid==14||$maccms.aid==15||$maccms.aid==16||$maccms.aid==20||$maccms.aid==21||$maccms.aid==23||$maccms.aid==24}
+<script src="{$maccms.path_tpl}asset/js/sidebar.js" type="text/javascript" charset="utf-8"></script>
+<script src="{$maccms.path_tpl}asset/js/qrcode.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+if(!/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+	fed.global.qrcode();
+	$('.fed-main-left, .fed-main-right').theiaStickySidebar({
+		additionalMarginTop: 80,
+		additionalMarginBottom: 10
+	});
+}
+</script>
+{elseif$maccms.aid==6}
+<script src="{$maccms.path_tpl}asset/js/upload.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+fed.myuser.upload('.fed-user-avat', '.fed-user-image');
+</script>
+{/if}

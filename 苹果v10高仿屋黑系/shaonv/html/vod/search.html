@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+ <head> 
+  <meta charset="utf-8" /> 
+  <title>{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}搜索结果-{$maccms.site_name}</title> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+  <meta name="keywords" content="{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class},{$maccms.site_name}" />
+  <meta name="description" content="{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class},{$maccms.site_name}" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <meta property="og:description" content="{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class},{$maccms.site_name}" /> 
+  <meta property="og:url" content="http://{$maccms.site_url}" /> 
+  <meta property="og:type" content="website" /> 
+  <meta property="og:title" content="{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class},{$maccms.site_name}" /> 
+  <meta name="apple-mobile-web-app-title" content="{$maccms.site_name}" /> 
+  <link rel="alternate" hreflang="x-default" href="http://{$maccms.site_url}" /> 
+  <link rel="alternate" hreflang="zh-Hans" href="http://{$maccms.site_url}" /> 
+  <link rel="canonical" href="http://{$maccms.site_url}" /> 
+  <link href="{$maccms.path_tpl}html/style/css/v2-607838a2ee.css" rel="stylesheet" /> 
+  <!--[if lt IE 9]> <script src="{$maccms.path_tpl}html/style/js/html5shiv.js"></script> <script src="{$maccms.path_tpl}html/style/js/respond.min.js"></script> <![endif]--> 
+  {include file="public/include"}
+ </head> 
+ <body> 
+  {include file="public/head"}
+  <div class="main"> 
+   <div class="title"> 
+    <h1>{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class} 搜索的影片</h1> 
+    <div class="submenu">	
+     <a class="category category-menu {if condition="$param.by eq '' || $param.by eq 'time'"}category-click{/if}" href="{:mac_url_search(['wd'=>$param['wd'],'area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>'time' ],'vod')}">按时间</a>
+	 <a class="category category-menu {if condition="$param.by eq 'hits'"}category-click{/if}" href="{:mac_url_search(['wd'=>$param['wd'],'area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>'hits' ],'vod')}">按人气</a>
+     <a class="category category-menu {if condition="$param.by eq 'score'"}category-click{/if}" href="{:mac_url_search(['wd'=>$param['wd'],'area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>'score' ],'vod')}">按评分</a>
+    </div> 
+   </div> 
+   <section> 
+    <div class="row"> 
+     <ul class="list clearfix"> 
+	  {maccms:vod num="60" paging="yes" pageurl="vod/search" order="desc" by="time"}
+      <li> <a class="cover" href="{:mac_url_vod_play($vo)}"> <img title="{$vo.vod_name}" src="{:mac_url_img($vo.vod_pic)}" alt="{$vo.vod_name}" /></a> 
+       <header> 
+        <h3> <a href="{:mac_url_vod_play($vo)}">{$vo.vod_name}</a> </h3> 
+        <div class="actress"> 
+		 {$vo.vod_actor|mac_url_create='actor'}
+        </div> 
+       </header> </li> 
+	   <div class="clearfix0"></div>
+	   {/maccms:vod}
+     </ul> 
+    </div>  
+    <div class="row center fullpage"> 
+     <ul class="pagination"> 
+      {include file="public/paging"}
+     </ul> 
+    </div> 
+   </section>
+  </div> 
+  {include file="public/foot"}
+  <span id="top-link-block" class="affix" style="display: none;"><a href="#top" onclick="$('html,body').animate({scrollTop:0},'fast');return false;"><i class="fa fa-chevron-up fa-2x"></i></a></span> 
+  <script src="{$maccms.path_tpl}html/style/js/v2-2755e1b5b8.js"></script>  
+ </body>
+</html>

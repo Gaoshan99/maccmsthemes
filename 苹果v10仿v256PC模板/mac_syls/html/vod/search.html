@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>搜索{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}-{$maccms.site_name}-国内领先的在线视频网站·免VIP在线观看无广告高清视频</title>
+<meta name="keywords" content="{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}-{$maccms.site_name},免费在线电影,{$maccms.site_name},视频网站,免VIP,免广告,高清,高清视频,高清视频观看,VIP会员,在线观看,电影,电视剧,综艺,最新电影,最新电视剧" />
+<meta name="description" content="{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}-{$maccms.site_name},{$maccms.site_name}-国内领先的在线视频网站·平台用户可享受免VIP在线观看无广告高清视频,我们致力打造最优秀的最新影视,最新电视剧,最新综艺节目在线观看服务平台" />
+{include file="public/include"}
+</head>
+<body>
+{include file="public/head_1"}
+<div class="content-box fn-clear">
+<div class="star_list_nav clear">
+<ul class="view-mode"><span>搜索：</span>
+<a class="on" href="#">{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}</a>
+</ul>{maccms:vod num="1" paging="yes" pageurl="vod/search" order="desc" by="time"}{/maccms:vod}
+<div class="fch2">
+<div class="uipagess fch2-btn fr">
+<a href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_prev}" class="fch2-left-btn active-style9" data="p-0"></a>
+<a href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_next}" class="fch2-right-btn active-style9" data="p-2"></a>
+</div>
+<div class="fch2-num fr">
+<span class="fch2-num-span">{$__PAGING__.page_current}</span>/<span>{$__PAGING__.page_total}</span>
+</div>
+</div>
+<div class="fch3 fr">
+全部共有 <span class="fch2-num-span">{$__PAGING__.record_total}</span> 个数据
+</div>
+</div>
+<div class="serach-list">
+<ul class="serach-ul">{maccms:vod num="6" paging="yes" half="7" pageurl="vod/search" order="desc" by="time"}
+<li>
+<a class="list-img" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"><img class="loading" src="{$vo.vod_pic|mac_url_img}" />
+<label class="title">{include file="public/serial1"}</label>
+</a>
+<div class="info" style="width:990px">
+<h2><a target="_blank" href="{:mac_url_vod_detail($vo)}">{$vo.vod_name}</a></h2>
+<p class="actor"><em>导演:</em>{$vo.vod_director}</p>
+<p class="actor clearfix"><em>主演:</em>{$vo.vod_actor}</p>
+<p class="mcid aleft"><em>类型:</em>{$vo.vod_class|mac_url_create='class'}</p>
+<p class="dq aright"><em>地区：</em>{$vo.vod_area}</p>
+<p class="plot"><em>剧情:</em>{$vo.vod_blurb}</p>
+</div>
+</li>{/maccms:vod}
+</ul>
+</div>
+{include file="public/paging"}
+</div>
+{include file="public/foot"}
+<div class="index-top" id="index-top">
+<a rel="nofollow" class="guestbook" target="_blank" href="{:mac_url('gbook/index')}"></a>
+<a class="top"></a>
+</div>
+</body>
+</html>

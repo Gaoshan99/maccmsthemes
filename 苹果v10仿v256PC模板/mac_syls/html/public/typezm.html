@@ -1,0 +1,149 @@
+<div class="ent-slide">
+<div class="ent-slide-wrap">
+<div class="ent-slide-layout">
+<ul>{maccms:vod num="6" paging="no" type="current" level="8,9" order="desc" by="sort"}
+<li class="ent-slide-box">
+<a href="{:mac_url_vod_detail($vo)}" target="_blank">
+<img src="{$vo.vod_pic_slide|mac_url_img}" alt="{$vo.vod_name}" />
+</a>
+</li>{/maccms:vod}
+</ul>
+</div>
+<div class="ent-sli-bg"></div>
+<div class="ent-arcitle">
+<div class="en-article-icon"><i class="iconfont">&#xe614;</i></div>
+<div class="ent-artile-box">{maccms:vod num="6" paging="no" type="current" level="8,9" order="desc" by="sort"}
+<div class="ent-article-list">
+<span>{$vo.vod_name}</span>
+<em>{$vo.vod_content|mac_substring=50}</em>
+</div>{/maccms:vod}
+</div>
+</div>
+<div class="ent-small-img hd fn-clear">
+<ul class="ent-small-box">{maccms:vod num="6" paging="no" type="current" level="8,9" order="desc" by="sort"}
+<li href="javascript:;" {if condition="$key eq 1"}class="on"{/if}><img src="{$vo.vod_pic_slide|mac_url_img}" alt="{$vo.vod_name}" /></li>{/maccms:vod}
+</ul>
+</div>
+<div class="ent-bg-l"></div>
+<div class="ent-bg-r"></div>
+</div>
+</div>
+<div class="film-order-by">
+<div class="film-order-layout fn-clear">
+<div class="dongman-order-list order-mcid">
+<span>类型</span>
+<p class="fn-clear">{maccms:foreach name=":explode(',','情感,科幻,热血,推理,搞笑,冒险')" id="vo2" key="key2"}
+<a href="{:mac_url_type($obj,['class'=>$vo2],'show')}" title="{$vo2}" target="_blank">{$vo2}</a>{/maccms:foreach}</p><p class="fn-clear">{maccms:foreach name=":explode(',','萝莉,校园,动作,机战,运动,战争')" id="vo2" key="key2"}
+<a href="{:mac_url_type($obj,['class'=>$vo2],'show')}" title="{$vo2}" target="_blank">{$vo2}</a>{/maccms:foreach}</p>
+</div>
+<div class="dongman-order-list order-type">
+<span>地区</span>
+<p class="fn-clear">{maccms:foreach name=":explode(',',$obj.type_extend.area)" id="vo2" key="key2"}
+<a href="{:mac_url_type($obj,['area'=>$vo2],'show')}" title="{$vo2}" target="_blank">{$vo2}</a>{/maccms:foreach}
+</p>
+</div>
+<div class="dongman-order-list order-year">
+<span>年代</span>
+<p class="fn-clear">{maccms:foreach name=":explode(',','2018,2017,2016,2015')" id="vo2" key="key2"}
+<a href="{:mac_url_type($obj,['year'=>$vo2],'show')}" title="{$vo2}" target="_blank">{$vo2}</a>{/maccms:foreach}</p><p class="fn-clear">{maccms:foreach name=":explode(',','2014,2013,2012,2011')" id="vo2" key="key2"}
+<a href="{:mac_url_type($obj,['year'=>$vo2],'show')}" title="{$vo2}" target="_blank">{$vo2}</a>{/maccms:foreach}</p>
+</div>
+<div class="dongman-order-list order-type">
+<span>热门{$obj.type_name}</span>
+<p class="fn-clear">{maccms:vod num="3" type="current" order="desc" by="hits"}
+<a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" target="_blank">{$vo.vod_name|mac_substring=5}</a>{/maccms:vod}</p><p class="fn-clear">{maccms:vod num="3" type="current" start="4" order="desc" by="hits"}<a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" target="_blank">{$vo.vod_name|mac_substring=5}</a>{/maccms:vod}</p>
+</div>
+</div>
+</div>
+<div class="content-box fn-clear">
+<div class="content-box-l">
+<div class="box-model hot-layout">
+<div class="box-model-tit fn-clear"><h2>强档推荐</h2></div>
+<div class="hot-wrap fn-clear">
+<ul>{maccms:vod num="1" type="current" order="desc" by="hits_day"}
+<li class="hot-list hot-box-375x260">
+<a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" class="hot-bg-icon" target="_blank">
+<img class="loading" src="{$maccms.path_tpl}images/pic.png" data-original="{$vo.vod_pic|mac_url_img}" alt="{$vo.vod_name}">
+<span class="hot-zy-span fn-clear">
+<em class="play-bg"><i class="iconfont">&#xe611;</i></em>
+<span>
+<em>{$vo.vod_name}</em>
+<em>{include file="public/serial1"}</em>
+</span>
+</span>
+<i class="hot-zy-bg"></i>
+</a>
+</li>{/maccms:vod}
+{maccms:vod num="6" type="current" start="2" order="desc" by="hits_day"}
+<li class="hot-list hot-box-cj180x100 ">
+<a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" class="hot-bg-icon" target="_blank"><img class="loading" src="{$maccms.path_tpl}images/pic.png" data-original="{$vo.vod_pic|mac_url_img}" alt="{$vo.vod_name}" /><i></i><span>{include file="public/serial1"}</span></a>
+<p class="hot-t">{$vo.vod_name}</p>
+</li>
+{/maccms:vod}
+</ul><ul class="hot-zy fn-clear">{maccms:vod num="5" type="current" start="8" order="desc" by="hits_day"}
+<li class="hot-list hot-box-cj180x100 {if condition="$key eq 1"}hot-zy-first{/if}">
+<a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" class="hot-bg-icon" target="_blank"><img class="loading" src="{$maccms.path_tpl}images/pic.png" data-original="{$vo.vod_pic|mac_url_img}" alt="{$vo.vod_name}" /><i></i><span>{include file="public/serial1"}</span></a>
+<p class="hot-t">{$vo.vod_name}</p>
+</li>{/maccms:vod}
+</ul>
+</div>
+</div>
+</div>
+<div class="content-box-r">
+<div class="rebobang">
+<div class="rebo-tit fn-clear"><h3>最近更新</h3></div>
+<div class="dongman-new-list">
+<ul>{maccms:vod num="10" type="current" start="8" order="desc" by="hits_day"}
+<li class="fn-clear">
+<em {if condition="$key eq 1"}class="first"{elseif condition="($key gt 1) && ($key lt 4)"}class="second"{else /}{/if}>{$key}</em>
+<a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" target="_blank">{$vo.vod_name}</a>
+<span>{include file="public/serial1"}</span>
+</li>{/maccms:vod}
+</ul>
+</div>
+</div>
+</div>
+</div>
+{maccms:foreach name=":explode(',',$obj.type_extend.class,-10)" id="vo2" key="key2"}
+<div class="content-box fn-clear">
+<div class="content-box-l">
+<div class="box-model hot-layout">
+<div class="box-model-tit fn-clear">
+<h3>{$vo2}</h3>
+<div class="box-model-link">{maccms:vod num="7" type="current" class="'.$vo2.'" order="desc" by="hits"}
+<a href="{:mac_url_vod_detail($vo)}" target="_blank">{$vo.vod_name|mac_substring=6}</a>{if condition="$key lt 7"}|{/if}{/maccms:vod}
+</div>
+<div class="box-model-more"><a href="{:mac_url_type($obj,['class'=>$vo2],'show')}" target="_blank">更多<i class="iconfont">&#xe60b;</i></a></div>
+</div>
+<div class="box-model-cont fn-clear" style="display:block">{maccms:vod num="5" type="current" class="'.$vo2.'" order="desc" by="time"}
+<a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" {if condition="$key eq 1"}class="first"{/if} target="_blank">
+<span class="box-img">
+<img class="loading" src="{$maccms.path_tpl}images/pic.png" data-original="{$vo.vod_pic|mac_url_img}" alt="{$vo.vod_name}" />
+<i class="box-img-bg"></i>
+<em>{include file="public/serial1"}</em>
+<i class="box-img-h-bg"></i><i class="box-img-play"></i>
+</span>
+<span class="box-tc">
+<em class="box-tc-t">{$vo.vod_name}</em>
+<em class="box-tc-c">{$vo.vod_class}</em>
+</span>
+</a>{/maccms:vod}
+</div>
+</div>
+</div>
+<div class="content-box-r">
+<div class="fengyunbang">
+<div class="fengyun-t">{$vo2}排行榜</div>
+<div class="fengyun-c" id="J-fy-con">
+<div class="fengyun-pic" style="display: block">{maccms:vod num="10" type="current" class="'.$vo2.'" order="desc" by="hits_month"}
+<a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" class="fy-o" target="_blank">
+<em class="fy-o1">{$key}</em>
+<em class="fy-o2">{$vo.vod_name}</em>
+<em class="fy-o3">{include file="public/serial1"}</em>
+</a>{/maccms:vod}
+</div>
+</div>
+</div>
+</div>
+</div>
+{/maccms:foreach}

@@ -1,0 +1,74 @@
+<table border="0"  bgcolor="yellow" width="100%" style=" background-size:100% 100%;  font-size: 12px" cellspacing="0" cellpadding="0" height="30">
+	<tr>
+		<td>
+		<p style="text-align:center;margin: 10px;">
+			<br><b><font color="red">全网视频解析|极速稳定|支持优酷QQ奇艺VIP等</font></a></font></b>
+			<br><br>资源站①群xxxxx群  资源站②群：xxxxx群</a><br>
+		</p>
+		 <p style="text-align:center;margin: 10px;">
+			<a target="_blank" href="/maccms-v8.zip"><span style="color:#E53333;font-size:12px;"><strong><span style="font-size:14px;"></span>苹果CMS-V8采集插件下载</strong></span></a>
+			 <em><strong><span style="font-size:12px;">|</span></strong></em>
+			 <a target="_blank" href="/maccms-v10.zip"><span style="color:#E53333;font-size:12px;"><strong><span style="font-size:14px;"></span>苹果CMS-V10采集插件下载</strong></span></a>
+			<em><strong><span style="font-size:12px;">|</span></strong></em>
+			 <a target="_blank" href="/player.zip"><span style="font-size:12px;"><strong>播放器插件整合下载</strong></span></a>
+		</p>
+</td>
+</tr>
+</table>
+﻿<div class="xing_top">
+<ul>
+	<li class="xing_top_left" style=""><img src="{$maccms.path_tpl}images/logo.jpg" alt="{$maccms.site_name}" /></li>
+	<li class="xing_top_center">
+	<div class="search">
+             <div class="search-inner">
+				 <br><form method="get" action="{:mac_url('vod/search')}">
+                    <input type="text" x-webkit-speech="" autocomplete="off" name="wd" id="wd" value="{$param.wd}"  class="search-text" onblur="if(this.value==''){ this.value='100万部影片任你搜索';this.style.color='#cfcdcd';}" onfocus="if(this.value=='100万部影片任你搜索'){this.value='';this.style.color='';}" value="100万部影片任你搜索">
+                    <input type="hidden" name="submit" value="search">
+                    <input type="submit" class="search-btn" value="搜索">
+                 </form>
+             </div>
+          </div>
+	</li>
+	<li class="xing_top_right">
+
+<div class="topright">
+    <ul><li style="width: 165px;" >今日更新：<strong>{:mac_data_count(0,'today','vod')}</strong></li></ul>
+    <ul><li  style="width: 215px;">{$maccms.site_name}共有资源：<strong>{:mac_data_count(0,'all','vod')}</strong></li></ul>
+	<ul><li><a  href="javascript:void(0);" onclick="MAC.Fav(location.href,document.title);">收藏本站</a> |
+		<a class="ge" href="javascript:void(0);" onclick="MAC.Home(this,'{$maccms.site_url}')">设为首页</a> |
+		<a href="{:mac_url('gbook/index')}">有求必应</a>
+	</li></ul>
+</div>
+</li>
+</ul>
+<div  style="clear:both"></div>
+</div>
+<div  class="sddm">
+<ul id="sddm">
+	<li><a href="/">首页</a></li>
+	{maccms:type ids="parent" flag="vod" order="asc"}
+	<li><a href="{:mac_url_type($vo)}" onmouseover="mopen('m{$key}')" onmouseout="mclosetime()">{$vo.type_name}</a>
+		<div id="m{$key}" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+			{maccms:type parent="'.$vo['type_id'].'" flag="vod" order="asc" id="vo2" key="key2"}
+			<a href="{:mac_url_type($vo2)}">{$vo2.type_name}</a>
+			{/maccms:type}
+		</div>
+	</li>
+{/maccms:type}
+</ul>
+        </div>  
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

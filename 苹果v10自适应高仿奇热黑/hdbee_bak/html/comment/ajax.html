@@ -1,0 +1,112 @@
+    {maccms:comment num="5" paging="yes" order="desc" by="id"}
+    {/maccms:comment}
+  <h2>评论({$__PAGING__.record_total|intval})</h2>
+    <!--评论开始-->
+    <form class="comment_form cmt_form clearfix"  >
+        <input type="hidden" name="comment_pid" value="0">
+        <!--评论框-->
+         <div class="single-post-comment__form cf">
+          
+             <textarea class="textarea form-control" data-widearea="enable" id="comment" name="comment_content" placeholder="你怎么看？"></textarea>
+        </div>
+               
+                <div class="smt fr clearfix">
+                        <span style="display: none;">
+                            <span></span>
+                        </span>
+                    {if condition="$comment.verify eq 1"}
+                    验证码:<input class="mac_verify cmt_text" type="text" id="verify" name="verify" />
+                    {/if}
+                    <input class="comment_submit cmt_post" type="button" value="发布">
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+    <div class="cmt_wrap" >
+
+            {maccms:foreach name="__LIST__" id="vo"}
+
+     <ul>
+       <hr />
+       <li class="comment even thread-even depth-1" id="comment-1419">
+        <div class="comment cf comment_details">
+         <div class="avatar left"> 
+          <a href="javascript:void(0)"> <img src="__STATIC__/images/home/duface.png" class="avatar" width="100" height="100" /> </a>
+         </div>
+         <div id="div-comment-1419" class="commenttext">
+          <div class="comment-wrapper">
+           <div class="postmeta"> 
+            <a class="user_info_name" href="javascript:void(0)">{$vo.comment_name}</a> 
+            <time class="timeago" datetime="2018-05-03 下午5:09"> {$vo.comment_time|date='Y-m-d H:i:s',###}</time> 
+            <a style="float: right;" data-id="{$vo.comment_id}" rel="nofollow" class="comment_reply"  aria-label="回复给乐乐">回复</a>
+            
+           </div>
+           <div class="commemt-main">
+            <p>{$vo.comment_content|mac_em_replace}</p>
+           </div>
+          </div>
+         </div>
+        </div></li>
+      </ul>  
+
+
+
+
+
+
+
+
+
+                    {maccms:foreach name="$vo.sub" id="child"}
+                    <div class="cmt_item clearfix">
+                        <a class="face_wrap fl" href="javascript:;"><img class="face" src="__STATIC__/images/home/duface.png"></a>
+                        <div class="item_con fl">
+                            <p class="top">
+                                <a class="name" href="javascript:;">{$child.comment_name}</a>
+                                (<a target="_blank">({$child.comment_ip|long2ip})</a>)
+                            </p>
+                            <p class="con">{$child.comment_content|mac_em_replace}</p>
+                        </div>
+                        <div class="gw-action">
+                        <span class="click-ding-gw">
+                            <a class="comment_digg" data-id="{$child.comment_id}" data-type="up" href="javascript:;">
+                                <i class="icon-ding"></i>
+                                <em class="icon-num">{$child.comment_up}</em>
+                            </a>
+                            <a class="comment_digg" data-id="{$child.comment_id}" data-type="down" href="javascript:;">
+                                <i class="icon-dw"></i>
+                                <em class="icon-num">{$child.comment_down}</em>
+                            </a>
+                        </span>
+                            <a class="comment_report" data-id="{$child.comment_id}" href="javascript:;">举报</a>
+                        </div>
+                    </div>
+                    {/maccms:foreach}
+
+                </div>
+            </div>
+            {/maccms:foreach}
+
+        </div>
+    <!--评论结束-->
+    <div class="mac_pages" >
+        <div class="page_tip">共{$__PAGING__.record_total}条数据,当前{$__PAGING__.page_current}/{$__PAGING__.page_total}页</div>
+        <div class="page_info">
+            <a class="page_link" href="javascript:void(0);" onclick="MAC.Comment.Show(1)" title="首页">首页</a>
+            <a class="page_link" href="javascript:void(0);" onclick="MAC.Comment.Show({'$__PAGING__.page_prev}')" title="上一页">上一页</a>
+            {maccms:foreach name="$__PAGING__.page_num" id="num"}
+            {if condition="$__PAGING__['page_current'] eq $num"}
+            <a class="page_link page_current" href="javascript:;" title="第{$num}页">{$num}</a>
+            {else}
+            <a class="page_link" href="javascript:void(0)" onclick="MAC.Comment.Show('{$num}')" title="第{$num}页" >{$num}</a>
+            {/if}
+            {/maccms:foreach}
+            <a class="page_link" href="javascript:void(0)" onclick="MAC.Comment.Show('{$__PAGING__.page_next}')" title="下一页">下一页</a>
+            <a class="page_link" href="javascript:void(0)" onclick="MAC.Comment.Show('{$__PAGING__.page_total}')" title="尾页">尾页</a>
+
+            <input class="page_input" type="text" placeholder="页码" id="page" autocomplete="off" style="width:40px">
+            <button class="page_btn" type="button"  onclick="MAC.Comment.Show($('#page').val())">GO</button>
+        </div>
+    </div>

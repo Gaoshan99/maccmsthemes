@@ -1,0 +1,34 @@
+<table width="760" height="112" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="270" rowspan="4"><img src="{$maccms.path_tpl}images/logo.gif" width="270" height="112" /></td>
+    <td width="510" align="center" class="STYLE5"><strong><a href="http://{$maccms.site_url}" target="_blank">欢迎使用『 {$maccms.site_name} 』建站系统</a></strong></td>
+  </tr>
+  <tr>
+  <form method="get" action="{:mac_url('vod/search')}">
+    <td align="center">
+      <span class="STYLE4">影片名模糊搜索:</span>
+      <input name="wd" type="text" id="wd" value="{$param.wd}" onfocus="this.value='';this.focus()"/>
+      <input type="submit" name="button" value="搜索" onmouseover="this.className='serach_over'"onmouseout="this.className='serach_buton'" />
+    </td>
+  </form>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="javascript:void(0);" onclick="MAC.Fav(location.href,document.title);">收藏本站</a> |
+      <a class="ge" href="javascript:void(0);" onclick="MAC.Home(this,'{$maccms.site_url}');">设为首页</a> |
+      <a href="{:mac_url('gbook/index')}">留言求片</a> | <font color="#FF0000">使用本站资源请做好本站友情连接</font>
+    </td>
+  </tr>
+</table>
+<table width="100%" height="30" border="0" cellpadding="0" cellspacing="0"  background="{$maccms.path_tpl}images/bg.gif" bgcolor="#18A30C">
+  <tr>
+    <td align="center"><span class="bai STYLE7">
+      <a href="{$maccms.path}">首页</a>&nbsp;&nbsp;
+      {maccms:type ids="parent" flag="vod"}
+      <a href="{:mac_url_type($vo)}">{$vo.type_name}</a>&nbsp;&nbsp;
+      {/maccms:type}
+    </span>
+    </td>
+  </tr>
+</table>
+<!--顶部截取标签 -->

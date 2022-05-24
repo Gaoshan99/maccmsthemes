@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+ <head> 
+  <meta charset="utf-8" /> 
+  <title>热门排行 : {$maccms.site_name}</title> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />  
+  <meta name="keywords" content="{$maccms.site_keywords}" />
+  <meta name="description" content="{$maccms.site_description}" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <meta property="og:description" content="{$maccms.site_name} {maccms:description}" /> 
+  <meta property="og:url" content="http://{$maccms.site_url}/index.php/label/hot.html" /> 
+  <meta property="og:type" content="website" /> 
+  <meta property="og:title" content="热门排行 : {$maccms.site_name}" /> 
+  <meta name="apple-mobile-web-app-title" content="{$maccms.site_name}" /> 
+  <link rel="alternate" hreflang="x-default" href="http://{$maccms.site_url}/index.php/label/hot.html" /> 
+  <link rel="alternate" hreflang="zh-Hans" href="http://{$maccms.site_url}/index.php/label/hot.html" /> 
+  <link rel="canonical" href="http://{$maccms.site_url}/index.php/label/hot.html" /> 
+  <link href="{$maccms.path_tpl}html/style/css/v2-607838a2ee.css" rel="stylesheet" /> 
+  <!--[if lt IE 9]> <script src="{$maccms.path_tpl}html/style/js/html5shiv.js"></script> <script src="{$maccms.path_tpl}html/style/js/respond.min.js"></script> <![endif]--> 
+  {include file="public/include"}
+ </head> 
+ <body> 
+  {include file="public/head"}
+  <section> 
+   <div class="main"> 
+    <div class="row"> 
+     <div class="title clearfix"> 
+      <ul class="sub-tab"> 
+       <li class="item  active "> <a rel="nofollow" class="menu">热门排行</li> 
+      </ul> 
+     </div> 
+    </div> 
+    <div class="row"> 
+     <ul class="list clearfix"> 
+	  {maccms:vod num="60" by="hits" paging="yes" pageurl="index/index" order="desc"}
+      <li> 
+       <article> 
+        <a class="cover" href="{:mac_url_vod_play($vo)}"> <img src="{:mac_url_img($vo.vod_pic)}" class="b-lazy" alt="{$vo.vod_name}" /></a> 
+        <header> 
+         <h3><a href="{:mac_url_vod_play($vo)}">{$vo.vod_name}</a></h3> 
+         <div class="actress"> 
+          {$vo.vod_actor|mac_url_create='actor'} 
+         </div> 
+        </header> 
+       </article> </li> 
+	   <div class="clearfix0"></div> 
+      {/maccms:vod}
+     </ul> 
+    </div>  
+   </div> 
+  </section> 
+  {include file="public/foot"}
+  <span id="top-link-block" class="affix" style="display: none;"><a href="#top" onclick="$('html,body').animate({scrollTop:0},'fast');return false;"><i class="fa fa-chevron-up fa-2x"></i></a></span> 
+  <script src="{$maccms.path_tpl}html/style/js/v2-2755e1b5b8.js"></script> 
+  <script> $("li.item").on("click", function() { if (isOpen) { $(this).find("ul.collapse").removeClass("show"); isOpen = false; clickMode = true; } else { $(this).find("ul.collapse").addClass("show"); isOpen = true; clickMode = false; } }); $("li.item").on("mouseover", function() { if (!clickMode) { $(this).find("ul.collapse").addClass("show"); isOpen = true; } }); $("li.item").on("mouseleave", function() { if (!clickMode) { $(this).find("ul.collapse").removeClass("show"); isOpen = false; } }); </script>  
+ </body>
+</html>

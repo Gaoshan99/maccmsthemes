@@ -1,0 +1,83 @@
+
+<div class="layui-header header header-doc">
+  <div class="layui-main"> <a class="logo" href="/"> <img src="{$maccms.path_tpl}datll.10.2/layui-v2.3.0/images/logo.png" alt="layui"> </a>
+    <div class="layui-form component">
+      <div class="layui-form-select"> 
+        <!--<input type="text" placeholder="搜索影片" value="" class="layui-input">
+
+		  <i class="layui-icon layui-icon-search"></i> -->
+        
+        <div class=" ">
+          <form id="search" name="search" method="POST" action="{:mac_url('vod/search')}" onSubmit="return qrsearch();">
+            <input type="text" name="wd" class="layui-input mac_input" value="{$param.wd}" placeholder="请在此处输入影片名或演员名称" />
+            <i class="layui-edge layui-icon-triangle-d"></i>
+            <input type="submit" id="searchbutton"  class="layui-btn mac_search" value="搜索影片" />
+          </form>
+        </div>
+      </div>
+    </div>
+    <ul class="layui-nav wabnone">
+      <li class="layui-nav-item"> <a href="//{$maccms.site_url}">首页</a> </li>
+      {maccms:type ids="1,2,3,4" mid="1" order="asc" by="sort"}
+      <li class="layui-nav-item"> <a href="{:mac_url_type($vo)}">{$vo.type_name}</a>
+        <dl class="layui-nav-child">
+          {maccms:type  parent="'.$vo['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}
+          <dd><a href="{:mac_url_type($vo2,[],'show')}">{$vo2.type_name}</a></dd>
+          {/maccms:type}
+        </dl>
+      </li>
+      {/maccms:type}
+     <!-- {maccms:type order="asc" by="sort" mid="2" ids="parent"}
+      <li class="layui-nav-item"> <a href="{:mac_url_type($vo)}">{$vo.type_name}</a>
+        <dl class="layui-nav-child">
+          {maccms:type  parent="'.$vo['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}
+          <dd><a href="{:mac_url_type($vo2,[],'show')}">{$vo2.type_name}</a></dd>
+          {/maccms:type}
+        </dl>
+      </li>
+      {/maccms:type}-->
+      <li class="layui-nav-item"> <a href="{:mac_url('label/new')}">更新{if condition="mac_data_count(0,'today','vod')>999"}<span class="layui-badge-dot"> </span>{else /}<span class="layui-badge max-width">{:mac_data_count(0,'today','vod')}</span>{/if} </a> </li>
+       
+      <li class="layui-nav-item"> <a href="{:mac_url('gbook/index')}">留言<span class="layui-badge-dot"> </span></a> </li>
+      
+      <!--{:mac_data_count(0,'today','gbook')}-->
+      
+      <li class="layui-nav-item mac_user"> <a href="javascript:;"><img src="{$user.user_id|mac_get_user_portrait}" onerror="javascript:this.src='/static/images/touxiang.png'" class="layui-nav-img"><b class="user_name"></b></a> </li>
+      <style>
+		.layui-nav .layui-badge.max-width{max-width: 20px;overflow: hidden;}
+		
+		</style>
+    </ul>
+	  
+	  
+	 <ul class="layui-nav layui-wap-nav">
+	   <li class="layui-nav-item layui-wap-item"><span class="layui-icon layui-icon-shrink-right"></span></li>
+	</ul> 
+  </div>
+</div>
+<!--导航当前class="layui-this"-->
+<div class="layui-side layui-bg-black">
+  <div class="layui-side-scroll">
+    <ul class="layui-nav layui-nav-tree site-demo-nav">
+	<li class="layui-nav-item mac_user"><a href="javascript:;"><img src="{$user.user_id|mac_get_user_portrait}" onerror="javascript:this.src='/static/images/touxiang.png'" class="layui-nav-img"><b class="user_name">用户登录</b></a></li>
+
+	  <li class="layui-nav-item"> <a class="javascript:;" href="//{$maccms.site_url}">首页</a>
+	{maccms:type ids="1,2,3,4" mid="1" order="asc" by="sort"}
+      <li class="layui-nav-item"> <a class="javascript:;" href="javascript:;">{$vo.type_name}</a>
+        <dl class="layui-nav-child">
+			{maccms:type  parent="'.$vo['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}
+          <dd><a href="{:mac_url_type($vo2,[],'show')}">{$vo2.type_name}</a></dd>
+			{/maccms:type}
+        </dl>
+      </li>
+	{/maccms:type}	
+
+      <li class="layui-nav-item" style="height: 30px; text-align: center"></li>
+    </ul>
+  </div>
+</div>
+<div class="site-mobile-shade"></div>
+<script>
+
+
+</script>

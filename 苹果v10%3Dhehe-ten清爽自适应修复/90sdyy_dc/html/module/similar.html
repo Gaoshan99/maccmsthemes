@@ -1,0 +1,15 @@
+<div class="fed-part-layout fed-margin-right fed-back-whits">
+<div class="fed-list-head fed-part-rows fed-padding">
+<h2 class="fed-font-xvi">相关资讯</h2>
+<ul class="fed-part-tips fed-padding">
+<li><a class="fed-more" href="{:mac_url_type($obj.type)}">更多</a></li>
+</ul>
+</div>
+<ul class="fed-list-info fed-list-img fed-part-rows">
+{maccms:art num="4" type="current" order="desc" by="time"}
+<li class="fed-list-item fed-padding fed-col-xs6 fed-col-sm4 fed-col-md3{if$key>3} fed-hide-sm fed-show-md-block{/if}">
+{include file="module/picture"}
+</li>
+{/maccms:art}
+</ul>
+</div>

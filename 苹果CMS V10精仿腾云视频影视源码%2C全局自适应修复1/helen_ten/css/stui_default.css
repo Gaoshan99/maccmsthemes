@@ -1,0 +1,181 @@
+/*!
+ * Edition v2.0 Copyright 2016-2018 http://www.helenvipcom
+ * Email 739995554@qq.com,www.helenvipcom
+ */
+@charset "utf-8";
+/* all */
+body{padding-top:100px}
+
+/* header */
+.stui-header__top{position:fixed;top:0;z-index:999;width:100%;min-height:80px}
+.top-fixed-down{margin-top:-80px}
+.stui-header__side{float:right}
+
+/* header-logo */
+.stui-header__logo,.stui-header__menu{float:left}
+.stui-header__logo{margin-top:15px}
+.stui-header__logo .logo{display:block;width:150px;height:50px;background:url(../images/logo.png) no-repeat;background-position:50% 50%;background-size:cover}
+
+/* header-menu */
+.stui-header__menu{position:relative;margin-left:10px}
+.stui-header__menu li{float:left;margin-top:30px;margin-right:20px}
+.stui-header__menu li a{display:inline-block;padding:3px 8px 4px;font-size:15px;border-radius:2px}
+
+/* header-seacrh */
+.stui-header__search{float:left;position:relative;margin-top:25px;width:200px}
+.stui-header__search .submit{display:block;position:absolute;top:0;right:0;width:30px;height:30px;line-height:30px;text-align:center; background: none; border: 0;cursor: pointer;}
+.stui-header__search .submit .icon{font-size:14px;color:#999}
+
+/* header-user */
+.stui-header__user{float:right}
+.stui-header__user li{float:left;margin-top:30px;margin-left:20px}
+.stui-header__user li a{display:inline-block;line-height:20px}
+.stui-header__user li a .icon{font-size:18px}
+
+/* content */
+.stui-content__detail,.stui-content__thumb{display:table-cell;vertical-align:top}
+.stui-content__thumb .v-thumb{width:190px}
+.stui-content__thumb .w-thumb{width:300px}
+.stui-content__detail{width:100%;padding:10px 20px;}
+.stui-content__detail .title{margin:10px 0 10px;line-height:30px}
+.stui-content__detail .data{margin-bottom:10px}
+.stui-content__detail .data li{float:left;margin-right:20px}
+.stui-content__detail .desc{padding-left:42px}
+.stui-content__detail .desc .left{margin-left:-42px}
+.stui-content__detail .play-btn{padding-left:42px;margin-top:20px}
+.stui-content__detail .play-btn .shere{margin-top:5px}
+
+/* player */
+.stui-player__detail{ margin-top: 20px;}
+.stui-player__detail .title{margin:0 0 10px}
+.stui-player__detail .detail-content{padding-top:10px}
+.stui-player__detail .desc{padding-left:42px}
+.stui-player__detail .desc .left{margin-left:-42px}
+
+/* screen */
+.stui-screen__list{position:relative;padding:10px 0 5px}
+.stui-screen__list li{float:left;margin-right:10px;margin-bottom:10px}
+.stui-screen__list li span{display:inline-block;padding:3px 0 3px}
+.stui-screen__list li a{display:inline-block;padding:3px 10px;border-radius:2px}
+.stui-screen__list.letter-list li a{padding:3px 5px}
+.stui-screen__list.letter-list li.active a{padding:3px 10px}
+
+/* page */
+.stui-page{margin-bottom:30px}.stui-page li{display:inline-block;margin-left:10px}
+.stui-page li .num,.stui-page li a{display:inline-block;padding:5px 15px;border-radius:5px}
+
+/* extra */
+.stui-extra{position:fixed;right:50px;bottom:50px}
+.stui-extra li{position:relative;padding:15px 10px 0}
+.stui-extra li a,.stui-extra li span{display:block;width:50px;height:50px;line-height:50px;text-align:center;border-radius:4px;font-size:18px;cursor:pointer}
+.stui-extra li a .icon,.stui-extra li span .icon{font-size:18px}
+.stui-extra li a img{margin-top:15px;width:20px;height:20px}
+.stui-extra li .sideslip{display:none;position:absolute;bottom:0;right:100%}
+.stui-extra li .sideslip:before{content:" ";width:10px;height:10px;-webkit-transform:rotate(-45deg);-ms-transform:rotate(-45deg);transform:rotate(-45deg);border-width:0 1px 1px 0;position:absolute;bottom:20px;right:-6px;border-style:solid}
+.stui-extra li:hover .sideslip{display:block}
+
+@media (min-width:768px){
+	.container{width:750px}
+}
+@media (min-width:992px){
+	.container{width:920px}
+}
+@media (min-width:1200px){
+	.container{width:1170px}
+}
+@media (max-width:1024px){
+	
+	/* all */
+	body{padding-top:110px}
+
+    /* header */
+	.top-fixed-down{margin-top:-100px}
+	.stui-header__side{float:none;position:absolute;top:0;left:150px;right:0;width:auto}
+	.stui-header__logo,.stui-header__menu{float:none}
+	.stui-header__logo{margin:10px 0 10px}
+	.stui-header__logo .logo{width:127px;height:30px;background:url(../images/logo_min.png) no-repeat;background-position:50% 50%;background-size:cover}
+	.stui-header__search{float:right;margin-top:10px}
+	.stui-header__menu{margin:0;padding:0;height:40px;line-height:40px}
+	.stui-header__menu:before{content:" ";position:absolute;left:0;top:0;right:0;width:100%;height:1px;-webkit-transform-origin:0 0;transform-origin:0 0;-webkit-transform:scaleY(.5);transform:scaleY(.5)}
+	.stui-header__menu li{margin-top:0;margin-right:20px}
+	.stui-header__menu li a{padding:0;font-size:14px;white-space:nowrap}
+	.stui-header__menu li.active a{position:relative}
+	.stui-header__menu li.active a:before{content:" ";position:absolute;left:50%;bottom:0;width:20px;margin-left:-10px;height:2px;border-radius:2px}
+	.stui-header__user li{margin-top:15px}
+	.stui-header__user li a{width:20px;height:20px}
+}
+@media (max-width:767px){
+	
+	/* all */	   
+	
+	/* header */ 
+	.stui-header__logo{margin-left:10px}
+	.stui-header__search{position:absolute;top:0;left:0;right:50px;width:auto}
+	.stui-header__menu{padding-left:10px}
+	.stui-header__user{padding-right:10px}
+	
+	/* content */
+	.stui-content__thumb .v-thumb{width:115px}
+	.stui-content__thumb .w-thumb{width:160px}
+	.stui-content__detail{padding:0 10px}
+	.stui-content__detail .title{margin:10px 0 10px;font-size:16px;line-height:18px}
+	.stui-content__detail .data{margin:0 0 10px;font-size:12px}
+	.stui-content__detail .play-btn{margin:0;padding:0}
+	.stui-content__playlist li a{padding:5px 10px;font-size:12px}
+	
+	/* player */
+	.stui-player__detail{ margin-top: 10px;}
+	.stui-player__detail .data .title{font-size:16px}
+	
+	/* screen */
+	.stui-screen__list{padding:5px 0 5px;overflow:hidden}
+	.stui-screen__list li{margin-right:15px;margin-bottom:0}
+	.stui-screen__list li span{padding:2px 0 2px}
+	.stui-screen__list li a{padding:2px 0 2px;background:0 0;white-space:nowrap}
+	.stui-screen__list.letter-list li a,.stui-screen__list.letter-list li.active a{padding:2px 0 2px}
+	
+	/* type */
+	.stui-mobile__type li{padding:0 20px}
+	.stui-mobile__type li a{display:block;padding:10px 0;text-align:center}
+	
+	/* page */
+	.stui-page li{float:left;width:20%;margin:0;padding:0 5px 0 5px}
+	.stui-page li a,.stui-page__box li .num{display:block;padding:5px 0;text-align:center}
+	
+	/* extra */
+	.stui-extra{right:15px;bottom:15px}
+	.stui-extra li{padding:8px 0 0}
+	.stui-extra li a,.stui-extra li span{width:35px;height:35px;line-height:35px;font-size:16px}
+	.stui-extra li a .icon,.stui-extra li span .icon{font-size:16px}
+	.stui-extra li a img{margin-top:8px;width:18px;height:18px}
+	
+	/* foot */
+	.stui-foot{padding:20px 0}
+}
+
+/* share */
+.bdsharebuttonbox{line-height:30px;height:30px;overflow:hidden;vertical-align:top}
+.bdsharebuttonbox a,.bdsharebuttonbox span{width:24px;height:24px;display:inline-block;margin-right:5px;background:url(../images/share.png) no-repeat;cursor:pointer;margin-bottom:0;opacity:.8}
+.bdsharebuttonbox a:hover{opacity:1}
+.bdsharebuttonbox a.bds_tsina{background-position:0 0}
+.bdsharebuttonbox a.bds_weixin{background-position:0 -33px}
+.bdsharebuttonbox a.bds_qzone{background-position:0 -65px}
+.bdsharebuttonbox a.bds_sqq{background-position:0 -98px}
+.bdsharebuttonbox a.bds_renren{background-position:0 -131px}
+.bdsharebuttonbox a.bds_tqq{background-position:0 -163px}
+.bdsharebuttonbox a.bds_diandian{background-position:0 -356px}
+.bdsharebuttonbox a.bds_youdao{background-position:0 -388px}
+.bdsharebuttonbox a.bds_ty{background-position:0 -420px}
+.bdsharebuttonbox a.bds_fbook{background-position:0 -452px}
+.bdsharebuttonbox a.bds_twi{background-position:0 -484px}
+.bdsharebuttonbox a.bds_kaixin001{background-position:0 -228px}
+.bdsharebuttonbox a.bds_taobao{background-position:0 -196px}
+.bdsharebuttonbox a.bds_douban{background-position:0 -324px}
+.bdsharebuttonbox a.bds_mail{background-position:0 -548px}
+.bdsharebuttonbox a.bds_copy{background-position:0 -516px}
+.bdsharebuttonbox a.bds_bdhome{background-position:0 -292px}
+.bdsharebuttonbox a.bds_tqf{background-position:0 -260px}
+.bdsharebuttonbox a.bds_more{background-position:0 -577px}
+.bdsharebuttonbox span.bds_shere{background-position:0 -606px}
+.bdsharebuttonbox a.bds_count{background:0 0;width:auto;height:auto;position:relative;top:-6px}
+.bdsharebuttonbox a.bds_count{margin:0 2px}

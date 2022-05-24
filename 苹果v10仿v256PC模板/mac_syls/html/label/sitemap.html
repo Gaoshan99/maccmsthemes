@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>网站地图- {$maccms.site_name}</title>
+<meta name="keywords" content="最新网站地图,最新电视剧,2018电影,电影下载,电影排行榜,电视剧大全,好看的电视剧,{$maccms.site_name}" />
+<meta name="description" content="{$maccms.site_name}为您提供2018最新电影、电影下载、电影排行榜、最新电视剧、电视剧大全、好看的电视剧、好看的电影在线观看和迅雷电影下载，每天更新最新好看的电影电视剧，明星信息与相关电影电视剧，同时提供电影演员表、电视剧演员表，角色等相关内容，是影视爱好者们的电影天堂{$maccms.site_url}" />
+{include file="public/include"}
+</head>
+<body>
+{include file="public/head_1"}
+<div class="content-box fn-clear">
+<div class="crumbs">
+<span class="fn-left">您所在的位置：</span>
+<div class="crumbs-all fn-left">
+<a href="{$maccms.path}" class="blue">首页</a> <span>&gt;</span>
+<a href="javascript:;" class="active-style11">网站地图</a>
+</div>
+</div>
+<div class="datnew mt20">
+{maccms:type ids="1,2,3,4" order="asc" by="sort"}
+<div class="sitemap-item">
+<h2><a href="/dianshiju/" class="ncs-line fl">{$vo.type_name}</a></h2>
+<div class="sitemap-list fn-clear">
+<div class="sitemap-title">地区</div>
+<ul>
+{maccms:foreach name=":explode(',',$vo.type_extend.area)" id="vo2" key="key2"}
+<li><a href="{:mac_url_type($vo,['area'=>$vo2],'show')}" title="{$vo2}">{$vo2}</a></li>
+{/maccms:foreach}
+</ul>
+</div>
+<div class="sitemap-list fn-clear">
+<div class="sitemap-title">年份</div>
+<ul>
+{maccms:foreach name=":explode(',',$vo.type_extend.year)" id="vo2" key="key2"}
+<li><a href="{:mac_url_type($vo,['year'=>$vo2],'show')}" title="{$vo2}">{$vo2}</a></li>
+{/maccms:foreach}
+</ul>
+</div>
+<div class="sitemap-list fn-clear">
+<div class="sitemap-title">类型</div>
+<ul>
+{maccms:foreach name=":explode(',',$vo.type_extend.class)" id="vo2" key="key2"}
+<li><a href="{:mac_url_type($vo,['class'=>$vo2],'show')}" title="{$vo2}">{$vo2}</a></li>
+{/maccms:foreach}
+</ul>
+</div>
+</div>
+{/maccms:type}
+</div>
+</div>
+{include file="public/foot"}
+<div class="index-top" id="index-top">
+<a rel="nofollow" class="guestbook" target="_blank" href="{:mac_url('gbook/index')}"></a>
+<a class="top"></a>
+</div>
+</body>
+</html>

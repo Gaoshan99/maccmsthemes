@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>{$maccms.site_name}</title>
+<meta name="keywords" content="{$maccms.site_keywords}" />
+<meta name="description" content="{$maccms.site_description}" />
+{include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+<div class="banner-layout">
+<div class="banner-wrap">
+<div class="banner-slider">
+<div class="banner">{maccms:vod num="9" paging="no" type="all" level="9" order="desc" by="sort"}
+<div class="banner-b-img"><a href="{:mac_url_vod_detail($vo)}" style="background-image: url({$vo.vod_pic_slide|mac_url_img})" target="_blank"></a></div>{/maccms:vod}
+</div>
+</div>
+<div class="banner-smile">{maccms:vod num="9" paging="no" type="all" level="9" order="desc" by="sort"}
+<a href="{:mac_url_vod_detail($vo)}" class="onn" target="_blank"><img src="{$vo.vod_pic_slide|mac_url_img}" alt="{$vo.vod_name}"></a>{/maccms:vod}
+</div>
+<div class="banner-s-tit">{maccms:vod num="9" paging="no" type="all" level="9" order="desc" by="sort"}
+<div class="banner-s-t" style="display: block">
+<p class="name">{$vo.vod_name}</p>
+<p class="desc">《{$vo.vod_name}》主演：{$vo.vod_actor|mac_substring=20}</p>
+</div>{/maccms:vod}
+</div>
+</div>
+</div>
+{maccms:type ids="1,2,3,4" order="asc" by="sort"}
+<div class="content-box fn-clear">
+<div class="content-box-l">
+<div class="box-model hot-layout">
+<div class="box-model-tit fn-clear">
+<h2>{$vo.type_name}</h2>
+<div class="box-model-nav" id="J-{$vo.type_en}-nav"> <a href="javascript:;" class="on">热播</a>{maccms:type parent="'.$vo['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}
+<a href="javascript:;">{$vo2.type_name}</a>{/maccms:type}</div>
+<div class="box-model-more"><a href="{:mac_url_type($vo,[],'show')}" target="_blank">更多<i class="iconfont">&#xe60b;</i></a></div>
+</div>
+<div id="J-{$vo.type_en}-con">
+<div class="box-model-cont fn-clear" style="display: block">{maccms:vod num="5" type="'.$vo['type_id'].'" order="desc" by="hits_day" id="vo2" key="key2"}
+<a href="{:mac_url_vod_detail($vo2)}" title="{$vo2.vod_name}" {if condition="$key2 eq 1"}class="first"{/if} target="_blank"><span class="box-img"><img class="loading" src="{$maccms.path_tpl}images/pic.png" class="lazy" data-original="{$vo2.vod_pic|mac_url_img}" alt="{$vo2.vod_name}"><i class="box-img-bg"></i><em>{include file="public/serial"}</em><i class="box-img-h-bg"></i><i class="box-img-play"></i></span><span class="box-tc"><em class="box-tc-t">{$vo2.vod_name}</em><em class="box-tc-c">{$vo2.vod_actor}</em></span></a>{/maccms:vod}</div>{maccms:type parent="'.$vo['type_id'].'" order="asc" by="sort" id="vo1" key="key1"}
+<div class="box-model-cont fn-clear">{maccms:vod num="5" type="'.$vo1['type_id'].'" order="desc" by="time" id="vo2" key="key2"}
+<a href="{:mac_url_vod_detail($vo2)}" title="{$vo2.vod_name}" {if condition="$key2 eq 1"}class="first"{/if} target="_blank"><span class="box-img"><img class="loading" src="{$maccms.path_tpl}images/pic.png" class="lazy" data-original="{$vo2.vod_pic|mac_url_img}" alt="{$vo2.vod_name}"><i class="box-img-bg"></i><em>{include file="public/serial"}</em><i class="box-img-h-bg"></i><i class="box-img-play"></i></span><span class="box-tc"><em class="box-tc-t">{$vo2.vod_name}</em><em class="box-tc-c">{$vo2.vod_actor}</em></span></a>{/maccms:vod}</div>{/maccms:type}
+</div>
+</div>
+</div>
+<div class="content-box-r">
+<div class="rebobang">
+<div class="rebo-tit fn-clear">
+<h3>热播榜</h3>
+<div class="rebo-nav" id="J-{$vo.type_en}-rb-nav">
+<a href="javascript:;" class="on">国产</a><a href="javascript:;">香港</a><a href="javascript:;">欧美</a> </div>
+</div>
+<div class="rebo-con" id="J-{$vo.type_en}-rb-con">
+<div class="rebo-list fn-clear" style="display: block">
+<div class="rebo-list-l">{maccms:vod num="5" area="内地" type="'.$vo['type_id'].'" order="desc" by="hits_week" id="vo2" key="key2"}
+<a href="{:mac_url_vod_detail($vo2)}" title="{$vo2.vod_name}" target="_blank"><em {if condition="$key2 eq 1"}class="first"{/if}>{$key2}</em>{$vo2.vod_name}</a>{/maccms:vod}</div>
+<div class="rebo-list-l">{maccms:vod num="5" area="内地" type="'.$vo['type_id'].'" start="6" order="desc" by="hits_week" id="vo2" key="key2"}
+<a href="{:mac_url_vod_detail($vo2)}" title="{$vo2.vod_name}" target="_blank"><em>{$key2+5}</em>{$vo2.vod_name}</a>{/maccms:vod}</div>
+</div>
+<div class="rebo-list fn-clear">
+<div class="rebo-list-l">{maccms:vod num="5" area="香港" type="'.$vo['type_id'].'" order="desc" by="hits_week" id="vo2" key="key2"}
+<a href="{:mac_url_vod_detail($vo2)}" title="{$vo2.vod_name}" target="_blank"><em {if condition="$key2 eq 1"}class="first"{/if}>{$key2}</em>{$vo2.vod_name}</a>{/maccms:vod}</div>
+<div class="rebo-list-l">{maccms:vod num="5" area="香港" type="'.$vo['type_id'].'" start="6" order="desc" by="hits_week" id="vo2" key="key2"}
+<a href="{:mac_url_vod_detail($vo2)}" title="{$vo2.vod_name}" target="_blank"><em>{$key2+5}</em>{$vo2.vod_name}</a>{/maccms:vod}</div>
+</div>
+<div class="rebo-list fn-clear">
+<div class="rebo-list-l">{maccms:vod num="5" area="美国" type="'.$vo['type_id'].'" order="desc" by="hits_week" id="vo2" key="key2"}
+<a href="{:mac_url_vod_detail($vo2)}" title="{$vo2.vod_name}" target="_blank"><em {if condition="$key2 eq 1"}class="first"{/if}>{$key2}</em>{$vo2.vod_name}</a>{/maccms:vod}</div>
+<div class="rebo-list-l">{maccms:vod num="5" area="美国" type="'.$vo['type_id'].'" start="6" order="desc" by="hits_week" id="vo2" key="key2"}
+<a href="{:mac_url_vod_detail($vo2)}" title="{$vo2.vod_name}" target="_blank"><em>{$key2+5}</em>{$vo2.vod_name}</a>{/maccms:vod}</div>
+</div>
+</div>
+</div>
+<div class="rebo-tag mt20 fn-clear">{maccms:foreach name=":explode(',',$vo.type_extend.class,-3)" id="vo1" key="key1"}
+<a target="_blank" href="{:mac_url_type($vo,['class'=>$vo1],'show')}" title="{$vo1}">{$vo1}</a>{/maccms:foreach}
+{maccms:foreach name=":explode(',',$vo.type_extend.year,-5)" id="vo1" key="key1"}<a href="{:mac_url_type($vo,['year'=>$vo1],'show')}">{$vo1}</a>{/maccms:foreach}
+<a href="/list/dianshiju_____.html" class="tag-all" target="_blank">全部</a> </div>
+
+</div>
+</div>
+{/maccms:type}
+
+{maccms:type ids="5" order="asc" by="sort"}
+<div class="content-box fn-clear">
+<div class="content-box-l">
+<div class="box-model hot-layout">
+<div class="box-model-tit fn-clear">
+<h2>{$vo.type_name}</h2>
+<div class="box-model-more"><a href="{:mac_url_type($vo)}" target="_blank">更多<i class="iconfont">&#xe60b;</i></a></div>
+</div>
+<div class="hot-wrap yule-wrap fn-clear">
+<ul class="fn-clear">
+{maccms:art num="1" type="'.$vo['type_id'].'" order="desc" by="time" id="vo2" key="key2"}
+<li class="hot-list hot-box-375x260"><a href="{:mac_url_art_detail($vo2)}" title="{$vo2.art_name}" class="hot-bg-icon" target="_blank"><img class="loading" src="{$maccms.path_tpl}images/pic.png" data-original="{$vo2.art_pic|mac_url_img}" alt="{$vo2.art_name}"><span class="hot-zy-span fn-clear"><em class="play-bg"><i class="iconfont">&#xe611;</i></em><span><em>{$vo2.art_name}</em></span></span><i class="hot-zy-bg"></i></a></li>
+{/maccms:art}
+{maccms:art num="6" type="'.$vo['type_id'].'" start="2" order="desc" by="time" id="vo2" key="key2"}
+<li class="hot-list hot-box-180x100"> <a href="{:mac_url_art_detail($vo2)}" title="{$vo2.art_name}" class="hot-bg-icon" target="_blank"><img src="{$vo2.art_pic|mac_url_img}"></a>
+<p class="hot-t">{$vo2.art_name}</p>
+</li>
+{/maccms:art}
+</ul>
+</div>
+</div>
+</div>
+<div class="content-box-r">
+<div class="rebobang">
+<div class="rebo-tit fn-clear">
+<h3>热门{$vo.type_name}</h3>
+</div>
+<div class="mingxing-layout">{maccms:art num="1" type="'.$vo['type_id'].'" order="desc" by="hits_month" id="vo2" key="key2"}
+<dl class="fn-clear">
+<dt><a href="{:mac_url_art_detail($vo2)}" target="_blank"><img src="{$vo2.art_pic|mac_url_img}"></a></dt>
+<dd>
+<h3><a href="{:mac_url_art_detail($vo2)}" title="{$vo2.art_name}" target="_blank">{$vo2.art_name|mac_substring=15}</a></h3>
+<p></p>
+</dd>
+</dl>{/maccms:art}
+<div class="mingxing-wrap">{maccms:art num="5" type="'.$vo['type_id'].'" start="2" order="desc" by="hits_month" id="vo2" key="key2"}
+<a href="{:mac_url_art_detail($vo2)}" title="{$vo2.art_name}" target="_blank"><i class="iconfont">&#xe610;</i>{$vo2.art_name|mac_substring=15}</a>{/maccms:art}</div>
+</div>
+</div>
+</div>
+</div>
+{/maccms:type}
+<div class="content-box fn-clear">
+<div class="box-model hot-layout">
+<div class="box-model-tit fn-clear">
+<h3>合作伙伴</h3>
+<div class="box-model-nav" id="J-hz-nav"> <a href="javascript:;" class="on">媒体合作</a> <a href="javascript:;">友情链接</a> </div>
+</div>
+<div class="friend-link" id="J-hz-con">
+<div class="fl-model fl-friend fn-clear" style="display: block">{maccms:link num="10" type="pic" order="asc" by="sort"}
+<a href="{$vo.link_url}" target="_blank"><img src="{$vo.link_logo|mac_url_img}" alt="{$vo.link_name}"></a>{/maccms:link}
+</div>
+<div class="fl-model fl-link fn-clear">{maccms:link num="10" type="font" order="asc" by="sort"}
+<span><a href="{$vo.link_url}" target="_blank">{$vo.link_name}</a></span>{/maccms:link}</div>
+</div>
+</div>
+</div>
+{include file="public/foot"}
+<div class="index-top" id="index-top">
+<a rel="nofollow" class="guestbook" target="_blank" href="{:mac_url('gbook/index')}"></a>
+<a class="top"></a>
+</div>
+<script>v256.index.init();v256.film.init();</script>
+</body>
+</html>

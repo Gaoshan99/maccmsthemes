@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="renderer" content="webkit">
+<title>最新{$obj.type_title}-推荐{$obj.type_title}-第{$param.page}页 - {$maccms.site_name}</title>
+<meta name="keywords" content="{$obj.type_key}" />
+<meta name="description" content="{$obj.type_des}" />
+{include file="public/include"}
+</head>
+<body>
+<div class="container">
+{include file="public/head"}
+<div class="title">
+<li>当前位置</li>
+<li><a href="{$maccms.path}">首页</a></li>
+<li><a href="{$obj.type_url}">{$obj.type_name}</a></li>
+<span class="r">最新排行</span>
+</div>
+<div class="pic"><ul>{maccms:vod num="24" paging="yes" type="current" order="desc" by="time"}
+<li><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"><img src="{:mac_url_img($vo.vod_pic)}"><br /><span>{$vo.vod_time|date='m-d',###}.</span> {$vo.vod_name}</a></li>
+{/maccms:vod}</ul>
+</div>
+<div class="text-center">{include file="public/paging"}</div>
+{include file="public/foot"}
+</div>
+</body>
+</html>

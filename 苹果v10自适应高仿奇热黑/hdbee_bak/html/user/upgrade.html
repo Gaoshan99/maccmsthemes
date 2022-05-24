@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+<title>充值卡充值 - 会员中心 -{$maccms.site_name}</title>
+<meta name="keywords" content="{$maccms.site_keywords}"/>
+<meta name="description" content="{$maccms.site_description}"/>
+	{include file="public/include" /}
+  <link type="text/css" media="all" href="{$maccms.path_tpl}css/user_index.css" rel="stylesheet" />
+<script src="/template/default_pc/js/formValidator-4.0.1.js" type="text/javascript"></script>
+<script src="/static/js/jquery.imageupload.js"></script>
+
+</head>
+<body>
+{include file="public/head" /}
+<body class="home blog" id="body-header-top" data-js="bottom">
+  <div class="body_rgba"></div>
+ <div class="setting_main">
+   <div class="user_tab_botting">
+    <div class="setting_inner">
+     <div class="user_left"> 
+      <img src="{$obj.user_portrait|mac_default='static/images/touxiang.png'|mac_url_img}" class="face avatar" width="100" height="100" />
+     </div>
+     <div class="user_setting_data">
+      <p class="name_user"><i class="iconfont"></i>{$obj.user_name}（{$obj.group.group_name}）</p>
+      <p>邮箱：{$obj.user_email}</p>
+      <p class="binahao_user">编号：{$obj.user_id} <span><i class="iconfont"></i>注册于{$obj.user_reg_time|mac_day}</span></p>
+     </div>
+     <div class="user_setting_num">
+      
+      <p><span>积分</span><em>{$obj.user_points}</em></p>
+      
+     </div>
+    </div>
+   </div>
+   <div id="sitenews-wrap" class="container"></div>
+   <div class="setting_inner pagewrapper clr" id="author-page">
+    <div class="yscd avatar"> 
+     <i class="fa fa-angle-double-right"></i>
+    </div>
+    <div class="yinxsh"></div>
+    <aside class="user-left">
+     <div class="usermenus">
+      <ul class="usermenu">
+       <li><a href="{:url('user/index')}"><i class="iconfont"></i>个人中心</a></li>
+       <li><a href="{:url('user/favs')}"><i class="iconfont"></i>我的收藏</a></li>       
+       <li><a href="{:url('user/buy')}"><i class="iconfont"></i>积分管理</a></li>      
+       <li class="active"><a href="{:url('user/upgrade')}"><i class="iconfont"></i>会员服务</a></li>
+       <li><a href="{:url('user/orders')}"><i class="iconfont"></i>我的订单</a></li>
+       <li><a href="{:url('user/info')}"><i class="iconfont"></i>修改资料</a></li>
+       <li><a href="{:url('user/logout')}"><i class="iconfont"></i>退出登录</a></li>
+      </ul>
+     </div>
+    </aside>
+
+  <div class="user-right">
+     <div class="user_contentr">
+      <div class="setting_header"> 
+       <a class="sh_1"> 升级会员 </a>
+      </div>
+      <div class="settin">
+       <div class="header_tips">
+        <i class="iconfont"></i>您还不是会员用户哦！
+       </div>
+
+
+      <div class="panel">
+        <div class="panel-body" style="padding-top:50px;background: #f8f7f7;">
+         <form id="joinuservip" method="post" data-ajax="create_vip_order">
+          <p>
+{volist name="group_list" id="vo"}
+ {if condition="$vo.group_id gt 2"}
+          <input type="hidden" name="group_id" value="{$vo.group_id}" />
+       
+          <label class="radio-inline">
+
+          <input type="radio" name="product_id" value="day"  data-name="{$vo.group_name}" data-points="{$vo.group_points_day}"/>月度会员({$vo.group_points_day}积分/30天)
+                	  </label>
+
+ 
+          <label class="radio-inline">
+
+          <input type="radio" name="product_id" value="month"  data-name="{$vo.group_name}" data-points="{$vo.group_points_month}" />季度会员({$vo.group_points_month}积分/90天)
+          </label>
+
+          <label class="radio-inline">
+
+          <input type="radio" name="product_id" value="year" data-name="{$vo.group_name}" data-points="{$vo.group_points_year}"/>年费会员({$vo.group_points_year}积分/365天)
+          </label>
+          </p>
+          <p class="butpal">
+<input type="button" id="btn_submit_card" class="btn btn-vipsubmit" value="立即开通">
+     
+	{/if}
+{/volist}  
+</p>
+          <p class="help-block" style="font-size:14px;margin-bottom: 50px;text-align: center;">提示:若已开通会员则按照选择开通的类型自动续费,若会员已到期,则按重新开通计算有效期</p>
+         </form>
+        </div>
+       </div>
+       <table width="100%" border="0" cellspacing="0" class="table table-bordered orders-table">
+        <thead>
+         <tr>
+          <th scope="col">特权\等级</th>
+          <th scope="col">月度会员</th>
+          <th scope="col">季度会员</th>
+          <th scope="col">年费会员</th>
+         </tr>
+        </thead>
+        <tbody class="the-list">
+         <tr class="viptq-tr-icon">
+          <td>会员标识</td>
+          <td><i class="vip_icon"><img src="http://www.hdbee.net/wp-content/themes/dybee/images/vip-one.svg" alt="月度会员" width="128" height="128" /></i></td>
+          <td><i class="vip_icon"><img src="http://www.hdbee.net/wp-content/themes/dybee/images/vip-tow.svg" alt="季度会员" width="128" height="128" /></i></td>
+          <td><i class="vip_icon"><img src="http://www.hdbee.net/wp-content/themes/dybee/images/vip-three.svg" alt="年费会员" width="128" height="128" /></i></td>
+         </tr>
+         <tr class="viptq-tr-book">
+          <td>阅读权限</td>
+          <td>月度会员权限的文章</td>
+          <td>月度会员和季度会员权限的文章</td>
+          <td>全部会员权限的文章</td>
+         </tr>
+         <tr class="viptq-tr-down">
+          <td>下载限制</td>
+          <td>0个资源/每天</td>
+          <td>0个资源/每天</td>
+          <td>0个资源/每天</td>
+         </tr>
+         <tr class="viptq-tr-hui">
+          <td>商品折扣</td>
+          <td>0折</td>
+          <td>0折</td>
+          <td>0折</td>
+         </tr>
+         <tr class="viptq-tr-post">
+          <td>投稿权限</td>
+          <td>可申请</td>
+          <td>可申请</td>
+          <td>可申请</td>
+         </tr>
+         <tr class="viptq-tr-price">
+          <td>会员价格</td>
+          <td>30天/100积分</td>
+          <td>90天/250积分</td>
+          <td>365天/750积分</td>
+         </tr>
+        </tbody>
+       </table>
+       <div class="user_settin_end">
+        ——— end ———
+       </div>
+      </div>
+      <div class="ajax_load_div">
+       <div class="pay-logging"></div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+
+<script>
+
+
+	$('#btn_submit_card').click(function(){
+	
+		var that=$(this);
+		var group_id = $('input[name="group_id"]').val();
+		var long  = $("input[name='product_id']:checked").val();
+		var group_name = $("input[name='product_id']:checked").attr('data-name');
+		var points = $("input[name='product_id']:checked").attr('data-points');			
+		if(confirm('确定要升级到【'+group_name+'】吗,需要花费【'+points+'】积分')) {
+			$.ajax({
+				url: "{:url('user/upgrade')}",
+				type: "post",
+				dataType: "json",
+				data: {group_id: group_id,long:long },
+				beforeSend: function () {
+					$("#btn_submit_card").css("background","#fd6a6a").val("loading...");
+				},
+				success: function (r) {
+					alert(r.msg);
+				},
+				complete: function () {
+					$("#btn_submit_card").css("background","#fa4646").val("立即开通");
+				}
+			});
+		}
+	
+	});
+
+
+
+
+</script>
+{include file="public/foot" /}
+</body>
+</html>

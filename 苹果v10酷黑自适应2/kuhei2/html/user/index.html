@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>会员中心 - {$maccms.site_name}</title>
+	<meta name="keywords" content="会员中心">
+	<meta name="description" content="会员中心">
+	{include file="block/include"}
+	{include file="user/include"}
+</head>
+<body>
+{include file="block/head" /}
+<div class="container">
+    <div class="row">   	
+    	<div class="col-md-wide-25 col-sm-wide-35 col-xs-1 padding-0">
+    		{include file="user/head" /}						
+    	</div>
+    	<div class="col-md-wide-75 col-sm-wide-65 col-xs-1 stui-pannel-side hidden-xs" style="padding: 0 0 0 20px;">   		
+    		<div class="stui-pannel stui-pannel-bg clearfix">
+				<div class="stui-pannel-box clearfix">
+					<div class="stui-pannel_hd">
+						<div class="stui-pannel__head active bottom-line clearfix">
+							<h3 class="title">
+								<img src="{$maccms.path_tpl}statics/icon/icon_30.png"/>
+								我的资料
+							</h3>
+							<ul class="nav nav-tabs pull-right">
+								<li class="active"><a href="">基本资料</a></li>
+								<li><a href="{:url('user/info')}">修改信息</a></li>
+								<li><a href="{:url('user/popedom')}">我的权限</a></li>
+							</ul>
+						</div>																		
+					</div>
+					<div class="stui-pannel_bd clearfix">
+						<ul class="stui-user__form col-pd clearfix">
+							<p><span class="xiang">用户名：</span>{$obj.user_name}</p>
+							<p class="top-line-dot"><span class="xiang">QQ号码：</span>{$obj.user_qq|mac_default='未填写'}</p>
+							<p class="top-line-dot"><span class="xiang">Email地址：</span>{$obj.user_email}</p>
+							<p class="top-line-dot"><span class="xiang">注册时间：</span>{$obj.user_reg_time|mac_day}</p>
+							<p class="top-line-dot"><span class="xiang">登陆IP：</span>{$obj.user_login_ip|long2ip}</p>
+							<!--<p class="top-line-dot"><span class="xiang">登陆时间：</span>{$obj.user_login_time|mac_day}</p>-->
+							<p class="top-line-dot hidden-sm"><span class="xiang">推广链接：</span><a class="regurl" href="javascript:;">http://{$maccms.site_url}{:mac_url('user/reg')}?uid={$obj.user_id}</a>
+							</p>
+                         
+						</ul>																							
+					</div>		
+				</div>
+			</div>	
+			<!-- D083 by v.shoutu.cn -->
+			<div class="stui-pannel stui-pannel-bg clearfix">	
+				<div class="stui-pannel-box">
+					<div class="stui-pannel_hd">
+						<div class="stui-pannel__head clearfix">
+							<h3 class="title">
+								<img src="{$maccms.path_tpl}statics/icon/icon_30.png"/>
+								热门影片
+							</h3>
+						</div>
+					</div>
+					
+					<div class="stui-pannel_bd">
+						<div class="carousel carousel_right col-pd clearfix">
+							{maccms:vod num="10" type="all" order="desc" by="hits"}
+							<div class="col-md-8 col-sm-6 col-xs-3 list">
+								<div class="stui-vodlist__box">
+									<a href="{:mac_url_vod_detail($vo)}" class="stui-vodlist__thumb lazyload" title="{$vo.vod_name}" data-original="{:mac_url_img($vo.vod_pic)}">	
+										<span class="play hidden-xs"></span>	
+										<span class="pic-text text-center">{$vo.vod_name}</span>
+									</a>																				
+								</div>												
+							</div>
+							{/maccms:vod}									
+						</div>																
+					</div>
+				</div>
+			</div>
+    	</div>
+    </div>
+</div>
+<script type="text/javascript">
+	var regurl = $(".regurl").text();	
+	var clipboard = new Clipboard('.regurl', {
+		text: function() {									
+			return regurl;
+		}
+	});
+	clipboard.on('success', function(e) {
+		alert("地址复制成功，赶快分享给小伙伴吧！");
+	});
+</script>
+{include file="block/foot" /}
+</body>
+</html>

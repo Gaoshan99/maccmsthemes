@@ -1,0 +1,50 @@
+<div id="banner">
+<div class="banner-inner">
+<div class="banner-pic">
+<ul class="banner-pic-inner">
+{maccms:vod num="6" paging="no" type="all" level="9" order="desc" by="sort"}
+<li class="pic-01" style="background:url('{$vo.vod_pic_slide|mac_url_img}') no-repeat 50% 50% #c992a7;">
+<a href="{:mac_url_vod_detail($vo)}" target="_blank"></a>
+</li>
+{/maccms:vod}
+</ul>
+</div>
+<div class="banner-btn-wrap">
+<div class="banner-btn">
+<div class="banner-btn-list">
+<ul class="banner-btn-inner">
+{maccms:vod num="6" paging="no" type="all" level="9" order="desc" by="sort"}
+<li class="add-active"><i></i><img width='90' height='60' src="{$vo.vod_pic|mac_url_img}"></li>
+{/maccms:vod}
+</ul>
+<div class="banner-s-tit">
+{maccms:vod num="6" paging="no" type="all" level="9" order="desc" by="sort"}
+<div class="banner-tit-model banner-s-t">
+<i></i>
+<div class="banner-t-wrap fn-clear">
+{if condition="$vo.type_id==2 or $vo.type_id_1==2"}
+<div class="banner-s1">
+<p>更新至</p>
+<p class="banner-s1-p fn-clear"><span>{$vo.vod_serial}</span><em>集</em></p>
+</div>
+{/if}
+<div class="banner-s2">
+<h3>{$vo.vod_name}</h3>
+<p>{$vo.vod_content|mac_filter_html|mac_substring=25}</p>
+</div>
+</div>
+</div>
+{/maccms:vod}
+</div>
+<ul class="banner-intro-ul">
+</ul>
+</div>
+<div class="banner-swap-btn">
+<a href="javascript:;" class="left-btn"></a>
+<a href="javascript:;" class="right-btn"></a>
+</div>
+</div>
+<div class="banner-intro"></div>
+</div>
+</div>
+</div>

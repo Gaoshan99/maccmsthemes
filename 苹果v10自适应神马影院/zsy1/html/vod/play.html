@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<meta name="viewport" content="width = device-width ,initial-scale = 1,minimum-scale = 1,maximum-scale = 1,user-scalable =no,"/>.
+<title>{$obj.vod_name}-{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}在线播放中 - {$maccms.site_name}</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+{include file="public/include"}
+<script src="{$maccms.path}static/js/jquery.js"></script>
+<script src="{$maccms.path}static/js/jquery.lazyload.js"></script>
+<script src="{$maccms.path}static/js/jquery.autocomplete.js"></script>
+<script>var maccms={"path":"__ROOT__","mid":"{$maccms['mid']}","url":"{$maccms['site_url']}","wapurl":"{$maccms['site_wapurl']}","mob_status":"{$maccms['mob_status']}"};</script>
+</head>
+<body>
+{include file="public/head"}
+<!--<div align="center"><script src="{$maccms.path_ads}play1.js"></script></div>-->
+<div class="main"><h1 class="title">
+<a href="{$maccms.path}">首页</a>-{if condition="$obj.type_1.type_id neq '' "}<a href="{:mac_url_type($obj.type_1)}">{$obj.type_1.type_name}</a>{/if}-{$obj.vod_name}
+</h1>
+<div class="player mb">
+  <div align="" style="height:480px;">
+    {$player_data}
+    {$player_js}
+  </div>
+</div>
+<!--<div align="center"><script src="{$maccms.path_ads}play2.js"></script></div>
+<div class="ding mb clearfix">{$obj.vod_up}</div>-->
+
+<div class="tab-title mb clearfix">
+<ul>
+  <li class="err"><a href="#" rel="nofollow"><font color="red">【版权/内容投诉】</font></a></li>
+<li class="err"><a href="javascript:;" onClick="MAC.Gbook.Report('编号【{$obj.vod_id}】名称【{$obj.vod_name}】不能观看请检查修复，页面地址' + location.href)">【报错】</a></li>
+<li id="tab1" class="on" onClick="setTab('tab','stab',1,4)">播放列表</li>
+<li id="tab2" onClick="setTab('tab','stab',2,4)">内容介绍</li>
+<li id="tab3" onClick="setTab('tab','stab',3,4)">相关影片</li>
+
+</ul></div>
+
+<div id="stab1" class="tab-down mb clearfix">
+<div class="playfrom tab8 clearfix">
+<ul>
+{maccms:foreach name="obj.vod_play_list" id="vo" key="key"}
+<li id="tab8{$key}" onClick="setTab('tab8','stab8',{$key},{$obj.vod_play_list|count})" class="{if condition="$key eq 1"}on{/if}"><i class="playerico ico-{$vo.from}"></i>{$vo.player_info.show}</li>
+{/maccms:foreach}
+</ul>
+</div>
+{maccms:foreach name="obj.vod_play_list" id="vo" key="key"}
+<div id="stab8{$key}" class="playlist clearfix" {if condition="$key neq 1"} style="display:none"{/if}">
+<div class="h1 clearfix">
+<p class="intro">{$vo.player_info.tip}</p>
+<p class="jj"><span id="vlink_{$key}_s1"><em onClick="Order(1,'vlink_{$key}',{$key})">倒序↓</em></span><span id="vlink_{$key}_s2"><em onClick="Order(0,'vlink_{$key}',{$key})" class="over">顺序↑</em></span></p>
+</div>
+<div id="vlink_{$key}" class="videourl clearfix">
+<ul>
+{maccms:foreach name="vo.urls" id="vo2" key="key2"}
+<li><a href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}" target="_blank" title="{$vo2.name}">{$vo2.name}</a></li>
+{/maccms:foreach}
+</ul>
+</div>
+</div>
+{/maccms:foreach}
+</div>
+
+
+<div id="stab2" class="tab-down mb clearfix">
+</div>
+<div id="stab3" class="tab-down mb clearfix" style="display:none;">
+<div class="index-area clearfix">
+<ul>
+{maccms:vod num="6" type="current" order="desc" by="time"}
+<li class="p11 m1"> <a class="link-hover" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"><img src="{:mac_url_img($vo.vod_pic)}" alt="{$vo.vod_name}" onerror="this.src='{$maccms.path_tpl}images/nopic.gif'"><span class="video-bg"></span><span class="lzbz">
+<p class="name">{$vo.vod_name}</p>
+<p class="other"></p>
+<p class="actor">{$obj.vod_actor}</p>
+<p class="actor"><a href="{:mac_url_type($obj.type_1)}">{$obj.type_1.type_name}</a></p>
+<p class="actor">{$obj.vod_year}/{$obj.vod_area}</p>
+</span></a></li>{/maccms:vod}
+
+</ul>
+</div>
+</div>
+
+<!-- 讯雷下载开始
+{maccms:foreach name="obj.vod_down_list" id="vo"}
+<div id="stab4" class="tab-down mb clearfix" style="display:none;">
+<div class="tab-jq">{$obj.vod_content}…</div>
+
+
+
+</div>
+{/maccms:foreach}
+ 讯雷下载结束-->
+
+<div align="center">  <!--<script src="{$maccms.path_ads}play3.js"></script></div>-->
+<div class="ds-thread" data-thread-key="{$key}" data-title="{$obj.vod_name}" data-url="{:mac_url_type($obj.type)}"></div>
+
+</div>
+<h4>影片介绍</h4>
+
+{$obj.vod_content}
+
+{include file="public/foot"}
+</body>
+</html>

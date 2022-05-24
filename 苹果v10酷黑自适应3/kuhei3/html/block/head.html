@@ -1,0 +1,65 @@
+<header class="stui-header clearfix">
+	<div class="container">	
+		<div class="row">
+			<ul class="stui_header__user">
+				<li>
+					<a href="javascript:;"><i class="iconfont icon-search"></i></a>
+					<div class="dropdown search">
+						<div class="item"> 
+					        <form id="search" name="search" method="POST" action="{:mac_url('vod/search')}" onSubmit="return qrsearch();">
+		    					<input type="text" id="wd" name="wd" class="form-control" value="{$param.wd}" placeholder="请输入关键词..."/>
+								<button class="submit" id="searchbutton" type="submit" name="submit"><i class="icon iconfont icon-search"></i></button>							
+							</form>
+					   </div>
+					   <ul>
+					   		{maccms:foreach name=":explode(',',$maccms.search_hot)" id="vo2" key="key2"}
+				            <li><a href="{:mac_url('vod/search',['wd'=>$vo2])}">{$vo2}</a></li>
+				            {/maccms:foreach}
+					   </ul>
+					</div>
+				</li>
+				<li>
+					<a href="javascript:;"><i class="iconfont icon-viewgallery"></i></a>
+					<ul class="dropdown type clearfix">
+						<li {if condition="$maccms.aid eq 1"}class="active"{/if}><a href="{$maccms.path}">首页</a></li>
+						{maccms:type order="asc" by="sort" parent=""}
+		                <li {if condition="($vo.type_id eq MAC_TYPE_ID || $vo.type_id eq MAC_TYPE_PID)"}class="active"{/if}><a href="{:mac_url_type($vo)}">{$vo.type_name}</a></li>
+		                {/maccms:type}
+		                <li {if condition="$maccms.aid eq 30"}class="active"{/if}><a href="{:mac_url_topic_index()}">专题</a></li>				
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:;"><i class="iconfont icon-clock"></i></a>
+					<div class="dropdown history">
+						<div class="head">
+							<a class="historyclean pull-right" href="">清空</a>
+							<h5>播放记录</h5>
+						</div>
+						<ul class="clearfix" id="stui_history">
+						</ul>
+					</div>
+				</li>
+				<li>
+					<a href="{:mac_url('gbook/index')}"><i class="icon iconfont icon-comments"></i></a>
+				</li>
+				<li class="date"></li>
+			</ul>
+			<div class="stui-header__logo">
+				<a class="logo" href="{$maccms.path}"></a>										  
+			</div>
+			<ul class="stui-header__menu">
+				<li {if condition="$maccms.aid eq 1"}class="active"{/if}><a href="{$maccms.path}">首页</a></li>
+				{maccms:type num="10" order="asc" by="sort" ids="parent"}
+                <li {if condition="($vo.type_id eq MAC_TYPE_ID || $vo.type_id eq MAC_TYPE_PID)"}class="active"{/if}><a href="{:mac_url_type($vo)}">{$vo.type_name}</a></li>
+                {/maccms:type}
+                <li {if condition="$maccms.aid eq 30"}class="active"{/if}><a href="{:mac_url_topic_index()}">专题</a></li>
+			</ul>
+			
+		</div>	  							    
+	</div>
+</header>
+<script type="text/javascript">
+	$(".stui_header__user li a").click(function(){
+		$(this).parent().find(".dropdown").toggle();
+	});
+</script>

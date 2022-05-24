@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}搜索结果 - {$maccms.site_name}</title>
+<meta name="keywords" content="{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}搜索结果" />
+<meta name="description" content="{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}搜索结果" />
+{include file="public/include"}
+</head>
+<body>
+<div class="container">
+{include file="public/head"}
+<div class="title">
+<li>当前位置</li>
+<li><a href="{$maccms.path}">首页</a></li>
+<li>搜索" {$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}" 结果 </li>
+</div>
+<div class="pic"><ul>{maccms:vod num="24" paging="yes" pageurl="vod/search" order="desc" by="time"}
+<li><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"><img src="{:mac_url_img($vo.vod_pic)}"><br /><span>{$vo.vod_time|date='m-d',###}.</span> {$vo.vod_name}</a></li>
+{/maccms:vod}</ul>
+</div>
+<div class="text-center">{include file="public/paging"}</div>
+{include file="public/foot"}
+</div>
+</body>
+</html>

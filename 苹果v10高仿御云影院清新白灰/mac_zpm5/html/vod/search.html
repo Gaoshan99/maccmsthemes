@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>搜索{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}-{$maccms.site_name}-国内领先的在线视频网站·免VIP在线观看无广告高清视频</title>
+<meta name="keywords" content="{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}-{$maccms.site_name},免费在线电影,{$maccms.site_name},视频网站,免VIP,免广告,高清,高清视频,高清视频观看,VIP会员,在线观看,电影,电视剧,综艺,最新电影,最新电视剧" />
+<meta name="description" content="{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}-{$maccms.site_name},{$maccms.site_name}-国内领先的在线视频网站·平台用户可享受免VIP在线观看无广告高清视频,我们致力打造最优秀的最新影视,最新电视剧,最新综艺节目在线观看服务平台" />
+{include file="public/include"}
+</head>
+<body>
+<div class="movie-wrap">
+{include file="public/head"}
+<div class="header_bg"></div>
+<div class="container" style="margin-top:-100px;">
+<div class="container-inner">
+<div class="filtrate">
+<div class="filtrate-container-heads">
+<h2 class="fl">搜索<strong>{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}</strong></h2>
+<div class="fch2">
+{maccms:vod num="5" paging="yes" pageurl="vod/search" order="desc" by="time"}{/maccms:vod}
+<div class="fch2-btn upage fr">
+{if condition="$__PAGING__.page_current==1"}
+<a class="fch2-left-btn active-style9"></a>
+{else /}
+<a href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_prev}" class="fch2-left-btn active-style9"></a>
+{/if}
+{if condition="$__PAGING__.page_current==$__PAGING__.page_total"}
+<a class="fch2-right-btn active-style9"></a>
+{else /}
+<a href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_next}" class="fch2-right-btn active-style9"></a>
+{/if}
+</div>
+<div class="fch2-num fr"><span class="fch2-num-span">{$__PAGING__.page_current}</span>/<span>{$__PAGING__.page_total}</span></div>
+</div>
+<div class="fch3 fr">全部共有<span class="fch2-num-span">{$__PAGING__.record_total}</span>个相关内容</div>
+</div>
+
+<div class="serach-list">
+<ul class="serach-ul">
+{maccms:vod num="5" paging="yes" pageurl="vod/search" order="desc" by="time"}
+<li>
+<a class="list-img" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"><img class="scrollLoading" src="{$maccms.path_tpl}images/pic.png" data-url="{$vo.vod_pic|mac_url_img}" />
+<label class="title">{include file="public/serial1"}</label></a>
+<div class="info" style="width:800px">
+<h2><a target="_blank" href="{:mac_url_vod_detail($vo)}">{$vo.vod_name}</a></h2>
+<p class="actor"><em>导演:</em>{$vo.vod_director|mac_default='未知'}</p>
+<p class="actor clearfix"><em>主演:</em>{$vo.vod_actor|mac_substring=60|mac_default='未知'}</p>
+<p class="mcid aleft"><em>类型:</em>{$vo.vod_class|mac_url_create='class'}</p>
+<p class="dq aright"><em>地区：</em>{$vo.vod_area|mac_default='未知'}</p>
+<p class="plot"><em>剧情:</em>{$vo.vod_content|mac_filter_html|mac_substring=150}</p>
+</div>
+</li>
+{/maccms:vod}
+</ul>
+</div>
+{include file="public/paging"}
+</div>
+{include file="public/foot"}
+<script>
+  if($(".serach-ul").children().length==0){
+     $(".serach-list").html('<div class="kong">抱歉，没有找到相关内容！</div>');
+  }
+</script>
+</body>
+</html>

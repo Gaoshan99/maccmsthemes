@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>{$obj.type_title} - {$maccms.site_name}</title>
+<meta name="keywords" content="{$obj.type_key}" />
+<meta name="description" content="{$obj.type_des}" />
+{include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+
+<div class="main">
+<h1 class="title"><a href="{$maccms.path}" title="伦理片">首页</a>&nbsp;>&nbsp;<a href="{:mac_url_type($obj)}">{$obj.type_name}</a> </h1>
+<!--<div align="center"><script src="{$maccms.path_ads}list1.js"></script></div>-->
+<div class="sy-all mb clearfix">
+<div class="sy-title clearfix">
+<p class="type"><span class="type">{$obj.type_name}</span> 共{$obj.type_id|mac_data_count=all} 部</p>
+<!--<p class="chg sbtn" _s_nav="sj-gjsy">筛选<i class="sjbgs"></i><i class="sjbgx"></i></p>-->
+</div>
+</div>
+<div class="index-area clearfix">
+<ul>
+{maccms:vod num="30" paging="yes" pageurl="vod/show" type="current" order="desc" by="time"}
+<li class="p1 m1 {if condition="$key% 6 eq 0"}mmr0 pmr0{/if}"><a class="link-hover" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"><img src="{:mac_url_img($vo.vod_pic)}" alt="{$vo.vod_name}" onerror="this.src='{$maccms.path_tpl}images/nopic.gif'" class="lazy"><span class="video-bg"></span><span class="lzbz"><p class="name">{$vo.vod_name}</p><p class="actor">{$vo.vod_actor}</p><p class="actor">{$vo.type.type_name}</p><p class="actor">{$vo.vod_year}/{$vo.vod_area}</p></span><p class="other"><i>{$vo.vod_remarks}</i></p></a></li>{/maccms:vod}
+</ul>
+</div>
+<div class="page mb clearfix">{include file="public/paging"}</div>
+<!--<div align="center"><script src="{$maccms.path_ads}list3.js"></script></div>-->
+</div>
+
+
+{include file="public/foot"}
+</body>
+</html>

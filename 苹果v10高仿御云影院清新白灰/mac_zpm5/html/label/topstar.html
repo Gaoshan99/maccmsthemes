@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>人气明星- {$maccms.site_name}</title>
+<meta name="keywords" content="{$maccms.site_keywords}" />
+<meta name="description" content="{$maccms.site_description}" />
+{include file="public/include"}
+</head>
+<body>
+<div class="movie-wrap">
+{include file="public/head"}
+<div class="header_bg"></div>
+<div class="container" style="margin-top:-100px;">
+<div class="container-inner">
+<div class="filtrate">
+<div class="ranking-list">
+<div class="fl movie-headline4">排行榜</div>
+<ul class="fch1 fch6">
+<li> <a href="{:mac_url('label/top')}">榜单</a></li>
+<li><a href="{:mac_url('label/topmov')}">电影榜单</a></li>
+<li><a href="{:mac_url('label/toptv')}">电视榜单</a></li>
+<li><a href="{:mac_url('label/topdm')}">动漫榜单</a></li>
+<li><a href="{:mac_url('label/topzy')}">综艺榜单</a></li>
+<li class="active-style8"><a href="{:mac_url('label/topstar')}">人气明星</a></li>
+</ul>
+</div>
+<ul class="serach-ul">
+{maccms:actor num="10" order="desc" by="hits"}
+<li>
+<a class="list-img" href="{$vo|mac_url_actor_detail}" title="{$vo.actor_name}"><img class="scrollLoading" src="{$maccms.path_tpl}images/pic.png" data-url="{$vo.actor_pic|mac_url_img}" /></a>
+<div class="info" style="width:800px">
+<h2><a target="_blank" href="{$vo|mac_url_actor_detail}">{$vo.actor_name}</a></h2>
+<p class="mcid aleft"><em>别名:</em>{$vo.actor_alias|mac_default='未知'}</p>
+<p class="dq aright"><em>血型:</em>{$vo.actor_blood|mac_default='未知'}</p>
+<p class="mcid aleft"><em>性别:</em>{$vo.actor_sex|mac_default='未知'}</p>
+<p class="dq aright"><em>地区:</em>{$vo.actor_area|mac_default='未知'}</p>
+<p class="mcid aleft"><em>职业:</em>{$vo.actor_remarks|mac_default='演员'}</p>
+<p class="dq aright"><em>身高:</em>{$vo.actor_height|mac_default='未知'}</p>
+<p class="mcid aleft"><em>体重:</em>{$vo.actor_weight|mac_default='未知'}</p>
+<p class="dq aright"><em>星座:</em>{$vo.actor_starsign|mac_default='未知'}</p>
+<p class="plot"><em>简介:</em>{$vo.actor_content|mac_filter_html|mac_substring=150}</p>
+</div>
+<div class="movie-headline9 fl active15">{$key}</div>
+</li>
+{/maccms:actor}
+</ul>
+</div>
+{include file="public/foot"}
+</body>
+</html>

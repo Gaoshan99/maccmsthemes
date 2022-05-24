@@ -1,0 +1,64 @@
+<div class="detail_title">
+	<div class="width1200">
+		<h1><a href="/"></a></h1>
+		<div class="detail_submit">
+			<form id="search" name="search" method="POST" action="{:mac_url('vod/search')}" onSubmit="return qrsearch();">
+				<input type="text" placeholder="请输入搜索关键字"  name="wd" value=""/>
+				<input type="submit" id="searchbutton"value=""/>
+			</form>
+		</div>
+		
+        <div class="link">
+	        <a href="#" class="btn-red" id="J-head-btn-charge"  target="_blank">赚钱联盟</a>
+	        <ul>
+		        <li><a href="#" target="_blank"><img src="{$maccms.path_tpl}images/fb1.png"></a></li>
+		        <li><a href="#" target="_blank"><img src="{$maccms.path_tpl}images/fb2.png"></a></li>
+	        </ul>
+	        <div class="ps_25"></div>
+        </div>
+	 
+   </div>
+  </div>
+<!-- 正文 -->
+<div class="detail">
+	<div class="width1200">
+		<div class="detail_left">
+			<ul>
+				<li>
+				<h3>栏目导航<span></span></h3>
+				<ol class="block">
+					<li class="{if condition="$maccms.aid eq 1"}select{/if}""><a href="/">首页</a><span></span></li>
+					{maccms:type ids="parent" order="asc" mid="1" by="sort"}
+		               <li class="{if condition="($vo.type_id eq MAC_TYPE_ID || $vo.type_id eq MAC_TYPE_PID)"}select{/if}"><a  href="{:mac_url_type($vo)}"title="{$feifei.list_name}">{$vo.type_name}</a><span></span></li>
+		           	{/maccms:type}	
+				</ol>
+				</li>
+			</ul>
+              <div><a href="#" target="_blank">赚钱小游戏</a></div>
+              <div class="div3"><a href="#" target="_blank">友链/广告合作</a></div>
+              <div class="div1"><a href="#" target="_blank">{$maccms.site_email}</a></div>
+			<div>
+			</div>
+			<div class="div1">
+			</div>
+			<div class="div3">
+			</div>
+			<div class="div5">
+			</div>
+			<p style="margin-top:20px;text-align:center;" class="ps_25">
+			</p>
+		</div>
+
+<div class="width1200">
+
+	<div class="detail_right">
+
+<!--横幅广告-->
+<script src="{$maccms.path_ads}dingbuhengfu.js"></script>
+<script src="{$maccms.path_ads}dingbuhengfu1.js"></script>
+<script src="{$maccms.path_ads}dingbuhengfu2.js"></script>
+<script src="{$maccms.path_ads}dingbuhengfu3.js"></script>
+
+</div>
+	</div>
+		

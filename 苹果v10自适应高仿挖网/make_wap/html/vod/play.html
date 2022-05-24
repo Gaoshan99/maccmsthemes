@@ -1,0 +1,163 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta http-equiv="cache-control" content="no-siteapp">
+	
+<script>var maccms={"path":"__ROOT__","mid":"{$maccms['mid']}","url":"{$maccms['site_url']}","wapurl":"{$maccms['site_wapurl']}","mob_status":"{$maccms['mob_status']}"};</script>	
+<link rel='stylesheet' id='main-css'  href='{$maccms.path_tpl}css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='main-css'  href='{$maccms.path_tpl}css/index.css' type='text/css' media='all' />
+<link rel='stylesheet' id='main-css'  href='{$maccms.path_tpl}css/play.css' type='text/css' media='all' />
+	
+<script src="{$maccms.path_tpl}js/jquery.js"></script>
+<script src="{$maccms.path_tpl}js/jquery.lazyload.js"></script>
+<script src="{$maccms.path_tpl}js/jquery.autocomplete.js"></script>
+<script src="{$maccms.path}static/js/jquery.autocomplete.js"></script><!--内置js插件-->
+<script src="{$maccms.path}static/js/home.js"></script><!--内置js插件-->
+	
+	
+<script type='text/javascript' src='{$maccms.path_tpl}js/jquery.min.js?ver=0.5'></script>
+<meta name="keywords" content=">在线播放{$obj.vod_name} {$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']} - 高清资源 - {$maccms.site_name}">
+<meta name="description" content=">在线播放{$obj.vod_name} {$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']} - 高清资源 - {$maccms.site_name}">
+	
+	
+<title>在线播放{$obj.vod_name} {$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']} - 高清资源 - {$maccms.site_name}</title>
+<link rel="Shortcut Icon" href="{$maccms.path_tpl}/template/qwysmb-html/images/favicon.png">
+<link rel="Bookmark" href="{$maccms.path_tpl}/template/qwysmb-html/images/favicon.png">
+<!--[if lt IE 9]><script src="js/html5.js"></script><![endif]-->
+<style>
+.w-newfigure{list-style:none; float:left;}
+.list{ margin-left:-40px;}
+	
+@media screen and (min-width:1200px){
+	.bofangdiv{height: 540px;}
+	}
+	
+	 ul, li, h2 {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+</style>
+</head>
+<body class="page-template page-template-pages page-template-posts-play page-template-pagesposts-play-php page page-id-16">
+
+	{include file="public/head"}
+<div class="header_end"></div> 
+<div class="single-post">
+<section class="container">
+    <div class="content-wrap">
+    	<div class="content">
+<div id="bof">
+<script type="text/javascript" language="javascript" src="js/all-top.js"></script>
+<div class="sptitle"><h2 class="single-strong">{$obj.vod_name} {$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}</h2></div>
+<div class="bofangdiv">
+  
+	{$player_data}
+        {$player_js}
+
+</div>
+<p style="background-color: #1db69a;color: #FFFFFF;padding-top: 0.4rem; padding-left: 0.75rem; padding-right: 0.75rem;margin:0; font-size: .7rem; font-size: 14px;padding-bottom: 0.35rem;text-align:center;">如等待10秒以上播放器还没出现请从新点击播放或者刷新即可观看</p>
+</div>
+<div class="am-cf"></div>
+<div class="am-panel am-panel-default">
+<div class="am-panel-bd">
+<script type="text/javascript">
+function xldata(urls){
+	var videourls = document.getElementById('video');
+	var xlqieh = document.getElementById('videourlgo');
+	videourls.src = urls+xlqieh.href;
+}
+</script>
+      	<div class="juji">
+			
+		<ul class="juji-hd">
+			{maccms:foreach name="obj.vod_play_list" id="vo"}
+			<li {if condition="($param.sid==$key)"}class="active"{else /}{/if} >{$vo.player_info.show}</li>
+			{/maccms:foreach}
+		</ul>
+			
+			
+		<ul class="juji-bd">
+			{maccms:foreach name="obj.vod_play_list" id="vo"}
+		 <li {if condition="($param.sid==$key)"} style="display: list-item;"{/if} >
+			   {maccms:foreach name="vo.urls" id="vo2"}
+		   <a href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}" target="_self" class="am-btn am-btn-default lipbtn">{$vo2.name}</a>
+			   {/maccms:foreach}
+			</li>
+			{/maccms:foreach}
+			</ul>
+		
+	</div>
+<div style="clear: both;"></div>
+<p class="jianjie"><h3 class="single-strong">简介</h3><p class="item-desc js-close-wrap" ><span style="font-size:12px"> {$obj.vod_content}
+	</span></p>
+<div style="clear: both;"></div> 
+<div id="xuji"></div>
+<div class="video-list view-font">
+<div class="dianshijua" id="dianshijuid">
+</div>
+ </div>
+</div>
+</div>
+<br/>
+			
+<div class="article-actions clearfix">
+ <div class="shares">
+        <strong>分享到：</strong>
+        <a href="javascript:;" data-url="{$maccms.site_url}{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}" class="share-weixin" title="分享到微信"><i class="fa"></i></a><a target="_blank" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={$maccms.site_url}{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}&title={$obj.vod_name}&desc={$maccms.site_keywords}" class="share-qzone" title="分享到QQ空间"><i class="fa"></i></a><a target="_blank" href="http://service.weibo.com/share/share.php?title={$obj.vod_name}&url={$maccms.site_url}{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}&source=bookmark&pic={:mac_url_img($obj.vod_pic)}" class="share-tsina" title="分享到新浪微博"><i class="fa"></i></a><a target="_blank" href="http://share.v.t.qq.com/index.php?c=share&a=index&url={$maccms.site_url}{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}&title={$obj.vod_name}"  class="share-tqq" title="分享到腾讯微博"><i class="fa"></i></a><a target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url={$maccms.site_url}{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}&desc={$maccms.site_keywords}&summary={$obj.vod_name}&site=zeshlife&pics={:mac_url_img($obj.vod_pic)}
+" class="share-sqq" title="分享到QQ好友"><i class="fa"></i></a><a target="_blank" href="http://widget.renren.com/dialog/share?srcUrl={:mac_url_img($obj.vod_pic)}&resourceUrl={$maccms.site_url}{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}&title={$obj.vod_name}&description={$maccms.site_keywords}" class="share-renren" title="分享到人人网"><i class="fa"></i></a><a target="_blank" href="http://www.douban.com/share/service?image={:mac_url_img($obj.vod_pic)}&href={$maccms.site_url}{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}&name={$obj.vod_name}&text={$maccms.site_keywords}" class="share-douban" title="分享到豆瓣网"><i class="fa"></i></a>
+    </div>   
+ <a href="javascript:;" class="action-rewards" etap="rewards">打赏</a>
+    </div> 
+</div>
+    	</div>
+<div class="sidebar">
+<div class="widget widget-textasst">
+	<a class="style01" href="http://wpa.qq.com/msgrd?v=3&uin=776774592&site=qq&menu=yes" target="_blank">
+		<strong>热度</strong><h2><em id="hits">{$obj.vod_hits}</em></h2><p></p></a>
+	</div>
+<div class="widget widget-textasst"><a class="style02" href="" target="_blank"><strong>关注微信</strong><div class="article-wechats"> </br> <img src="{$maccms.path_tpl}images/qrcode.png"></div> </a></div>
+<div class="widget widget-textasst"></div></div>
+</section>
+</div>
+
+	
+	{include file="public/foot"}
+
+	
+<script type='text/javascript' src='{$maccms.path_tpl}js/main.js'></script>
+<!--<script type="text/javascript"> document.body.oncontextmenu=document.body.ondragstart= document.body.onselectstart=document.body.onbeforecopy=function(){return false;};
+document.body.onselect=document.body.oncopy=document.body.onmouseup=function(){document.selection.empty();}; </script>-->
+
+<div class="rewards-popover-mask" etap="rewards-close"></div>
+	<div class="rewards-popover">
+		<h3>觉得本站还不错就打赏一下吧！</h3>
+				<div class="rewards-popover-item">
+			<h4>支付宝扫一扫打赏</h4>
+			<img src="images/zfb.png">
+		</div>
+						<div class="rewards-popover-item">
+			<h4>微信扫一扫打赏</h4>
+			<img src="{$maccms.path_tpl}images/wx.png">
+		</div>
+				<span class="rewards-popover-close" etap="rewards-close"></span>
+	</div> 
+<script type="text/javascript">
+$(function(){
+    function jujis(jujiTit,on,jujiCon){
+        $(jujiTit).children().hover(function(){
+            $(this).addClass(on).siblings().removeClass(on);
+            var index = $(jujiTit).children().index(this);
+           	$(jujiCon).children().eq(index).show().siblings().hide();
+    	});
+	};
+    jujis(".juji-hd","active",".juji-bd");
+});
+</script>
+</body>
+</html>

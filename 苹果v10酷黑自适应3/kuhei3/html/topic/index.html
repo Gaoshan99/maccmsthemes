@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{include file="seo/topic_index" }   
+		{include file="block/include" }
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="stui-pannel clearfix">
+					<div class="stui-pannel-box">
+						<div class="stui-pannel__hd">
+		        			{include file="block/head"}
+		        		</div>
+						<div class="stui-pannel_bd">
+							<ul class="stui-vodlist clearfix">							
+								{maccms:topic num="16" paging="yes" order="desc" by="time"}
+								<li class="topic">
+									<div class="stui-vodlist__box">
+										<a class="stui-vodlist__thumb active lazyload" href="{:mac_url_topic_detail($vo)}" title="{$vo.topic_name}" data-original="{$vo.topic_pic}" style=" padding-top: 50%;" >				<span class="pic-text text-right">{$vo.topic_rel_vod|explode=',',###|count}个影片</span>		
+											<span class="play hidden-xs"></span>								
+										</a>
+										<div class="stui-vodlist__detail">
+											<h4 class="title text-center text-overflow"><a href="{:mac_url_topic_detail($vo)}" title="{$vo.topic_name}">{$vo.topic_name}</a></h4>
+										</div>												
+									</div>												
+								</li>
+								 {/maccms:topic}
+							</ul>	
+						</div>
+					</div>					
+				</div>						
+				{include file="block/page"}
+			</div>
+		</div>
+		{include file="block/page_all"}
+		{include file="block/foot"}
+	</body>
+</html>

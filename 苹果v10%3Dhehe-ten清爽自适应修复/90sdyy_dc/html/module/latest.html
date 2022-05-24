@@ -1,0 +1,28 @@
+<div class="fed-part-layout fed-back-whits">
+<div class="fed-list-head fed-part-rows fed-padding">
+<h2 class="fed-font-xvi">最近更新</h2>
+<ul class="fed-part-tips fed-padding">
+<li>今日更新 <span class="fed-text-green">{:mac_data_count($obj.type_id,'today','vod')}</span> 部  共 <span class="fed-text-green">{:mac_data_count($obj.type_id,'all','vod')} </span>部</li>
+<li><a class="fed-more" href="{:mac_url('map/index')}">更多</a></li>
+</ul>
+</div>
+{if$maccms.aid==1}
+<div class="fed-padding fed-col-sx12 fed-col-md5">
+{include file="module/leadup"}
+</div>
+{/if}
+<div class="fed-col-sx12{if$maccms.aid==1} fed-col-md7{/if}">
+<ul class="fed-list-info fed-part-rows">
+{maccms:vod num="8" type="current" order="desc" by="time"}
+<li class="fed-list-item fed-padding fed-col-xs4 fed-col-sm3{if$maccms.aid==1} fed-col-md3{if$key>4} fed-hide-sm{/if}{if$key>6} fed-hide-xs{/if}{else} fed-col-md2{if$key>6} fed-hide-xs fed-show-sm-block fed-hide-md{/if}{/if}">
+{include file="module/listing"}
+</li>
+{/maccms:vod}
+</ul>
+</div>
+<ul class="fed-list-text fed-part-rows fed-part-both fed-hide-xs fed-show-sm-block">
+{maccms:vod num="12" type="current" order="desc" by="time" start="9"}
+{include file="module/titles"}
+{/maccms:vod}
+</ul>
+</div>

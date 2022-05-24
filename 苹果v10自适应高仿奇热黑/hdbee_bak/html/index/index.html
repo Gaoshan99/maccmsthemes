@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<title>{$maccms.site_name}-最新电视剧,最新电影,电视剧大全,电视剧排行榜,最新好看的综艺</title>
+<meta name="keywords" content="{$maccms.site_keywords}"/>
+<meta name="description" content="{$maccms.site_description}"/>
+<link rel="canonical" href="http://{$maccms.site_url}"/>
+<link rel="icon" href="{$maccms.path_tpl}cropped-dybee-32x32.png" sizes="32x32"/>
+<link rel="icon" href="{$maccms.path_tpl}cropped-dybee-192x192.png" sizes="192x192"/>
+<link rel="apple-touch-icon-precomposed" href="{$maccms.path_tpl}images/cropped-dybee-180x180.png"/>
+<meta name="msapplication-TileImage" content="{$maccms.path_tpl}images/cropped-dybee-270x270.png"/>
+{include file="public/include"}
+</head>
+<body class="home blog" id="body-header-top" data-js="bottom">
+<div class="body_rgba">
+</div>
+{include file="public/head"}
+<div class="carousel-wrap">
+<!-------------------------------------幻灯开始---------------------------------------------->
+	<div class="wrappter">
+		<div class="wrp_left">
+			<ul class="bxslider tow_slider">
+{maccms:vod num="3" paging="no" type="all" level="9" order="asc" by="sort"}
+<li><a target="_blank" href="{:mac_url_vod_detail($vo)}"><img src="{:mac_url_img($vo.vod_pic_slide)}" alt="{$vo.vod_name}" width="100%"/></a></li>
+{/maccms:vod}
+
+			</ul>
+		</div>
+		<div class="wrp_right">
+			<ul>
+{maccms:vod num="2" paging="no"  type="all" level="1" order="asc" by="sort"}			
+				<li><a target="_blank" href="{:mac_url_vod_detail($vo)}"><img src="{:mac_url_img($vo.vod_pic_slide)}" alt="{$vo.vod_name}迅雷下载" width="100%"/>
+				<div class="cx_title">
+					<span>站内精选</span>
+					<p>
+						{$vo.vod_name}
+					</p>
+				</div>
+				</a></li>
+{/maccms:vod}				
+				
+			</ul>
+		</div>
+	</div>
+	<div class="kz_indexcms_sidebar">
+		<li id="text-3" class="widget widget_text">
+		<div class="textwidget">
+			<p>
+				<i class="fa fa-forumbee"></i> ： 加入{$maccms.site_name}交流群与大家分享观影心得：<a href="https://jq.qq.com/?_wv=1027&k=5annj09" target="_blank" rel="nofollow"><img title="{$maccms.site_name}-影迷交流群" src="http://pub.idqqimg.com/wpa/images/group.png" alt="{$maccms.site_name}-影迷交流群" border="0" rel="nofollow"/></a>    <i class="fa fa-forumbee"></i> ：长时间无法播放请更换播放器，本站支持多种解析播放！
+			</p>
+		</div>
+		</li>
+<!-------------------------------------幻灯结束---------------------------------------------->
+
+<script id="w2898_5211">(function () {var zy = document.createElement("script");var flowExchange = window.location.protocol.split(":")[0];var http = flowExchange === "https"?"https":"http";zy.src = http+"://exchange.2898.com/index/flowexchange/getGoods?id=5211&sign=a8313d5cd17c8738736fc693af1df121";var s = document.getElementsByTagName("script");for(var i=0;i< s.length;i++){if(s[i].id){if(s[i].id == "w2898_5211"){s[i].parentNode.insertBefore(zy, s[i]);continue;}}}})();</script>
+<!-------------------------------------本站热播---------------------------------------------->
+		<div class="recent-article cl">
+			<div class="mod-tit">
+				<span class="tit"><a target="_blank">本站热播/<span class="zm">POSTTOP</span></a></span>
+			</div>
+			<ul class="update_area_lists cl">
+				{maccms:vod num="6" type="all" order="desc" by="host"}
+				<li class="i_list list_n2"><a target="_blank" class="user_list_kz" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"><img class="waitpic" src="{$maccms.path_tpl}images/thumb_1.png" data-original="{:mac_url_img($vo.vod_pic)}" width="270" height="370" alt="{$vo.vod_name}"><span style="background-color:rgba(243,152,0,0.85)" class="pay">高清</span><span class="dbpf">{$vo.vod_score}</span></a>
+				<div class="user_list_kz_meta">
+					<h2>{$vo.vod_name}</h2>
+					<div class="otherinfo">
+						类型：
+	{maccms:foreach name=":explode(',',$vo.vod_class)" id="vo2" key="key2"}
+    <a  href="{:mac_url_type($vo,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$vo2,'order'=>$param['order'],'by'=>$param['by'],'id'=>$param['type_id'] ],'show')}">{$vo2}</a>
+    {/maccms:foreach}
+					</div>
+				</div>
+				</li>
+			{/maccms:vod}	
+			</ul>
+		</div>
+<!-------------------------------------最新电影---------------------------------------------->
+		<div class="recent-article cl">
+			<div class="mod-tit">
+				<span class="tit"><a target="_blank">最新电影/<span class="zm">NewMovie</span></a></span>
+			</div>
+			<ul class="update_area_lists cl">
+				{maccms:vod num="6" type="1" order="desc" by="time"}
+				<li class="i_list list_n2"><a target="_blank" class="user_list_kz" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"><img class="waitpic" src="{$maccms.path_tpl}images/thumb_1.png" data-original="{:mac_url_img($vo.vod_pic)}" width="270" height="370" alt="{$vo.vod_name}"><span style="background-color:rgba(243,152,0,0.85)" class="pay">高清</span><span class="dbpf">{$vo.vod_score}</span></a>
+				<div class="user_list_kz_meta">
+					<h2>{$vo.vod_name}</h2>
+					<div class="otherinfo">
+						类型：
+		{maccms:foreach name=":explode(',',$vo.vod_class)" id="vo2" key="key2"}
+    <a  href="{:mac_url_type($vo,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$vo2,'order'=>$param['order'],'by'=>$param['by'],'id'=>$param['type_id'] ],'show')}">{$vo2}</a>
+    {/maccms:foreach}					
+					</div>
+				</div>
+				</li>
+			{/maccms:vod}	
+				
+			</ul>
+		</div>	
+<!-------------------------------------最新电视---------------------------------------------->
+		<div class="recent-article cl">
+			<div class="mod-tit">
+				<span class="tit"><a target="_blank">最新电视/<span class="zm">NewTv</span></a></span>
+			</div>
+			<ul class="update_area_lists cl">
+				{maccms:vod num="6" type="2" order="desc" by="time"}
+				<li class="i_list list_n2"><a target="_blank" class="user_list_kz" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"><img class="waitpic" src="{$maccms.path_tpl}images/thumb_1.png" data-original="{:mac_url_img($vo.vod_pic)}" width="270" height="370" alt="{$vo.vod_name}"><span style="background-color:rgba(243,152,0,0.85)" class="pay">高清</span><span class="dbpf">{$vo.vod_score}</span></a>
+				<div class="user_list_kz_meta">
+					<h2>{$vo.vod_name}</h2>
+					<div class="otherinfo">
+						类型：
+	{maccms:foreach name=":explode(',',$vo.vod_class)" id="vo2" key="key2"}
+    <a  href="{:mac_url_type($vo,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$vo2,'order'=>$param['order'],'by'=>$param['by'],'id'=>$param['type_id'] ],'show')}">{$vo2}</a>
+    {/maccms:foreach}						
+					</div>
+				</div>
+				</li>
+			{/maccms:vod}	
+				
+			</ul>
+		</div>
+<!-------------------------------------最新综艺---------------------------------------------->
+		<div class="recent-article cl">
+			<div class="mod-tit">
+				<span class="tit"><a target="_blank">最新综艺/<span class="zm">NewVariety</span></a></span>
+			</div>
+			<ul class="update_area_lists cl">
+				{maccms:vod num="6" type="3" order="desc" by="time"}
+				<li class="i_list list_n2"><a target="_blank" class="user_list_kz" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"><img class="waitpic" src="{$maccms.path_tpl}images/thumb_1.png" data-original="{:mac_url_img($vo.vod_pic)}" width="270" height="370" alt="{$vo.vod_name}"><span style="background-color:rgba(243,152,0,0.85)" class="pay">高清</span><span class="dbpf">{$vo.vod_score}</span></a>
+				<div class="user_list_kz_meta">
+					<h2>{$vo.vod_name}</h2>
+					<div class="otherinfo">
+						类型：
+	{maccms:foreach name=":explode(',',$vo.vod_class)" id="vo2" key="key2"}
+    <a  href="{:mac_url_type($vo,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$vo2,'order'=>$param['order'],'by'=>$param['by'],'id'=>$param['type_id'] ],'show')}">{$vo2}</a>
+    {/maccms:foreach}						
+					</div>
+				</div>
+				</li>
+			{/maccms:vod}	
+				
+			</ul>
+		</div>
+<!-------------------------------------热门推荐---------------------------------------------->
+		<div class="recent-article cl">
+			<div class="mod-tit">
+				<span class="tit"><a target="_blank">最新动漫/<span class="zm">NewCartoon</span></a></span>
+			</div>
+			<ul class="update_area_lists cl">
+				{maccms:vod num="6" type="4" order="desc" by="time"}
+				<li class="i_list list_n2"><a target="_blank" class="user_list_kz" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"><img class="waitpic" src="{$maccms.path_tpl}images/thumb_1.png" data-original="{:mac_url_img($vo.vod_pic)}" width="270" height="370" alt="{$vo.vod_name}"><span style="background-color:rgba(243,152,0,0.85)" class="pay">高清</span><span class="dbpf">{$vo.vod_score}</span></a>
+				<div class="user_list_kz_meta">
+					<h2>{$vo.vod_name}</h2>
+					<div class="otherinfo">
+						类型：
+	{maccms:foreach name=":explode(',',$vo.vod_class)" id="vo2" key="key2"}
+    <a  href="{:mac_url_type($vo,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$vo2,'order'=>$param['order'],'by'=>$param['by'],'id'=>$param['type_id'] ],'show')}">{$vo2}</a>
+    {/maccms:foreach}						
+					</div>
+				</div>
+				</li>
+			{/maccms:vod}	
+				
+			</ul>
+		</div>
+	</div>
+</div>
+{include file="public/foot"}
+</div>
+<script type='text/javascript' src='{$maccms.path_tpl}js/script.js?ver=1.5'></script>
+</body>
+</html>	

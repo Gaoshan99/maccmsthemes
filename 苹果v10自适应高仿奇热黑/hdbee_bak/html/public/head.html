@@ -1,0 +1,130 @@
+{php}
+preg_match('|label/(.*?)\.html|',$_SERVER['PHP_SELF'],$ary);
+{/php}
+<div class="index_header">
+	<div class="header_inner">
+		<div class="logo">
+			<a href="http://{$maccms.site_url}"><img src="{$maccms.path_tpl}images/logo.png" alt="{$maccms.site_name}"/></a>
+		</div>
+		<div class="header_menu">
+			<ul>
+		<li id="menu-item-7095" {if condition="$maccms.aid == 1"} class="current-post-ancestor"{/if}><a href="{$maccms.path}">影院首页</a></li>
+        {maccms:type ids="1" order="asc" by="sort"}
+        <li id="menu-item-10"{if condition="($vo.type_id eq MAC_TYPE_ID || $vo.type_id eq MAC_TYPE_PID)"} class="current-post-ancestor" {/if}><a href="{:mac_url_type($vo)}">{$vo.type_name}</a>
+        {/maccms:type}
+		<ul class="sub-menu">
+
+        {maccms:type  parent="1" order="asc" by="sort"}
+        <li id="menu-item-51456"><a href="{:mac_url_type($vo)}">{$vo.type_name}</a></li>
+        {/maccms:type}
+		</ul>
+		</li>
+
+        {maccms:type ids="2" order="asc" by="sort"}
+        <li id="menu-item-10"{if condition="($vo.type_id eq MAC_TYPE_ID || $vo.type_id eq MAC_TYPE_PID)"} class="current-post-ancestor" {/if}><a href="{:mac_url_type($vo)}">{$vo.type_name}</a>
+        {/maccms:type}
+
+		<ul class="sub-menu">
+        {maccms:type  parent="2" order="asc" by="sort"}
+        <li id="menu-item-51456"><a href="{:mac_url_type($vo)}">{$vo.type_name}</a></li>
+        {/maccms:type}
+		</ul>
+		</li>
+		<li class="nav-item mac_user"></li>
+		<li id="menu-item-14430" {if condition="$maccms.aid == 4"} class="current-post-ancestor"{/if}><a href="{:mac_url('gbook/index')}">留言求片</a></li>
+		<li id="menu-item-15632" {if $ary.1 == "new"} class="current-post-ancestor"{/if}><a href="{:mac_url('label/new')}">最近更新</a></li>
+        {maccms:type ids="20" order="asc" by="sort"}
+        <li id="menu-item-10"{if condition="($vo.type_id eq MAC_TYPE_ID || $vo.type_id eq MAC_TYPE_PID)"} class="current-post-ancestor" {/if}><a href="{:mac_url_type($vo)}">{$vo.type_name}</a>
+        {/maccms:type}
+		<li id="menu-item-52696" {if $ary.1 == "vip"} class="current-post-ancestor"{/if}><a href="{:mac_url('label/vip')}">全网vip解析</a></li>
+        			</ul>
+		</div>
+
+{if $user.group_id=="1"}
+		<div class="login_text pc">
+			<a class="rlogin reg_hre_btn" href="{:mac_url('user/reg')}">注册</a>
+			<a class="rlogin login_hre_btn logint" href="{:mac_url('user/login')}">登录</a>
+		</div>
+{else/}
+ <div class="login_text pc"> 
+     <a class="rlogin reg_hre_btn" href="javascript:;" onclick="return false"><i class="vip_icon"><img src="{$maccms.path_tpl}images/vip_no.svg" alt="非会员" width="128" height="128" /></i>{$user.user_name} <i class="iconfont"></i></a>
+     <div class="nav_user"> 
+      <span class="nav_user_jb"> <i class="iconfont"></i> </span>
+      <div class="user-id-wrap">
+       <div class="avatar-wrap"> 
+        <img src="{$maccms.path_tpl}images/vip_no.svg" class="avatar" width="100" height="100" />
+       </div>
+       <div class="opearation-info">
+        <p><i class="iconfont" style="margin-right: 3px"></i>{$user.user_name}</p>
+        <p>编号：<span class="baotu-id">{$user.user_id}</span></p>
+       </div>
+      </div>
+      {if $user.group_id!="3"}
+      <div class="header_vip_div"> 
+       <i class="vip_icon"><img src="{$maccms.path_tpl}images/vip-three.svg" alt="年费会员" width="128" height="128" /></i>
+       <p>您还不是VIP会员用户！</p>
+       <p> <a href="{:mac_url('user/upgrade')}">开通VIP会员</a></p>
+      </div>
+      {/if}
+      <ul class="header_usermenu cl">
+  
+       <li><a href="{:mac_url('user/favs')}"><i class="iconfont"></i>我的收藏</a></li>
+       <li><a href="{:mac_url('user/info')}"><i class="iconfont"></i>修改资料</a></li>
+       <li><a href="{:mac_url('user/cards')}"><i class="iconfont"></i>我的订单</a></li>
+      </ul>
+      <div class="header_user_tab"> 
+       <a href="{:mac_url('user/index')}" title="我的主页"><i class="iconfont"></i></a> 
+       <a href="{:mac_url('user/info')}" title="个人资料"><i class="iconfont"></i></a> 
+       <a href="{:url('user/logout')}" title="退出帐号"><i class="iconfont"></i></a>
+      </div>
+     </div>
+    </div>
+
+{/if}
+
+
+		<div class="login_text mobie">
+			<a href="javascript:;" class="slide-menu"><i class="fa fa-list-ul"></i></a>
+		</div>
+		<div class="header_search_bar">
+			<form id="search" name="search" method="POST" action="{:mac_url('vod/search')}" onSubmit="return qrsearch();">
+				<button class="search_bar_btn" type="submit"><i class="fa fa-search"></i></button><input class="search_bar_input" type="text" name="wd" placeholder="电影名称/明星/导演/年份">
+			</form>
+		</div>
+	</div>
+</div>
+<div class="slide-mask">
+</div>
+<nav class="slide-wrapper">
+{if $user.group_id=="1"}
+<div class="header-info">
+	<div class="header-logo">
+		<a href="{:mac_url('user/login')}"><img src="{$maccms.path_tpl}images/avatar.jpg" alt="默认头像"/></a>
+	</div>
+	<div class="header-info-content">
+		<a href="{:mac_url('user/login')}">登 陆</a>
+	</div>
+</div>
+{else/}
+<div class="header-info">
+	<div class="header-logo">
+		<a href="{:mac_url('user/index')}"><img src="{$maccms.path_tpl}images/avatar.jpg" alt="默认头像"/></a>
+	</div>
+	<div class="header-info-content">
+		<a href="{:mac_url('user/index')}">管 理</a>
+	</div>
+</div>
+{/if}
+<ul class="menu_slide" nav-data="nav_273609">
+	<li id="menu-item-14415"><a href="{$maccms.path}">首页</a></li>
+        {maccms:type ids="1,2,3,4" order="asc" by="sort"}
+        <li id="menu-item-14417" class="current-post-ancestor"><a href="{:mac_url_type($vo)}">{$vo.type_name}</a>
+        {/maccms:type}
+
+
+
+		<li id="menu-item-14430"><a href="{:mac_url('gbook/index')}">留言求片</a></li>
+		<li id="menu-item-15632"><a href="{:mac_url('label/new')}">最近更新</a></li>
+		<li id="menu-item-52696"><a href="{:mac_url('label/vip')}">全网vip解析</a></li>
+</ul>
+</nav>

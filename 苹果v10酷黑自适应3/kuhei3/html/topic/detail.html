@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{include file="seo/topic_detail"}   
+		{include file="block/include"}
+	</head>
+	<body>
+		<div class="container">
+	        <div class="row">
+	        	<div class="stui-pannel">
+	        		<div class="stui-pannel__hd">
+	        			{include file="block/head"}
+	        		</div>
+	        		<div class="stui-pannel__bd clearfix">
+	        			<div class="stui-content">
+							<div class="stui-content__thumb">											
+								<a class="pic" href="{$obj.vod_playlink}" title="{$obj.vod_name}" style="width: 500px;">
+									<img class="lazyload" data-original="{:mac_url_img($obj.topic_pic)}" src="{$maccms.path_tpl}statics/img/load_w.gif" />
+								</a>												
+							</div>
+							<div class="stui-content__detail">
+								<h1 class="title">{$obj.topic_name}</h1>	
+								<p class="desc detail">
+									<span class="left">简介：</span>
+									<span class="detail-sketch">{$obj.topic_content|mac_filter_html|mac_substring=150}</span>
+									<span class="detail-content" style="display: none;">{$obj.topic_content|mac_filter_html|}</span>
+									<a class="detail-more" href="javascript:;">详情 <i class="icon iconfont icon-moreunfold"></i></a>
+								</p>							    
+							</div>								
+						</div>
+						<div class="stui-vodlist__head">						
+							<h3>该专题收录的影片</h3>						
+						</div>
+	        			<ul class="stui-vodlist clearfix">
+							{maccms:foreach name="$obj.vod_list"}
+							<li>
+								{include file="block/vod_box"}											
+							</li>
+							{/maccms:foreach}
+						</ul>   			
+	        		</div>
+	        	</div>
+	        </div>
+	    </div>
+		{include file="block/foot"}
+	</body>
+</html>

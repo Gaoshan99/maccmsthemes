@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+	<title>播放记录 - 会员中心 -{$maccms.site_name}</title>
+	<meta name="keywords" content="{$maccms.site_keywords}"/>
+	<meta name="description" content="{$maccms.site_description}"/>
+	{include file="block/include"}
+	{include file="user/include" /}
+</head>
+<body>
+{include file="block/head" /}
+<div class="container">
+    <div class="row"> 
+    	<div class="col-md-wide-25 col-sm-wide-1 col-xs-1 padding-0 hidden-sm hidden-xs">
+    		{include file="user/head" /}					
+    	</div>
+    	<div class="col-md-wide-75 col-sm-wide-1 col-xs-1 stui-pannel-side">
+    		<div class="stui-pannel stui-pannel-bg clearfix">
+				<div class="stui-pannel-box clearfix">
+					<div class="stui-pannel_bd clearfix">
+						<div class="stui-pannel_hd">
+							<div class="stui-pannel__head active bottom-line clearfix">
+								<a class="more text-red pull-right" href="javascript:;" id="btnClear">清空记录</a>
+								<h3 class="title">
+									<img src="{$maccms.path_tpl}statics/icon/icon_30.png"/>
+									播放记录
+								</h3>
+							</div>																		
+						</div>
+						<div class="stui-pannel_bd clearfix">
+							 <form id="form1" name="form1" method="post">
+							 	<ul class="stui-vodlist clearfix">
+									{volist name="list" id="vo"}
+									<li class="col-md-5 col-sm-4 col-xs-3">
+										<div class="stui-vodlist__box">
+											<a class="stui-vodlist__thumb lazyload" href="{$vo.data.link}" title="{$vo.data.name}" data-original="{$vo.data.pic}">						
+												<span class="play hidden-xs"></span>		
+												<span class="pic-text text-right">{$vo.data.type.type_name}</span>
+											</a>									
+											<div class="stui-vodlist__detail">
+												<h4 class="title text-overflow"><a href="{$vo.data.link}" title="{$vo.data.name}">{$vo.data.name}</a></h4>
+												<p class="text text-overflow text-muted">
+													<a class="text-red pull-right" href="javascript:;" onclick="delData({$vo.ulog_id},0)" class="delete">删除</a>
+													{if condition="$vo.ulog_points eq 0"}免积分{else}-{$vo.ulog_points}积分{/if}
+												</p>
+											</div>												
+										</div>													
+									</li>
+				  					{/volist}									
+								</ul>								
+							</form>																						
+						</div>		
+					</div>
+				</div>
+			</div>
+			{include file="block/page"}<!-- 翻页-->	
+    	</div>
+    </div>
+</div>
+<script>
+	function delData(ids,all){
+		var msg ='删除';
+		if(all==1){
+			msg='清空';
+		}
+		if(confirm('确定要'+msg+'记录吗')){
+			$.post("{:url('user/ulog_del')}",{ids:ids,type:4,all:all},function(data) {
+				if (data.code == '1') {
+					alert('删除成功');
+					location.reload();
+				}else {
+					alert('删除失败：' + data.msg);
+				}
+			}, 'json')
+		}
+	}
+	$("#btnClear").click(function(){
+		delData('',1);
+	});
+	$("#btnDel").click(function(){
+		var ids = MAC.CheckBox.Ids('ids[]');
+		if(ids==''){
+			alert("请至少选择一个数据");
+			return;
+		}
+		delData(ids,0);
+	});
+</script>
+{include file="block/foot" /}
+</body>
+</html>

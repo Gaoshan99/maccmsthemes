@@ -1,0 +1,233 @@
+<div class="channel-slide">
+<div class="slide-ul">
+<ul>
+<li>
+{maccms:vod num="4" type="current" order="desc" by="hits_week"}
+<div class="sliderdiv">
+<a class="slide-img" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" target="_blank"><img class="scrollLoading" src="{$maccms.path_tpl}images/pic.png" data-url="{$vo.vod_pic|mac_url_img}" alt="{$vo.vod_name}" />
+<label class="texts">{include file="public/serial1"}</label>
+<label class="text">{$vo.vod_name}</label>
+</a>
+<div class="info">
+<h2><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" target="_blank">{$vo.vod_name}</a></h2>
+<p>类型：{$vo.vod_class|mac_url_create='class'}</P>
+<p>主演：{$vo.vod_actor}</P>
+</div>
+</div>
+{/maccms:vod}
+</li>
+<li>
+{maccms:vod num="4" start="5" type="current" order="desc" by="hits_week"}
+<div class="sliderdiv">
+<a class="slide-img" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" target="_blank"><img class="scrollLoading" src="{$maccms.path_tpl}images/pic.png" data-url="{$vo.vod_pic|mac_url_img}" alt="{$vo.vod_name}" />
+<label class="texts">{include file="public/serial1"}</label>
+<label class="text">{$vo.vod_name}</label>
+</a>
+<div class="info">
+<h2><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" target="_blank">{$vo.vod_name}</a></h2>
+<p>类型：{$vo.vod_class|mac_url_create='class'}</P>
+<p>主演：{$vo.vod_actor}</P>
+</div>
+</div>
+{/maccms:vod}
+</li>
+<li>
+{maccms:vod num="4" start="9" type="current" order="desc" by="hits_week"}
+<div class="sliderdiv">
+<a class="slide-img" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" target="_blank"><img class="scrollLoading" src="{$maccms.path_tpl}images/pic.png" data-url="{$vo.vod_pic|mac_url_img}" alt="{$vo.vod_name}" />
+<label class="texts">{include file="public/serial1"}</label>
+<label class="text">{$vo.vod_name}</label>
+</a>
+<div class="info">
+<h2><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" target="_blank">{$vo.vod_name}</a></h2>
+<p>类型：{$vo.vod_class|mac_url_create='class'}</P>
+<p>主演：{$vo.vod_actor}</P>
+</div>
+</div>
+{/maccms:vod}
+</li>
+</ul>
+</div>
+<div class="page">
+<ul>
+</ul>
+</div>
+<div class="pnBtn prev"> <span class="blackBg"></span> <a class="arrow" href="javascript:void(0)" rel="nofollow"></a> </div>
+<div class="pnBtn next"> <span class="blackBg"></span> <a class="arrow" href="javascript:void(0)" rel="nofollow"></a> </div>
+</div>
+<script type="text/javascript">
+jQuery(".slide-ul li").first().before( jQuery(".slide-ul li").last() );
+jQuery(".channel-slide").hover(function(){ jQuery(this).find(".arrow").stop(true,true).fadeIn(300) },function(){ jQuery(this).find(".arrow").fadeOut(300) });
+jQuery(".channel-slide").slide({ titCell:".page ul", mainCell:".slide-ul ul", effect:"leftLoop",autoPlay:true, vis:1,autoPage:true, trigger:"click"});
+</script>
+<div class="tv-orderby" style="margin-top:-54px">
+<div class="tv-order-layout fn-clear">
+<dl class="tv-order-by">
+<dt><span>类型</span></dt>
+<dd>
+<p class="fn-clear">{maccms:foreach name=":explode(',',$obj.type_extend.class)" id="vo2" key="key2"}{if condition="$key2 lt 12"}{in name="$key2" value="6"}
+</p><p class="fn-clear">{/in}
+<a href="{:mac_url_type($obj,['class'=>$vo2],'show')}" title="{$vo2}" target="_blank">{$vo2}</a>{/if}{/maccms:foreach}
+</p>
+</dd>
+</dl>
+<dl class="tv-order-by">
+<dt><span>地区</span></dt>
+<dd>
+<p class="fn-clear tv-hotsearch">{maccms:foreach name=":explode(',',$obj.type_extend.area)" id="vo2" key="key2"}{if condition="$key2 lt 10"}{in name="$key2" value="5"}
+</p><p class="fn-clear">{/in}
+<a href="{:mac_url_type($obj,['area'=>$vo2],'show')}" title="{$vo2}" target="_blank">{$vo2}</a>{/if}{/maccms:foreach}
+</p>
+</dd>
+</dl>
+</dl>
+<dl class="tv-order-by">
+<dt><span>年代</span></dt>
+<dd>
+<p class="fn-clear">{maccms:foreach name=":explode(',',$obj.type_extend.year)" id="vo2" key="key2"}{if condition="$key2 lt 8"}{in name="$key2" value="4"}
+</p><p class="fn-clear">{/in}
+<a href="{:mac_url_type($obj,['year'=>$vo2],'show')}" title="{$vo2}" target="_blank">{$vo2}</a>{/if}{/maccms:foreach}
+</p>
+</dd>
+</dl>
+<dl class="tv-order-by">
+<dt class="tv-order-dt"><span>热搜词</span></dt>
+<dd>
+<p class="fn-clear tv-hotsearch">{maccms:vod num="6" type="current" order="desc" by="hits_month"}{in name="$key" value="4"}
+</p><p class="fn-clear">{/in}
+<a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" target="_blank">{$vo.vod_name|mac_substring=4}</a>{/maccms:vod}
+</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="container" style="margin-top:20px;">
+<div class="container-inner">
+
+<div class="con3 mbs4">
+<div class="teleplay">
+<div class="teleplay-left fl">
+<div class="splendid-header">
+<div class="fl"><span>最新</span>更新节目</div>
+</div>
+<div class="network-remiere teleplay-content">
+<div class="network-remiere-inner shop-list-ul2">
+<ul class="teleplay-content-list shop-list-ul">
+{maccms:vod num="4" type="current" order="desc" by="time"}
+<li>
+<div class="showPlay">
+<a target="_self" href="{:mac_url_vod_detail($vo)}" class="tcl-pic">
+<div><img class="scrollLoading" width="200" height="270" data-url="{$vo.vod_pic|mac_url_img}" src="{$maccms.path_tpl}images/pic.png" alt="{$vo.vod_name}"></div>
+<div class="tcl-pic2"></div>
+<div class="tcl-pic3"></div>
+<p class="tcl-pic4 tcl-pic5">{$vo.vod_name}</p>
+</a>
+</div>
+<div class="shop-btn">
+<div class="shop-btn-inner">
+<p>{$vo.vod_class|mac_url_create='class'}</p>
+<p>{$vo.vod_time|date='m-d H:i:s',###}</p>
+</div>
+</div>
+</li>
+{/maccms:vod}
+</ul>
+</div>
+</div>
+</div>
+{php} $rq=date("w");
+    if($rq==0){
+    $rq=7;
+    }
+    $rqarray=array(1,2,3,4,5,6,7);
+{/php}
+<div class="teleplay-right fr" id="programPosition">
+<div class="teleplay-content program-content">
+<ul class="week mj-week">
+{if condition="$rq eq 1"}<li class="active-style2"><a>今</a></li>{else /}<li><a>一</a></li>{/if}
+{if condition="$rq eq 2"}<li class="active-style2"><a>今</a></li>{else /}<li><a>二</a></li>{/if}
+{if condition="$rq eq 3"}<li class="active-style2"><a>今</a></li>{else /}<li><a>三</a></li>{/if}
+{if condition="$rq eq 4"}<li class="active-style2"><a>今</a></li>{else /}<li><a>四</a></li>{/if}
+{if condition="$rq eq 5"}<li class="active-style2"><a>今</a></li>{else /}<li><a>五</a></li>{/if}
+{if condition="$rq eq 6"}<li class="active-style2"><a>今</a></li>{else /}<li><a>六</a></li>{/if}
+{if condition="$rq eq 7"}<li class="active-style2"><a>今</a></li>{else /}<li><a>日</a></li>{/if}
+</ul>
+<div class="advance-notice">
+{volist name="rqarray" id="week" key="iii"}
+<ul {if condition="$rq == $iii"}style="display:block"{/if} class="week-list week-list11 clearfix">
+{maccms:vod num="4" type="current" weekday="'.$iii.'" order="desc" by="time" id="vo2" key="key2"}
+<li class="pic"><a href="{:mac_url_vod_detail($vo2)}" target="_blank">
+<img src="{$vo2.vod_pic|mac_url_img}" alt="{$vo2.vod_name}" width="110" height="154">
+<span class="til">{$vo2.vod_name}</span>
+<span class="info">{include file="public/serial"}</span>
+<span class="bg"></span>
+</a>
+</li>
+{/maccms:vod}
+</ul>
+{/volist}
+</div>
+</div>
+</div>
+</div>
+</div>
+{maccms:foreach name=":explode(',',$obj.type_extend.area)" id="vo2" key="key2"}{if condition="$key2 lt 8"}
+<div class="con2 margin-bottom-share">
+<div class="teleplay">
+<div class="teleplay-left fl">
+<div class="splendid-header">
+<div class="fl"><a href="{:mac_url_type($obj,['area'=>$vo2],'show')}"><span>{$vo2}</span>动漫</a></div>
+<a href="{:mac_url_type($obj,['area'=>$vo2],'show')}" class="teleplay-more fr" target="_blank">更多&gt;</a>
+</div>
+<div class="teleplay-content">
+<div class="teleplay-content-inner" style="display:block;">
+<ul class="teleplay-content-list cartoon-hide">
+{maccms:vod num="4" type="current" area="'.$vo2.'" order="desc" by="time"}
+<li>
+<div class="showPlay">
+<a href="{:mac_url_vod_detail($vo)}" class="tcl-pic" target="_self">
+<div class="tcl-pic1"><img class="scrollLoading" data-url="{$vo.vod_pic|mac_url_img}" width="200" height="270" src="{$maccms.path_tpl}images/pic.png" alt="{$vo.vod_name}"></div>
+<div class="tcl-pic2"></div>
+<div class="tcl-pic3"></div>
+<p class="tcl-pic4">{include file="public/serial1"}</p>
+</a>
+</div>
+<div class="tcl-title">
+<div class="movie-headline1"><a href="{:mac_url_vod_detail($vo)}" target="_self">{$vo.vod_name}</a></div>
+<p>类型：{$vo.vod_class}</p>
+</div>
+</li>
+{/maccms:vod}
+</ul>
+</div>
+</div>
+</div>
+<div class="teleplay-right fr">
+<div class="recommend-header">
+<div class="fl"><span>{$vo2}</span>排行榜</div><a href="{:mac_url_type($obj,['area'=>$vo2],'show')}" class="teleplay-more">更多&gt;</a>
+</div>
+<div class="teleplay-content">
+<ul class="teleplay-con-list teleplay-con-list2 tcl2">
+{maccms:vod num="1" type="current" area="'.$vo2.'" order="desc" by="hits_week"}
+<li class="list-no1">
+<span></span>
+<i>{$key}</i>
+<a href="{:mac_url_vod_detail($vo)}" class="list-no1-pic" target="_blank"><img class="scrollLoading" data-url="{$vo.vod_pic|mac_url_img}" width="90" height="120" src="{$maccms.path_tpl}images/pic.png" alt="{$vo.vod_name}"></a>
+<div class="list-no1-con">
+<a href="{:mac_url_vod_detail($vo)}" class="no1-tv-title" target="_blank">{$vo.vod_name}</a>
+<p class="top-desc">{$vo.vod_content|mac_filter_html|mac_substring=50}</p>
+<p class="pview">播放指数:{$vo.vod_hits}次</p>
+<a href="{:mac_url_vod_detail($vo)}" target="_blank" class="top-btn">查看详情</a>
+</div>
+</li>
+{/maccms:vod}
+{maccms:vod num="6" type="current" area="'.$vo2.'" start="2" order="desc" by="hits_week"}
+<li><i>{$key+1}</i><span class="views">{$vo.vod_hits}次</span><a href="{:mac_url_vod_detail($vo)}" target="_blank">{$vo.vod_name}</a></li>
+{/maccms:vod}
+</ul>
+</div>
+</div>
+</div>
+</div>
+{/if}
+{/maccms:foreach}

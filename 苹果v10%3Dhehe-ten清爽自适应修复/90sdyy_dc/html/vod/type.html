@@ -1,0 +1,70 @@
+{include file="public/header"}
+{include file="module/banner"}
+{include file="module/mobile"}
+{if$obj.type_name=='直播'||$obj.parent.type_name=='直播'}
+<div class="fed-list-new fed-part-layout fed-back-whits">
+	<div class="fed-list-head fed-part-rows fed-padding">
+		<h2 class="fed-font-xvi">{$obj.type_name}</h2>
+		<ul class="fed-part-tips fed-padding">
+			{maccms:type num="8" parent="current" order="asc" by="sort" mid="vod"}
+			<li class="fed-hide-xs"><a href="{:mac_url_type($vo)}">{$vo.type_name}</a>/</li>
+			{/maccms:type}
+			{if$obj.childids}
+			<li><a class="fed-more" href="javascript:;" onclick="location.reload();">刷新</a></li>
+			{else}
+			<li><a class="fed-more" href="{:mac_url_type($obj.parent)}">返回</a></li>
+			{/if}
+		</ul>
+	</div>
+	<ul class="fed-list-info fed-list-img fed-part-rows">
+		{maccms:vod num="24" paging="yes" half="3" type="current" order="desc" by="time"}
+		<li class="fed-list-item fed-padding fed-col-xs6 fed-col-sm4 fed-col-md3">
+		{include file="module/images"}
+		</li>
+		{/maccms:vod}
+	</ul>
+	{include file="module/paging"}
+</div>
+{else}
+{if$obj.childids}
+{include file="module/screen"}
+{include file="module/latest"}
+{maccms:type ids="current" order="asc" by="sort"}
+<div class="fed-list-new fed-part-layout fed-back-whits">
+	<div class="fed-list-head fed-part-rows fed-padding">
+		<h2 class="fed-font-xvi">{$vo.type_name}</h2>
+		<ul class="fed-part-tips fed-padding">
+			<li><a class="fed-more" href="{:mac_url_type($vo)}">更多</a></li>
+		</ul>
+	</div>
+	<ul class="fed-list-info fed-part-rows">
+		{maccms:vod num="8" type="'.$vo['type_id'].'" order="desc" by="time"}
+		<li class="fed-list-item fed-padding fed-col-xs4 fed-col-sm3 fed-col-md2{if$key>6} fed-hide-xs fed-show-sm-block fed-hide-md{/if}">
+		{include file="module/listing"}
+		</li>
+		{/maccms:vod}
+	</ul>
+</div>
+{/maccms:type}
+{else}
+{include file="module/screen"}
+<div class="fed-list-new fed-part-layout fed-back-whits">
+	<div class="fed-list-head fed-part-rows fed-padding">
+		<h2 class="fed-font-xvi">{$obj.type_name}</h2>
+		<ul class="fed-part-tips fed-padding">
+			<li><span class="fed-hide-xs">当前第&nbsp;<span id="fed-now" class="fed-text-green fed-text-bold">1</span>&nbsp;页，</span>共&nbsp;<span id="fed-count" class="fed-text-green fed-text-bold">0</span>&nbsp;个影片</li>
+			<li><a class="fed-more" href="{:mac_url_type($obj,[],'show')}">筛选</a></li>
+		</ul>
+	</div>
+	<ul class="fed-list-info fed-part-rows">
+		{maccms:vod num="24" paging="yes" half="3" type="current" order="desc" by="time"}
+		<li class="fed-list-item fed-padding fed-col-xs4 fed-col-sm3 fed-col-md2">
+		{include file="module/listing"}
+		</li>
+		{/maccms:vod}
+	</ul>
+	{include file="module/paging"}
+</div>
+{/if}
+{/if}
+{include file="public/footer"}

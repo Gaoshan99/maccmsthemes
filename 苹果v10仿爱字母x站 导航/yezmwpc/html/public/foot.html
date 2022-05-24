@@ -1,0 +1,43 @@
+<!-- 正文 -->
+<div class="notice">
+<a href="/" class="icon-speaker"></a>
+<div class="notice-cont">
+<span class="speaker"></span>
+<div class="msg">
+<marquee direction="left">
+<p style="color:red;font-weight:bolder;line-height:42px;font-size:20px;">
+	滚动公告。。。
+</p>
+</marquee>
+</div>
+<a href="javascript:void(0);" class="ntc-btn">收起公告</a>
+<script type="text/javascript">
+
+$(function(){
+	$(".ntc-btn").click(function(){
+		$(".notice").hide(500);
+	});
+	$('img.lazy').lazyload();
+	showAds(ps);
+});
+
+</script>
+
+</div>
+</div>
+<div class="footer">
+        <div class="footer_cet">
+        	<div class="footer_cet_qq">
+                <p style="font-size:16px">广告、友链等商务合作，请发邮件至：{$maccms.site_email}</p>
+	        <p style="font-size:16px">Copyright © 2012-2018 {$maccms.site_url}. All Rights Reserved</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="{$maccms.path_tpl}images/jquery.lazyload.min.js"></script
+<div style="display:none">
+<center>
+ {$maccms.site_tj}
+</center>
+</div>
+<a href="javascript:void(0);" class="v-top"><img src="{$maccms.path_tpl}images/top.png"/></a>

@@ -1,0 +1,29 @@
+<header class="header"> 
+   <div class="container clearfix"> 
+    <div class="logo-search"> 
+     <a id="logo" class="logo" href="/"> <img class="img-logo" src="{$maccms.path_tpl}html/style/images/YuIpg3d.png" style="width:200px;" alt="{$maccms.site_name}" /></a> 
+     <a class="icon search-icon">search</a> 
+    </div> 
+    <div class="nav-search"> 
+     <form id="search" class="search" action="{:mac_url('vod/search')}" method="post" onSubmit="return qrsearch();">
+	  <input type="text" id="wd" name="wd" class="search-txt" onblur="if(this.value==''){ this.value='搜索';this.style.color='#cfcdcd';}" onfocus="if(this.value=='搜索'){this.value='';this.style.color='';}" value="搜索" value="" />
+      <input name="submit" class="icon search-btn" type="submit" /> 
+     </form>
+     <nav> 
+      <div class="menu-container"> 
+       <div class="swiper-button-prev menu-button-prev"></div> 
+       <div class="swiper-button-next menu-button-next"></div> 
+       <ul class="nav swiper-wrapper"> 
+<li class="nav-list swiper-slide"> <a href="/">首页</a> </li>
+        {maccms:type ids="parent" order="asc" by="sort" flag="vod"}
+		<li class="nav-list swiper-slide"> <a href="{:mac_url_type($vo)}">{$vo.type_name}</a> </li>
+
+		{/maccms:type}  
+        <li class="nav-list swiper-slide"> <a href="/index.php/label/hot.html">热门排行</a> </li>
+
+       </ul> 
+      </div> 
+     </nav> 
+    </div> 
+   </div> 
+  </header> 

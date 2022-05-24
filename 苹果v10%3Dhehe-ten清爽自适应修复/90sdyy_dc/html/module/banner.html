@@ -1,0 +1,75 @@
+<div class="fed-back-whits fed-box-shadow{if$maccms.aid==10}{maccms:link num="1" type="pic"} fed-margin-top{/maccms:link}{maccms:vod num="1" type="current" level="5"} fed-margin-top{/maccms:vod}{maccms:topic num="1" level="5"} fed-margin-top{/maccms:topic}{maccms:art num="1" type="current" level="5"} fed-margin-top{/maccms:art}{elseif$maccms.aid==11}{maccms:vod num="1" type="current" level="5"} fed-margin-top{/maccms:vod}{elseif$maccms.aid==20||$maccms.aid==21}{maccms:art num="1" type="current" level="5"} fed-margin-top{/maccms:art}{/if}">
+<div class="fed-swip-container fed-part-rows">
+<ul class="fed-swip-wrapper fed-font-size">
+    {if$maccms.aid==1}
+
+{elseif$maccms.aid==10}
+{maccms:link num="2" order="asc" by="sort" type="pic"}
+<li class="fed-swip-slide">
+<a class="fed-list-pics fed-part-5by2 fed-swip-lazy" href="{$vo.link_url}" data-background="{$vo.link_logo}" target="_blank">
+<div class="fed-swip-title fed-text-white fed-part-eone">
+<span class="fed-part-eone fed-font-xviii fed-swip-head">{$vo.link_name}</span>
+<span class="fed-part-eone fed-font-xii">推荐</span>
+</div>
+</a>
+</li>
+{/maccms:link}
+{maccms:vod num="5" type="current" order="desc" by="time" level="5"}
+<li class="fed-swip-slide">
+<a class="fed-list-pics fed-part-5by2 fed-swip-lazy" href="{:mac_url_vod_detail($vo)}" data-background="{$vo.vod_pic_slide|mac_default=$vo.vod_pic|mac_url_img}">
+<div class="fed-swip-title fed-text-white fed-part-eone">
+<span class="fed-part-eone fed-font-xviii fed-swip-head">{$vo.vod_name}</span>
+<span class="fed-part-eone fed-font-xii">{$vo.vod_remarks|mac_default='内详'}</span>
+</div>
+</a>
+</li>
+{/maccms:vod}
+{maccms:topic num="2" order="desc" by="time" level="5"}
+<li class="fed-swip-slide">
+<a class="fed-list-pics fed-part-5by2 fed-swip-lazy" href="{:mac_url_topic_detail($vo)}" data-background="{$vo.topic_pic_slide|mac_default=$vo.topic_pic|mac_url_img}">
+<div class="fed-swip-title fed-text-white fed-part-eone">
+<span class="fed-part-eone fed-font-xviii fed-swip-head">{$vo.topic_name}</span>
+<span class="fed-part-eone fed-font-xii">{$vo.topic_remarks|mac_default='内详'}</span>
+</div>
+</a>
+</li>
+{/maccms:topic}
+{maccms:art num="2" type="current" order="desc" by="time" level="5"}
+<li class="fed-swip-slide">
+<a class="fed-list-pics fed-part-5by2 fed-swip-lazy" href="{:mac_url_art_detail($vo)}" data-background="{$vo.art_pic_slide|mac_default=$vo.art_pic|mac_url_img}">
+<div class="fed-swip-title fed-text-white fed-part-eone">
+<span class="fed-part-eone fed-font-xviii fed-swip-head">{$vo.art_name}</span>
+<span class="fed-part-eone fed-font-xii">{$vo.art_remarks|mac_default='内详'}</span>
+</div>
+</a>
+</li>
+{/maccms:art}
+{elseif$maccms.aid==11}
+{maccms:vod num="5" type="current" order="desc" by="time" level="5"}
+<li class="fed-swip-slide">
+<a class="fed-list-pics fed-part-5by2 fed-swip-lazy" href="{:mac_url_vod_detail($vo)}" data-background="{$vo.vod_pic_slide|mac_default=$vo.vod_pic|mac_url_img}">
+<div class="fed-swip-title fed-text-white fed-part-eone">
+<span class="fed-part-eone fed-font-xviii fed-swip-head">{$vo.vod_name}</span>
+<span class="fed-part-eone fed-font-xii">{$vo.vod_remarks|mac_default='内详'}</span>
+</div>
+</a>
+</li>
+{/maccms:vod}
+{elseif$maccms.aid==20||$maccms.aid==21}
+{maccms:art num="5" type="current" order="desc" by="time" level="5"}
+<li class="fed-swip-slide">
+<a class="fed-list-pics fed-part-5by2 fed-swip-lazy" href="{:mac_url_art_detail($vo)}" data-background="{$vo.art_pic_slide|mac_default=$vo.art_pic|mac_url_img}">
+<div class="fed-swip-title fed-text-white fed-part-eone">
+<span class="fed-part-eone fed-font-xviii fed-swip-head">{$vo.art_name}</span>
+<span class="fed-part-eone fed-font-xii">{$vo.art_remarks|mac_default='内详'}</span>
+</div>
+</a>
+</li>
+{/maccms:art}
+{/if}
+</ul>
+<div class="fed-swip-pagin fed-font-size fed-text-right"></div>
+<a class="fed-swip-next fed-text-white fed-text-center fed-hide-xs fed-icon-font fed-icon-you" href="javascript:;"></a>
+<a class="fed-swip-prev fed-text-white fed-text-center fed-hide-xs fed-icon-font fed-icon-zuo" href="javascript:;"></a>
+</div>
+</div>

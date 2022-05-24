@@ -1,0 +1,19 @@
+<div class="" style="text-align:center;">
+
+<script src="https://jc.ziig.com.cn/b4892f/c@65510!25.js"></script>
+</div>
+<div class="fed-list-new fed-part-layout fed-margin-right fed-back-whits">
+<div class="fed-list-head fed-part-rows fed-padding">
+<h2 class="fed-font-xvi">相关热播</h2>
+<ul class="fed-part-tips fed-padding">
+<li><a class="fed-more" href="{:mac_url_type($obj.type)}">更多</a></li>
+</ul>
+</div>
+<ul class="fed-list-info fed-part-rows">
+{maccms:vod num="6" type="current" order="desc" by="hits"}
+<li class="fed-list-item fed-padding fed-width-xx fed-col-xs4 fed-col-sm3{if$key>4} fed-show-xs-block fed-hide-sm{/if}{if$key>5} fed-show-lg-block{/if}">
+{include file="module/listing"}
+</li>
+{/maccms:vod}
+</ul>
+</div>

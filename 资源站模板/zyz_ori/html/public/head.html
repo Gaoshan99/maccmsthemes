@@ -1,0 +1,27 @@
+<!--头部-->
+<div class="width1200 header" style="height: 110px;padding: 0px">
+	<h1><a href="{$maccms.path}"><img style="width: 230px;height: 110px;margin-top:0px;" src="{$maccms.path_tpl}img/logo.png"></a></h1>
+    <div class="header_cet" style="float: left;margin-left: 10px;width: 75%;margin-right:0px;">
+        <div class="header_submit">
+            <div class="header_submit_m">
+                <h3>整站搜索</h3>
+            </div>
+			<form id="search" name="search" method="get" action="{:mac_url('vod/search')}" onsubmit="return qrsearch();">	
+            <div class="header_submit_b">
+                <input maxlength="10" type="text" name="wd" id="wd" class="input" value="{$param.wd}" placeholder="请输入关键字">
+                <input type="submit" name="search_button" id="search_button" class="submit" value="" onclick="search();">
+            </div>
+            </form>
+        </div>
+        <div class="header_list" style="width:100%;text-align: left;">
+        	<ul>
+            	<li><p>今日更新影片：<span style="color:red;;font-weight: bold;">{:mac_data_count(0,'today','vod')}</span></p></li>
+            	<li><p>本站影片共有：<span style="color:red;;font-weight: bold;">{:mac_data_count(0,'all','vod')}</span></p></li>
+            	<li><p>本站资讯共有：<span style="color:red;;font-weight: bold;">{:mac_data_count(0,'all','art')}</span></p></li>
+            	<li><a href="{:mac_url('gbook/index')}"><span style="color:red;">留言求片</span></a></li>
+                <li><a href="{:mac_url('label/help')}"><span style="color:red;">新手搭建教程</span></a></li>
+        	    <li style="margin-top: -5px;"><a target="_blank" href="javascript:;"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="xxx交流群" title="xxx交流群"></a></li>
+            </ul>
+        </div>
+    </div>
+</div>

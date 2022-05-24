@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="seo/vod_search"}   
+	{include file="block/include"}
+</head>
+<body>
+	
+    <div class="container">
+        <div class="row">       	
+        	{include file="block/head"}
+        	
+        	<div class="stui-pannel clearfix">
+				<div class="stui-pannel__head clearfix">	
+					<h3 class="title">									
+						与“<em>{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}</em>”相关的影片
+					</h3>
+				</div>	
+				
+				<!-- 列表 -->	
+				<ul class="stui-vodlist clearfix">
+				    <li class="stui-vodlist__item">
+	                    <a class="stui-vodlist__thumb lazyload" href="{$maccms.path_tpl}ads/zhifubao.html" target="_blank" title="邀你领红包" data-original="{$maccms.path_tpl}ads/img/hb.jpg">				
+                          <span class="pic-text text-right">支付宝红包</span>
+	                    </a>									
+	                    <h4 class="stui-vodlist__title"><a href="{$maccms.path_tpl}ads/zhifubao.html" title="邀你领红包">邀你领红包</a></h4>		
+                    </li>										
+					{maccms:vod num="35" paging="yes" pageurl="vod/search" order="desc" by="time"}						
+					{include file="block/vod_box"}					
+					{/maccms:vod}
+				</ul>		
+				<!-- end 列表 -->	
+				
+				{include file="block/page"}<!-- 翻页-->	
+			</div>
+				
+        </div>
+    </div>
+	{include file="block/foot"}
+</body>
+</html>

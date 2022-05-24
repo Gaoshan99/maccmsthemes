@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>使用积分购买权限</title>
+	{include file="block/include"}
+	{include file="user/include" /}
+</head>
+<body class="padding-0">
+<div class="stui_login__form active clearfix">
+	<div class="stui-pannel stui-pannel-bg clearfix">
+		<div class="stui-pannel-box clearfix">	
+			<div class="stui-pannel_hd">
+				<div class="stui-pannel__head active bottom-line clearfix">
+					<a href="javascript:history.go(-1)" class="more pull-right">返回影片</a>
+					<h3 class="title">
+						系统提示
+					</h3>
+				</div>																		
+			</div>
+			<div class="stui-pannel_bd">
+				<div class="stui-user__msg">
+					<p class="font-16">
+						{$popedom.msg}
+					</p>	
+					<p class="text-muted">
+						提示：一次支付，永久观看，不重复扣费，谢谢支持。
+					</p>
+					<p>
+						{if condition="$user.group.group_id eq 1"}
+						<a href="javascript:;" class="mac_user btn btn-primary">马上登录</a>
+						<a href="{:url('user/reg')}" class="btn btn-default">注册账号</a>
+						{else/}						
+						<a href="javascript:;" class="btn btn-primary" onclick="MAC.User.BuyPopedom(this)" data-id="{$obj.vod_id}" data-sid="{$param.sid}" data-nid="{$param.nid}" data-type="{if condition="$obj.player_info.flag eq 'play'"}4{else/}5{/if}">确认购买</a>
+						<a href="{:url('user/buy')}" class="btn btn-default">马上充值</a>
+						{/if}
+					</p>
+				</div>									
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
+
+
+

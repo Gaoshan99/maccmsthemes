@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>搜索结果{$param.wd}-{$maccms.site_name}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="{$param.wd}-{$maccms.site_name}" />
+<meta name="description" content="{$param.wd}-{$maccms.site_name}" />
+  {include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+<table width="760" border="0" align="center" cellpadding="3" cellspacing="0">
+  <tr>
+    <td width="324" height="20" align="center" bgcolor="#F3F3F3"><strong>影片名称</strong></td>
+	<td width="131" align="center" bgcolor="#F3F3F3"><strong>地区语言</strong></td>
+    <td width="142" align="center" bgcolor="#F3F3F3"><strong>影片类别</strong></td>
+    <td width="139" align="center" bgcolor="#F3F3F3"><strong>更新时间</strong></td>
+  </tr>
+  <tr>
+    <td height="3" colspan="1" ></td>
+  </tr>
+  {maccms:vod num="50" paging="yes" type="all" order="desc" by="time" pageurl="vod/search"}
+  <tr><td colspan="1" ></td></tr>
+  <tr class="row" onmouseover="this.className='row1'" onmouseout="this.className='row'">
+    <td height="20"><a href="{:mac_url_vod_detail($vo)}" target="_blank">{$vo.vod_name} {$vo.vod_remarks}</a></td>
+    <td align="center">{$vo.vod_area} {$vo.vod_lang}</td>
+    <td align="center">{$vo.type.type_name}</td>
+    <td align="center">{$vo.vod_time|mac_day=###,'color'}</td>
+  </tr>
+  <tr><td colspan="1" ></td></tr>
+  {/maccms:vod}
+  <tr>
+    <td height="20" colspan="4" align="center" bgcolor="#F3F3F3">
+    <div class="page">
+      {include file="public/paging"}
+    </div>
+    </td>
+  </tr>
+</table>
+{include file="public/foot"}
+</body>
+</html>

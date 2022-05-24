@@ -1,0 +1,110 @@
+<!--手机底部导航-->
+<div class="foornav">
+<ul>
+{maccms:type order="asc" by="sort" mid="1" ids="1"}
+<li {if condition="($vo.type_id eq MAC_TYPE_ID || $vo.type_id eq MAC_TYPE_PID)"}class="active"{/if}>
+<a href="{:mac_url_type($vo)}"><span><img src="{$maccms.path_tpl}img/video.png"/>{$vo.type_name}</span></a>
+</li>
+{/maccms:type}
+{maccms:type order="asc" by="sort" mid="1" ids="2"}
+<li {if condition="($vo.type_id eq MAC_TYPE_ID || $vo.type_id eq MAC_TYPE_PID)"}class="active"{/if}>
+<a href="{:mac_url_type($vo)}"><span><img src="{$maccms.path_tpl}img/dianshi.png"/>{$vo.type_name}</span></a>
+</li>
+{/maccms:type}
+<li {if condition="$maccms.aid eq 1"}class="active"{/if}>
+<a href="/"><span><img src="{$maccms.path_tpl}img/index.png"/>首页</span></a>
+</li>
+{maccms:type order="asc" by="sort" mid="1" ids="3"}
+<li {if condition="($vo.type_id eq MAC_TYPE_ID || $vo.type_id eq MAC_TYPE_PID)"}class="active"{/if}>
+<a href=".{:mac_url_type($vo)}"><span><img src="{$maccms.path_tpl}img/dianshiju.png"/>{$vo.type_name}</span></a>
+</li>
+{/maccms:type}
+{maccms:type order="asc" by="sort" mid="1" ids="4"}
+<li {if condition="($vo.type_id eq MAC_TYPE_ID || $vo.type_id eq MAC_TYPE_PID)"}class="active"{/if}>
+<a href="{:mac_url_type($vo)}"><span><img src="{$maccms.path_tpl}img/gouwu.png"/>{$vo.type_name}</span></a>
+</li>
+{/maccms:type}
+</ul>
+</div>
+<!-- 广告  -->
+<!--<div class="container">
+	<div class="stui-pannel ad-b clearfix">
+		<div class="col-pd">
+			<a class="hidden-xs" target="_blank" href="#"><img class="img-xs" src="{$maccms.path_tpl}ads/img/ad1.jpg"/></a>
+			<a class="visible-xs" target="_blank" href="#"><img class="img-xs" src="{$maccms.path_tpl}ads/img/ad2.jpg"/></a>
+		</div>	
+	</div>
+</div>-->
+<!-- end 广告  -->
+<div class="stui-foot clearfix">
+	<p><a href="{$maccms.path}">返回首页</a><span class="split-line"></span><a href="javascript:scroll(0, 0)">返回顶部</a></p>
+	<div class="hidden-xs fo-t">
+		<p>本站只提供WEB页面服务，不提供影片录制和储存服务，不承担任何由于内容的合法性及健康性所引起的争议和法律责任。</p>
+		<p>若本站收录内容无意侵犯了贵公司权益，请联系底部邮箱，我们将尽快处理相关内容。</p>
+        <p>{$maccms.site_url}&nbsp;联系邮箱：{$maccms.site_email}</p></div>						
+	<div class="visible-xs fo-t1">
+	    <p>本站只提供WEB页面服务，不提供影片录制和储存服务</p>
+        <p>若本站收录内容侵犯了贵公司权益</p>
+        <p>联系邮箱：{$maccms.site_email}&nbsp;移除相关内容</p>
+		<p>村少博客www.cunshao.com</p>
+    </div>
+</div>
+<div class="hide">{$maccms.site_tj}</div>
+
+<script src="https://cdn.bootcss.com/jquery_lazyload/1.9.3/jquery.lazyload.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$(".lazyload").lazyload({
+		effect: "fadeIn",
+		threshold: 200,
+		failurelimit: 15,
+		skip_invisible: false
+	})
+</script>
+
+<script>
+$(document).ready(function(){
+	var partialView = $('#partial-view').partialViewSlider();
+
+	$('#prev').on('click', function(){
+		partialView.prev();
+	});
+	$('#next').on('click', function(){
+		partialView.next();
+	});
+	$('#play').on('click', function(){
+		partialView.play();
+	});
+	$('#pause').on('click', function(){
+		partialView.pause();
+	});
+});
+</script>
+
+<script src="{$maccms.path_tpl}js/dialog.js" type="text/javascript"></script>
+<script type="text/javascript">
+	    $('#btn-03').click(function(){
+		$.dialog({
+			type :'alert',
+			titleText : '爱看影院公众号',
+			buttonText : {
+            ok : '下次再说',
+            },
+			contentHtml : '<img class="info-icon" src="{$maccms.path_tpl}img/ewm.jpg" width="200" alt="公众号二维码" /><p>长按识别二维码或微信扫码关注</p><p>二维码被视频遮挡<a href="{$maccms.path_tpl}wx/weixin.html">点这里</a></p><p>或微信搜索微信名：<span style="color: #f44336;">村少博客<span></p>'
+		});
+	    });
+		
+	    $('#btn-04').click(function(){
+		$.dialog({
+			type :'confirm',
+			buttonText : {
+            ok : '取消',
+			cancel : '残忍拒绝'
+            },
+			onClickCancel : function(){        		
+            alert('就知道你会点，哼~，不过还要祝您生活幸福！');
+            },
+			titleText : '微信打赏',
+			contentHtml : '<img class="info-icon" src="{$maccms.path_tpl}img/dsm.jpg" width="200" alt="打赏二维码" /><p>长按识别二维码或微信扫描二维码</p>'
+		});
+	    });
+</script>

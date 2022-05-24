@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>最近更新电影-电视剧大全-{$maccms.site_name}</title>
+    <meta name="keywords" content="最近更新电影,电视剧大全">
+    <meta name="description" content="{$maccms.site_name}最近更新电影排行榜，实时为您提供最新电视剧排行信息，为您观看最新电视剧提供参考。">
+    {include file="public/include"}
+<link rel="stylesheet" type="text/css" href="/template/statics/css/paihangbang.css">
+</head>
+<body class="paihangbang">
+{include file="public/head"}
+<!--当前位置-->
+<main class="main main_paihangbang">
+    <section class="sbg">
+        <div class="container">
+            <div class="pages-nav mb15 clearfix">
+                <ul class="list">
+                <li><a href="{:mac_url('map/index')}" class="active">最近更新榜</a></li>
+				<li><a href="{:mac_url('map/tv')}">热播电视剧榜</a></li>
+				<li><a href="{:mac_url('map/dy')}">热播电影榜</a></li>
+				<li><a href="{:mac_url('map/zy')}">热播综艺榜</a></li>
+				<li><a href="{:mac_url('map/dm')}">热播动漫榜</a></li>
+			</div>
+        </div>
+    </section>
+    <section class="qbg">
+        <div class="container">
+            <div class="card-wrap hot-movie">
+                <div class="title clearfix">
+                    <h5 class="theme"> <a href="javascript:;" class="active">最近更新排行榜</a></h5>
+                    <span class="fr">TOP100</span>
+                </div>
+                     <div class="content newhotmovie clearfix">
+                    <div class="head"><span class="num">排名</span><span class="subject">片名</span><span class="douban_score">豆瓣评分</span><span class="rstype">点播资源</span><span class="hot">票房</span><span class="redate">更新时间</span></div>
+                    <ul class="list clearfix">
+					{maccms:vod num="100" order="desc" by="hits"}
+                        <li class="item"><span class="num">{$key}</span><span class="subject"><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" target="_blank">{$vo.vod_name}</a></span><span class="douban_score">{$vo.vod_score}分</span><span class="rstype">{empty name="vo.vod_remarks"}{$vo.vod_serial}{else /}{$vo.vod_remarks}{/empty}</span><span class="hot">{$vo.vod_hits}</span><span class="redate">{$vo.vod_time|mac_friend_date}</span></li>
+						{/maccms:vod}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{include file="public/foot"}
+</body>
+</html>

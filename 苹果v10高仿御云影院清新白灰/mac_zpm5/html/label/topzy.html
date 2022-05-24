@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>综艺榜单- {$maccms.site_name}</title>
+<meta name="keywords" content="{$maccms.site_keywords}" />
+<meta name="description" content="{$maccms.site_description}" />
+{include file="public/include"}
+</head>
+<body>
+<div class="movie-wrap">
+{include file="public/head"}
+<div class="header_bg"></div>
+<div class="container" style="margin-top:-100px;">
+<div class="container-inner">
+<div class="filtrate">
+<div class="ranking-list">
+<div class="fl movie-headline4">排行榜</div>
+<ul class="fch1 fch6">
+<li> <a href="{:mac_url('label/top')}">榜单</a></li>
+<li><a href="{:mac_url('label/topmov')}">电影榜单</a></li>
+<li><a href="{:mac_url('label/toptv')}">电视榜单</a></li>
+<li><a href="{:mac_url('label/topdm')}">动漫榜单</a></li>
+<li class="active-style8"><a href="{:mac_url('label/topzy')}">综艺榜单</a></li>
+<li><a href="{:mac_url('label/topstar')}">人气明星</a></li>
+</ul>
+</div>
+<div class="ranking-star-all">
+<div class="rsa-wrap" style="display:block;">
+<ul class="rsa-list">
+{maccms:vod num="10" type="3" order="desc" by="hits" id="vo2" key="key2"}
+<li>
+<div class="rsa-works fl">
+<a href="{:mac_url_vod_detail($vo2)}" class="works-photos fl" target="_blank"><img class="scrollLoading" data-url="{$vo2.vod_pic|mac_url_img}" src="{$maccms.path_tpl}images/pic.png" width="150" height="200" alt="{$vo2.vod_name}"></a>
+<div class="works-referral fr">
+<div class="synopsis works-referral-con">
+<div><a href="{:mac_url_vod_detail($vo2)}" target="_blank">{$vo2.vod_name}</a></div>
+<p><span>导演：</span><em>{$vo2.vod_director|mac_url_create='director'}</em></p>
+<p class="protagonist"><span>主演：</span>{$vo2.vod_actor|mac_substring=50|mac_url_create='actor'}</p>
+<p><span>类型：</span>{$vo2.vod_class|mac_url_create='class'}</p>
+<a href="{:mac_url_vod_detail($vo2)}" class="play-go-btn play-go-btn2">查看详情</a>
+</div>
+</div>
+</div>
+<div class="rsa-figure fr">
+<div class="movie-headline9 fl">{$key2}</div>
+</div>
+</li>
+{/maccms:vod}
+</ul>
+</div>
+</div>
+</div>
+{include file="public/foot"}
+</body>
+</html>

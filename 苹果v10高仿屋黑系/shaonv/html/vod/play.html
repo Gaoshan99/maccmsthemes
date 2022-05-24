@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+ <head>
+  <style class="vjs-styles-defaults">
+      .video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid {
+        padding-top: 56.25%
+      }
+    </style>
+  <style class="vjs-styles-dimensions">
+      .my-player-dimensions {
+        width: 1280px;
+        height: 720px;
+      }
+
+      .my-player-dimensions.vjs-fluid {
+        padding-top: 56.25%;
+      }
+	  .MacPlayer {
+		height: 580px !important;
+	  }
+	  #playleft {
+		height: 575px !important;
+	  }
+	  @media (max-width: 767px) {
+	  .MacPlayer {
+		height: 300px !important;
+	  }
+	  #playleft {
+		height: 305px !important;
+	  }
+	  }
+    </style>
+  <meta charset="utf-8" /> 
+  <title>{$obj.vod_actor}:{$obj.vod_name}</title> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+  <meta name="description" content="立即观赏 {$obj.vod_name} 主演: {$obj.vod_actor}" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <meta property="og:description" content="{$obj.vod_actor}:{$obj.vod_name} " /> 
+  <meta property="og:image" content="{$obj.vod_pic}" /> 
+  <meta property="og:url" content="http://{$maccms.site_url}{:mac_url_vod_play($vo)}" /> 
+  <meta property="og:type" content="website" /> 
+  <meta property="og:title" content="{$obj.vod_name}" /> 
+  <meta name="apple-mobile-web-app-title" content="{$maccms.site_name}" /> 
+  <link rel="alternate" hreflang="x-default" href="http://{$maccms.site_url}{:mac_url_vod_play($vo)}" /> 
+  <link rel="alternate" hreflang="zh-Hans" href="http://{$maccms.site_url}{:mac_url_vod_play($vo)}" /> 
+  <link rel="canonical" href="http://{$maccms.site_url}{:mac_url_vod_play($vo)}" /> 
+  <link href="{$maccms.path_tpl}html/style/css/v2-607838a2ee.css" rel="stylesheet" />
+  <style>.mac_pop_bg{position:fixed;z-index:129;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.2)}.mac_pop{z-index:99998;display:none;min-height:20px;max-height:750px;position:fixed;top:0;left:0;bottom:0;right:0;margin:auto;padding:25px;z-index:130;border-radius:8px;background-color:#fff;box-shadow:0 3px 18px rgba(0,0,0,.5)}.mac_pop .pop_top{height:40px;width:100%;border-bottom:1px #e5e5e5 solid}.mac_pop .pop_top h2{float:left;display:block;margin:0;font-size:18px;font-weight:normal;font-family:"microsoft yahei"}.mac_pop span.pop_close{float:right;width:23px;height:23px;font-size:0;text-indent:9999;cursor:pointer;font-weight:bold;display:block;background:url(/static/images/home/background.png) -10px 0 no-repeat}.fr{float:right}.mac_verify_img{width:70px;height:30px;line-height:30px;vertical-align:middle}@media (max-width: 767px){.mac_pop{width:auto !important}}</style>
+  <!--[if lt IE 9]> <script src="{$maccms.path_tpl}html/style/js/html5shiv.js"></script> <script src="{$maccms.path_tpl}html/style/js/respond.min.js"></script> <![endif]--> 
+  <meta property="og:image" content="{$obj.vod_pic}" /> 
+  <link href="{$maccms.path_tpl}html/style/css/v2-watch-6534eb03a6.css" rel="stylesheet" /> 
+ </head> 
+ <body> 
+  {include file="public/head"}
+  <script src="{$maccms.path_tpl}html/style/js/v2-2755e1b5b8.js"></script> 
+   {include file="public/include"}
+  <section>
+   <article> 
+    <div class="video-box"> 
+     <h1 class="container video-name">{$obj.vod_name}</h1> 
+     <div class="container clearfix"> 
+      <div class="clearfix"> 
+       <div class="play-thumb"> 
+		{$player_data}
+        {$player_js}
+       </div> 
+       <div class="video-plan"> 
+        <div class="video-plan-name">
+       
+
+
+        </ul> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+     <div class="container user-btn-view clearfix"> 
+      <ul class="user-btns">
+	   <li> <a class="user-border user-like tooltips can-click digg_link" data-id="{$obj.vod_id}{$obj.art_id}{$obj.topic_id}" data-mid="{$maccms.mid}" data-type="up" href="javascript:;"> <i class="icon user-btn user-btn-good"></i> <span class="user-btn-txt" style="vertical-align: top;font-style: initial;">我喜歡</span>  <span class="user-btn-num digg_num" style="vertical-align: top;">{$obj.vod_up}{$obj.art_up}{$obj.topic_up}</span> </a></li>
+
+       <li class="back"> <a class="user-border btn-report can-click" href="javascript:;" onclick="MAC.Gbook.Report('编号【{$obj.vod_id}】名称【{$obj.vod_name}】不能观看请检查修复，页面地址' + location.href)"><i class="user-btn fa fa-comment-o user-btn-mid icon-lg"></i><em class="user-btn-txt" style="vertical-align: top;font-style: initial;">我要报错</em></a> </li> 
+      </ul> 
+      <p class="view-num">临幸数：<span class="mac_hits hits" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" data-type="hits"></span></p> 
+     </div> 
+     <div class="container line">
+      line
+     </div> 
+     <div class="container clearfix"> 
+      <ul class="video-info"> 
+       <li class="video-info-name"> <span>片名</span> <p>{$obj.vod_name} </p>
+        <div class="act act-ok hide" id="alert-addvideo"></div><p></p> </li> 
+       <li> <span>女优</span> {$obj.vod_actor|mac_url_create='actor'} </li> 
+       <li> <span>关键字</span> 
+        <div class="video-keywords">{$obj.vod_tag|mac_url_create='tag'}</div> </li> 
+       <li> <span>上传日期</span> 
+        <div>
+          {$obj.vod_time|date='Y-m-d',###}
+        </div> </li> 
+      </ul> 
+      <div class="video-share"> 
+       <a class="icon video-share-btn video-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=http://{$maccms.site_url}{$obj.vod_play_url}&title={$obj.vod_name}" target="_blank" onclick="ga('send', 'event', 'share', 'fb', 'Share by FB')" title="分享到FB">分享到FB</a> 
+       <a class="icon video-share-btn video-share-line" target="_blank" href="https://line.me/R/msg/text/?{$obj.vod_name} http://{$maccms.site_url}{$obj.vod_play_url}" onclick="ga('send', 'event', 'share', 'line', 'Share by LINE')" title="分享到LINE">分享到LINE</a> 
+      </div> 
+     </div> 
+    <div id="msgtemplate" class="msg msg-list hide"> 
+     <p class="smsg"></p> 
+     <div class="msg-info info"></div> 
+    </div> 
+   </article> 
+   <section class="container"> 
+    <div class="title"> 
+     <h2>看了还看</h2> 
+    </div> 
+    <div class="row"> 
+     <ul class="list clearfix">
+	  {maccms:vod num="12" rel="'.$obj['vod_rel_vod'].'" order="desc" by="time"}
+      <li> 
+       <article> 
+		<a class="cover" href="{:mac_url_vod_play($vo)}"> <img src="{:mac_url_img($vo.vod_pic)}" class="b-lazy b-error" alt="{$vo.vod_name}" /></a> 
+        <header> 
+         <h3><a href="{$vo.vod_play_url}">{$vo.vod_name}</a></h3> 
+        </header> 
+       </article> </li> 
+	   <div class="clearfix0"></div>
+	   {/maccms:vod}
+     </ul> 
+    </div> 
+   </section> 
+  
+	   {/maccms:vod}
+     </ul> 
+    </div> 
+   </section> 
+  </section>
+  <span style="display:none" class="mac_ulog_set" alt="设置播放页浏览记录" data-type="4" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" data-sid="{$param.sid}" data-nid="{$param.nid}"></span>
+  {include file="public/foot"}
+  <span id="top-link-block" class="affix" style="display: none;"><a href="#top" onclick="$('html,body').animate({scrollTop:0},'fast');return false;"><i class="fa fa-chevron-up fa-2x"></i></a></span> 
+ </body>
+</html>

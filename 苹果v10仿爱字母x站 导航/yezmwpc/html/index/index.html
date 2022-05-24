@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>{$maccms.site_name}</title>
+<meta name="keywords" content="{$maccms.site_keywords}"/>
+<meta name="description" content="{$maccms.site_description}"/>
+{include file="public/include"}
+<link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body>
+<!-- 头部 -->
+{include file="public/head"}
+<div class="detail_right">
+	<div class="detail_right_tab">
+		<div class="detail_tab detail_tab2">
+			<div class="detail_right_div">
+				<h3><span class="detail_right_span"><style="font-size:20px">最新更新</span></h3>
+				<ul>
+						{maccms:vod num="6" type="all" order="desc" by="hits"}
+					<li>
+					<p class="img">
+						<img class="lazy" src="{:mac_url_img($vo.vod_pic)}" alt="{$vo.vod_name}" title="{$vo.vod_name}">
+						<a href="{:mac_url_vod_play($vo)}"></a>
+					</p>
+					<p>
+							{$vo.vod_name}
+					</p>
+					<p>
+						<i>{$vo.vod_time|date='m-d',###}</i>
+						<strong>{$vo.vod_hits}观看</strong>
+					</p>
+					</li>
+						{/maccms:vod}
+				</ul>
+			</div>
+			
+			<!--分类开始-->
+			<div class="detail_right_div">
+					{maccms:type ids="1" order="asc" by="sort"}
+				<h3><span class="detail_right_span">{$vo.type_name}</span><a href="{:mac_url_type($vo)}">更多>></a></h3>
+				 {/maccms:type}
+				<ul>
+						{maccms:vod num="6" type="1" order="desc" by="time"}
+					<li>
+					<p class="img">
+						<img class="lazy" src="{:mac_url_img($vo.vod_pic)}" alt="{$vo.vod_name}" title="{$vo.vod_name}">
+						<a href="{:mac_url_vod_play($vo)}"></a>
+					</p>
+					<p>
+							{$vo.vod_name}
+					</p>
+					<p>
+						<i>{$vo.vod_time|date='m-d',###}</i>
+						<strong>{$vo.vod_hits}观看</strong>
+					</p>
+					</li>
+						{/maccms:vod}
+				</ul>
+			</div>
+			<div class="detail_right_div">
+					{maccms:type ids="2" order="asc" by="sort"}
+				<h3><span class="detail_right_span">{$vo.type_name}</span><a href="{:mac_url_type($vo)}">更多>></a></h3>
+				 {/maccms:type}
+				<ul>
+						{maccms:vod num="6" type="2" order="desc" by="time"}
+					<li>
+					<p class="img">
+						<img class="lazy" src="{:mac_url_img($vo.vod_pic)}" alt="{$vo.vod_name}" title="{$vo.vod_name}">
+						<a href="{:mac_url_vod_play($vo)}"></a>
+					</p>
+					<p>
+							{$vo.vod_name}
+					</p>
+					<p>
+						<i>{$vo.vod_time|date='m-d',###}</i>
+						<strong>{$vo.vod_hits}观看</strong>
+					</p>
+					</li>
+						{/maccms:vod}
+				</ul>
+			</div>
+			<div class="detail_right_div">
+					{maccms:type ids="3" order="asc" by="sort"}
+				<h3><span class="detail_right_span">{$vo.type_name}</span><a href="{:mac_url_type($vo)}">更多>></a></h3>
+				 {/maccms:type}
+				<ul>
+						{maccms:vod num="6" type="3" order="desc" by="time"}
+					<li>
+					<p class="img">
+						<img class="lazy" src="{:mac_url_img($vo.vod_pic)}" alt="{$vo.vod_name}" title="{$vo.vod_name}">
+						<a href="{:mac_url_vod_play($vo)}"></a>
+					</p>
+					<p>
+							{$vo.vod_name}
+					</p>
+					<p>
+						<i>{$vo.vod_time|date='m-d',###}</i>
+						<strong>{$vo.vod_hits}观看</strong>
+					</p>
+					</li>
+						{/maccms:vod}
+				</ul>
+			</div>
+			<div class="detail_right_div">
+					{maccms:type ids="4" order="asc" by="sort"}
+				<h3><span class="detail_right_span">{$vo.type_name}</span><a href="{:mac_url_type($vo)}">更多>></a></h3>
+				 {/maccms:type}
+				<ul>
+						{maccms:vod num="6" type="4" order="desc" by="time"}
+					<li>
+					<p class="img">
+						<img class="lazy" src="{:mac_url_img($vo.vod_pic)}" alt="{$vo.vod_name}" title="{$vo.vod_name}">
+						<a href="{:mac_url_vod_play($vo)}"></a>
+					</p>
+					<p>
+							{$vo.vod_name}
+					</p>
+					<p>
+						<i>{$vo.vod_time|date='m-d',###}</i>
+						<strong>{$vo.vod_hits}观看</strong>
+					</p>
+					</li>
+						{/maccms:vod}
+				</ul>
+			</div>
+			<!--分类结束-->
+		</div>
+	</div>
+</div>
+<div style="clear:both;">
+</div>
+</div>
+</div>
+<div class="qqq"></div>
+<div class="url">
+
+    <h5>【 精品导航 】</h5>
+
+    <ul class="url-1">
+
+        <h6>1</h6>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">爱妹妹资源</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">青青草资源</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">暧昧导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">爱色导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">平凡导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">小牛棚导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">91福利导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">污妹妹利导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">我爱污福利导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">狠狠撸</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">玖玖热福利导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">神盾局</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">暧昧导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">大富豪福利导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">美美福利导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">K8福利导航</a></li>
+
+        <div class="qqq"></div>
+
+    </ul>
+
+    <ul class="url-2">
+
+        <h6>2</h6>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">姐姐色福利导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">98明星导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">网红导航站</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">613福利导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">苹果导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">艾薇导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">乱片在线导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">74导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">骚货导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">骚导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">大鸡儿导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">800导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">漂移福利导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">黑科技导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">鸟鸣导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">撸女神导航</a></li>
+
+        <div class="qqq"></div>
+
+    </ul>
+
+    <ul class="url-3">
+
+        <h6>3</h6>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">爱妃色导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">Kiss导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="3">黑森林福利导航</a></li>
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">羞嗒嗒导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">色博士导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">第一福利导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">500福利导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">鸽脖导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">91导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">久久福利导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">冰点福利导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">福利超人</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">老色鬼福利导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">小红导航 </a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">小色哥福利导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">小龙女导航</a></li>
+
+        <div class="qqq"></div>
+
+    </ul>
+
+    <ul class="url-4">
+
+        <h6>4</h6>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">一库福利导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">海贼王导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">老大哥导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">新颜导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">如花导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">华人导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">佳人导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">逍遥导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">少女导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">找乐子导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">欧美导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com"> 500福利导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">91导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">色博士导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">羞嗒嗒导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">黑森林福利导航</a></li>
+
+        <div class="qqq"></div>
+
+    </ul>
+
+    <ul class="url-5">
+
+        <h6>5</h6>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">一库福利导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">海贼王导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">老大哥导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href=#>新颜导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">如花导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">华人导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">佳人导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">逍遥导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">少女导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">找乐子导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">欧美导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com"> 500福利导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">91导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">色博士导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">羞嗒嗒导航</a></li>
+
+        <li><a rel="nofollow" target="_blank" href="https://www.cunshao.com">黑森林福利导航</a></li>
+
+        <div class="qqq"></div>
+
+    </ul>
+
+    <div class="url-info">【 精品导航，合作链接，联系邮箱：{$maccms.site_email} 】</div>
+
+</div>
+<div class="qqq"></div>
+{include file="public/foot"}
+</html>

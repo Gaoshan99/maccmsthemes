@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+    <title>影视专题 - {$maccms.site_name}</title>
+    {include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+<!--当前位置-->
+<div class="main">
+<div class="title">专题列表</div>
+<!--专题-->
+<div class="index-area clearfix">
+<ul>
+   
+        {maccms:topic num="1000" paging="yes" order="desc" by="time"}
+     
+           <a href="{:mac_url_topic_detail($vo)}">{$vo.topic_name}</a><br>
+               
+            
+        
+        {/maccms:topic}
+    </ul>
+</div>
+</div>
+
+
+
+
+{include file="public/foot"}
+</body>
+</html>
+

@@ -1,0 +1,61 @@
+<header class="stui-header__top clearfix" id="header-top">
+	<div class="container">	
+		<div class="row">
+			<div class="stui-header_bd clearfix">					
+			    <div class="stui-header__logo">
+					<a class="logo" href="{$maccms.path}"></a>	
+				</div>
+				<div class="stui-header__side">					
+					<ul class="stui-header__user">
+						{if condition="$maccms.user_status eq 1"}
+						<li>
+							<a class="mac_user" href="javascript:;"><i class="icon iconfont icon-account"></i></a>
+						</li>
+						{else /}
+						<li>
+							<a href="javascript:;"><i class="icon iconfont icon-clock"></i></a>
+							<div class="dropdown history">					
+								<h5 class="margin-0 text-muted">
+									<a class="historyclean text-muted pull-right" href="">清空</a>
+									播放记录
+								</h5>
+								<ul class="clearfix" id="stui_history">
+								</ul>
+							</div>
+						</li>
+						{/if}
+					</ul>
+					<script type="text/javascript" src="{$maccms.path_tpl}statics/js/jquery.autocomplete.js"></script>
+					<div class="stui-header__search"> 
+				        <form id="search" name="search" method="get" action="{:mac_url('vod/search')}" onSubmit="return qrsearch();">
+        					<input type="text" id="wd" name="wd" class="mac_wd form-control" value="{$param.wd}" placeholder="请输入关键词..."/>
+							<button class="submit" id="searchbutton" type="submit" name="submit"><i class="icon iconfont icon-search"></i></button>							
+						</form>
+				  	</div>				   
+				</div>									
+				<ul class="stui-header__menu type-slide">
+					<li {if condition="$maccms.aid eq 1"}class="active"{/if}><a href="{$maccms.path}">首页</a></li>
+					{maccms:type num="10" order="asc" by="sort" ids="parent"}
+                    <li {if condition="($vo.type_id eq MAC_TYPE_ID || $vo.type_id eq MAC_TYPE_PID)"}class="active"{/if}><a href="{:mac_url_type($vo)}">{$vo.type_name}</a></li>
+                    {/maccms:type}
+                    <li {if condition="$maccms.aid eq 30"}class="active"{/if}><a href="{:mac_url_topic_index()}">专题</a></li>
+                   <li {if condition="$maccms.aid eq 30"}class="active"{/if}><a href="/zhibo">电视</a></li>
+                   <li {if condition="$maccms.aid eq 30"}class="active"{/if}><a href="/app.apk">APP</a></li>
+				</ul>				
+		  	</div>		
+		</div>	  							    
+	</div>
+</header>
+<script type="text/javascript">
+	$(".stui-header__user li,.stui-header__menu li").click(function(){
+		$(this).find(".dropdown").toggle();		
+		if(stui.browser.useragent.mobile){	
+			$(".MacPlayer").toggle();
+		}
+	});
+	if(stui.browser.useragent.mobile){
+		$(".stui-header__logo .logo").css("background","url({$maccms.site_waplogo|mac_default='statics/img/logo_min.png'|mac_url_img}) no-repeat");		
+	}else{
+		$(".stui-header__logo .logo").css("background","url({$maccms.site_logo|mac_default='statics/img/logo.png'|mac_url_img}) no-repeat");
+	}
+</script>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<title>2018{$obj.type.type_name}《{$obj.vod_name}》迅雷下载_在线播放_中文完整版_百度云网盘720P|1080P资源 – {$maccms.site_name}</title>
+<meta name="keywords" content="{$obj.vod_name}迅雷下载,{$obj.vod_name}完整版,{$obj.vod_name}百度云,{$obj.vod_name}百度网盘,{$obj.vod_name}电影,{$obj.vod_name}中文版,2018{$obj.vod_name}"/>
+<meta name="description" content="{$maccms.site_name}免费提供2018{$obj.vod_name}迅雷下载和中文完整版{$obj.vod_name}百度云网盘资源,在这里您可以免费获得{$obj.vod_name}剧情介绍,剧照和高清迅雷下载地址 {$obj.vod_name} 导演：{$obj.vod_director}"/>
+<link rel="canonical" href="http://{$maccms.site_url}"/>
+<link rel="icon" href="{$maccms.path_tpl}cropped-dybee-32x32.png" sizes="32x32"/>
+<link rel="icon" href="{$maccms.path_tpl}cropped-dybee-192x192.png" sizes="192x192"/>
+<link rel="apple-touch-icon-precomposed" href="{$maccms.path_tpl}images/cropped-dybee-180x180.png"/>
+<meta name="msapplication-TileImage" content="{$maccms.path_tpl}images/cropped-dybee-270x270.png"/>
+{include file="public/include"}
+<link href="{$maccms.path}static/css/home.css" rel="stylesheet" type="text/css" />
+</head>
+ <body class="home blog" id="body-header-top" data-js="bottom">
+  <div class="body_rgba"></div>
+{include file="public/head"}
+  <div class="kz_videodiv">
+   <div class="kzpost_navmenu"> 
+    <a href="{$maccms.path}">首页</a> / 
+        {if condition="$obj.type_1.type_id neq '' "}
+        <a href="{:mac_url_type($obj.type_1)}">{$obj.type_1.type_name}</a>
+        {/if}/ 
+    <a href="{:mac_url_type($obj.type)}" rel="category tag">{$obj.type.type_name}</a> / {$obj.vod_name} {$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}
+   </div>
+   <div id="kzplayer-box"> 
+        {$player_data}
+        {$player_js}
+   </div>
+   <div class="kzpost-video-ad"> 
+<!--广告-->
+   </div>
+   <div class="kzvideo_bottom"> 
+    <a href="{:mac_url_vod_detail($obj)}" class="kz-postvideo"><i class="fa fa-file-text-o"></i> 查看介绍</a>
+ 	<a href="#" class="kz-pagevideo"><i class="fa fa-angle-down"></i> 选集</a> 
+    <a href="{$obj.player_info.link_next}" class="kz-navevideo"><i class="fa fa-step-forward"></i> 下集</a>   
+   </div>
+   <div class="kzvideo_page">
+    <ul class="page_ullist cl">
+
+{maccms:foreach name="obj.vod_play_list" id="vo"}
+{if $param.sid==$key}
+
+        {maccms:foreach name="vo.urls" id="vo2"}
+       <li {if $key==$param.nid} class="kz-on" {/if}> <a href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}" >{$vo2.name}</a></li>
+       
+        {/maccms:foreach} 	
+ {/if}
+ {/maccms:foreach} 	        
+
+    </ul>
+   </div>   
+   <div class="alert-x alert-warning">
+     按键 Ctrl+D 把 
+    <b>奇热影院</b> 加入收藏夹，下次找电影更方便！！影片载入成功后播放窗口自动切换大窗口！！
+    <div style="float:right;">
+     <div style="height:28px;">
+      <div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1520739333753"> 
+       <a href="#" class="bds_more" data-cmd="more"></a> 
+       <a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a> 
+       <a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a> 
+       <a title="分享到腾讯微博" href="#" class="bds_tqq" data-cmd="tqq"></a> 
+       <a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a> 
+       <a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a>
+      </div> 
+      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script> 
+     </div>
+    </div>
+    <div style="float:right;">
+     电影不错？分享给朋友：
+    </div>
+   </div>
+   <div class="xgkz_post">
+    <div class="content_right_title">
+     相关资源：
+
+    </div>
+    <ul class="xg_content">
+    {maccms:vod num="12" type="current" order="desc" by="time"}	
+     <li class="i_list list_n2"><a target="_blank" class="user_list_kz" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"> <img class="waitpic" src="{$maccms.path_tpl}images/thumb_1.png" data-original="{:mac_url_img($vo.vod_pic)}" width="270" height="370" alt="{$vo.vod_name}" /><span style="background-color:rgba(243,152,0,0.85)" class="pay">{$vo.vod_remarks}</span><span class="dbpf">{$vo.vod_score}</span></a>
+      <div class="user_list_kz_meta">
+       <h2>{$vo.vod_name}</h2>
+       <div class="otherinfo">
+        类型：
+{$obj.vod_class}
+       </div>
+      </div></li>
+	{/maccms:vod}
+   </div>
+  </div>
+    <script type="text/javascript">function video_tagauto_kz($tag) {
+	var div_jd = $("#kzplayer-box " + $tag),
+		width = 1150,
+		height = 600,
+		widthcss = parseInt(div_jd.css('width'));
+	div_jd.css('height', (height / width) * widthcss);
+}
+$(document).ready(function(){
+    $(".kz-pagevideo").click(function(){
+        $(".kzvideo_page").slideToggle("slow");
+        return false;
+    });
+
+    if ($("#kzplayer-box iframe").length) {
+		video_tagauto_kz('iframe');
+	}
+	if ($("#kzplayer-box video").length) {
+		video_tagauto_kz('video');
+	}
+	$(window).resize(function () {
+		if ($("#kzplayer-box iframe").length) {
+			video_tagauto_kz('iframe');
+		}
+		if ($("#kzplayer-box video").length) {
+			video_tagauto_kz('video');
+		}
+	});
+});</script> 
+{include file="public/foot"}
+<script type="text/javascript" src="{$maccms.path_tpl}js/script.js?ver=1.5"></script> 
+  <script type="text/javascript" src="http://www.hdbee.net/wp-content/theme_kz/KZ-ORTERS-CODE/js/lightbox.min.js?ver=1.0"></script> 
+  </body>
+</html>

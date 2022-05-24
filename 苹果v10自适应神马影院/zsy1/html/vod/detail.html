@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>《{$obj.vod_name}》电影在线观看完整版 - {$obj.type.type_name} - {$maccms.site_name}</title>
+<meta name="keywords" content="{$obj.vod_name},{$obj.vod_name}电影,{$obj.vod_name}在线观看" />
+<meta name="description" content="《{$obj.vod_name}》电影免费在线观看,{$obj.vod_name}高清完整版,{$obj.vod_name}{$obj.type.type_name}在哪里可以看,本片来源于网络,仅供学习分享和交流,不做任何商业活动,嗨翻影院不提供任何资源的存储服务." />
+{include file="public/include"}
+<!--<link href="{$maccms.path_tpl}down/xunlei.css" rel="stylesheet" type="text/css" />
+<script src="{$maccms.path_tpl}down/down.js"></script>-->
+</head>
+<body>
+{include file="public/head"}
+
+<div class="main">
+<div class="title">
+ <li class="home">
+<a href="{$maccms.path}" title="伦理片">首页</a>&nbsp;》<a href="{:mac_url_type($obj.type_1)}">{$obj.type_1.type_name}</a>&nbsp;》<a href="{:mac_url_type($obj.type)}">{$obj.type.type_name}</a>&nbsp;》{$obj.vod_name}
+</li>
+</div>
+<!--<div align="center"><script src="{$maccms.path_ads}vod1.js"></script></div>-->
+<div class="ct mb clearfix">
+<div class="ct-l"><img class="lazy" src="{:mac_url_img($obj.vod_pic)}" alt="{$obj.vod_name}" onerror="this.src='{$maccms.path_tpl}images/nopic.gif'"、></div>
+<div class="ct-c">
+<dl>
+<dt><h1 class="name">{$obj.vod_name}</h1></dt>
+ <dt><h2>{$obj.vod_name}在线观看</h2></dt>
+<dt><span>主演：</span>{$obj.vod_actor}</dt>
+<dt><span>类型：</span>{$obj.vod_class}</dt>
+<dd><span>导演：</span>{$obj.vod_director}</dd>
+<dd><span>地区：</span>{$obj.vod_area}</dd>
+<dd><span>年份：</span>{$obj.vod_year|mac_default='未知'}</dd>
+<dd><span>语言：</span>{$obj.vod_lang}</dd>
+<dd><span>备注：</span>{$obj.vod_remarks}</dd>
+<dd><span>更新：</span>{$obj.vod_time|date='Y-m-d',###}</dd>
+</dl>
+<!--<div class="ee"><script src="{$maccms.path_ads}vod2.js"></script></div>-->
+</div>
+<!--<div align="center"><script src="{$maccms.path_ads}vod3.js"></script></div>-->
+</div>
+  
+
+  
+  
+<div class="tab-title tab mb clearfix">
+<ul>
+<li class="on">播放列表</li>
+</ul>
+</div>
+<div id="stab1" class="tab-down mb clearfix">
+    <!--<ul>抱歉，由于本剧版权原因该资源被要求删除，不提供{$obj.vod_name}的播放功能，只提供封面与简介浏览，换其它影片看看吧！</ul>-->
+<div class="playfrom tab8 clearfix">
+
+<ul>
+{maccms:foreach name="obj.vod_play_list" id="vo" key="key"}
+<li id="tab8{$key}" onClick="setTab('tab8','stab8',{$key},{$obj.vod_play_list|count})" class="{if condition="$key eq 1"}on{/if}"><i class="playerico ico-{$vo.from}"></i>{$vo.player_info.show}</li>
+{/maccms:foreach}
+</ul>
+  
+</div>
+{maccms:foreach name="obj.vod_play_list" id="vo" key="key"}
+<div id="stab8{$key}" class="playlist clearfix" {if condition="$key neq 1"} style="display:none"{/if}">
+<div class="h1 clearfix">
+<p class="intro">{$vo.player_info.tip}</p>
+<p class="jj"><span id="vlink_{$key}_s1"><em onClick="Order(1,'vlink_{$key}',{$key})">倒序↓</em></span><span id="vlink_{$key}_s2"><em onClick="Order(0,'vlink_{$key}',{$key})" class="over">顺序↑</em></span></p>
+</div>
+<div id="vlink_{$key}" class="videourl clearfix">
+<ul>
+{maccms:foreach name="vo.urls" id="vo2" key="key2"}
+<li><a href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}" target="_blank" title="{$vo2.name}">{$vo2.name}</a></li>
+{/maccms:foreach}
+</ul>
+</div>
+</div>
+{/maccms:foreach}
+</div>
+  
+  <!--播放功能结束-->
+  
+    <div class="tab-title tab mb clearfix"><ul><li class="on"><strong>{$obj.vod_name}</strong>简介</li></ul></div>
+<div class="tab-down mb clearfix">
+<div class="tab-jq">{$obj.vod_content}&nbsp;如果您喜欢嗨翻影院提供的《<h3>{$obj.vod_name}</h3>》，别忘了分享给好友哦！</div>
+</div>
+<div align="center"><script src="{$maccms.path_ads}vod4.js"></script></div>
+<div class="tab-title tab mb clearfix">
+<ul>
+<li class="on">下载地址</li>
+</ul>
+</div>
+
+[doanload下载开始-1]
+{maccms:foreach name="obj.vod_down_list" id="vo"}
+<div class="o_list_cn_top_r" style="border:#bebebe solid 1px; border-bottom:none; overflow:hidden;">
+<div class="title"><h2>迅雷下载</h2></div>
+</div>
+<div class="o_list_cn_r" style="height:auto;border:#bebebe solid 1px; border-top:none; overflow:hidden;" id="jishu">
+<div class="down_list">
+<ul>
+{maccms:foreach name="vo.urls" id="vo2" key="key2"}
+<li><input type="checkbox" name="down_url_list_{$key}" class="down_url" value="{$vo2.url}" file_name="{$vo2.name}" /><p><strong class="down_part_name"><a href="{$vo2.url}">{$vo2.name}</a></strong></p><span><label class="common_down">迅雷下载</label><label class="qqdl">旋风下载</label><label class="kk">迅雷影音</label></span></li>
+    {/maccms:foreach}
+</ul>
+</div>
+<div class="downtools">
+<input type="checkbox" name="checkall">
+<em>全选</em><a name="copy" class="copy" id="copy">复制地址</a><a href="javascript:void(0);" class="thunder_down_all" target="_self">迅雷批量下载</a><a href="javascript:void(0);" class="xf_down_all" target="_self">旋风批量下载</a><a href="javascript:void(0);" class="common_down_all" target="_self">通用批量下载</a><span class="down-tips">可右击标题复制资源地址下载</span></div>
+</div>
+<div class="list"></div>
+{/maccms:foreach}
+
+<div class="tab-title tab mb clearfix"><ul><li class="on">随便看看</li></ul></div>
+<div class="tab-down mb clearfix">
+<div class="index-area clearfix">
+<ul>
+
+{maccms:vod type="6,7,8,9,10,11,12" ids="'.$obj['art_rel_vod'].'" order="desc" num="12" paging="false"}
+<li class="p1 m1 {if condition="$key% 6 eq 0"}mmr0 pmr0{/if}"><a class="link-hover" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"><img src="{:mac_url_img($vo.vod_pic)}" alt="{$vo.vod_name}" onerror="this.src='{$maccms.path_tpl}images/nopic.gif'" class="lazy"><span class="video-bg"></span><span class="lzbz"><p class="name">{$vo.vod_name}</p><p class="actor">{$vo.vod_actor}</p><p class="actor">{$vo.type.type_name}</p><p class="actor">{$vo.vod_year}/{$vo.vod_area}</p></span><p class="other"><i>{$vo.vod_remarks}</i></p></a></li>{/maccms:vod}
+</ul>
+</div>
+</div>
+<!--<div align="center"><script src="{$maccms.path_ads}vod5.js"></script></div>-->
+
+<div class="ds-thread" data-thread-key="[vod:id]" data-title="[vod:name]" data-url="[vod:typelink]"></div>
+
+</div>
+  
+
+
+{include file="public/foot"}
+</body>
+</html>

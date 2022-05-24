@@ -1,0 +1,39 @@
+<div class="top-layout">
+<div class="top-wrap fn-clear">
+<h1><a href="{$maccms.path}">{$maccms.site_name}</a></h1>
+<div class="search-wrap">
+<form method="post" action="{:mac_url('vod/search')}">
+<div class="search-l">
+<i class="iconfont">&#xe601;</i>
+<input autocomplete="off" id="wd" name="wd" type="text" value="输入影片片名或演员名称。" onfocus="if(this.value=='输入影片片名或演员名称。'){this.value='';}" onblur="if(this.value==''){this.value='输入影片片名或演员名称。';};" autocomplete="off" class="search-text1">
+</div>
+<input type="submit" value="搜 索" class="search-btn" id="btn"></form>
+</div>
+<div class="top-layout-r">
+<div class="top-record ">
+<a href="javascript:;" class="navico mac_history"><div class="i record"></div>观看记录</a>
+</div>
+<a href="javascript:;" class="navico mac_user"><div class="i client"></div>会员登录</a>
+<a title="榜单" class="navico" target="_blank" href="{:mac_url('label/top')}"><div class="i hots"></div>榜单</a>
+<a title="节目" class="navico" target="_blank" href="{:mac_url('label/live')}"><div class="i tvs"></div>直播</a>
+</div>
+</div>
+</div>
+<div class="navgation-layout">
+<div class="navgation-wrap fn-clear">
+<div class="navgation-left">
+<a href="{$maccms.path}" {if condition="$maccms.aid eq 1"}class="on"{/if}><i class="iconfont"></i><em>首页</em></a>
+{maccms:type ids="parent" order="asc" by="sort"}
+<a href="{:mac_url_type($vo)}" {if condition="$obj.type_id eq $vo.type_id"}class="on"{/if}><i class="iconfont"></i><em>{$vo.type_name}</em></a>{/maccms:type}
+</div>
+<div class="navgation-right">
+<a href="{:mac_url_topic_index()}" {if condition="$maccms.aid eq 30 or $maccms.aid eq 31"}class="on"{/if} target="_blank">专题</a>
+<a href="{:mac_url('gbook/index')}" {if condition="$maccms.aid eq 4"}class="on"{/if} target="_blank">留言</a>
+<a href="{:mac_url('label/live')}" target="_blank">直播</a>
+<a href="{:mac_url('label/top')}" target="_blank">榜单</a>
+<a href="{:mac_url('label/new')}" target="_blank">最新</a>
+<a href="{:mac_url('label/sitemap')}" target="_blank">网站地图</a>
+</div>
+</div>
+<div class="navgation-shodw"></div>
+</div>

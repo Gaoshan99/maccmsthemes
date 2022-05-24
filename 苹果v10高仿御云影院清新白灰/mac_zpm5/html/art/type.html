@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>{$obj.type_title} - {$maccms.site_name}</title>
+<meta name="keywords" content="{$obj.type_key}" />
+<meta name="description" content="{$obj.type_des}" />
+{include file="public/include"}
+</head>
+<body>
+<div class="movie-wrap">
+{include file="public/head"}
+<div class="header_bg"></div>
+<div class="details-body" style="margin-top:-85px;">
+
+<div class="margin-bottom-share" style="overflow:hidden">
+<div class="details-left fl">
+<div class="recommend-header mt10">
+<div class="fl"><span>推荐{$obj.type_name}</span></div>
+</div>
+<div class="splendid-content">
+<div class="splendid-content-inner" style="display:block;">
+{maccms:art num="1" type="current" order="desc" by="hits_week"}
+<div class="sci-left fl">
+<a href="{:mac_url_art_detail($vo)}" target="_blank">
+<div class="sci-left-pic">
+<img class="scrollLoading" data-url="{$vo.art_pic|mac_url_img}" src="{$maccms.path_tpl}images/pic.png" width="350" height="300" alt="{$vo.art_name}">
+</div>
+<div class="shade"></div>
+<div class="pic-title">
+<div>{$vo.art_name|mac_substring=15}</div>
+<p>{$vo.art_content|mac_filter_html|mac_substring=30}</p>
+</div>
+</a>
+</div>
+{/maccms:art}
+<div class="sci-right fr">
+<ul class="sci-right-ul">
+{maccms:art num="6" type="current" start="2" order="desc" by="hits_week"}
+<li>
+<a href="{:mac_url_art_detail($vo)}" class="sru-pic" target="_blank"><img class="scrollLoading" data-url="{$vo.art_pic|mac_url_img}" width="160" height="100" src="{$maccms.path_tpl}images/pic.png" alt="{$vo.art_name}">
+</a>
+<div class="movie-headline1 mhi1"><a href="{:mac_url_art_detail($vo)}">{$vo.art_name|mac_substring=10}</a></div>
+</li>
+{/maccms:art}
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="details-right fr">
+<div class="recommend-header mt10">
+<div class="fl"><span>热门{$obj.type_name}</span></div>
+</div>
+<div class="teleplay-content">
+<ul class="teleplay-con-list telclist4 tcl1">
+{maccms:art num="9" type="current" order="desc" by="hits_month"}
+<li><i>{$key}</i><span class="views">{$vo.art_hits}次</span><a href="{:mac_url_art_detail($vo)}" target="_blank">{$vo.art_name|mac_substring=15}</a></li>
+{/maccms:art}
+</ul>
+</div>
+</div>
+</div>
+{maccms:type flag="art" parent="current" order="asc" by="sort" }
+<div class="details-left fl">
+<div class="recommend-header mt10">
+<div class="fl"><span>{$vo.type_name}</span></div>
+</div>
+<div class="news-list-tab">
+<ul class="list_module_img">
+{maccms:art num="1" type="'.$vo['type_id'].'" order="desc" by="time" id="vo2" key="key2"}
+<li><a class="list-img aleft" href="{:mac_url_art_detail($vo2)}" title="{$vo2.art_name}" target="_blank"><img class="scrollLoading" src="{$maccms.path_tpl}images/pic.png" data-url="{$vo2.art_pic|mac_url_img}" alt="{$vo2.art_name}" /><label class="name">{$vo2.art_name|mac_substring=15}</label></a>
+<div class="news-info">
+<h2><a href="{:mac_url_art_detail($vo2)}" title="{$vo2.art_name}" target="_blank">{$vo2.art_name}</a></h2><span>{$vo2.art_time|date='Y-m-d H:i:s',###}</span>
+<p>{$vo2.art_content|mac_filter_html}</p>
+</div>
+</li>
+{/maccms:art}
+</ul>
+</div>
+<div class="news-tab">
+<ul class="list_module_img" style="height:157px;">
+{maccms:art num="4" type="'.$vo['type_id'].'" start="2" order="desc" by="time" id="vo2" key="key2"}
+<li>
+<a class="list-img aleft" href="{:mac_url_art_detail($vo2)}" title="{$vo2.art_name}" target="_blank"><img class="scrollLoading" src="{$maccms.path_tpl}images/pic.png" data-url="{$vo2.art_pic|mac_url_img}" alt="{$vo2.art_name}" /><label class="name">{$vo2.art_name|mac_substring=15}</label></a>
+</li>
+{/maccms:art}
+</ul>
+</div>
+</div>
+<div class="details-right fr">
+<div class="recommend-header mt10">
+<div class="fl"><span>{$vo.type_name}</span>排行榜</div>
+</div>
+<div class="teleplay-content">
+<ul class="teleplay-con-list telclist4 tcl1">
+{maccms:art num="4" type="'.$vo['type_id'].'" order="desc" by="hits_month" id="vo2" key="key2"}
+<li><i>{$key2}</i><span class="views">{$vo2.art_hits}次</span><a href="{:mac_url_art_detail($vo2)}" target="_blank">{$vo2.art_name|mac_substring=15}</a></li>
+{/maccms:art}
+</ul>
+</div>
+</div>
+{/maccms:type}
+<div class="clearfix" style="width:100%;"></div>
+</div>
+</div>
+</div>
+{include file="public/foot_de"}
+</body>
+</html>

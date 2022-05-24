@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>最新电影角色_电视剧角色_明星饰演的角色 - {$maccms.site_name}</title>
+<meta name="keywords" content="电影角色,电视剧角色,明星主演的角色" />
+<meta name="description" content="最新电影电视剧角色，为各位提供电视剧主要角色介绍，电影中主要角色介绍，角色名电影角色介绍，等丰富的节目主演角色介绍" />
+{include file="public/include"}
+</head>
+<body>
+<div class="movie-wrap">
+{include file="public/head"}
+<div class="header_bg"></div>
+<div class="details-body" style="margin-top:-85px;">
+<div class="crumbs">
+<span class="fl">您所在的位置：</span>
+<div class="crumbs-all fl">
+<a href="{$maccms.path}" class="blue">首页</a> <span>&gt;</span>
+<a href="javascript:;" class="active-style11">角色表</a>
+</div>
+</div>
+<div class="details-con1">
+<div class="filtrate-container-heads"><h2 class="fl"><strong>角色表</strong></h2>
+<ul class="fchstar fch12 fl" id="filter">
+</ul>
+{maccms:role num="24" paging="yes" pageurl="role/show" order="desc" by="time"}{/maccms:role}
+<div class="fch2">
+<div class="fch2-btn fr">
+{if condition="$__PAGING__.page_current==1"}
+<a class="fch2-left-btn active-style9"></a>
+{else /}
+<a href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_prev}" class="fch2-left-btn active-style9"></a>
+{/if}
+{if condition="$__PAGING__.page_current==$__PAGING__.page_total"}
+<a class="fch2-right-btn active-style9"></a>
+{else /}
+<a href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_next}" class="fch2-right-btn active-style9"></a>
+{/if}
+</div>
+<div class="fch2-num fr">
+<span class="fch2-num-span">{$__PAGING__.page_current}</span>/<span>{$__PAGING__.page_total}</span>
+</div>
+</div>
+<div class="fch3 fr">
+全部共有 <span class="fch2-num-span">{$__PAGING__.record_total}</span> 个角色 </div></div>
+<div class="star-list-share">
+<ul class="star-role" id="stage">
+{maccms:role num="24" paging="yes" pageurl="role/show" order="desc" by="time"}
+<li class="w33" data-tags="{$vo.data.type.type_name}角色">
+<div class="role-l">
+<a class="star-role-img" href="{$vo|mac_url_role_detail}" title="{$vo.data.vod_name}" target="_blank"><img class="scrollLoading" src="{$vo.role_pic|mac_url_img}" alt="{$vo.data.vod_name}" /><p><span>&gt;</span>角色</p></a>
+</div>
+<div class="role-c-txt">
+<p class="actor-title">角色：<em class="a-zy"><a href="{$vo|mac_url_role_detail}" title="{$vo.data.vod_name}" target="_blank">{$vo.role_name}</a></em></p>
+<p class="actor-title"><em class="a-js">片名：<a href="{$vo.data|mac_url_vod_detail}" title="{$vo.data.vod_name}" target="_blank">{$vo.data.vod_name}</a></em> </p>
+<p>介绍：{$vo.role_content|mac_filter_html}</p>
+</div>
+</li>
+{/maccms:role}
+</ul>
+</div>
+{include file="public/paging"}
+</div>
+</div>
+<div class="clearfix" style="width:100%;"></div>
+</div>
+</div>
+</div>
+{include file="public/foot_de"}
+<script src="{$maccms.path_tpl}js/jquery.quicksand.js"></script>
+<script src="{$maccms.path_tpl}js/script.js"></script>
+</body>
+</html>

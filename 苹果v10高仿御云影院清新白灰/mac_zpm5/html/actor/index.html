@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>明星_娱乐明星_明星大全 - {$maccms.site_name}</title>
+<meta name="keywords" content="明星,娱乐明星,电影明星,电视剧明星,明星大全" />
+<meta name="description" content="{$maccms.site_name}为您提供各国男女明星的详细资料、近况已经最新电影，电视剧在线观看。" />
+{include file="public/include"}
+</head>
+<body>
+<div class="movie-wrap">
+{include file="public/head"}
+<div class="header_bg"></div>
+<div class="container" style="margin-top:-70px;">
+<div class="container-inner">
+<div class="star_index_hot">
+<div class="topBanner">
+<ul class="picList">
+{maccms:actor num="6" order="desc" by="time"}
+<li class="li{$key}">
+<div class="pic">
+<img class="scrollLoading" src="{$maccms.path_tpl}images/pic.png" data-url="{$vo.actor_pic|mac_url_img}" title="{$vo.actor_name}">
+<div class="txt">
+<span class="sTit">{$vo.actor_name}</span>
+<p class="pTxt"><span class="sDes">{$vo.actor_remarks|mac_default='演员'}</span></p>
+</div>
+<a class="aPlayBtn" href="{$vo|mac_url_actor_detail}" title="{$vo.actor_name}" target="_blank"></a>
+</div>
+</li>
+{/maccms:actor}
+</ul>
+</div> <div class="recommend fr">
+<div class="star_hot_title"><strong><a href="javascript:;">明星<em>排行榜</em></a></strong></div>
+<div class="tb_a">
+<ul class="ulStarRank clearfix">
+{maccms:actor num="5" order="desc" by="hits"}
+<li>
+<i class="iNum iYellow">{$key}</i>
+<a href="{$vo|mac_url_actor_detail}" target="_blank" class="aPic"><img src="{$vo.actor_pic|mac_url_img}" alt="" title="{$vo.actor_name}" width="50" height="68"></a>
+<p class="pTxt">
+<span class="sName"><a href="{$vo|mac_url_actor_detail}" target="_blank">{$vo.actor_name}</a></span>
+{maccms:vod num="1" actor="'.$vo['actor_name'].'" type="all" order="desc" by="time" id="vo2" key="key2"}
+<span class="sWorks"><a href="{:mac_url_vod_detail($vo2)}" target="_blank">《{$vo2.vod_name}》</a></span>
+{/maccms:vod}
+</p>
+</li>
+{/maccms:actor}
+</ul>
+</div>
+</div>
+</div>
+
+<div class="margin-bottom-share">
+<div class="star_hot_title"><strong><a href="javascript:;"><em>大陆</em>热星</a></strong></div>
+<div class="mx_list_ul">
+<ul>
+{maccms:actor num="6" area="大陆,内地" order="desc" by="time"}
+<li>
+<a target="_blank" href="{$vo|mac_url_actor_detail}" class="star-img">
+<img class="scrollLoading" data-url="{$vo.actor_pic|mac_url_img}" src="{$maccms.path_tpl}images/pic.png" alt="{$vo.actor_name}">
+<label class="name">{$vo.actor_name}</label>
+</a>
+</li>
+{/maccms:actor}
+</ul>
+</div>
+</div>
+<div class="margin-bottom-share">
+<div class="star_hot_title"><strong><a href="javascript:;"><em>港台</em>热星</a></strong></div>
+<div class="mx_list_ul">
+<ul>
+{maccms:actor num="12" area="香港,台湾,澳门" order="desc" by="time"}
+<li>
+<a target="_blank" href="{$vo|mac_url_actor_detail}" class="star-img">
+<img class="scrollLoading" data-url="{$vo.actor_pic|mac_url_img}" src="{$maccms.path_tpl}images/pic.png" alt="{$vo.actor_name}">
+<label class="name">{$vo.actor_name}</label>
+</a>
+</li>
+{/maccms:actor}
+</ul>
+</div>
+</div>
+<div class="margin-bottom-share">
+<div class="star_hot_title"><strong><a href="javascript:;"><em>日韩</em>热星</a></strong></div>
+<div class="mx_list_ul">
+<ul>
+{maccms:actor num="12" area="韩国,日本,亚洲" order="desc" by="time"}
+<li>
+<a target="_blank" href="{$vo|mac_url_actor_detail}" class="star-img">
+<img class="scrollLoading" data-url="{$vo.actor_pic|mac_url_img}" src="{$maccms.path_tpl}images/pic.png" alt="{$vo.actor_name}">
+<label class="name">{$vo.actor_name}</label>
+</a>
+</li>
+{/maccms:actor}
+</ul>
+</div>
+</div>
+<div class="margin-bottom-share">
+<div class="star_hot_title"><strong><a href="javascript:;"><em>欧美</em>热星</a></strong></div>
+<div class="mx_list_ul">
+<ul>
+{maccms:actor num="12" area="美国,欧美,欧洲" order="desc" by="time"}
+<li>
+<a target="_blank" href="{$vo|mac_url_actor_detail}" class="star-img">
+<img class="scrollLoading" data-url="{$vo.actor_pic|mac_url_img}" src="{$maccms.path_tpl}images/pic.png" alt="{$vo.actor_name}">
+<label class="name">{$vo.actor_name}</label>
+</a>
+</li>
+{/maccms:actor}
+</ul>
+</div>
+</div>
+{include file="public/foot"}
+</body>
+</html>

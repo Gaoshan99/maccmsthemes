@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="seo/vod_search"}   
+	{include file="block/include"}
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+        	<div class="stui-pannel">
+        		<div class="stui-pannel__hd">
+        			{include file="block/head"}
+        		</div>
+        		<div class="stui-pannel__bd clearfix">
+        			<div class="stui-screen">
+						<div class="head clearfix">
+							<span class="text">
+								与“{$param.wd}”相关的影片
+							</span>	
+						</div>
+					</div>
+        			<ul class="stui-vodlist clearfix">
+						{maccms:vod num="12" paging="yes" pageurl="vod/search" order="desc" by="time"}
+						<li class="col-md-6 col-sm-4 col-xs-3">
+							{include file="block/vod_box"}											
+						</li>
+						{/maccms:vod}
+					</ul>   			
+        		</div>
+        		<div class="stui-pannel__ft">
+        			{include file="block/page"}
+        		</div>
+        	</div>
+        </div>
+    </div>
+    {include file="block/page_all"}
+	{include file="block/foot"}
+</body>
+</html>

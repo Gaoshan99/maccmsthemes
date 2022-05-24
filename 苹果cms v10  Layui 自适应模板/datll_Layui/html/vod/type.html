@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{$obj.type_title} - {$maccms.site_name}</title>
+<meta name="keywords" content="{$obj.type_key}" />
+<meta name="description" content="{$obj.type_des}" />
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<meta name="generator" content="datll.10.2" />
+<meta name="author" content="datll.com" />
+<meta name="copyright" content="datll.com" />
+{include file="public/include"}
+
+</head>
+
+<body>
+<!--载入头部-->
+{include file="public/head"}
+<!--载入pc幻灯-->	
+ {include file="public/banner"}
+<!--载入移动端入幻灯-->	
+{include file="public/wapbanner"}		
+	 
+<div class="layui-main">		
+ <div class="type_class_div">
+	<ul class="layui-elem-quote type_class">
+	 <h2 class="titel">类型</h2>
+		  <span class="layui-breadcrumb" lay-separator="|">
+			  
+             {empty name="$obj.type_extend.class"}
+                    {maccms:foreach name=":explode(',',$obj.parent.type_extend.class)"}
+                    <a href="{:mac_url_type($obj,['class'=>$vo],'show')}">{$vo}</a>
+                    {/maccms:foreach}
+                {else /}
+                    {maccms:foreach name=":explode(',',$obj.type_extend.class)"}
+                    <a href="{:mac_url_type($obj,['class'=>$vo],'show')}">{$vo}</a>
+                    {/maccms:foreach}
+                {/empty}
+		 </span>
+	 
+	 
+	 </ul>
+	<ul class="layui-elem-quote type_class">
+	  <h2 class="titel">地区</h2>
+	   <span class="layui-breadcrumb" lay-separator="|">
+		{empty name="$obj.type_extend.area"}
+                    {maccms:foreach name=":explode(',',$obj.parent.type_extend.area)"}
+                    <a href="{:mac_url_type($obj,['class'=>$vo],'show')}">{$vo}</a>
+                    {/maccms:foreach}
+                {else /}
+                    {maccms:foreach name=":explode(',',$obj.type_extend.area)"}
+                    <a href="{:mac_url_type($obj,['area'=>$vo],'show')}">{$vo}</a>
+                    {/maccms:foreach}
+                {/empty}
+		</span>
+	 
+	 </ul>
+	<ul class="layui-elem-quote type_class">
+	 <h2 class="titel">地区</h2>
+		<span class="layui-breadcrumb" lay-separator="|">
+		{empty name="$obj.type_extend.year"}
+                    {maccms:foreach name=":explode(',',$obj.parent.type_extend.year)"}
+                    <a href="{:mac_url_type($obj,['class'=>$vo],'show')}">{$vo}</a>
+                    {/maccms:foreach}
+                {else /}
+                    {maccms:foreach name=":explode(',',$obj.type_extend.year)"}
+                    <a href="{:mac_url_type($obj,['year'=>$vo],'show')}">{$vo}</a>
+                    {/maccms:foreach}
+                {/empty}
+		
+		
+		</span>
+	 
+	 </ul>
+	
+	
+	</div>
+  <!--第一个板块	-->
+  <div class="layui-row margin-top">
+    <div class="layui-col-xs12 layui-col-md8">
+      <div class="grid-demo grid-demo-bg1 margin-right">
+		  <div class="layui-elem-quote">
+		  <h2 class="titel">{$obj.type_title} • 推荐</h2>
+		  <span class="layui-breadcrumb" lay-separator="|">
+			  {maccms:type ids="1,2,3,4" order="asc" by="sort"}
+			  <a href="">{$vo.type_name}</a>
+			  {/maccms:type}
+
+		 </span>
+		  
+		  </div>
+		  <div class="style1">
+			  <ul>
+				 {maccms:vod num="12" type="current"  by="hits_week" order="desc"}
+				  <li class="layui-col-sm3 {if condition="($key%3||0)"}{else /}list_nmm{/if}  {if condition="$key>8"} none-pc{/if}"><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">
+					  <div class="vodpic">
+						  <span class="layui-remarks layui-badge">{$vo.vod_remarks}</span>
+					   <img alt="{$vo.vod_name}" src="{:mac_url_img($vo.vod_pic)}" />
+					  </div>
+			          <div class="vodname ">{$vo.vod_name}</div>
+					  </a>
+			      
+			      </li>
+				  {/maccms:vod}
+			  </ul>
+		    </div>
+		 </div>
+    </div>
+    <div class="layui-col-xs6 layui-col-md4 wabnone">
+      <div class="grid-demo">
+		  <div class="layui-elem-quote height">
+		 <h2 class="titel">最新更新 • 影片({:mac_data_count($obj.type_id,'all')})</h2>
+		
+			  <a href="">更多>></a>
+           </div>
+		   <div class="vodlist2">
+		     <ul>
+			   {maccms:vod num="14" type="current" by="time" order="desc"}
+				 <li><i class="layui-btn layui-btn-xs {if condition="$key<4"}layui-btn-danger{elseif condition="($key==4) "/}layui-btn-warm{elseif condition="$key==5"/}layui-btn-warm{elseif condition="$key==6"/}{else /} layui-btn-normal{/if}">{$key}</i><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"><span class="vodtiell">{$vo.vod_name}<span class="layui-badge layui-bg-orange margin-left">{$vo.vod_remarks} </span><span class="layui-badge margin-left">{$vo.vod_time|date='m-d',###}</span></span></a></li>
+			   {/maccms:vod}
+			   </ul>
+		  
+		   </div>
+		</div>
+    </div>
+    	
+	</div>
+
+  <!--内容循环-->
+	{maccms:type parent="current" order="asc" by="sort" mid="1" id="vo3"}
+	<div class="layui-row margin-top">
+    <div class="layui-col-xs12 layui-col-md8">
+      <div class="grid-demo grid-demo-bg1 margin-right">
+		  <div class="layui-elem-quote">
+		  <h2 class="titel">热播{$vo3.type_name}</h2>
+		  <span class="layui-breadcrumb" lay-separator="|">
+	  {maccms:vod num="4"  type="'.$vo3['type_id'].'" order="desc" by="hits"}
+        <a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">{$vo.vod_name}</a>
+      {/maccms:vod}
+        <a href="{:mac_url_type($vo3,[],'show')}">更多>></a>
+		 </span>
+		  
+		  </div>
+		  <div class="style1">
+			  <ul>
+				 {maccms:vod num="12"  type="'.$vo3['type_id'].'" order="desc" by="hits"}
+				  <li class="layui-col-sm3 {if condition="($key%3||0)"}{else /}list_nmm{/if}  {if condition="$key>8"} none-pc{/if}"><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">
+					  <div class="vodpic">
+						  <span class="layui-remarks layui-badge">{$vo.vod_remarks}</span>
+					   <img alt="{$vo.vod_name}" lay-src="{:mac_url_img($vo.vod_pic)}" />
+					  </div>
+			          <div class="vodname ">{$vo.vod_name}</div>
+					  </a>
+			      
+			      </li>
+				  {/maccms:vod}
+			  </ul>
+		    </div>
+		 </div>
+    </div>
+    <div class="layui-col-xs6 layui-col-md4 wabnone">
+      <div class="grid-demo">
+		  <div class="layui-elem-quote height">
+		 <h2 class="titel">最新 • {$vo3.type_name}</h2>
+		
+			  <a href="">更多>></a>
+           </div>
+		   <div class="vodlist2">
+		     <ul>
+			   {maccms:vod num="14"  type="'.$vo3['type_id'].'" order="desc" by="time"}
+				 <li><i class="layui-btn layui-btn-xs {if condition="$key<4"}layui-btn-danger{elseif condition="($key==4) "/}layui-btn-warm{elseif condition="$key==5"/}layui-btn-warm{elseif condition="$key==6"/}{else /} layui-btn-normal{/if}">{$key}</i><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"><span class="vodtiell">{$vo.vod_name}<span class="layui-badge layui-bg-orange margin-left">{$vo.vod_remarks} </span><span class="layui-badge margin-left">{$vo.vod_time|date='m-d',###}</span></span></a></li>
+			   {/maccms:vod}
+			   </ul>
+		  
+		   </div>
+		</div>
+    </div>
+    	
+	</div>
+   {/maccms:type}
+
+
+<!--友情链接-->
+
+<div style="clear:both"></div>
+</div>
+{include file="public/foot"}
+	
+</body>
+</html>

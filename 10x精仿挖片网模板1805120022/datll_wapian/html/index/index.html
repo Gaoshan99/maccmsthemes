@@ -1,0 +1,126 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta http-equiv="cache-control" content="no-siteapp">
+<title>{$maccms.site_name}-高清云影视免费为大家提供最新最全的免费电影</title>
+
+<meta name="keywords" content="{$maccms.site_keywords}">
+<meta name="description" content=" {$maccms.site_description} ">
+{include file="public/include"}
+</head>
+<body class="home blog">
+{include file="public/head"} 
+
+<!--幻灯片开始-->
+<div id="wrapper">
+  <div class="fullwidthbanner-container">
+    <div class="fullwidthbanner">
+      <ul>
+        {maccms:vod order="desc"   by="level" level="9"  type="all"  }
+        <li class="datll_li" data-transition="flyin" data-slotamount="15" data-masterspeed="300" data-link="{:mac_url_vod_detail($vo)} "> <img src="{$vo.vod_pic_slide}" alt="{$vo.vod_name}" style="max-height: 460px;"/> </li>
+        {/maccms:vod}
+      </ul>
+    </div>
+  </div>
+</div>
+<!--幻灯片结束-->
+<section class="container">
+  <div class="index_film">
+    <div class="single-strong">热门推荐<!--<span class="chak"><a href="[matrix:link]">查看更多</a></span>--></div>
+    <div class="m-g">
+      <div class="b-listtab-main">
+        <div>
+          <div>
+            <div class="s-tab-main">
+              <ul class="list g-clear">
+                {maccms:vod num="12" type="all" by="hits_day" order="desc"  }
+                <li class='item'> <a class='js-tongjic' href='{:mac_url_vod_detail($vo)} ' title='{$vo.vod_name}'>
+                  <div class='cover g-playicon'> <img src='{:mac_url_img($vo.vod_pic)}' alt='{$vo.vod_name}' /> <span class='pay'>{$vo.type.type_name}</span> <span class='hint'>{$vo.vod_remarks}</span></div>
+                  <div class='detail'>
+                    <p class='title g-clear'> <span class='s1'>{$vo.vod_name}</span> <span class='s2'>{$vo.vod_score}</span></p>
+                    <p class='star'>{$vo.vod_actor} </p>
+                  </div>
+                  </a> </li>
+                {/maccms:vod}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{maccms:type parent="current" order="asc" by="sort" mid="1" id="vo1"}
+  <div class="Film_list">
+    <div class="single-strong">最新{$vo1.type_name} <span class="chak"><a href="{:mac_url_type($vo)} ">查看更多</a></span></div>
+    <div class="b-listtab-main">
+      <div class="s-tab-main">
+        <ul class="list g-clear">
+          {maccms:vod num="10" type="'.$vo1['type_id'].'" order="desc" by="time"}
+          <li class='item'><a class='js-tongjic' href='{:mac_url_vod_detail($vo)} ' title='{$vo.vod_name}'>
+            <div class='cover g-playicon'> <img src='{:mac_url_img($vo.vod_pic)}' alt='{$vo.vod_name}' /> <span class='pay'>{$vo.type.type_name} </span><span class='hint'>{$vo.vod_remarks}</span> </div>
+            <div class='detail'>
+              <p class='title g-clear'> <span class='s1'>{$vo.vod_name}</span> <span class='s2'>{$vo.vod_score}</span></p>
+              <p class='star'>{$vo.vod_actor} </p>
+            </div>
+            </a></li>
+          {/maccms:vod}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="hot_film">
+    <div class="single-strong">{$vo1.type_name}排行榜</div>
+	  
+	  {if condition="$vo1.type_id == 1"}
+	  
+	  <div class="hot_film_list">
+		{maccms:vod num="22" type="'.$vo['type_id'].'" order="desc" by="time"}
+		<a href="{:mac_url_vod_detail($vo)} "><span class=" {if condition="($key <=3)"}Serial_number{else /}Serial_numberh {/if}">{$key}</span><span class="vodname">{$vo.vod_name}</span><span class="list_score">{$vo.vod_score}</span></a> {/maccms:vod}
+	  </div>
+	  
+	  {else /}
+	  
+	   <div class="hot_film_list">
+		{maccms:vod num="9" type="'.$vo['type_id'].'" order="desc" by="time"}
+		<a href="{:mac_url_vod_detail($vo)} "><span class=" {if condition="($key <=3)"}Serial_number{else /}Serial_numberh {/if}">{$key}</span><span class="vodname">{$vo.vod_name}</span><span class="list_score">{$vo.vod_score}</span></a> {/maccms:vod}
+	  </div>
+    <div class="single-strong">热播{$vo1.type_name}</div>
+    <div class="hot_film_list">
+		{maccms:vod num="9" type="'.$vo['type_id'].'" order="desc" by="time"}
+		<a href="{:mac_url_vod_detail($vo)} "><span class="{if condition="($key <= 3)"}Serial_number{else /}Serial_numberh {/if}"">{$key}</span><span class="vodname">{$vo.vod_name}</span><span class="list_score">{$vo.vod_score}分</span></a>
+		
+		
+		
+		{/maccms:vod}
+	  </div>
+	  
+	  {/if}
+   
+  </div>
+  {/maccms:type}
+  <div class="link1">
+    <div class="single-strong">友情链接 <span class="chak_link">[ 申请友链联系QQ:{$maccms.site_qq} ]</span></div>
+  </div>
+  <div class="link">
+  
+    {maccms:link num="10" type="font"}
+       <a class="alink" href="{$vo.link_url}" target="_blank"> {$vo.link_name}</a>
+       
+    {/maccms:link}
+  </div>
+	
+	
+</section>
+
+{include file="public/foot"} 
+<script type='text/javascript' src='{$maccms.path_tpl}js/main.js'></script> 
+<!--<script type="text/javascript"> document.body.oncontextmenu=document.body.ondragstart= document.body.onselectstart=document.body.onbeforecopy=function(){return false;};
+document.body.onselect=document.body.oncopy=document.body.onmouseup=function(){document.selection.empty();}; </script>-->
+{$maccms.site_tj}
+</body>
+</html>

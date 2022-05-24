@@ -1,0 +1,10 @@
+<dl class="fed-list-arti fed-list-deta fed-deta-padding fed-line-top fed-margin fed-part-rows fed-part-over">
+	<dt class="fed-deta-images fed-list-info fed-col-xs3">
+		<a class="fed-list-pics fed-lazy fed-part-16by9" href="{:mac_url_art_detail($vo)}" data-original="{$vo.art_pic|mac_url_img}"></a>
+	</dt>
+	<dd class="fed-deta-content fed-col-xs7 fed-col-sm8">
+		<h3 class=""><a class="fed-part-etwo fed-visible" href="{:mac_url_art_detail($vo)}">{$vo.art_name}</a></h3>
+		<p class="fed-hide-xs fed-text-muted">{$vo.art_content|mac_filter_html|mac_substring=60}</p>
+		<span class="fed-visible fed-text-muted">{$vo.art_time|mac_friend_date}　{$vo.art_hits} views</span>
+	</dd>
+</dl>

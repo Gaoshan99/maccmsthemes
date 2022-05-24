@@ -1,0 +1,45 @@
+<div class="update-last-time">
+<div id="detail-rating" class="fn-left">
+<div id="detail-rating" class="fn-clear">
+<div id="rating" class="fn-left" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" data-score="{$obj.vod_score/2|ceil}">
+<span class="label">给影片评分：</span>
+<ul class="rating">
+<li class="one {if condition="$obj.vod_score gt 0"}current active{/if}"" title="很差" val="1">很差</li>
+<li class="two {if condition="$obj.vod_score gt 2"}current active{/if}" title="较差" val="2">较差</li>
+<li class="three {if condition="$obj.vod_score gt 4"} current active{/if}" title="还行" val="3">还行</li>
+<li class="four {if condition="$obj.vod_score gt 6"}active{/if}" title="推荐" val="4">推荐</li>
+<li class="five {if condition="$obj.vod_score gt 8"}active{/if}" title="力荐" val="5">力荐</li>
+</ul>
+<span id="ratewords">{if condition="$obj.vod_score gt 8"}力荐
+{elseif condition="$obj.vod_score gt 6"/}推荐
+{elseif condition="$obj.vod_score gt 4"/}还行
+{elseif condition="$obj.vod_score gt 2"/}较差
+{else /}很差
+{/if}</span>
+</div>
+</div>
+</div>
+<script type="text/javascript" src="{$maccms.path_tpl}js/foot_js.js"></script>
+<script type="text/javascript" src="{$maccms.path_tpl}js/gold.js"></script>
+<div class="vod-info ui-boxb" id="detail-box">
+<div class="rating-box" id="rating-main" style="display: block;">
+<div class="rating-total fn-clear">
+<label class="rating-total-item" id="total" style="width: {$obj.vod_score*10|ceil}%;">&nbsp;</label>
+<div class="pingfen-total"><strong id="pingfen">{$obj.vod_score}</strong></div>
+</div>
+<div class="rating-panle">
+<div class="rating-bar">
+<div class="rating-bar-item" id="fenshu" style="width: {$obj.vod_score*10|ceil}%;">&nbsp;</div>
+</div>
+<ul class="rating-show">
+<li><span title="力荐" class="starstop star5">力荐</span><div class="power"><div class="power-item" id="pam"></div></div><em id="pa">人</em></li>
+<li><span title="推荐" class="starstop star4">推荐</span><div class="power"><div class="power-item" id="pbm"></div></div><em id="pb">人</em></li>
+<li><span title="还行" class="starstop star3">还行</span><div class="power"><div class="power-item" id="pcm"></div></div><em id="pc">人</em></li>
+<li><span title="较差" class="starstop star2">较差</span><div class="power"><div class="power-item" id="pdm"></div></div><em id="pd">人</em></li>
+<li><span title="很差" class="starstop star1">很差</span><div class="power"><div class="power-item" id="pem"></div></div><em id="pe">人</em></li>
+</ul>
+</div>
+</div>
+<div class="rating-box" id="rating-kong" style="display: none;"><div class="rating-kong-item"><span class="loadingg">评分加载中...</span></div></div>
+</div>
+</div>

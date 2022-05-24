@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>网站地图- {$maccms.site_name}</title>
+<meta name="keywords" content="{$maccms.site_keywords}" />
+<meta name="description" content="{$maccms.site_description}" />
+{include file="public/include"}
+</head>
+<body>
+<div class="movie-wrap">
+{include file="public/head_de"}
+<div class="details-body">
+<div class="crumbs">
+<span class="fl">您所在的位置：</span>
+<div class="crumbs-all fl">
+<a href="{$maccms.path}" class="blue">首页</a> <span>&gt;</span>
+<a href="javascript:;" class="active-style11">网站地图</a>
+</div>
+</div>
+<div class="datnew">
+{maccms:type ids="parent" order="asc" by="sort"}
+<div class="sitemap-item">
+<h2><a href="{:mac_url_type($vo)}" class="ncs-line fl">{$vo.type_name}</a></h2>
+{in name="$vo.type_id" value="1,2,5"}
+<div class="sitemap-list fn-clear">
+<div class="sitemap-title">分类</div>
+<ul>
+{maccms:type parent="'.$vo['type_id'].'" order="asc" by="sort" id="vo1" key="key1"}
+<li><a href="{:mac_url_type($vo1,[],'show')}">{$vo1.type_name}</a></li>
+{/maccms:type}
+</ul>
+</div>
+{/in}
+{notempty name="$vo.type_extend.area"}
+<div class="sitemap-list fn-clear">
+<div class="sitemap-title">地区</div>
+<ul>
+{maccms:foreach name=":explode(',',$vo.type_extend.area)" id="vo2" key="key2"}
+<li><a target="_blank" href="{:mac_url_type($vo,['area'=>$vo2],'show')}" title="{$vo2}">{$vo2}</a></li>
+{/maccms:foreach}
+</ul>
+</div>
+{/notempty}
+{notempty name="$vo.type_extend.year"}
+<div class="sitemap-list fn-clear">
+<div class="sitemap-title">年份</div>
+<ul>
+{maccms:foreach name=":explode(',',$vo.type_extend.year)" id="vo2" key="key2"}
+<li><a target="_blank" href="{:mac_url_type($vo,['year'=>$vo2],'show')}" title="{$vo2}">{$vo2}</a></li>
+{/maccms:foreach}
+</ul>
+</div>
+{/notempty}
+{notempty name="$vo.type_extend.class"}
+<div class="sitemap-list fn-clear">
+<div class="sitemap-title">类型</div>
+<ul>
+{maccms:foreach name=":explode(',',$vo.type_extend.class)" id="vo2" key="key2"}
+<li><a target="_blank" href="{:mac_url_type($vo,['class'=>$vo2],'show')}" title="{$vo2}">{$vo2}</a></li>
+{/maccms:foreach}
+</ul>
+</div>
+{/notempty}
+</div>
+{/maccms:type}
+<div class="sitemap-item">
+<h2>其他</h2>
+<div class="sitemap-list fn-clear">
+<div class="sitemap-title">分类</div>
+<ul>
+<li><a href="{$vo|mac_url_actor_index}" target="_blank">明星</a></li>
+<li><a href="{$vo|mac_url_role_index}" target="_blank">角色</a></li>
+<li><a href="{:mac_url_topic_index()}" target="_blank">专题</a></li>
+<li><a href="{:mac_url('label/live')}" target="_blank">直播</a></li>
+<li><a href="{:mac_url('label/top')}" target="_blank">榜单</a></li>
+<li><a href="{:mac_url('label/new')}" target="_blank">最新</a></li>
+<li><a href="{:mac_url('label/sitemap')}" target="_blank">网站地图</a></li>
+</ul>
+</div> </div>
+<div class="clearfix" style="width:100%;"></div>
+</div>
+</div>
+</div>
+{include file="public/foot_de"}
+</body>
+</html>

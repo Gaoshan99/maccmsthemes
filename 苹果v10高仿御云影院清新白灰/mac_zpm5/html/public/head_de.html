@@ -1,0 +1,36 @@
+<div class="details-head">
+<div class="details-head-inner">
+<div class="logo fl"><a href="http://{$maccms.site_url}" title="{$maccms.site_name}">{$maccms.site_name}</a></div>
+<div class="details-nav fl">
+<ul class="details-nav-ul fl">
+<li {if condition="$maccms.aid eq 1"}class="active-style5"{/if}><a href="http://{$maccms.site_url}">首页</a></li>
+{maccms:type ids="parent" order="asc" by="sort"}
+<li {if condition="$obj.type_id eq $vo.type_id"}class="active-style5"{/if}><a href="{:mac_url_type($vo)}">{$vo.type_name}</a></li>
+{/maccms:type}
+<li {if condition="$maccms.aid eq 30 or $maccms.aid eq 31"}class="active-style5"{/if}><a href="{:mac_url_topic_index()}">专题</a></li>
+</ul>
+<div class="details-search details-search22 fl">
+<div class="details-search fr">
+<form method="post" action="{:mac_url('vod/search')}">
+<input type="text" x-webkit-speech="" autocomplete="off" name="wd" id="wd" class="search-text2 search-text-share">
+<input type="submit" class="search-btn search-btn2" value="搜索">
+</form>
+<div class="list-data">
+<ul class="list-data-ul"></ul>
+</div>
+</div>
+</div>
+<div class="more-list more-list2 fl">
+<a href="{:mac_url('label/top')}" target="_blank" class="more-list-box fl"> <i></i> <span class="phb">排行榜</span> </a> 
+<div class="watch-record watch-record3 fl">
+<div class="watch-box mac_history"> <div class="watch-icon"></div> 观看记录 <div class="watch-icon2"></div> </div>
+</div>
+{if condition="$user.user_id==0"}
+<a class="login more-list-box2 fr mac_user"><div class="dl">登录</div></a>
+{else /}
+<a href="{:mac_url('user/index')}" target="_blank" class="login more-list-box2 fr"><div class="dl">{$user.user_name|mac_substring=6}</div></a>
+{/if}
+</div>
+</div>
+</div>
+</div>

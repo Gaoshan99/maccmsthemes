@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>{$obj.art_name} - {$maccms.site_name}</title>
+<meta name="keywords" content="{$obj.art_name}最新资讯,推荐资讯" />
+<meta name="description" content="{$obj.art_name}最新资讯,推荐资讯" />
+{include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+
+<div class="main"><h1 class="title">当前位置：
+<a href="{$maccms.path}">首页</a>
+<a href="{:mac_url_type($obj.type)}">{$obj.type.type_name}</a>
+{$obj.art_name}
+<a href="javascript:MAC.GoBack()">返回上一页</a>
+</h1>
+<div class="n-content xinwenneiye777">
+<h1><span style='color:'>{$obj.art_name}</span><span style="float: right;">作者：admin 时间:{$obj.art_time|date='Y-m-d',###}</span></h1>
+<p class="des">  
+{$obj.art_page_list[$param['page']]['content']}
+</p>
+</div>
+</div>
+<div class="page mb clearfix">{include file="public/paging"}</div>
+
+
+{include file="public/foot"}
+</body>
+</html>

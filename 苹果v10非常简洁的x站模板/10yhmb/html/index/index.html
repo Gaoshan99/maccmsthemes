@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="renderer" content="webkit">
+<title>{$maccms.site_name}-指针资源-福利视频-福利导航-福利电影</title>
+<meta name="keywords" content="{$maccms.site_keywords}" />
+<meta name="description" content="{$maccms.site_description}" />
+{include file="public/include"}
+</head>
+<body>
+<div class="container">
+{include file="public/head"}
+<div class="title">
+<li>当前位置</li>
+<li><a href="{$maccms.path}">首页</a></li>
+<li>今日最新</li>
+<span class="r"><a href="/label/news.html">更多>></a></span>
+</div>
+<div class="pic"><ul>{maccms:vod num="24" type="all" order="desc" by="time"}
+<li><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"><img src="{:mac_url_img($vo.vod_pic)}"><br /><span>{$vo.vod_time|date='m-d',###}.</span> {$vo.vod_name}</a></li>
+{/maccms:vod}</ul>
+</div>
+<div class="title">热播视频<span class="r"><a href="/label/hits.html">更多>></a></span></div>  
+<!--<div class="title3"><span class="l">热播视频</span><span class="r"><a href="/label/hits.html">更多>></a></span></div>-->
+<div class="pic2"><ul>{maccms:vod num="48" type="all" order="desc" by="hits"}
+<li><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">{$vo.vod_name}</a></li>{/maccms:vod}</ul>
+</div>
+<div class="title">月播视频<span class="r"><a href="/label/month.html">更多>></a></span></div>
+<div class="pic2"><ul>{maccms:vod num="48" type="all" order="desc" by="hits_month"}
+<li><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">{$vo.vod_name}</a></li>{/maccms:vod}</ul>
+</div>
+<div class="title">推荐视频<span class="r"><a href="/label/score.html">更多>></a></span></div>
+<div class="pic2"><ul>{maccms:vod num="48" type="all" order="desc" by="score"}
+<li><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">{$vo.vod_name}</a></li>{/maccms:vod}</ul>
+</div>
+<!--<div class="clearfix"></div>
+<div class="links"><h1>友情链接</h1></div>
+<ul class="link">{maccms:link num="100" type="all" order="desc" by="id"}
+<li><a href="{$vo.link_url}" target="_blank">{$vo.link_name}</a></li>{/maccms:link}
+</ul>-->
+{include file="public/foot"}
+</div>
+</body>
+</html>

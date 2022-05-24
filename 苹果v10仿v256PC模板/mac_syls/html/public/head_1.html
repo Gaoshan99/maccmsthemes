@@ -1,0 +1,47 @@
+<div class="tops-layout">
+<div class="tops-wrap fn-clear">
+<div class="tops-h"><a href="{$maccms.path}">{$maccms.site_name}</a></div>
+<div class="tops-nav">
+<div class="tops-nav-t"><i class="iconfont c1">&#xe623;</i><em>导航</em><i class="iconfont c2">&#xe607;</i></div>
+<div class="tops-nav-pop fn-clear">
+<i></i>
+<div class="nav-content bgray">
+{maccms:type ids="1,2" order="asc" by="sort"}
+<div class="nav-c-share">
+<a href="{:mac_url_type($vo)}" class="ncs-line fn-left">{$vo.type_name}</a>
+{maccms:type parent="'.$vo['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}
+<a href="{:mac_url_type($vo)}">{$vo2.type_name}</a>{/maccms:type}
+</div>
+{/maccms:type}
+
+{maccms:type ids="3,4" order="asc" by="sort"}
+<div class="nav-c-share">
+<a href="{:mac_url_type($vo)}" class="ncs-line fn-left">{$vo.type_name}</a>
+{maccms:foreach name=":explode(',',$vo.type_extend.class,-9)" id="vo2" key="key2"}
+<a href="{:mac_url_type($vo,['class'=>$vo2],'show')}">{$vo2}</a>{/maccms:foreach}
+</div>
+{/maccms:type}
+</div>
+</div>
+</div>
+<div class="tops-navgation">
+<a {if condition="$maccms.aid eq 1"}class="on"{/if} href="{$maccms.path}" title="{$maccms.site_name}">首页</a>{maccms:type ids="parent" order="asc" by="sort"}
+<a {if condition="$obj.type_id eq $vo.type_id"}class="on"{/if} href="{:mac_url_type($vo)}"><em>{$vo.type_name}</em></a>{/maccms:type}
+</div>
+<div class="searchs-wrap">
+<form method="post" action="{:mac_url('vod/search')}">
+<div class="searchs-l">
+<i class="iconfont">&#xe601;</i>
+<input name="wd" autocomplete="off" type="text" value="输入影片片名或演员名称。" onfocus="if(this.value=='输入影片片名或演员名称。'){this.value='';}" onblur="if(this.value==''){this.value='输入影片片名或演员名称。';};" class="search-text-share">
+</div>
+<input type="submit" value="搜 索" class="search-btn" id="btn" /></form>
+</div>
+<div class="tops-layout-r">
+<div class="top-record ">
+<a href="javascript:;" class="navico mac_history"><div class="i record"></div>观看记录</a>
+</div>
+<a href="javascript:;" class="navico mac_user"><div class="i client"></div>会员登录</a>
+</div>
+</div>
+<div class="navgations-shodw"></div>
+</div>

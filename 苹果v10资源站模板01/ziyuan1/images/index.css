@@ -1,0 +1,30 @@
+body {margin-left: 0px;margin-right: 0px;}
+td,th {font-size: 12px;}
+a:link {color: #000000;text-decoration: none;}
+a:visited {text-decoration: none;color: #000000;}
+a:hover {text-decoration: underline;color: #FF6600;}
+a:active {text-decoration: none;color: #FF6600;}
+.STYLE1 {color: #FF0000;font-weight: bold;}
+.STYLE7 {color: #FFFFFF; font-size: 14px; font-weight: bold;}
+.STYLE7 a{color: #FFFFFF;}
+.STYLE7 a:hover{color: #FFFFFF;}
+ul,li{list-style: none; margin:0px; padding:0px;}
+.bt { overflow:hidden; }
+.bt h1{ font-size:14px; text-align:left; color: #006600; margin:5px 0px; padding:0px;}
+.bt ul{ clear:both;}
+.bt a{ line-height:21px; height:21px; color: #333333; float:inherit; clear:both;}
+.img{ border:1px solid #E8E8E8; padding:2px;}
+.intro{ height:150px; overflow:auto; color:#333; font-size:12px; line-height:16px; white-space:normal; word-break:break-all;}
+.ad760{border:1px solid #333333; padding:5px 0px; height:60px; display:none}
+.row {
+	BACKGROUND: #ffffff; WIDTH: 100%; BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none; empty-cells: show
+}
+.row1 {
+	BACKGROUND: #f4f4ed; WIDTH: 100%; BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none; empty-cells: show
+}
+
+
+/*-Page-*/
+.page {text-align:center; padding:4px 0; overflow:hidden; height:40px;}
+.page em {margin-left:4px; font-weight:bold; color:#7f7f7f;  font-weight:normal;} 
+.page input {margin-left:4px; height:22px; width:30px;}

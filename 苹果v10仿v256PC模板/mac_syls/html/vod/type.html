@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<head lang="en">
+<meta charset="utf-8" />
+<title>{$obj.type_title} - {$maccms.site_name}</title>
+<meta name="keywords" content="{$obj.type_key} - {$maccms.site_keywords}" />
+<meta name="description" content="{$obj.type_des} - {$maccms.site_description}" />
+{include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+{switch name="obj.type_id" }
+    {case value="1"}{include file="public/typedy"}{/case}
+    {case value="2"}{include file="public/typeds"}{/case}
+	{case value="3"}{include file="public/typezy"}{/case}
+    {default /}{include file="public/typezm"}
+{/switch}
+{include file="public/foot"}
+<div class="index-top" id="index-top">
+<a rel="nofollow" class="guestbook" target="_blank" href="{:mac_url('gbook/index')}"></a>
+<a class="top"></a>
+</div>
+{if condition="($obj.type_id eq 1) OR ($obj.type_id eq 2)"}<script>v256.tv.init();v256.film.init();</script>{elseif condition="($obj.type_id eq 3) OR ($obj.type_id eq 4)"}<script>v256.anime.init();</script>{else /}{/if}
+</body>
+</html>

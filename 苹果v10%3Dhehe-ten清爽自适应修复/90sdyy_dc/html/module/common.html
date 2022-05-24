@@ -1,0 +1,39 @@
+{maccms:type num="6" ids="parent" order="asc" by="sort" flag="vod" id="vfed"}
+<div class="fed-list-home fed-part-layout fed-back-whits fed-part-rows">
+	<div class="fed-list-head fed-part-rows fed-padding">
+		<h2 class="fed-font-xvi">{$vfed.type_name}</h2>
+		<ul class="fed-part-tips fed-padding">
+			{maccms:type num="7" parent="'.$vfed['type_id'].'" order="asc" by="sort" mid="vod"}
+			<li class="fed-hide-xs"><a href="{:mac_url_type($vo)}">{$vo.type_name}</a>/</li>
+			{/maccms:type}
+			<li><a class="fed-more" href="{:mac_url_type($vfed)}">更多</a></li>
+		</ul>
+	</div>
+	<div class="fed-part-rows">
+		{if$vfed.type_name!='直播'}
+		<ul class="fed-list-info fed-part-rows">
+			{maccms:vod num="12" type="'.$vfed['type_id'].'" order="desc" by="time"}
+			<li class="fed-list-item fed-padding fed-col-xs4 fed-col-sm3 fed-col-md2{if$key>6} fed-hide-xs{/if}">
+			{include file="module/listing"}
+			</li>
+			{/maccms:vod}
+		</ul>
+		{else/}
+		<ul class="fed-list-info fed-list-img fed-part-rows">
+			{maccms:vod num="8" type="'.$vfed['type_id'].'" order="desc" by="time"}
+			<li class="fed-list-item fed-padding fed-col-xs6 fed-col-sm4 fed-col-md3{if$key>6} fed-hide fed-show-md-block{/if}">
+			{include file="module/images"}
+			</li>
+			{/maccms:vod}
+		</ul>
+		{/if}
+	</div>
+	{if$vfed.type_name=='直播'}
+	<ul class="fed-list-text fed-part-rows fed-part-both fed-hide-xs fed-show-sm-block">
+		{maccms:vod num="12" type="'.$vfed['type_id'].'" order="desc" by="time" start="7"}
+		{include file="module/titles"}
+		{/maccms:vod}
+	</ul>
+	{/if}
+</div>
+{/maccms:type}

@@ -1,0 +1,21 @@
+
+<?php
+//获取不带端口号的域名前缀
+  
+$servername = trim($_SERVER['SERVER_NAME']);
+echo strstr($servernam,www);
+$urlName = input('server.REQUEST_SCHEME') . '://' . input('server.SERVER_NAME');
+$templateName =$urlName.'/template/datll_Layui/datll.10.2/key/';
+//获取服务端授权文件校验
+$verifyurl = file_get_contents($templateName.'/copyright.php?domain='.$servername);
+if(!empty($verifyurl)){
+	//echo "已授权！";    //授权成功
+}else{
+	//die("未授权！");    //授权失败
+}
+
+
+
+?>
+
+{if condition="!empty($verifyurl)"} {$maccms.site_name}{else /}否 {/if}

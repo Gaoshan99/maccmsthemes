@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="seo/vod_type"}   
+	{include file="block/include"}
+</head>
+<body>
+	
+    <div class="container">
+        <div class="row">
+        	{include file="block/head"}
+            <div class="stui-pannel clearfix">
+             <!-- 筛选 -->
+			    <div class="type-list-fl">
+		    		<ul class="clearfix">
+		    			<li {if condition="($obj.type_id eq MAC_TYPE_ID || $obj.type_id eq MAC_TYPE_PID)"}class="active"{/if}><a href="{:mac_url_type($obj)}">全部</a></li>
+
+                        {maccms:type parent="current" order="asc" by="sort"}
+                        <li><a href="{:mac_url_type($vo,[],'show')}">{$vo.type_name}</a></li>
+		                {/maccms:type}	
+		    			<li><a href="{:mac_url_type($obj,[],'show')}"><img src="{$maccms.path_tpl}img/sx.png">筛选</a></li>
+		    		</ul>
+		    	</div>
+			 <!-- end 筛选 -->
+	
+				<!-- 列表 -->			
+				<ul class="stui-vodlist clearfix">
+					{maccms:vod num="36" paging="yes" type="current" order="desc" by="sort"}
+					{include file="block/vod_box"}
+					{/maccms:vod}	 
+				</ul>
+				<!-- end 列表 -->
+				
+				{include file="block/page"}<!-- 翻页-->		
+			</div>							
+        </div>
+    </div>
+	{include file="block/foot"}
+</body>
+</html>

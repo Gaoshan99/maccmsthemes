@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$obj.topic_name}专题详情- {$maccms.site_name}</title>
+<meta name="keywords" content="{$obj.topic_name}电影专题,{$obj.topic_name}电视剧专题,{$obj.topic_name}综艺专题,{$obj.topic_name}动漫专题,{$obj.topic_name}推荐专题" />
+<meta name="description" content="本站提供{$obj.topic_name},最新最全精品专题数据" /> 
+{include file="public/include"} 
+</head>
+<body>
+{include file="public/head_1"}
+<div class="movie-wrap">
+<div class="special_n" style="background:url({:mac_url_img($obj.topic_pic)}) no-repeat center top;">
+<div class="special_box">
+<div class="sharebox">
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare" data="{
+'url':'{:mac_url_vod_detail($obj)}',
+'desc':'{$obj.topic_name}',
+'text':'{$obj.topic_blurb}',
+'pic':'{$obj.topic_pic}'
+}">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tsohu"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_kaixin001"></a>
+<a class="bds_baidu"></a>
+<a class="bds_tieba"></a>
+<a class="bds_hi"></a>
+<a class="bds_douban"></a>
+<a class="bds_taobao"></a>
+<span id="bds_more" class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6556540" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+</div>   
+<div class="special-info">
+<h1>{$obj.topic_name}详细介绍</h1>
+<div class="special-txt">{$obj.topic_content}</div>
+</div> 
+<div class="content-box fn-clear">
+<div class="filtrate-container-heads">
+<ul class="fchstar fch12 fl" id="filter">
+</ul>
+</div><!--filtrate-container-head-->  
+<div class="movie-type-content">
+<div class="box-b2-l6 fn-clear">
+<ul class="fn-clear" id="stage">
+{maccms:foreach name="$obj.vod_list"}
+<li>
+<a href="{:mac_url_vod_detail($vo)}" target="_blank" title="{$vo.vod_name}" class="l6"><img class="loading" src="{:mac_url_img($vo.vod_pic)}"   altvo.vod_name}"/><i class="box-img-bg"></i>                            
+<i class="box-img-txt">{$vo.vod_name}</i><i class="bg"></i><em class="icon-play"></em></a>
+<div class="box-b2-dub">
+<div class="box-b2-nt box-b2-w">
+<p class="box-b2-n"><a href="{:mac_url_vod_detail($vo)}" target="_blank" title="{$vo.vod_name}">{$vo.vod_name}</a></p>
+<p class="box-b2-t">{$vo.vod_actor|mac_substring=12}</p>
+</div>
+</div>
+</li>
+{/maccms:foreach}
+</ul>                    
+</div>
+</div> 
+<div class="filtrate-container-heads">
+<ul class="fchstar fch12 fl">
+<a class="active"><h2>相关资讯</h2></a>
+</ul>
+</div><!--filtrate-container-head-->    
+<div class="movie-type-content">
+<div class="hot-wrap">
+<ul class="hot-zy fn-clear">
+{maccms:foreach name="$obj.art_list"}
+<li class="hot-list hot-box-180x100 " title="{$vo.art_name}">
+<a href="{:mac_url_art_detail($vo)}" class="hot-bg-icon" target="_blank"><img src="{$ppvod.news_picurl}" /></a>
+<p class="hot-t">{$vo.art_name}</p>
+</li>
+{/maccms:foreach}
+</ul>
+</div>
+</div>
+</div>
+</div> 
+</div>
+</div> 
+{include file="public/foot"}
+<div class="index-top" id="index-top">
+<a rel="nofollow" class="guestbook" target="_blank" href="{:mac_url('gbook/index')}"></a>
+<a class="top"></a>
+</div>
+<script>v256.tvDetail.init();</script>
+</body>
+</html>

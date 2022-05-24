@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+ <head> 
+  <meta charset="utf-8" /> 
+  <title>{$maccms.site_name}</title> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+  <meta name="keywords" content="{$maccms.site_keywords}" />
+  <meta name="description" content="{$maccms.site_description}" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <meta property="og:description" content="{$maccms.site_description}" /> 
+  <meta property="og:url" content="http://{$maccms.site_url}" /> 
+  <meta property="og:type" content="website" /> 
+  <meta property="og:title" content="{$maccms.site_description}" /> 
+  <meta name="apple-mobile-web-app-title" content="{$maccms.site_name}" /> 
+  <link rel="alternate" hreflang="x-default" href="http://{$maccms.site_url}" /> 
+  <link rel="alternate" hreflang="zh-Hans" href="http://{$maccms.site_url}" /> 
+  <link rel="canonical" href="http://{$maccms.site_url}" /> 
+  <link href="{$maccms.path_tpl}html/style/css/v2-607838a2ee.css" rel="stylesheet" /> 
+  {include file="public/include"}
+  <!--[if lt IE 9]> <script src="{$maccms.path_tpl}html/style/js/html5shiv.js"></script> <script src="{$maccms.path_tpl}html/style/js/respond.min.js"></script> <![endif]--> 
+ </head> 
+ <body> 
+  {include file="public/head"}
+  <section> 
+   <div class="main"> 
+    <div class="title"> 
+     <h1>今日更新</h1> 
+	 <span class="act act-sub">每日更新 10-20 片</span>
+    </div> 
+    <div class="row"> 
+     <ul class="list clearfix"> 
+	  {maccms:vod num="32" by="time" paging="yes" pageurl="index/index" order="desc"}
+      <li> 
+       <article> 
+        <a class="cover" href="{:mac_url_vod_play($vo)}"> <img src="{:mac_url_img($vo.vod_pic)}" class="b-lazy b-error" alt="{$vo.vod_name}" /></a> 
+        <header> 
+         <h3><a href="{:mac_url_vod_play($vo)}"><span>{$vo.vod_name}</span></a></h3> 
+         <div class="actress"> 
+		 {$vo.vod_actor|mac_url_create='actor'}
+         </div> 
+        </header> 
+       </article> </li> 
+	   <div class="clearfix0"></div>
+	   {/maccms:vod}
+     </ul> 
+    </div> 
+	<div class="row center fullpage"> 
+     <ul class="pagination"> 
+     </ul> 
+    </div>
+	<div class="page_total">{$maccms.site_name} 珍藏超过 <strong>{:mac_data_count(0,'all','vod')}</strong> 片</div>
+   </div> 
+  </section> 
+  {include file="public/foot"}
+  <span id="top-link-block" class="affix" style="display: none;"><a href="#top" onclick="$('html,body').animate({scrollTop:0},'fast');return false;"><i class="fa fa-chevron-up fa-2x"></i></a></span> 
+  <script src="{$maccms.path_tpl}html/style/js/v2-2755e1b5b8.js"></script> 
+ </body>
+</html>

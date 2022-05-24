@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+ol, ul {list-style-type:none;}
+div {text-align:left}
+.warp {width:100%; margin:0px auto; text-align:center; padding:0px 0px;}
+.o_cn2 {clear:both; margin-top:8px; overflow:hidden;}
+.o_list_cn_top_r {width:100%; height:37px; background:url(ind_37.gif) repeat-x 0 0; float:left;}
+.o_list_cn_r {width:100%; height:auto; float:left; background-color:#fff; border:#bebebe solid 1px; border-top:none}
+.list {height:8px; clear:both; overflow:hidden;}
+
+/*-Download-*/
+#jishu {overflow:hidden;}
+.max-height {/*height:251px; overflow:auto;*/}
+.down_list {font-size:14px;/* border:1px solid #c5ddf6;*/}
+.down_list ul {overflow:hidden; zoom:1;}
+.max-height ul {overflow:auto;}
+.down_list ul li {height:25px; padding:8px 0; border-bottom:1px solid #eee; overflow:hidden; vertical-align:middle;}
+.down_url {float:left; display:inline; margin:7px 8px 0 10px; margin:0 8px 0 10px\9;}
+.down_list ul li p {float:left; display:inline; overflow:hidden; line-height:24px; height:100%;}
+.down_part_name {color:#bc2931; font-weight:400; font-size:14px; padding-right:10px; float:left; display:inline; width:80%;  text-overflow:ellipsis; white-space:nowrap;}
+.down_part_name a {color:#bc2931;}
+.down_part_name a:hover {color:#1a98fc;}
+.thunder_url {border:solid 1px #e4e4e4; background-color:#f9f9f9; color:#444; height:22px; line-height:22px; padding:0 5px; overflow:hidden; text-overflow:ellipsis;}
+.down_list ul li span {float:right; display:inline; overflow:hidden;}
+.down_list ul li span label {float:left; display:inline; margin-right:10px; padding:6px 9px; color:#fff; line-height:1; cursor:pointer;}
+.thunder_down {background-color:#249ff1;}
+.qqdl {background-color:#ff6c00;}
+.kk {background-color:#36c345;}
+.xiaomi {background-color:#ff4883;}
+.common_down {background-color:#C06;}
+.common_down a,.xiaomi a {color:#fff;}
+.downtools {padding:15px 10px 15px 10px; overflow:hidden; zoom:1; border-top:1px solid #d9d9d9; font-size:14px;/* border-top-width:0;*/}
+.downtools input {margin:7px 0 0; *margin:2px 0 0; padding:0; float:left; display:inline;}
+.downtools em {padding:0 7px; float:left; font-style:normal; line-height:26px;}
+.downtools a {display:inline-block; margin-left:10px; width:133px; height:26px; line-height:26px; overflow:hidden; background:url(../images/downtools.png); text-align:center;}
+.down-tips {background-image:none; width:auto; color:red;/* display:block;*/ float:right;}
+.down-tips strong {color:blue; font-weight:900;}
+.wp-list ul {padding:10px 10px 4px;}
+.wp-list ul li {border:1px solid #edce7b; background-color:#ffffea; height:28px; line-height:28px; margin-bottom:6px; vertical-align:middle; padding:0 5px; font-size:14px;}
+.wp-list ul li strong,.wp-list ul li span,.wp-list ul li a {float:left; display:inline; margin-left:10px; margin-right:10px;}
+.wp-list ul li strong {color:#bc2931;}
+.wp-list ul li span {color:red;}
+.wp-list ul li a {color:#2c602f;}
+
+
+.title{font-size:14px;font-family:"宋体";line-height:35px;color:#575757;background:#F5F5F5;line-height:35px;float:left;font-size:14px;width: 100%;padding-left: 10px;}
+h2,ul,li,form,p{margin:0;padding:0;border:none;list-style-type:none;}
+div{margin:0 auto;}
+h2{font-size:15px;}
+h2 a{color:#2E2E2E;}

@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+     <title>搜索结果{$param.wd}-{$maccms.site_name}</title>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+     <meta name="keywords" content="{$param.wd}-{$maccms.site_name}" />
+     <meta name="description" content="{$param.wd}-{$maccms.site_name}" />
+     {include file="public/include"}
+ </head>
+ <body>
+ {include file="public/head"}
+  <div class="container">
+		<div class="nvc">
+			<dl>
+				<dt>
+					<span>当前位置</span>
+					<i class="arrow"><b class="a_outer"></b><b class="a_inner"></b></i>
+				</dt>
+				<dd><!-- &gt;&gt; --> » 搜索&nbsp;<span class="">{$param.wd}</span>&nbsp;的结果，<font color="red">注：各别电影如果搜索不到请搜索影片前两个关键字 列如：变形金刚  搜索：变形</font></dd>
+			</dl>
+		</div>
+</div>
+  <div class="xing_vb"> 
+   <ul>
+    <li><span class="xing_vb1">影片名称</span><span class="xing_vb2">影片类别</span><span class="xing_vb3">更新时间</span></li>
+   </ul>
+      {maccms:vod num="50" paging="yes" type="current" order="desc" by="time" pageurl="vod/search"}
+      <ul>
+          <li>
+              <span class="tt"></span>
+              <span class="xing_vb4"><a href="{:mac_url_vod_detail($vo)}" target="_blank">{$vo.vod_name} {$vo.vod_remarks}</a></span>
+              <span class="xing_vb5">{$vo.type.type_name}</span>
+              <span class="xing_vb7">{$vo.vod_time|mac_day=###,'color'}</span>
+          </li>
+      </ul>
+      {/maccms:vod}
+      <ul style="display:block;clear:both;">
+    <li>
+     <div class="pages" style="margin-bottom:10px;">
+         {include file="public/paging"}
+     </div></li>
+   </ul> 
+   <div style="clear:both"></div> 
+  </div>
+ {include file="public/foot"}
+ </body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>{$maccms.site_name}</title>
+<meta name="keywords" content="{$maccms.site_keywords}" />
+<meta name="description" content="{$maccms.site_description}" />
+{include file="public/include"}
+</head>
+<body>
+<div class="movie-wrap">
+{include file="public/head"}
+{include file="public/banner"}
+<div class="container">
+<div class="container-inner">
+{maccms:type ids="1,2" order="asc" by="sort" id="vo5" key="key5"}
+<div class="con2 margin-bottom-share">
+<div class="teleplay">
+<div class="teleplay-left fl">
+<div class="splendid-header">
+<div class="fl"><a href="{:mac_url_type($vo5)}"><span>{$vo5.type_name}</span>大全</a></div>
+<ul class="splendid-tab fl">
+{maccms:type parent="'.$vo5['type_id'].'" order="asc" by="sort" id="vo1" key="key1"}
+<li {if condition="$key1==1"}class="active-style2"{/if}><a href="javascript:;">{$vo1.type_name}</a></li>
+{/maccms:type}
+</ul>
+</div>
+<div class="teleplay-content">
+{maccms:type parent="'.$vo5['type_id'].'" order="asc" by="sort" id="vo1" key="key1"}
+<div class="teleplay-content-inner" {if condition="$key1==1"}style="display:block;"{/if}>
+<ul class="teleplay-content-list">
+{maccms:vod num="8" type="'.$vo1['type_id'].'" order="desc" by="time" id="vo2" key="key2"}
+<li>
+<div class="showPlay">
+<a href="{:mac_url_vod_detail($vo2)}" class="tcl-pic" target="_blank">
+<div class="tcl-pic1"><img class="scrollLoading" data-url="{$vo2.vod_pic|mac_url_img}" width="200" height="270" src="{$maccms.path_tpl}images/pic.png" alt="{$vo2.vod_name}"></div>
+<div class="tcl-pic2"></div>
+<div class="tcl-pic3"></div>
+<p class="tcl-pic4">{include file="public/serial"}</p>
+</a>
+</div>
+<div class="tcl-title">
+<div class="movie-headline1"><a href="{:mac_url_vod_detail($vo2)}" target="_blank">{$vo2.vod_name}</a></div>
+<p>{$vo2.vod_actor}</p>
+</div>
+</li>
+{/maccms:vod}
+</ul>
+</div>
+{/maccms:type}
+</div>
+</div>
+<div class="teleplay-right fr">
+<div class="recommend-header">
+<div class="fl"><span>{$vo5.type_name}</span>排行</div><a href="{:mac_url_type($vo5)}" class="teleplay-more" target="_blank">更多&gt;</a>
+</div>
+<div class="teleplay-content">
+<ul class="teleplay-con-list telclist4 tcl1">
+{maccms:vod num="1" type="'.$vo5['type_id'].'" order="desc" by="hits_day" id="vo2" key="key2"}
+<li class="list-no1">
+<span></span>
+<i>{$key2}</i>
+<a href="{:mac_url_vod_detail($vo2)}" class="list-no1-pic" target="_blank"><img class="scrollLoading" data-url="{$vo2.vod_pic|mac_url_img}" width="90" height="120" src="{$maccms.path_tpl}images/pic.png" alt=""></a>
+<div class="list-no1-con">
+<a href="{:mac_url_vod_detail($vo2)}" class="no1-tv-title" target="_blank">{$vo2.vod_name}</a>
+<p class="top-desc">{$vo2.vod_content|mac_filter_html}</p>
+<p class="pview">播放指数:{$vo2.vod_hits}次</p>
+<a href="{:mac_url_vod_detail($vo2)}" target="_blank" class="top-btn">查看详情</a>
+</div>
+</li>
+{/maccms:vod}
+{maccms:vod num="9" type="'.$vo5['type_id'].'" start="2" order="desc" by="hits_day" id="vo2" key="key2"}
+<li><i>{$key2+1}</i><span class="views">{$vo2.vod_hits}次</span><a href="{:mac_url_vod_detail($vo2)}" target="_blank">{$vo2.vod_name}</a></li>
+{/maccms:vod}
+</ul>
+<div class="teleplay-type">
+<div class="teleplay-type-inner">
+<ul class="tti-ul">
+<li>
+<span class="tti-span fl">分类：</span>
+<ul class="tti-ul-list fr">
+{maccms:type parent="'.$vo5['type_id'].'" order="asc" by="sort" id="vo1" key="key1"}
+<li><a href="{:mac_url_type($vo1,[],'show')}" target="_blank" class="current">{$vo1.type_name|mac_substring=2}</a></li>
+{/maccms:type}
+</ul>
+</li>
+<li>
+<span class="tti-span fl">类型：</span>
+<ul class="tti-ul-list fr">
+{maccms:foreach name=":explode(',',$vo5.type_extend.class)" id="vo1" key="key1"}{if condition="$key1 lt 12"}
+<li><a target="_blank" href="{:mac_url_type($vo5,['class'=>$vo1],'show')}" title="{$vo1}">{$vo1}</a></li>
+{/if}{/maccms:foreach}
+</ul>
+</li>
+<li>
+<span class="tti-span fl">年份：</span>
+<ul class="tti-ul-list fr">
+{maccms:foreach name=":explode(',',$vo5.type_extend.year)" id="vo1" key="key1"}{if condition="$key1 lt 9"}
+<li><a target="_blank" href="{:mac_url_type($vo5,['year'=>$vo1],'show')}">{$vo1}</a></li>
+{/if}{/maccms:foreach}
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{if condition="$vo5.type_id==1"}
+<div class="margin-bottom-share">
+<div class="splendid-header">
+<div class="fl"><a href="{$vo|mac_url_actor_index}"><span>明星</span>大全</a></div>
+<a href="{$vo|mac_url_actor_index}" class="teleplay-more">更多&gt;</a>
+</div>
+<div class="mx_list_ul">
+<ul>
+{maccms:actor num="6" order="desc" by="time"}
+<li>
+<a target="_blank" href="{$vo|mac_url_actor_detail}" class="star-img">
+<img class="scrollLoading" data-url="{$vo.actor_pic|mac_url_img}" src="{$maccms.path_tpl}images/pic.png" alt="{$vo.actor_name}">
+<label class="name">{$vo.actor_name}</label>
+</a>
+</li>
+{/maccms:actor}
+</ul>
+</div>
+</div>
+{else /}
+<div class="variety-channel clearfix varmr">
+<div class="variety-inner">
+<div class="live-hot-child">
+<a href="#" class="live-region"> <div class="live-icon">
+<img src="{$maccms.path_tpl}images/tv/hn.png" alt="" /> </div>
+湖南卫视</a> <ul class="lhc-list">
+{maccms:vod num="4" type="'.$vo5['type_id'].'" tv="湖南卫视" order="desc" by="time" id="vo2" key="key2"}
+<li><a href="{:mac_url_vod_detail($vo2)}">{$vo2.vod_name}{include file="public/serial"}</a></li>
+{/maccms:vod}
+</ul>
+</div>
+<div class="live-hot-child">
+<a href="#" class="live-region"> <div class="live-icon">
+<img src="{$maccms.path_tpl}images/tv/js.png" alt="" /> </div>
+江苏卫视</a> <ul class="lhc-list">
+{maccms:vod num="4" type="'.$vo5['type_id'].'" tv="江苏卫视" order="desc" by="time" id="vo2" key="key2"}
+<li><a href="{:mac_url_vod_detail($vo2)}">{$vo2.vod_name}{include file="public/serial"}</a></li>
+{/maccms:vod}
+</ul>
+</div>
+<div class="live-hot-child">
+<a href="#" class="live-region"> <div class="live-icon">
+<img src="{$maccms.path_tpl}images/tv/ah.png" alt="" /> </div>
+安徽卫视</a> <ul class="lhc-list">
+{maccms:vod num="4" type="'.$vo5['type_id'].'" tv="安徽卫视" order="desc" by="time" id="vo2" key="key2"}
+<li><a href="{:mac_url_vod_detail($vo2)}">{$vo2.vod_name}{include file="public/serial"}</a></li>
+{/maccms:vod}
+</ul>
+</div>
+<div class="live-hot-child">
+<a href="#" class="live-region"> <div class="live-icon">
+<img src="{$maccms.path_tpl}images/tv/df.png" alt="" /> </div>
+东方卫视</a> <ul class="lhc-list">
+{maccms:vod num="4" type="'.$vo5['type_id'].'" tv="东方卫视" order="desc" by="time" id="vo2" key="key2"}
+<li><a href="{:mac_url_vod_detail($vo2)}">{$vo2.vod_name}{include file="public/serial"}</a></li>
+{/maccms:vod}
+</ul>
+</div>
+<div class="live-hot-child">
+<a href="#" class="live-region"> <div class="live-icon">
+<img src="{$maccms.path_tpl}images/tv/zj.png" alt="" /> </div>
+浙江卫视</a> <ul class="lhc-list">
+{maccms:vod num="4" type="'.$vo5['type_id'].'" tv="浙江卫视" order="desc" by="time" id="vo2" key="key2"}
+<li><a href="{:mac_url_vod_detail($vo2)}">{$vo2.vod_name}{include file="public/serial"}</a></li>
+{/maccms:vod}
+</ul>
+</div>
+<div class="live-hot-child">
+<a href="#" class="live-region"> <div class="live-icon">
+<img src="{$maccms.path_tpl}images/tv/bj.png" alt="" /> </div>
+北京卫视</a> <ul class="lhc-list">
+{maccms:vod num="4" type="'.$vo5['type_id'].'" tv="北京卫视" order="desc" by="time" id="vo2" key="key2"}
+<li><a href="{:mac_url_vod_detail($vo2)}">{$vo2.vod_name}{include file="public/serial"}</a></li>
+{/maccms:vod}
+</ul>
+</div>
+</div>
+</div>
+{/if}
+{/maccms:type}
+{maccms:type ids="3,4" order="asc" by="sort" id="vo5" key="key5"}
+<div class="con2 margin-bottom-share">
+<div class="teleplay">
+<div class="teleplay-left fl">
+<div class="splendid-header">
+<div class="fl"><a href="{:mac_url_type($vo5)}"><span>{$vo5.type_name}</span>大全</a></div>
+{in name="$vo5.type_id" value="3"}
+<ul class="splendid-tab fl">
+{maccms:foreach name=":explode(',',$vo5.type_extend.class)" id="vo1" key="key1"}{if condition="$key1 lt 6"}
+<li {if condition="$key1==0"}class="active-style2"{/if}><a href="javascript:;">{$vo1}</a></li>
+{/if}{/maccms:foreach}
+</ul>
+{else/}
+<ul class="splendid-tab fl">
+{maccms:foreach name=":explode(',',$vo5.type_extend.area)" id="vo1" key="key1"}{if condition="$key1 lt 6"}
+<li {if condition="$key1==0"}class="active-style2"{/if}><a href="javascript:;">{$vo1}</a></li>
+{/if}{/maccms:foreach}
+</ul>
+{/in}
+</div>
+<div class="teleplay-content">
+{in name="$vo5.type_id" value="3"}
+{maccms:foreach name=":explode(',',$vo5.type_extend.class)" id="vo1" key="key1"}{if condition="$key1 lt 6"}
+<div class="teleplay-content-inner" {if condition="$key1==0"}style="display:block;"{/if}>
+<ul class="teleplay-content-list">
+{maccms:vod num="8" type="'.$vo5['type_id'].'" class="'.$vo1.'" order="desc" by="time" id="vo2" key="key2"}
+<li>
+<div class="showPlay">
+<a href="{:mac_url_vod_detail($vo2)}" class="tcl-pic" target="_blank">
+<div class="tcl-pic1"><img class="scrollLoading" data-url="{$vo2.vod_pic|mac_url_img}" width="200" height="270" src="{$maccms.path_tpl}images/pic.png" alt="{$vo2.vod_name}"></div>
+<div class="tcl-pic2"></div>
+<div class="tcl-pic3"></div>
+<p class="tcl-pic4">{include file="public/serial"}</p>
+</a>
+</div>
+<div class="tcl-title">
+<div class="movie-headline1"><a href="{:mac_url_vod_detail($vo2)}" target="_blank">{$vo2.vod_name}</a></div>
+<p>{$vo2.vod_class|mac_url_create='class'}</p>
+</div>
+</li>
+{/maccms:vod}
+</ul>
+</div>
+{/if}{/maccms:foreach}
+{else/}
+{maccms:foreach name=":explode(',',$vo5.type_extend.area)" id="vo1" key="key1"}{if condition="$key1 lt 6"}
+<div class="teleplay-content-inner" {if condition="$key1==0"}style="display:block;"{/if}>
+<ul class="teleplay-content-list">
+{maccms:vod num="8" type="'.$vo5['type_id'].'" area="'.$vo1.'" order="desc" by="time" id="vo2" key="key2"}
+<li>
+<div class="showPlay">
+<a href="{:mac_url_vod_detail($vo2)}" class="tcl-pic" target="_blank">
+<div class="tcl-pic1"><img class="scrollLoading" data-url="{$vo2.vod_pic|mac_url_img}" width="200" height="270" src="{$maccms.path_tpl}images/pic.png" alt="{$vo2.vod_name}"></div>
+<div class="tcl-pic2"></div>
+<div class="tcl-pic3"></div>
+<p class="tcl-pic4">{include file="public/serial"}</p>
+</a>
+</div>
+<div class="tcl-title">
+<div class="movie-headline1"><a href="{:mac_url_vod_detail($vo2)}" target="_blank">{$vo2.vod_name}</a></div>
+<p>{$vo2.vod_class|mac_url_create='class'}</p>
+</div>
+</li>
+{/maccms:vod}
+</ul>
+</div>
+{/if}{/maccms:foreach}
+{/in}
+</div>
+</div>
+<div class="teleplay-right fr" id="programPosition">
+<div class="recommend-header">
+<div class="fl"><span>每周</span>{$vo5.type_name}更新</div><a href="{:mac_url_type($vo5)}" class="teleplay-more">更多&gt;</a>
+</div>
+{php} $rq=date("w");
+    if($rq==0){
+    $rq=7;
+    }
+    $rqarray=array(1,2,3,4,5,6,7);
+{/php}
+<div class="teleplay-content program-content">
+<ul class="week mj-week">
+{if condition="$rq eq 1"}<li class="active-style2"><a>今</a></li>{else /}<li><a>一</a></li>{/if}
+{if condition="$rq eq 2"}<li class="active-style2"><a>今</a></li>{else /}<li><a>二</a></li>{/if}
+{if condition="$rq eq 3"}<li class="active-style2"><a>今</a></li>{else /}<li><a>三</a></li>{/if}
+{if condition="$rq eq 4"}<li class="active-style2"><a>今</a></li>{else /}<li><a>四</a></li>{/if}
+{if condition="$rq eq 5"}<li class="active-style2"><a>今</a></li>{else /}<li><a>五</a></li>{/if}
+{if condition="$rq eq 6"}<li class="active-style2"><a>今</a></li>{else /}<li><a>六</a></li>{/if}
+{if condition="$rq eq 7"}<li class="active-style2"><a>今</a></li>{else /}<li><a>日</a></li>{/if}
+</ul>
+<div class="advance-notice">
+{volist name="rqarray" id="week" key="iii"}
+<ul class="week-list week-list11 clearfix">
+{maccms:vod num="4" type="'.$vo5['type_id'].'" weekday="'.$iii.'" order="desc" by="time" id="vo2" key="key2"}
+<li class="pic"><a href="{:mac_url_vod_detail($vo2)}" target="_blank">
+<img src="{$vo2.vod_pic|mac_url_img}" alt="{$vo2.vod_name}" width="110" height="154">
+<span class="til">{$vo2.vod_name}</span>
+<span class="info">{include file="public/serial"}</span>
+<span class="bg"></span>
+</a>
+</li>
+{/maccms:vod}
+</ul>
+{/volist}
+</div>
+</div>
+<div class="teleplay-content">
+<div class="teleplay-type">
+<div class="teleplay-type-inner">
+<ul class="tti-ul">
+<li>
+<span class="tti-span fl">地区：</span>
+<ul class="tti-ul-list fr">
+{maccms:foreach name=":explode(',',$vo5.type_extend.area)" id="vo1" key="key1"}{if condition="$key1 lt 12"}
+<li><a href="{:mac_url_type($vo5,['area'=>$vo1],'show')}" target="_blank">{$vo1}</a></li>
+{/if}{/maccms:foreach}
+</ul>
+</li>
+<li>
+<span class="tti-span fl">类型：</span>
+<ul class="tti-ul-list fr">
+{maccms:foreach name=":explode(',',$vo5.type_extend.class)" id="vo1" key="key1"}{if condition="$key1 lt 12"}
+<li><a href="{:mac_url_type($vo5,['class'=>$vo1],'show')}" title="{$vo1}" target="_blank">{$vo1}</a></li>
+{/if}{/maccms:foreach}
+</ul>
+</li>
+<li>
+<span class="tti-span fl">年份：</span>
+<ul class="tti-ul-list fr">
+{maccms:foreach name=":explode(',',$vo5.type_extend.year)" id="vo1" key="key1"}{if condition="$key1 lt 9"}
+<li><a href="{:mac_url_type($vo5,['year'=>$vo1],'show')}" target="_blank">{$vo1}</a></li>
+{/if}{/maccms:foreach}
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{/maccms:type}
+{maccms:type ids="5" order="asc" by="sort" id="vo5" key="key5"}
+<div class="con11 margin-bottom-share">
+<div class="splendid fl">
+<div class="splendid-header">
+<div class="fl"><a target="_blank" href="{:mac_url_type($vo5)}"><span>热门</span>{$vo5.type_name}</a></div>
+<ul class="splendid-tab fl">
+{maccms:type parent="'.$vo5['type_id'].'" order="asc" by="sort" id="vo1" key="key1"}
+<li {if condition="$key1==1"}class="active-style2"{/if}><a href="javascript:;">{$vo1.type_name}</a></li>
+{/maccms:type}
+</ul>
+</div>
+<div class="splendid-content">
+{maccms:type parent="'.$vo5['type_id'].'" order="asc" by="sort" id="vo1" key="key1"}
+<div class="splendid-content-inner" {if condition="$key1==1"}style="display:block;"{/if}>
+{maccms:art num="1" type="'.$vo1['type_id'].'" order="desc" by="time" id="vo2" key="key2"}
+<div class="sci-left fl">
+<a href="{:mac_url_art_detail($vo2)}" target="_blank">
+<div class="sci-left-pic">
+<img class="scrollLoading" data-url="{$vo2.art_pic|mac_url_img}" src="{$maccms.path_tpl}images/pic.png" width="350" height="300" alt="{$vo2.art_name}">
+</div>
+<div class="shade"></div>
+<div class="pic-title">
+<div>{$vo2.art_name|mac_substring=10}</div>
+<p>{$vo2.art_content|mac_filter_html|mac_substring=25}</p>
+</div>
+</a>
+</div>
+{/maccms:art}
+<div class="sci-right fr">
+<ul class="sci-right-ul">
+{maccms:art num="6" type="'.$vo1['type_id'].'" start="2" order="desc" by="time" id="vo2" key="key2"}
+<li>
+<a href="{:mac_url_art_detail($vo2)}" class="sru-pic" target="_blank"><img class="scrollLoading" data-url="{$vo2.art_pic|mac_url_img}" width="160" height="100" src="{$maccms.path_tpl}images/pic.png" alt="{$vo2.art_name}">
+</a>
+<div class="movie-headline1 mhi1"><a href="{:mac_url_art_detail($vo2)}">{$vo2.art_name|mac_substring=10}</a></div>
+<p>{$vo2.art_content|mac_filter_html|mac_substring=20}</p>
+</li>
+{/maccms:art}
+</ul>
+</div>
+</div>
+{/maccms:type}
+</div>
+</div>
+<div class="recommend fr">
+<div class="recommend-header">
+<div class="fl"><span>推荐</span>更新</div>
+</div>
+<div class="recommend-content">
+<ul class="recommend-list">
+{maccms:art num="1" type="'.$vo5['type_id'].'" order="desc" by="hits_day" id="vo2" key="key2"}
+<li>
+<a href="{:mac_url_art_detail($vo2)}" class="recommend-list-pic fl" target="_blank"><img class="scrollLoading" data-url="{$vo2.art_pic|mac_url_img}" width="80" height="110" src="{$maccms.path_tpl}images/pic.png" alt=""></a>
+<div class="recommend-list-con fr">
+<div class="movie-headline2"><a href="{:mac_url_art_detail($vo2)}">{$vo2.art_name}</a></div>
+<p>{$vo2.art_content|mac_filter_html|mac_substring=35}</p>
+</div>
+</li>
+{/maccms:art}
+</ul>
+<ul class="recommend-list-two">
+{maccms:art num="5" type="'.$vo5['type_id'].'" start="2" order="desc" by="hits_day" id="vo2" key="key2"}
+<li><span>阅读：{$vo2.art_hits}</span><a href="{:mac_url_art_detail($vo2)}" target="_blank">{$vo2.art_name}</a></li>
+{/maccms:art}
+</ul>
+</div>
+</div>
+</div>
+{/maccms:type}
+{include file="public/foot"}
+</body>
+</html>

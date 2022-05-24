@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$obj.art_name} - {$maccms.site_name}</title>
+<meta name="keywords" content="{$obj.art_name},{$maccms.site_name}" />
+<meta name="description" content="{$obj.art_blurb},{$maccms.site_name}" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta content="telephone=no" name="format-detection" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+{include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+<div class="all atar_navs">
+<ul><span>您所在的位置:</span>
+<li><a href="{$maccms.path}" title="{$maccms.site_name}">首页</a></li>
+{notempty name="obj.type_1.type_id"}
+<li><a href="{:mac_url_type($obj.type_1)}">{$obj.type_1.type_name}</a></li>
+{/notempty}
+<li class="current"><a href="{:mac_url_type($obj.type,[],'show')}">{$obj.type.type_name}</a></li></ul>
+</div>
+<div class="ad980"><script src="{$maccms.path_ads}index.js"></script></div><!--广告位-->
+<div class="news_top">
+<div class="news_detail">
+<div class="news_detail_title"><h1>{$obj.art_name}</h1></div>
+<div class="news-top">
+<span>更新日期：{$obj.art_time|date='Y-m-d H:i:s',###}</span><span>阅读：{$obj.art_hits}次</span><span>编辑：{$obj.art_author|mac_default='未知'}</span><span>来源：{$obj.art_from|mac_default='未知'}</span></div>
+<div class="news-remark">{$obj.art_blurb|mac_filter_html|mac_substring=100}</div>
+<div class="news-data">{$obj.art_content}</div>
+</div>
+<div class="vod-star-info-r">
+<div class="vod-saar-info-r-d">
+<h3><span><a href="{:mac_url_type($obj.type,[],'show')}" target="_blank">更多</a></span>最新{$obj.type.type_name}</h3>
+<ul>
+{maccms:art num="8" type="current" order="desc" by="hits"}
+<li><em{if condition="$key lt 4"} class="stress"{/if}>{$key}.</em><a target="_blank" href="{:mac_url_art_detail($vo)}">{$vo.art_name}</a></li>
+{/maccms:art}
+</ul>
+</div>
+{maccms:type ids="1,2" order="asc" by="sort" id="vo2" key="key2"}
+<div class="vod-saar-info-r-d">
+<h3><span><a href="{:mac_url_type($vo2)}" target="_blank">更多</a></span>热门{$vo2.type_name}</h3>
+<ul>
+{maccms:vod num="10" type="'.$vo2['type_id'].'" order="desc" by="hits"}
+<li><em{if condition="$key lt 4"} class="stress"{/if}>{$key}.</em><a target="_blank" href="{:mac_url_vod_detail($vo)}">{$vo.vod_name}</a></li>
+{/maccms:vod}
+</ul>
+</div>
+{/maccms:type}
+</div>
+</div>
+﻿{include file="public/foot"}
+<script type="text/javascript" src="{$maccms.path_tpl}js/IE6Top.js"></script>
+<div class="back-to-top" id="back-to-top"><a rel="nofollow" href="javascript:window.scrollTo(0, 0);" target="_self">Back to Top</a></div>
+</body>
+</html>

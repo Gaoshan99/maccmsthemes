@@ -1,0 +1,44 @@
+<div class="foot">
+<div class="tv-orderby">
+<div class="tv-order-layout fn-clear">{maccms:type ids="1" order="asc" by="sort"}
+<dl class="tv-order-by">
+<dt><span>{$vo.type_name}</span></dt>
+<dd>
+<p class="fn-clear">{maccms:foreach name=":explode(',','动作,喜剧,爱情,恐怖,科幻,剧情')" id="vo2" key="key2"}
+<a href="{:mac_url_type($vo,['class'=>$vo2],'show')}" title="{$vo2}">{$vo2}</a>{/maccms:foreach}</p><p class="fn-clear">{maccms:foreach name=":explode(',','战争,犯罪,动画,奇幻,冒险,悬疑')" id="vo2" key="key2"}<a href="{:mac_url_type($vo,['class'=>$vo2],'show')}" title="{$vo2}">{$vo2}</a>{/maccms:foreach}</p>
+</dd>
+</dl>{/maccms:type}
+{maccms:type ids="2" order="asc" by="sort"}
+<dl class="tv-order-by">
+<dt class="tv-order-dt"><span>{$vo.type_name}</span></dt>
+<dd>
+<p class="fn-clear">{maccms:foreach name=":explode(',','古装,战争,偶像,喜剧,家庭')" id="vo2" key="key2"}
+<a href="{:mac_url_type($vo,['class'=>$vo2],'show')}" title="{$vo2}">{$vo2}</a>{/maccms:foreach}</p><p class="fn-clear">{maccms:foreach name=":explode(',','犯罪,动作,奇幻,剧情,历史')" id="vo2" key="key2"}<a href="{:mac_url_type($vo,['class'=>$vo2],'show')}" title="{$vo2}">{$vo2}</a>{/maccms:foreach}</p>
+</dd>
+</dl>{/maccms:type}
+{maccms:type ids="3" order="asc" by="sort"}
+<dl class="tv-order-by">
+<dt><span>{$vo.type_name}</span></dt>
+<dd>
+<p class="fn-clear">{maccms:foreach name=":explode(',','选秀,情感,访谈,播报,纪实')" id="vo2" key="key2"}
+<a href="{:mac_url_type($vo,['class'=>$vo2],'show')}" title="{$vo2}">{$vo2}</a>{/maccms:foreach}</p><p class="fn-clear">{maccms:foreach name=":explode(',','音乐,生活,曲艺,游戏,财经')" id="vo2" key="key2"}<a href="{:mac_url_type($vo,['class'=>$vo2],'show')}" title="{$vo2}">{$vo2}</a>{/maccms:foreach}</p>
+</dd>
+</dl>{/maccms:type}
+{maccms:type ids="4" order="asc" by="sort"}
+<dl class="tv-order-by">
+<dt><span>{$vo.type_name}</span></dt>
+<dd>
+<p class="fn-clear">{maccms:foreach name=":explode(',','科幻,热血,少女,搞笑,冒险')" id="vo2" key="key2"}
+<a href="{:mac_url_type($vo,['class'=>$vo2],'show')}" title="{$vo2}">{$vo2}</a>{/maccms:foreach}</p><p class="fn-clear">{maccms:foreach name=":explode(',','校园,动作,亲子,益智,励志')" id="vo2" key="key2"}<a href="{:mac_url_type($vo,['class'=>$vo2],'show')}" title="{$vo2}">{$vo2}</a>{/maccms:foreach}</p>
+</dd>
+</dl>{/maccms:type}
+</div>
+</div>
+<div class="foot-layout">
+<div class="foot-wrap">
+<p class="foot-p1">{maccms:type ids="parent" order="asc" by="sort"}<a href="{:mac_url_type($vo)}" title="{$vo.type_name}" target="_blank">{$vo.type_name}</a>-{/maccms:type}<a rel="nofollow" href="{:mac_url('gbook/index')}" title="给我留言" target="_blank">给我留言</a>-{$maccms.site_tj}</p>
+<p>本网站提供新影视资源均系收集各大网站，本网站只提供web页面浏览服务，并不提供影片资源存储，也不参与任何视频录制、上传</br>
+若本站收集的节目无意侵犯了贵司版权，请给{$maccms.site_email}邮箱地址来信，我们将在第一时间删除相应资源</p>
+<p>Copyright © 2016-2018 <b style=" font:Verdana, Arial, Helvetica, sans-serif"><a href="http://{$maccms.site_url}"><font color="#CC0000">www.</font><font color="#F60">cunshao</font><font color="#CC0000">.Com</font></a></b> .All Rights Reserved .</p></br> </div>
+</div>
+</div>

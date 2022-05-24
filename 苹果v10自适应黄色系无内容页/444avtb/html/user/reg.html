@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width = device-width ,initial-scale = 1,minimum-scale = 1,maximum-scale = 1,user-scalable =no," />
+<title>会员注册 - {$maccms.site_name}</title>
+{include file="user/include" /}
+</head>
+<body>
+
+<div class="zy-search zy-tit">
+<div class="sch-w clearfix">
+<a class="go-back" href="#"><img src="{$maccms.path_tpl}images/logo.png"></a>
+<div class="tit">
+用户注册
+</div>
+</div>
+</div>
+<div class="wrap">
+<div class="reg-w">
+<form method="post" id="fm" action="">
+<div class="form-group clearfix">
+<h5>账号</h5>
+<input class="fl" type="text" name="user_name" placeholder="请输入">
+</div>
+<div class="form-group clearfix">
+<h5>密码</h5>
+<input type="password" id="pass1" name="user_pwd" placeholder="请输入">
+</div>
+<div class="form-group clearfix">
+<h5>确认密码</h5>
+<input type="password" id="pass2" name="user_pwd2" placeholder="请输入">
+</div>
+<div class="form-group clearfix">
+<h5>邮箱</h5>
+<input class="fl" type="text" name="user_email" placeholder="请输入">
+</div>
+<div class="form-group clearfix">
+<h5>验证码</h5>
+<input class="fl" type="text" name="verify" placeholder="请输入">
+<div class="pwd_img"><img id="verify_img" src="{:url('verify/index')}" onClick="this.src=this.src+'?'" /></div>
+</div>
+<input type="button" id="btn_submit" class="btn-brand" value="提交">
+</form>
+</div>
+</div>
+<script>
+	$(".go-back").click(function () {
+		var ref = document.referrer;
+		location.href=ref;
+	});
+
+	$("#btn_submit").click(function() {
+		var data = $('#fm').serialize();
+		var input = $("#fm").serializeArray();
+		var pass1 = $("#pass1").val();
+		var pass2 = $("#pass2").val();
+		var inputName = new Array();
+		inputName['user_name'] = '账号';
+		inputName['user_pwd'] = '密码';
+		inputName['user_pwd2'] = '确认密码';
+		inputName['user_email'] = '邮箱';
+		inputName['verify'] = '验证码';
+
+		var is = false;
+		var err = '';
+		$.each(input,function(name,field) {
+			if (field.value == '' && field.name!='verify') {
+				is = true;
+				err = inputName[field.name] + '不能为空';
+				return false;
+			}
+		});
+		if (is) {
+			alert(err);
+			return false;
+		}
+		if (pass1 != pass2) {
+			alert('两次密码不一致');
+			return false;
+		}
+
+		$.ajax({
+			url: "{:url('user/reg')}",
+			type: "post",
+			dataType: "json",
+			data: data,
+			beforeSend: function () {
+				//开启loading
+				//$(".loading_box").css("display","block");
+				$("#btn_submit").css("background","#fd6a6a").val("loading...");
+			},
+			success: function (r) {
+				alert(r.msg);
+				if(r.code==1){
+					location.href="{:url('user/login')}";
+				}
+				else{
+					$('#verify_img').click();
+				}
+			},
+			complete: function () {
+				//结束loading
+				//$(".loading_box").css("display","none");
+				$("#btn_submit").css("background","#fa4646").val("提交");
+			}
+		});
+	})
+</script>
+{include file="user/foot" /}
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{include file="seo/topic_detail"}   
+		{include file="block/include"}
+	</head>
+	<body>
+		{include file="block/head"}	
+		<div class="container">
+			<div class="row">				
+				<div class="stui-pannel stui-pannel-bg clearfix">
+					<div class="stui-pannel-box clearfix">
+						<div class="col-md-wide-6 col-xs-1">
+							<div class="stui-vodlist__thumb" style="background: url({:mac_url_img($obj.topic_pic)})  no-repeat; background-position:50% 50%; background-size: cover; padding-top: 50%; "></div>																									
+						</div>
+					    <div class="col-md-wide-4 col-xs-1">
+					    	<h1 class="topic-title">{$obj.topic_name}</h1>
+					        <p class="topic-desc text-muted">{$obj.topic_content|mac_filter_html}</p>	
+					        <div class="share bdsharebuttonbox hidden-sm hidden-xs"></div>
+					    </div>
+					</div>					
+				</div>
+				<div class="stui-pannel stui-pannel-bg clearfix">
+					<div class="stui-pannel-box">
+						<div class="stui-pannel_hd">
+							<div class="stui-pannel__head clearfix">
+								<span class="more text-muted pull-right hidden-xs">本专题共“{$obj.vod_list|count}”部影片</span>
+								<h3 class="title">
+									<img src="{$maccms.path_tpl}statics/icon/icon_1.png"/> 该专题包含的影片
+								</h3>														
+							</div>								
+						</div>
+						<div class="stui-pannel_bd clearfix">
+							<ul class="stui-vodlist clearfix">
+								{maccms:foreach name="$obj.vod_list"}
+								<li class="col-md-6 col-sm-4 col-xs-3">
+									{include file="block/vod_box"}													
+								</li>
+								{/maccms:foreach}	 
+							</ul>	
+						</div>
+					</div>				
+				</div>												
+			</div>
+		</div>
+		<style type="text/css">
+			.topic-title{ margin: 20px 0 20px;}
+			.topic-desc{ margin-bottom: 20px;}
+			@media (max-width: 1024px){.topic-title{ margin: 0 0 10px; font-size: 16px;}.topic-desc{ margin: 0;}}
+		</style>
+		{include file="block/foot"}
+	</body>
+</html>

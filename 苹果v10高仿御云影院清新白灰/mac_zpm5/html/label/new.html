@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>最新- {$maccms.site_name}</title>
+<meta name="keywords" content="{$maccms.site_keywords}" />
+<meta name="description" content="{$maccms.site_description}" />
+{include file="public/include"}
+</head>
+<body>
+<div class="movie-wrap">
+{include file="public/head"}
+<div class="header_bg"></div>
+<div class="container" style="margin-top:-80px;">
+<div class="container-inner">
+<div class="filtrate-container-heads">
+<h2 class="fl"><strong>50部</strong>最近更新</h2>
+<ul class="fchstar fch12 fl" id="filter">
+</ul>
+</div>
+<div class="movie-type-content">
+<div class="mtc-inner">
+<ul class="teleplay-content-list movie-content-list" id="stage">
+{maccms:vod num="50" type="all" order="desc" by="time"}
+<li data-tags="{$vo.type.type_name}">
+<div class="showPlay">
+<a href="{:mac_url_vod_detail($vo)}" class="tcl-pic" target="_blank">
+<div class="tcl-pic1"><img class="scrollLoading" width="200" height="270" src="{$vo.vod_pic|mac_url_img}" alt="{$vo.vod_name}"></div>
+<div class="tcl-pic2"></div>
+<div class="tcl-pic3"></div>
+<p class="tcl-pic4">{include file="public/serial1"}</p>
+</a>
+</div>
+<div class="tcl-title">
+<div class="movie-headline1"><a href="{:mac_url_vod_detail($vo)}" target="_blank">{$vo.vod_name}</a></div>
+<p><i><font color="red">{$vo.vod_time|date='Y-m-d H:i:s',###}</font></i><img src='{$maccms.path_tpl}images/new.gif'></p>
+</div>
+</li>
+{/maccms:vod}
+</ul>
+</div>
+</div>
+﻿{include file="public/foot"}
+<script src="{$maccms.path_tpl}js/jquery.quicksand.js"></script>
+<script src="{$maccms.path_tpl}js/script.js"></script>
+</body>
+</html>

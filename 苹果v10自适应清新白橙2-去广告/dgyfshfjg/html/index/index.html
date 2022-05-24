@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>{$maccms.site_name}</title>
+    <meta name="keywords" content="{$maccms.site_keywords}" />
+    <meta name="description" content="{$maccms.site_description}" />
+	{include file="public/include"}
+
+  	</head>
+  
+  <body>
+	{include file="public/head"}
+    <div class="container">
+
+        <!-- 幻灯片 -->
+{maccms:type ids="parent" order="asc" by="sort" id="type"}
+        <div class="stui-pannel stui-pannel-bg clearfix">
+          <div class="stui-pannel-box clearfix">
+            <div class="col-lg-wide-75 col-xs-1 padding-0">
+              <div class="stui-pannel_hd">
+                <div class="stui-pannel__head clearfix">
+                  <a class="more text-muted pull-right" href="{:mac_url_type($type)}">更多
+                    <i class="icon iconfont icon-more"></i></a>
+                  <h3 class="title">
+                    <img src="{$maccms.path_tpl}images/icon_1.png" />
+                    <a href="{:mac_url_type($type)}"> {$type.type_name}</a></h3>
+ <ul class="nav nav-text pull-right hidden-sm hidden-xs">
+                     </ul>
+                </div>
+              </div>
+              <div class="stui-pannel_bd clearfix">
+                <ul class="stui-vodlist clearfix">
+{maccms:vod num="12" ids="all" type="'.$type['type_id'].'"  order="desc" by="time"}
+                  <li class="col-md-6 col-sm-4 col-xs-3">
+                    <div class="stui-vodlist__box">
+                      <a class="stui-vodlist__thumb img-shadow" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">
+                        <img src="{:mac_url_img($vo.vod_pic)}" alt="{$vo.vod_name}">
+<span class="play hidden-xs"></span>
+                        <span class="pic-text text-right">{if condition="$vo.vod_serial gt 0"}第{$vo.vod_serial}集/共{$vo.vod_total}集{else/}{$vo.vod_remarks}{/if}</span>
+  </a>
+                      <div class="stui-vodlist__detail">
+                        <h4 class="title text-overflow" align="center">
+                          <a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">{$vo.vod_name}</a></h4>
+                      </div>
+                    </div>
+                  </li>
+  {/maccms:vod}
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-wide-25 hidden-md hidden-sm hidden-xs">
+              <div class="stui-pannel_hd">
+                <div class="stui-pannel__head clearfix">
+                  <a class="more text-muted pull-right" href="{:mac_url_type($type)}">更多
+                    <i class="icon iconfont icon-more"></i></a>
+                  <h3 class="title">
+                    <img src="{$maccms.path_tpl}images/icon_23.png" />热播榜 ● {$type.type_name}</h3></div>
+              </div>
+              <div class="stui-pannel_bd">
+                <ul class="stui-vodlist__media active col-pd clearfix">
+{maccms:vod order="desc" by="hits" num="6" paging="false" ids="all" type="'.$type['type_id'].'" level="all"}
+                  {if condition="$key lt 4"}
+  <li>
+                    <div class="thumb">
+                      <a class="m-thumb stui-vodlist__thumb  lazyload" href="{:mac_url_vod_detail($vo)}" title="onlytease231" data-original="{$vo.vod_pic}">
+                       <img src="{:mac_url_img($vo.vod_pic)}" alt="{$vo.vod_name}"> <span class="pic-tag pic-tag-h">{$key}</span></a>
+                    </div>
+                    <div class="detail detail-side">
+                      <h4 class="title over_title" title="{$vo.vod_name}">
+                        <a href="{:mac_url_vod_detail($vo)}">
+                          <i class="icon iconfont icon-more text-muted pull-right"></i>{$vo.vod_name}</a>
+                      </h4>
+                      <p class="font-12 overf">
+                        <span class="text-muted">类型：</span>{$vo.type.type_name}
+                        <span class="text-muted">地区：</span>{$vo.vod_area} 
+  </p>
+                      <p class="font-12 margin-0 overf">
+                        <span class="text-muted">主演：</span>{$vo.vod_actor} </p></div>
+                  </li>
+  {if condition="$key eq 3"}
+                </ul>
+                <ul class="stui-vodlist__rank col-pd clearfix">{/if}
+  {else}
+                  <li class="overf_title">
+                    <a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">
+                      <span class="text-muted pull-right">{$vo.vod_score} 分</span>
+                      <span class="badge">{$key}</span>{$vo.vod_name}</a>
+  </li>
+  {/if}
+
+{/maccms:vod}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+{/maccms:type}
+        <!-- 分类列表 -->
+        <div class="stui-pannel stui-pannel-bg hidden-sm hidden-xs clearfix">
+          <div class="stui-pannel-box">
+            <div class="stui-pannel_hd">
+              <div class="stui-pannel__head clearfix">
+                <h3 class="title">
+                  <img src="{$maccms.path_tpl}images/icon_26.png" />友情链接</h3></div>
+            </div>
+            <div class="stui-pannel_bd clearfix">
+              <div class="col-xs-1">
+                <ul class="stui-link__text clearfix">
+                  <li><a target="blank" class="gobtn" href="https://promotion.aliyun.com/ntms/act/enterprise-discount.html?userCode=mzwav41c" style="color: #666;">性能级主机2-5折</a></li>
+				 
+				 {maccms:link num="10" type="all" order="desc" by="id"}
+				 <li><a class="backtop" href="{$vo.link_url}">{$vo.link_name}</a></li>
+				 {/maccms:link}
+				</ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 友情链接 -->
+		</div>
+    </div>
+	{include file="public/foot"}
+  </body>
+</html>

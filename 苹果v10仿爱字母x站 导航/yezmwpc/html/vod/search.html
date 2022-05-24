@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="minimum-scale=0.5,maximum-scale=1.0,user-scalable=no, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+    <title>{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}搜索结果 - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}搜索结果" />
+    <meta name="description" content="{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}搜索结果" />
+{include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+ <div class="detail_right">
+  <div class="detail_right_tab">
+	<!-- 首页 -->
+	<div class="detail_tab detail_tab2">
+		<div class="detail_right_div">
+			<h3>
+			<span class="detail_right_span">搜索：{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}</span>
+			</h3>
+			<ul>
+			{maccms:vod num="30" paging="yes" pageurl="vod/search" order="desc" by="time"}
+					<li>
+					<p class="img">
+						<img class="lazy" src="{:mac_url_img($vo.vod_pic)}" alt="{$vo.vod_name}" title="{$vo.vod_name}">
+						<a href="{:mac_url_vod_play($vo)}"></a>
+					</p>
+					<p>
+							{$vo.vod_name}
+					</p>
+					<p>
+						<i>{$vo.vod_time|date='m-d',###}</i>
+						<strong>{$vo.vod_hits}观看</strong>
+					</p>
+					</li>
+						{/maccms:vod}
+			</ul>
+				<nav class="text-center">
+				{include file="public/paging"}
+				</nav>
+		</div>
+	</div>
+	<!-- 首页 -->
+</div>
+</div>
+</div>
+</div>
+{include file="public/foot"}
+</body>
+</html>

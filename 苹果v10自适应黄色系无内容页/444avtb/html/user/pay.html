@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width = device-width ,initial-scale = 1,minimum-scale = 1,maximum-scale = 1,user-scalable =no," />
+<title>在线支付 - {$maccms.site_name}</title>
+{include file="user/include" /}
+</head>
+<body class="bg-fff">
+
+<div class="zy-search zy-tit">
+<div class="sch-w clearfix">
+<a class="go-back" href="#"><img src="{$maccms.path_tpl}images/user/go-back.png"></a>
+<div class="tit">
+确认付款
+</div>
+</div>
+</div>
+<form method="post" target="_blank" action="{:url('user/gopay')}">
+<input type="hidden" name="order_id" value="{$info.order_id}">
+<input type="hidden" name="order_code" value="{$info.order_code}">
+<div class="wrap mb80">
+<div class="payment line">
+{if condition="$config['alipay']['appid'] neq ''"}
+<div class="radio-box">
+<input type="radio" name="payment" value="alipay" id="alipay" checked>
+<label class="radio" for="alipay">支付宝支付</label>
+<p>建议已安装支付宝的用户使用</p>
+</div>
+{/if}
+{if condition="$config['weixin']['appid'] neq ''"}
+<div class="radio-box">
+<input type="radio" name="payment" value="weixin" id="weixin" checked>
+<label class="radio" for="weixin">微信支付</label>
+<p>建议已安装微信的用户使用</p>
+</div>
+{/if}
+{if condition="$config['codepay']['appid'] neq ''"}
+<div class="radio-box">
+<input type="radio" name="payment" value="codepay" id="codepay" checked>
+<label class="radio" for="codepay">码支付</label>
+<div style="float:right">
+<input type="radio" name="paytype" value="1" checked>支付宝
+<input type="radio" name="paytype" value="2">QQ钱包
+<input type="radio" name="paytype" value="3">微信
+</div>
+<p>建议已使用手机扫码支付</p>
+</div>
+{/if}
+</div>
+</div>
+<div class="pch-foot clearfix">
+<input class="btn ml10" type="submit" name="do" value="确认付款" id="btn_submit">
+<div class="total cf-total " style="margin-top: 1em;">
+支付金额：<span class="price">￥<span id="cart_price_total">{$info.order_price}</span></span>
+</div>
+</div>
+</form>
+
+<div class="loading_box"></div>
+
+<script>
+
+</script>
+</body>
+</html>

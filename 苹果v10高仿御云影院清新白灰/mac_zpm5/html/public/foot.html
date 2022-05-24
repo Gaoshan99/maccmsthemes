@@ -1,0 +1,44 @@
+<div class="all-type">
+<div class="all-type-inner clearfix">
+{maccms:type ids="1,2,3,4" order="asc" by="sort"}
+<div class="all-movie-type {notin name="key" value="4"}brs{/notin}" {if condition="$key==1"}style="padding-left:0px;"{/if}>
+<strong><a href="{:mac_url_type($vo)}">{$vo.type_name}类型</a></strong>
+<ul class="all-movie-type-ul clearfix">
+{maccms:foreach name=":explode(',',$vo.type_extend.class)" id="vo1" key="key1"}{if condition="$key1 lt 10"}
+<li><a href="{:mac_url_type($vo,['class'=>$vo1],'show')}" title="{$vo1}">{$vo1}</a></li>
+{/if}{/maccms:foreach}
+</ul>
+</div>
+{/maccms:type}
+</div>
+</div>
+{if condition="$maccms.aid eq 1"}
+<div class="splendid-header">
+<div class="fl">友情链接</div>
+</div>
+<div class="f-txt-link">
+<p>
+{maccms:link type="font" order="asc" by="sort"}
+<a href="{$vo.link_url}" target="_blank">{$vo.link_name}</a>
+{/maccms:link}
+</p>
+</div>
+{/if}
+</div>
+</div>
+<div class="zt-footer">
+<div class="footer_nav"><a href="{:mac_url('label/sitemap')}" title="网站地图" target="_blank">网站地图</a>-<a href="{:mac_url('rss/index')}" title="RSS地图" target="_blank">RSS地图</a>-<a href="{:mac_url('rss/baidu')}" title="百度地图" target="_blank">百度地图</a>-<a href="{:mac_url('rss/google')}" title="google地图" target="_blank">google地图</a>-<a href="https://www.cunshao.com" title="1" target="_blank">村少博客</a>-<a rel="nofollow" href="{:mac_url('gbook/index')}" title="给我留言" target="_blank">给我留言</a>-{$maccms.site_tj}</div>
+<p>本网站提供新影视资源均系收集各大网站，本网站只提供web页面浏览服务，并不提供影片资源存储，也不参与任何视频录制、上传</br>
+若本站收集的节目无意侵犯了贵司版权，请给{$maccms.site_email}邮箱地址来信，我们将在第一时间删除相应资源</p>
+<p>Copyright © 2016-2018 <b style=" font:Verdana, Arial, Helvetica, sans-serif"><a href="http://{$maccms.site_url}"><font color="#CC0000">www.</font><font color="#F60">MacCms</font><font color="#CC0000">.Com</font></a></b> .All Rights Reserved .</p></br></div>
+</div>
+<div class="index-top" id="index-top">
+<a class="qrcode_box"></a>
+<div class="qrcode wmin">
+<div id="code"></div>
+<div class="qr_title">手机扫一扫轻松打开</div>
+<div class="codetitle">{$maccms.site_name}</div>
+</div>
+<a rel="nofollow" class="guestbook" target="_blank" href="{:mac_url('gbook/index')}"></a>
+<a class="top"></a>
+</div>

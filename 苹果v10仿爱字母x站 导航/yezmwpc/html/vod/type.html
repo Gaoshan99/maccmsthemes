@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{$obj.type_title} - {$maccms.site_name}</title>
+<meta name="keywords" content="{$obj.type_key}"/>
+<meta name="description" content="{$obj.type_des}"/>
+    {include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+<div class="detail_right">
+	<div class="detail_right_tab">
+		<!-- 首页 -->
+		<div class="detail_tab detail_tab2">
+			<div class="detail_right_div">
+				<h3>
+				<span class="detail_right_span">{$obj.type_name}</span>
+				</h3>
+				<ul>
+			{maccms:vod num="30" paging="yes" id="" ids="" type="current" topic=""  order="desc" by="time"}
+					<li>
+					<p class="img">
+						<img class="lazy" src="{:mac_url_img($vo.vod_pic)}" alt="{$vo.vod_name}" title="{$vo.vod_name}">
+						<a href="{:mac_url_vod_play($vo)}"></a>
+					</p>
+					<p>
+							{$vo.vod_name}
+					</p>
+					<p>
+						<i>{$vo.vod_time|date='m-d',###}</i>
+						<strong>{$vo.vod_hits}观看</strong>
+					</p>
+					</li>
+						{/maccms:vod}
+				</ul>
+				<ul class="nextPage">
+				{include file="public/paging"}
+				</ul>
+			</div>
+		</div>
+		<!-- 首页 -->
+	</div>
+</div>
+</div>
+</div>
+{include file="public/foot"}
+</body>
+</html>

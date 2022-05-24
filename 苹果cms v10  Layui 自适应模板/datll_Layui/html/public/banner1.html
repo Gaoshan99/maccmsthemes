@@ -1,0 +1,93 @@
+<div class="banner">
+    <div id="lbsub" class="layui-main">
+        <div class="deansubdiv"><dl>
+            {maccms:type ids="1,2,3,4" order="asc" by="sort" id="vo1" key="key1"}
+            <dd class="deanddt{$key}">
+                <h3><a href="{:mac_url_type($vo1)}">{$vo1.type_name} </a><span></span></h3>
+                <div class="deansubpt">
+                    {if condition="$key1 lt 3"}
+                    <div class="deansubptpp">
+                        <h5>类型</h5>
+                        <div class="deansubptc">
+                            <a href="{:mac_url_type($vo1,[],'show')}">全部</a>
+                            {maccms:type parent="'.vo1['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}
+                                <a href="{:mac_url_type($vo2,[],'show')}">{$vo2.type_name}</a>
+                            {/maccms:type}
+                        </div>
+                    </div>
+                    {/if}
+                    <div class="deansubptpp">
+                        <h5>地区</h5>
+                        <div class="deansubptc">
+                            <a href="{:mac_url_type($vo1,[],'show')}">全部</a>
+                            {maccms:foreach name=":explode(',',$vo1.type_extend.area)" id="vo2" key="key2"}
+                            <a href="{:mac_url_type($vo1,['area'=>$vo2],'show')}">{$vo2}</a>
+                            {/maccms:foreach}
+                        </div>
+                    </div>
+                    <div class="deansubptpp">
+                        <h5>年代</h5>
+                        <div class="deansubptc">
+                            <a href="{:mac_url_type($vo1,[],'show')}">全部</a>
+                            {maccms:foreach name=":explode(',',$vo1.type_extend.year)" id="vo2" key="key2"}
+                            <a href="{:mac_url_type($vo1,['yeaer'=>$vo2],'show')}">{$vo2}</a>
+                            {/maccms:foreach}
+                        </div>
+                    </div>
+                    <div class="deansubptpp">
+                        <h5>字母</h5>
+                        <div class="deansubptc">
+                            <a href="{:mac_url_type($vo1,[],'show')}">全部</a>
+                            {maccms:foreach name=":explode(',','A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,0-9')" id="vo2" key="key2"}
+                            <a href="{:mac_url_type($vo1,['letter'=>$vo2],'show')}">{$vo2}</a>
+                            {/maccms:foreach}
+                        </div>
+                    </div>
+                </div>
+            </dd>
+            {/maccms:type}
+            <dd class="deanddt5">
+                {maccms:type ids="5" order="asc" by="sort"}
+                <h3><a href="{:mac_url_type($vo,[],'show')}">{$vo.type_name}</a><span></span></h3>
+                {/maccms:type}
+            </dd>
+            <dd class="deanddt5">
+                <h3><a href="{:mac_url('label/rank')}">影视排行榜</a><span></span></h3>
+            </dd>
+        </dl></div></div>
+    <script type="text/javascript">
+        $(".deansubdiv dd").each(function(s){
+            $(this).hover(
+                    function(){
+                        $(".deansubpt").eq(s).show();
+                    },
+                    function(){
+                        $(".deansubpt").eq(s).hide();
+                    })
+        })
+    </script>
+    <ul class="51buypic">
+		{maccms:vod order="desc"   by="level" level="9"  type="all"  }
+        <li><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"><img src="{$vo.vod_pic_slide}" alt="{$vo.vod_name}"/></a></li>
+		{/maccms:vod}
+
+    </ul>
+    <a class="prev" href="javascript:void(0)"></a>
+    <a class="next" href="javascript:void(0)"></a>
+    <div class="num"><ul></ul></div>
+    <script>
+        /*鼠标移过，左右按钮显示*/
+        $(".banner").hover(function(){
+            $(this).find(".prev,.next").fadeTo("show",0.5);
+        },function(){
+            $(this).find(".prev,.next").hide();
+        })
+        /*鼠标移过某个按钮 高亮显示*/
+        $(".prev,.next").hover(function(){
+            $(this).fadeTo("show",0.8);
+        },function(){
+            $(this).fadeTo("show",0.5);
+        })
+        $(".banner").slide({ titCell:".num ul" , mainCell:".51buypic" , effect:"fold", autoPlay:true, delayTime:700 ,interTime:5000 , autoPage:true });
+    </script>
+</div>

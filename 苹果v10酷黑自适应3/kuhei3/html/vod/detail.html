@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="seo/vod_detail"}   
+	{include file="block/include"}
+</head>
+<body>
+	{include file="block/head"}
+    <div class="container">
+        <div class="row">      
+			<div class="stui-pannel clearfix">
+				<div class="stui-pannel-box">
+					<div class="stui-pannel__bd">
+						<div class="stui-content">
+							<div class="stui-content__thumb">											
+								<a class="pic" href="{$obj.vod_playlink}" title="{$obj.vod_name}">
+									<img class="lazyload" data-original="{:mac_url_img($obj.vod_pic)}" src="{$maccms.path_tpl}statics/img/load.gif" />
+								</a>												
+							</div>
+							<div class="stui-content__detail">
+								<h1 class="title">{$obj.vod_name}</h1>	
+								<p class="data">类型：{$obj.vod_class} / 地区：{$obj.vod_area} / 年份：{$obj.vod_year}</p>
+								<p class="data">主演：{$obj.vod_actor|mac_substring=60}</p>
+								<p class="data">导演：{$obj.vod_director}</p>	
+								<p class="data">更新：{$obj.vod_time|date='Y-m-d',###}</p>
+								<p class="desc detail">
+									<span class="left">简介：</span>
+									<span class="detail-sketch">{$obj.vod_content|mac_filter_html|mac_substring=50}</span>
+									<span class="detail-content" style="display: none;">{$obj.vod_content|mac_filter_html}</span>
+									<a class="detail-more" href="javascript:;">详情 <i class="icon iconfont icon-moreunfold"></i></a>
+								</p>							    
+								<div class="play-btn">
+									<a href="{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}">立即播放</a>
+								</div>
+							</div>	
+							<div class="stui-content__side">
+								<p><img class="qrcode" width="150" height="150" style="padding: 10px; background-color: #fff;" /></p>
+								扫码用手机观看
+							</div>
+						</div>
+						<div class="stui-vodlist__head">						
+							<h3><a href="{:mac_url_type($vo1,[],'show')}"><i class="iconfont icon-hot"></i> 猜你喜欢</a></h3>						
+						</div>
+						<ul class="stui-vodlist clearfix">
+							{maccms:vod num="12" type="current" order="desc" by="time"}
+							<li>
+								{include file="block/vod_box"}														
+							</li>			
+							{/maccms:vod}
+						</ul>						
+					</div>			
+				</div>						
+			</div>
+        </div>
+    </div>
+    <span class="mac_ulog_set hide" alt="浏览记录" data-type="1" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" data-sid="{$param.sid}" data-nid="{$param.nid}"></span>
+    <span class="mac_history_set hide" alt="历史记录" data-name="[{$obj.type.type_name}]{$obj.vod_name}" data-pic="{$obj.vod_pic|mac_url_img}"></span>
+    {include file="block/copy"}
+	{include file="block/foot"}
+</body>
+</html>

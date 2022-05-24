@@ -1,0 +1,102 @@
+<div class="header-all">
+<div class="top clearfix">
+<ul class="logo">
+<a href="{$maccms.path}" title="伦理片"><i class="logobg"></i></a>
+</ul>
+<ul class="top-nav">
+<li><a {if condition="$maccms.aid eq 1"}class="now"{/if} href="{$maccms.path}" title="伦理片">首页</a> </li>
+{maccms:type ids="1,2,3,4" order="asc" by="sort"}
+<li _t_nav="topnav-{$key}"><a {if condition="$obj.type_id eq $vo.type_id"}class="now"{/if} href="{:mac_url_type($vo)}" title="{$vo.type_name}">{$vo.type_name}<i class="sjbgs"> </i><i class="sjbgx"> </i></a></li>{/maccms:type}
+</ul>
+<!--<ul class="search clearfix">
+<form name="formsearch" id="formsearch" action="{:mac_url('vod/search')}" method="get"  target="_self" autocomplete="off">
+<input class="input" type="text" id="wd" name="wd" placeholder="输入影片名或演员名"/>
+<input class="imgbt" type="submit" value=""/>
+</form>
+</ul>-->
+<ul class="nav-qt aa">
+ <ul class="search clearfix"> <form name="formsearch" id="formsearch" action="{:mac_url('vod/search')}" method="get"  target="_self" autocomplete="off">
+<input class="input" type="text" id="wd" name="wd" placeholder="输入影片名或演员名"/>
+<input class="imgbt" type="submit" value=""/>
+</form></ul>
+  
+<li class="bb mac_history">
+ <a id="history" href="javascript:void(0);">观看记录</a></li>
+<!--<li class="bb member mac_user" id="login"><strong class="ma"><i class="mbbg"></i></strong><a href="{:mac_url('user/index')}"></a></li>-->
+</ul>
+<ul class="sj-search">
+<li class="sbtn2"><i class="sjbg-search"></i></li>
+</ul>
+<ul class="sj-nav">
+<li class="sbtn1"><i class="sjbg-nav"></i></li>
+</ul>
+<ul class="sj-navhome">
+<li><a href="{$maccms.path}" title="伦理电影"><i class="sjbg-home"></i></a></li>
+</ul>
+</div>
+<div class="nav-down clearfix">
+<div id="topnav-1" class="nav-down-1" style="display:none;" _t_nav="topnav-1">
+<div class="nav-down-2 clearfix">
+<ul>
+{maccms:type ids="1" order="asc" by="sort" id="vo1" key="key1"}
+{maccms:type parent="'.$vo1['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}<li><a href="{:mac_url_type($vo2)}">{$vo2.type_name}</a></li>{/maccms:type}
+{/maccms:type}
+</ul>
+</div>
+</div>
+<div id="topnav-2" class="nav-down-1" style="display:none;" _t_nav="topnav-2">
+<div class="nav-down-2 clearfix">
+<ul>
+{maccms:type ids="2" order="asc" by="sort" id="vo1" key="key1"}
+{maccms:type parent="'.$vo1['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}<li><a href="{:mac_url_type($vo2)}">{$vo2.type_name}</a></li>{/maccms:type}
+{/maccms:type}
+</ul>
+</div>
+</div>
+<div id="topnav-3" class="nav-down-1" style="display:none;" _t_nav="topnav-3">
+<div class="nav-down-2 clearfix">
+<ul>
+{maccms:type ids="3" order="asc" by="sort" id="vo1" key="key1"}
+{maccms:type parent="'.$vo1['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}<li><a href="{:mac_url_type($vo2)}">{$vo2.type_name}</a></li>{/maccms:type}
+{/maccms:type}
+</ul>
+</div>
+</div>
+<div id="topnav-4" class="nav-down-1" style="display:none;" _t_nav="topnav-4">
+<div class="nav-down-2 clearfix">
+<ul>
+{maccms:type ids="4" order="asc" by="sort" id="vo1" key="key1"}
+{maccms:type parent="'.$vo1['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}<li><a href="{:mac_url_type($vo2)}">{$vo2.type_name}</a></li>{/maccms:type}
+{/maccms:type}
+</ul>
+</div>
+</div>
+<div id="topnav-news" class="nav-down-1" style="display:none;" _t_nav="topnav-news">
+<div class="nav-down-2 clearfix">
+<ul>
+{maccms:type ids="5" order="asc" by="sort" id="vo1" key="key1"}
+{maccms:type parent="'.$vo1['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}<li><a href="{:mac_url_type($vo2)}">{$vo2.type_name}</a></li>{/maccms:type}
+{/maccms:type}
+</ul>
+</div>
+</div>
+<div id="sj-nav-1" class="nav-down-1 sy1 sj-noover" style="display:none;" _s_nav="sj-nav-1">
+<div class="nav-down-2 sj-nav-down-2 clearfix">
+<ul>
+<!--<li> <a href="{$maccms.path}" title="伦理片">首页</a> </li>-->
+{maccms:type ids="1,2,3,4" order="asc" by="sort"}<li><a href="{:mac_url_type($vo)}">{$vo.type_name}</a></li>{/maccms:type}
+  {maccms:type ids="6,7,8,9,10,11,12,13,14,15,16,20,21,23" order="asc" by="sort"}<li><a href="{:mac_url_type($vo)}">{$vo.type_name}</a></li>{/maccms:type}
+</ul>
+</div>
+</div>
+<div id="sj-nav-search" class="nav-down-1 sy2 sj-noover" style="display:none;" _t_nav1="sj-nav-search">
+<div class="nav-down-2 sj-nav-down-search clearfix">
+<form name="formsearch" id="formsearch" action="{:mac_url('vod/search')}" method="get"  target="_self" autocomplete="off">
+<input class="input" type="text" id="wd" name="wd" placeholder="输入影片名或演员名"/>
+<input class="imgbt" type="submit" value="搜索"/>
+</form>
+</div>
+</div>
+</div>
+</div>
+<div class="topone clearfix"></div>

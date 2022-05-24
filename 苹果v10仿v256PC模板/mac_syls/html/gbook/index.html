@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>求片留言- {$maccms.site_name}</title>
+<meta name="keywords" content="{$maccms.site_keywords}" />
+<meta name="description" content="{$maccms.site_description}" />
+{include file="public/include"}
+<script>
+	$(function(){
+		MAC.Gbook.Login = {$gbook.login};
+		MAC.Gbook.Verify = {$gbook.verify};
+		MAC.Gbook.Init();
+	});
+</script>
+</head>
+<body>
+{include file="public/head"}
+<div class="content-box fn-clear">
+<div class="gb-left">
+{maccms:gbook num="10" paging="yes" order="desc" by="id"}
+<div class="gb-show-list">
+<div class="gb-show-l"><span class="gb-number">{$vo.gbook_id}</span>条留言</div>
+<div class="gb-show-r">
+<div class="gb-cont">
+<div class="gb-arrow"></div>
+<div class="gb-title"><h3>{$vo.gbook_name}</h3><span>{$vo.gbook_time|date='Y-m-d H:i:s',###}</span></div>
+<div class="gb-txt">{$vo.gbook_content}</div>
+{if condition="$vo.gbook_reply_time gt 0"}
+<div class="gb-admin">
+<div class="gb-admin-tab">
+<div class="gb-arrow-t"></div>
+<div class="gb-admin-title"><h3>管理员回复</h3><span>{$vo.gbook_reply_time|date='Y-m-d H:i:s',###}</span></div>
+<div class="gb-txt">{$vo.gbook_reply}</div>
+</div>
+</div>
+{/if}
+</div>
+</div>
+</div>
+{/maccms:gbook}
+{include file="public/paging"}
+</div>
+<div class="gb-right">
+<form class="gbook_form">
+<div class="gb-right-item" style="padding-bottom:5px;">
+<label class="ui-label">请输入您的留言内容：<div class="remaining-w fr">还可输入<span class="gbook_remaining remaining " >200</span></div></label>
+<textarea name="gbook_content" class="gbook_content"></textarea>
+</div>
+<div class="gb-right-item" style="padding-top:5px;">	
+<div class="vcodde">
+{if condition="$gbook.verify eq 1"}
+<div class="vcode">验证码：</div><input type="text" name="verify" class="mac_verify">
+{/if}
+<input class="ui-button gbook_submit submit_btn" type="submit"  value="发送留言" />
+</div>
+</div>
+</form>	
+</div>
+</div>
+{include file="public/foot"}
+<div class="index-top" id="index-top">
+<a rel="nofollow" class="guestbook" target="_blank" href="{:mac_url('gbook/index')}"></a>
+<a class="top"></a>
+</div>
+</body>
+</html>

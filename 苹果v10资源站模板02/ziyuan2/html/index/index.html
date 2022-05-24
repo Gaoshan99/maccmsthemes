@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+  <title>{$maccms.site_name}</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="{$maccms.site_keywords}" />
+    <meta name="description" content="{$maccms.site_description}" />
+    {include file="public/include"}
+ </head>
+ <body>
+ {include file="public/head"}
+     <div class="container">
+		<div class="nvc">
+			<dl>
+				<dt>
+					<span>当前位置</span>
+					<i class="arrow"><b class="a_outer"></b><b class="a_inner"></b></i>
+				</dt>
+				<dd><a href="/">首页</a></dd>
+			</dl>
+		</div>
+</div>
+  <div class="xing_vb"> 
+   <ul>
+    <li><span class="xing_vb1">影片名称</span><span class="xing_vb2">影片类别</span><span class="xing_vb3">更新时间</span></li>
+   </ul>
+      {maccms:vod num="50" paging="yes" type="all" order="desc" by="time" pageurl="index/index"}
+   <ul>
+    <li>
+        <span class="tt"></span>
+        <span class="xing_vb4"><a href="{:mac_url_vod_detail($vo)}">{$vo.vod_name} {$vo.vod_remarks}</a></span>
+        <span class="xing_vb5">{$vo.type.type_name}</span>
+        <span class="xing_vb7">{$vo.vod_time|mac_day=###,'color'}</span>
+    </li>
+   </ul> 
+   {/maccms:vod} 
+   <ul style="display:block;clear:both;">
+    <li><div class="pages" style="margin-bottom:10px;">
+        {include file="public/paging"}
+    </div></li>
+   </ul> 
+   <div style="clear:both"></div> 
+  </div>
+ {include file="public/foot"}
+ </body>
+</html>

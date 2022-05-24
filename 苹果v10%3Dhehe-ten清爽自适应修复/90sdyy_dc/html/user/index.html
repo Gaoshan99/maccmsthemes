@@ -1,0 +1,106 @@
+{include file="public/header"}
+{include file="user/banner"}
+<div class="fed-part-rows">
+	<div class="fed-main-left fed-col-xs12 fed-col-md4 fed-col-lg3">
+		{include file="user/menu"}
+	</div>
+	<div class="fed-main-right fed-col-xs12 fed-col-md8 fed-col-lg9 fed-hide-xs fed-hide-sm fed-show-md-block">
+		<div class="fed-part-layout fed-back-whits">
+			<div class="fed-user-title fed-list-head fed-part-rows fed-padding fed-line-bottom">
+				<h2 class="fed-font-xvi fed-padding">我的资料</h2>
+				<ul class="fed-part-tips fed-padding">
+					<li class="fed-padding">
+						<a class="fed-more" href="{:mac_url('user/index')}">刷新</a>
+					</li>
+				</ul>
+			</div>
+			<ul class="fed-user-list fed-part-rows fed-back-whits">
+				<li class="fed-padding-x fed-part-rows fed-line-bottom">
+					<div class="fed-user-input fed-visible fed-font-xvi fed-part-rows">
+						<span class="fed-col-xs4 fed-col-sm3 fed-part-eone">用户名</span>
+						<span class="fed-col-xs7 fed-col-sm8 fed-part-eone">{$obj.user_name}</span>
+						<span class="fed-col-xs1 fed-col-sm1 fed-part-eone fed-text-right"><i class="fed-icon-font fed-icon-you"></i></span>
+					</div>
+				</li>
+				<li class="fed-padding-x fed-part-rows fed-line-bottom">
+					<div class="fed-user-input fed-visible fed-font-xvi fed-part-rows">
+						<span class="fed-col-xs4 fed-col-sm3 fed-part-eone">所属会员组</span>
+						<span class="fed-col-xs7 fed-col-sm8 fed-part-eone">{$obj.group.group_name}</span>
+						<span class="fed-col-xs1 fed-col-sm1 fed-part-eone fed-text-right"><i class="fed-icon-font fed-icon-you"></i></span>
+					</div>
+				</li>
+				<li class="fed-padding-x fed-part-rows fed-line-bottom">
+					<div class="fed-user-input fed-visible fed-font-xvi fed-part-rows">
+						<span class="fed-col-xs4 fed-col-sm3 fed-part-eone">到期时间</span>
+						<span class="fed-col-xs7 fed-col-sm8 fed-part-eone">{$obj.user_end_time|mac_day|mac_default='无限期'}</span>
+						<span class="fed-col-xs1 fed-col-sm1 fed-part-eone fed-text-right"><i class="fed-icon-font fed-icon-you"></i></span>
+					</div>
+				</li>
+				<li class="fed-padding-x fed-part-rows fed-line-bottom">
+					<div class="fed-user-input fed-visible fed-font-xvi fed-part-rows">
+						<span class="fed-col-xs4 fed-col-sm3 fed-part-eone">账户积分</span>
+						<span class="fed-col-xs7 fed-col-sm8 fed-part-eone">{$obj.user_points}</span>
+						<span class="fed-col-xs1 fed-col-sm1 fed-part-eone fed-text-right"><i class="fed-icon-font fed-icon-you"></i></span>
+					</div>
+				</li>
+				<li class="fed-padding-x fed-part-rows fed-line-bottom">
+					<div class="fed-user-input fed-visible fed-font-xvi fed-part-rows">
+						<span class="fed-col-xs4 fed-col-sm3 fed-part-eone">QQ号码</span>
+						<span class="fed-col-xs7 fed-col-sm8 fed-part-eone">{$obj.user_qq|mac_default='未填写'}</span>
+						<span class="fed-col-xs1 fed-col-sm1 fed-part-eone fed-text-right"><i class="fed-icon-font fed-icon-you"></i></span>
+					</div>
+				</li>
+				<li class="fed-padding-x fed-part-rows fed-line-bottom">
+					<div class="fed-user-input fed-visible fed-font-xvi fed-part-rows">
+						<span class="fed-col-xs4 fed-col-sm3 fed-part-eone">邮件地址</span>
+						<span class="fed-col-xs7 fed-col-sm8 fed-part-eone">{$obj.user_email|mac_default='未填写'}</span>
+						<span class="fed-col-xs1 fed-col-sm1 fed-part-eone fed-text-right"><i class="fed-icon-font fed-icon-you"></i></span>
+					</div>
+				</li>
+				<li class="fed-padding-x fed-part-rows fed-line-bottom">
+					<div class="fed-user-input fed-visible fed-font-xvi fed-part-rows">
+						<span class="fed-col-xs4 fed-col-sm3 fed-part-eone">联系电话</span>
+						<span class="fed-col-xs7 fed-col-sm8 fed-part-eone">{$obj.user_phone|mac_default='未填写'}</span>
+						<span class="fed-col-xs1 fed-col-sm1 fed-part-eone fed-text-right"><i class="fed-icon-font fed-icon-you"></i></span>
+					</div>
+				</li>
+				<li class="fed-padding-x fed-part-rows fed-line-bottom">
+					<div class="fed-user-input fed-visible fed-font-xvi fed-part-rows">
+						<span class="fed-col-xs4 fed-col-sm3 fed-part-eone">注册时间</span>
+						<span class="fed-col-xs7 fed-col-sm8 fed-part-eone">{$obj.user_reg_time|mac_day|mac_default='未知'}</span>
+						<span class="fed-col-xs1 fed-col-sm1 fed-part-eone fed-text-right"><i class="fed-icon-font fed-icon-you"></i></span>
+					</div>
+				</li>
+				<li class="fed-padding-x fed-part-rows fed-line-bottom">
+					<div class="fed-user-input fed-visible fed-font-xvi fed-part-rows">
+						<span class="fed-col-xs4 fed-col-sm3 fed-part-eone">登录时间</span>
+						<span class="fed-col-xs7 fed-col-sm8 fed-part-eone">{$obj.user_login_time|mac_day}</span>
+						<span class="fed-col-xs1 fed-col-sm1 fed-part-eone fed-text-right"><i class="fed-icon-font fed-icon-you"></i></span>
+					</div>
+				</li>
+				<li class="fed-padding-x fed-part-rows fed-line-bottom">
+					<div class="fed-user-input fed-visible fed-font-xvi fed-part-rows">
+						<span class="fed-col-xs4 fed-col-sm3 fed-part-eone">登录IP</span>
+						<span class="fed-col-xs7 fed-col-sm8 fed-part-eone">{$obj.user_login_ip|long2ip}</span>
+						<span class="fed-col-xs1 fed-col-sm1 fed-part-eone fed-text-right"><i class="fed-icon-font fed-icon-you"></i></span>
+					</div>
+				</li>
+				<li class="fed-padding-x fed-part-rows fed-line-bottom">
+					<div class="fed-user-input fed-visible fed-font-xvi fed-part-rows">
+						<span class="fed-col-xs4 fed-col-sm3 fed-part-eone">推广次数</span>
+						<span class="fed-col-xs7 fed-col-sm8 fed-part-eone">{$obj.user_extend}</span>
+						<span class="fed-col-xs1 fed-col-sm1 fed-part-eone fed-text-right"><i class="fed-icon-font fed-icon-you"></i></span>
+					</div>
+				</li>
+				<li class="fed-padding-x fed-part-rows">
+					<div class="fed-user-input fed-visible fed-font-xvi fed-part-rows">
+						<span class="fed-col-xs4 fed-col-sm3 fed-part-eone">推广链接</span>
+						<span class="fed-col-xs7 fed-col-sm8 fed-part-eone"><input id="url" class="fed-visible" value="http://{$maccms.site_url}/{:mac_url('user/reg')}?uid={$obj.user_id}" /></span>
+						<span class="fed-col-xs1 fed-col-sm1 fed-part-eone fed-text-right"><i class="fed-icon-font fed-icon-you"></i></span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+{include file="public/footer"}

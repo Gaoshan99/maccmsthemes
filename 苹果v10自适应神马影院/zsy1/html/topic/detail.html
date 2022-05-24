@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>{$obj.topic_title} - 嗨翻影院</title>
+<meta name="keywords" content="{$obj.topic_key}" />
+<meta name="description" content="{$obj.topic_des}" />
+{include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+
+<div class="main">
+<div class="title"><a href="{$maccms.path}" title="伦理片">首页</a>&nbsp;>&nbsp;<strong>{$obj.topic_title}</strong></div>
+
+<!--<div align="center"><script src="{$maccms.path_ads}list1.js"></script></div>-->
+<div class="sy-all mb clearfix">
+<div class="sy-title clearfix">
+<p class="type"><span class="type">本专题共</span>{$obj.vod_list|count}部视频</p>
+<!--<p class="chg sbtn" _s_nav="sj-gjsy">筛选<i class="sjbgs"></i><i class="sjbgx"></i></p>-->
+</div>
+</div>
+<div class="index-area clearfix">
+<ul>
+{maccms:foreach name="$obj.vod_list"}
+<li class="p1 m1"><a class="link-hover" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"><img src="{:mac_url_img($vo.vod_pic)}" alt="{$vo.vod_name}" onerror="this.src='{$maccms.path_tpl}images/nopic.gif'" class="lazy"><span class="video-bg"></span><span class="lzbz"><p class="name">{$vo.vod_name}</p><p class="actor">{$vo.vod_actor}</p><p class="actor">{$vo.type.type_name}</p><p class="actor">{$vo.vod_year}/{$vo.vod_area}</p></span><p class="other"><i>{$vo.vod_remarks}</i></p></a></li>
+  {/maccms:foreach}  {$obj.topic_content}
+</ul>
+</div>
+<!--<div class="page mb clearfix">{include file="public/paging"}</div>
+<div align="center"><script src="{$maccms.path_ads}list3.js"></script></div>
+</div>-->
+ 
+
+{include file="public/foot"}
+</body>
+</html>

@@ -1,0 +1,63 @@
+<div id="login-container"></div>
+<header>
+<div class="nav-top navbar-inverse">
+<div class="container">
+<ul class="nav nav-pills top-menu"id="nav">
+<li class="nav-item mac_user"><a class="nav-link" href="javascript:;">会员</a></li>
+<li class="dropdown">
+<a href="#language" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" role="button">
+<img src="{$maccms.path_tpl}images/us.png" alt="en-US"/><span class="caret"></span>
+</a>
+<ul id="language-select" class="dropdown-menu dropdown-menu-right" role="menu">
+<li class="active"><a href="#en-US" rel="nofollow"><img src="{$maccms.path_tpl}images/us.png" alt="en-US"/> 中/英文 (美利坚合众国)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="nav-content">
+<div class="container">
+<div class="logo">
+<a href="/"><img src="{$maccms.path_tpl}images/logo.png" alt="{$maccms.site_name}"/></a>
+</div>
+<div class="search">
+<form id="search" name="search" method="POST" action="{:mac_url('vod/search')}" onSubmit="return qrsearch();">
+<div class="input-group input-group-lg">
+<input type="text" class="form-control" name="wd"placeholder="搜索" value="">
+<div class="input-group-btn">
+<button  type="submit" value="" class="btn btn-default dropdown-toggle search-button" id="searchbutton"  >
+</button>
+</div>
+</div>
+</form>
+</div>
+<div class="clearfix">
+</div>
+<nav class="navbar navbar-inverse" role="navigation" id="menu-main">
+<div class="container-fluid">
+
+<div class="navbar-header" id="menu-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-main-collapse">
+<span class="sr-only">切换导航</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<span class="navbar-toggle navbar-menu">导航</span>
+</div>
+
+<div class="collapse navbar-collapse" id="menu-main-collapse">
+<ul id="menu-main-content" class="nav navbar-nav">
+<li {if condition="$maccms.aid eq 1"}class="active"{/if}><a href="/" title="首页">首页</a></li>
+{maccms:type ids="parent" order="asc" by="sort"}
+<li {if condition="($vo.type_id eq MAC_TYPE_ID || $vo.type_id eq MAC_TYPE_PID)"}class="active"{/if}><a  href="{:mac_url_type($vo)}">{$vo.type_name}</a></li>
+{/maccms:type}
+</ul>
+</div>
+
+</div>
+
+</nav>
+</div>
+</div>
+</header>

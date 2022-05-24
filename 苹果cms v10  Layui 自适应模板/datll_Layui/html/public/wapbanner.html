@@ -1,0 +1,36 @@
+<div class="layui-carousel" id="test1">
+  <div carousel-item>
+	 {maccms:vod num="9" level="9"  order="desc" by="time" parent="current" }
+	  {notempty name="$vo.vod_pic_slide"}
+	  <div class="carousel_slide"><a href="{:mac_url_vod_detail($vo)} " title="{$vo.vod_name}"><img alt="{$vo.vod_name}" src="{$vo.vod_pic_slide} "/></a></div>
+	  {else /}
+	  <div class="carousel_pic">
+		  <div class="div_pic">
+		   <img alt="{$vo.vod_name}" src="{:mac_url_img($vo.vod_pic)}"/>
+		  </div>
+		  <div class="div_txt">
+		    <h2>{$vo.vod_name}</h2>
+		  
+		    <p class="remarks">{$vo.vod_remarks}</p>
+		    <p>评分：{$vo.vod_score}</p>
+		    <p>主演：{$vo.vod_actor} </p>
+		    <p>时间：{$vo.vod_time|date='m-d',###} </p>
+			 <span class="layui-btn layui-btn-danger layui-btn-sm">立即播放</span>
+			  <span class="layui-btn layui-btn-sm">影片简介</span>
+		  </div>
+		  
+	  </div>
+	  
+	  
+	  {/notempty}
+    
+	  {/maccms:vod}
+  </div>
+</div>
+
+<script>
+
+</script>
+<style>
+
+</style>

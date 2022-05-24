@@ -1,0 +1,13 @@
+<div class="fed-user-head fed-margin-top fed-back-whits">
+<div class="fed-list-pics fed-lazy fed-part-5by2 fed-part-rows" data-original="{$maccms.path_tpl}asset/img/user.jpg">
+<div class="fed-part-core fed-text-center">
+<div class="fed-user-image" data-role="{:mac_url('user/portrait')}">
+<img class="fed-user-avat fed-part-roun" src="{$obj.user_portrait|mac_default='static/images/touxiang.png'|mac_url_img}?v={:time()}" />
+</div>
+<span class="fed-visible fed-text-white fed-padding">{$obj.user_name}</span>
+</div>
+</div>
+<div class="fed-padding fed-part-rows fed-back-whits fed-hide-md">
+{include file="user/include"}
+</div>
+</div>

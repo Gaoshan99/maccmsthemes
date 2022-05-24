@@ -1,0 +1,108 @@
+<script src="{$maccms.path}static/js/jquery.js"></script>
+<script>var maccms={"path":"__ROOT__","mid":"{$maccms['mid']}","aid":"{$maccms['aid']}","url":"{$maccms['site_url']}","wapurl":"{$maccms['site_wapurl']}","mob_status":"{$maccms['mob_status']}"};</script>
+<script src="{$maccms.path}static/js/home.js"></script>
+<div class="fed-play-info fed-margin-top fed-box-shadow fed-back-whits fed-part-rows">
+<div class="fed-col-xs12 fed-col-md9">
+<div class="fed-play-player fed-part-rows fed-back-black fed-part-16by9">
+<style>
+    #playleft{padding:0px;margin: 0px;border: none;}
+</style>
+    <div style="top:0px;width:100%;margin: 0px;padding: 0px;position: absolute;height: 100%;">
+    {$player_data}
+    {$player_js}
+    </div>
+<div class="fed-play-error fed-play-box fed-hidden fed-conceal fed-back-whits">
+<h2 class="fed-text-center fed-font-xvi fed-hide-xs">失效数据，我们会在第一时间内修正</h2>
+<div class="fed-comm-report" data-repo="{:mac_url('gbook/report')}"></div>
+</div>
+<div class="fed-play-parse fed-play-box fed-hidden fed-conceal fed-back-whits">
+<h2 class="fed-text-center fed-play-top fed-font-xvi">如有无法播放请切换视频解析接口</h2>
+</div>
+{if$popedom.code!=1}
+<div class="fed-play-confirm fed-play-pays fed-play-box fed-back-whits fed-event">
+<div class="fed-part-core">
+<h2 class="fed-text-center fed-play-top fed-font-xvi">{$popedom.msg}</h2>
+<p class="fed-text-center">一次支付，永久观看，不重复扣费，谢谢支持。</p>
+<div class="fed-text-center">
+{if$user.group.group_id==1}
+<a class="fed-btns-info fed-rims-info fed-visible fed-padding fed-margin fed-back-green fed-navs-login" href="javascript:;">立即登录</a>
+{else}
+<a class="fed-btns-info fed-rims-info fed-visible fed-padding fed-margin" href="{:url('user/buy')}" target="_blank">马上充值</a>
+<a class="fed-btns-info fed-rims-info fed-visible fed-padding fed-margin fed-back-green" href="javascript:;" onclick="fed.myuser.power(this,'{if$obj.player_info.flag=="play"}播放{else}下载{/if}')" data-id="{$obj.vod_id}" data-sid="{$param.sid}" data-nid="{$param.nid}" data-type="{if$obj.player_info.flag=='play'}4{else}5{/if}">确认购买</a>
+{/if}
+</div>
+</div>
+</div>
+{/if}
+</div>
+<div class="fed-play-title fed-part-rows">
+<ul class="fed-play-btn fed-padding fed-part-rows fed-col-xs12 fed-col-md6">
+<li class="fed-padding{if$popedom.code==1} fed-col-xs6{else} fed-col-xs9{/if}"><span class="fed-play-text fed-visible fed-font-xvi fed-part-eone">{$obj.vod_name}{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}</span></li>
+
+</ul>
+<ul class="fed-play-btn fed-padding fed-part-rows fed-col-xs12 fed-col-md6">
+<li class="fed-padding fed-col-xs2">
+<a class="fed-btns-info fed-rims-info fed-visible fed-play-erro fed-event" href="javascript:;">报错</a>
+</li>
+<li class="fed-padding fed-col-xs2">
+{if$user.user_id==0}
+<a class="fed-btns-info fed-rims-info fed-visible fed-play-reno fed-event" href="javascript:window.open(document.all.playeriframe.src,'playeriframe','')">刷新</a>
+{else}
+<a class="fed-btns-info fed-rims-info fed-visible fed-play-favo fed-event" href="javascript:;">收藏</a>
+{/if}
+</li>
+<li class="fed-padding fed-col-xs2">
+<a class="fed-btns-info fed-rims-info fed-visible fed-play-share fed-event" href="javascript:;">分享</a>
+</li>
+<li class="fed-padding fed-col-xs3">
+<a class="fed-btns-info fed-rims-info fed-visible fed-play-prev{if$param.nid==1} fed-btns-disad{/if}" href="{$obj.player_info.link_pre}">上一集</a>
+</li>
+<li class="fed-padding fed-col-xs3">
+<a class="fed-btns-info fed-rims-info fed-visible fed-play-next{if$param.nid==$obj['vod_play_list'][$param['sid']]['url_count']} fed-btns-disad{/if}" href="{$obj.player_info.link_next}">下一集</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="fed-col-xs12 fed-col-md3">
+<div class="fed-tabs-info fed-tabs-play fed-conv-double fed-part-roll">
+<div class="fed-tabs-boxs">
+<div class="fed-tabs-head">
+<span class="fed-tabs-title fed-visible fed-font-xvi fed-part-rows">
+<span class="fed-col-xs4 fed-part-eone">选择资源</span>
+<span class="fed-col-xs8 fed-part-eone fed-text-right">无法播放请尝试切换资源</span>
+</span>
+</div>
+<div class="fed-tabs-foot">
+<ul class="fed-padding fed-part-rows">
+{maccms:foreach name="obj.vod_play_list" id="vo"}
+<li class="fed-padding fed-col-xs3 fed-col-md6 fed-col-lg4">
+<a class="fed-btns-info fed-rims-info fed-part-eone{if$vo.player_info.from==$obj['vod_play_list'][$param['sid']]['player_info']['from']||$param.nid gt $obj['vod_play_list'][$vo['sid']]['url_count']} fed-tabs-btn{/if}{if$vo.player_info.from==$obj['vod_play_list'][$param['sid']]['player_info']['from']} fed-btns-green{/if}" href="{if$vo.player_info.from==$obj['vod_play_list'][$param['sid']]['player_info']['from']||$param.nid gt $obj['vod_play_list'][$vo['sid']]['url_count']}javascript:;{else/}{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$param.nid])}{/if}">{$vo.player_info.show|mac_default='云播放器'}</a>
+</li>
+{/maccms:foreach}
+</ul>
+</div>
+</div>
+<div class="fed-tabs-boxs">
+<div class="fed-tabs-head">
+{maccms:foreach name="obj.vod_play_list" id="vo"}
+<span class="fed-tabs-top fed-tabs-title fed-font-xvi fed-part-rows fed-hidden{if$vo.player_info.from==$obj['vod_play_list'][$param['sid']]['player_info']['from']} fed-show{/if}">
+<span class="fed-col-xs4 fed-part-eone">{$vo.player_info.show|mac_default='云播放器'}</span>
+<span class="fed-col-xs8 fed-part-eone fed-text-right">{$vo.player_info.tip}<i class="fed-icon-font fed-icon-you"></i></span>
+</span>
+{/maccms:foreach}
+</div>
+<div class="fed-tabs-foot">
+{maccms:foreach name="obj.vod_play_list" id="vo"}
+<ul class="fed-tabs-btm fed-padding fed-part-rows fed-hidden{if$vo.player_info.from==$obj['vod_play_list'][$param['sid']]['player_info']['from']} fed-show{/if}">
+{maccms:foreach name="vo.urls" id="vo2"}
+<li class="fed-padding{if$obj.type_1.type_name=='电影'||$obj.type.type_name=='电影'||$obj.type_1.type_name=='综艺'||$obj.type.type_name=='综艺'} fed-col-xs4 fed-col-sm6{else/} fed-col-xs3 fed-col-md6 fed-col-lg4{/if}">
+<a class="fed-btns-info fed-rims-info fed-part-eone{if$key==$param.nid&&$vo.player_info.from==$obj['vod_play_list'][$param['sid']]['player_info']['from']} fed-btns-green{/if}" href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}">{$vo2.name}</a>
+</li>
+{/maccms:foreach}
+</ul>
+{/maccms:foreach}
+</div>
+</div>
+</div>
+</div>
+</div>

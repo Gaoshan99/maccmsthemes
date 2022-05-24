@@ -1,0 +1,49 @@
+<div class="fed-side-info fed-part-layout fed-back-whits fed-hide-xs fed-hide-sm fed-show-md-block">
+<div class="fed-side-list fed-text-center">
+<h2 class="fed-list-head fed-part-rows fed-font-xvi fed-text-center">扫描二维码在手机上观看此影片</h2>
+<div class="fed-side-code"><img class="fed-side-image" style="width:200px;height:200px;" src="{if(strstr($maccms['site_email'],'@')==true)}{$maccms.path_tpl}asset/img/qrcode.png{else}{$maccms.site_email}{/if}" /></div>
+<h2 class="fed-list-head fed-part-rows fed-font-xvi fed-text-center">支付宝扫一扫，天天领红包！最高99元！</h2>
+<div class="fed-text-center"><img class="fed-side-image" width="250" src="{$maccms.path_tpl}asset/img/ttzfbhongbao.png" ></div>
+<p class="fed-text-center">喜欢请分享给你的小伙伴！<br/>请记住本站：{$maccms.site_url}</p>
+</div>
+{if$maccms.aid==14||$maccms.aid==15||$maccms.aid==16}
+<div class="fed-side-list fed-list-info fed-line-top fed-list-rank fed-part-rows">
+<h2 class="fed-list-head fed-part-rows fed-font-xvi">今日热门{$obj.type.type_name}<a class="fed-part-tips fed-font-xiv" href="{:mac_url('label/rank')}">更多</a></h2>
+<ul class="fed-part-rows">
+{maccms:vod num="9" type="current" order="desc" by="hits_day"}
+<li class="fed-part-eone">
+<a href="{:mac_url_vod_detail($vo)}"><span class="fed-part-nums fed-part-num{$key}">{$key}</span>{$vo.vod_name}<span class="fed-part-tips fed-text-green">{$vo.vod_hits_day}</span></a>
+</li>
+{/maccms:vod}
+</ul>
+</div>
+{else}
+{maccms:type num="2" ids="parent" order="asc" by="sort" mid="vod" id="vfed"}
+<div class="fed-side-list fed-list-info fed-line-top fed-list-rank fed-part-rows">
+<h2 class="fed-list-head fed-part-rows fed-font-xvi">今日热门{$vfed.type_name}<a class="fed-part-tips fed-font-xiv" href="{:mac_url('label/rank')}">更多</a></h2>
+<ul class="fed-part-rows">
+{maccms:vod num="9" type="'.$vfed['type_id'].'" order="desc" by="hits"}
+<li class="fed-part-eone">
+<a href="{:mac_url_vod_detail($vo)}"><span class="fed-part-nums fed-part-num{$key}">{$key}</span>{$vo.vod_name}<span class="fed-part-tips fed-text-green">{$vo.vod_hits_day}</span></a>
+</li>
+{/maccms:vod}
+</ul>
+</div>
+{/maccms:type}
+{/if}
+{maccms:topic num="1" order="desc" by="time" level="5"}
+<div class="fed-side-list fed-line-top fed-part-rows">
+<h2 class="fed-list-head fed-part-rows fed-font-xvi">推荐专题<a class="fed-part-tips fed-font-xiv" href="{maccms:link_topic_vod}">更多</a></h2>
+<ul class="fed-list-info">
+{maccms:topic num="3" order="desc" by="time" level="5"}
+<li class="fed-side-item">
+<a class="fed-list-pics fed-part-2by1" href="{:mac_url_topic_detail($vo)}"{if$vo.topic_pic} style="background-image: url({$vo.topic_pic});"{/if}>
+<span class="fed-list-play fed-hide-xs"></span>
+<span class="fed-list-remarks fed-font-xii fed-text-white fed-text-center">{$vo.topic_name}</span>
+</a>
+</li>
+{/maccms:topic}
+</ul>
+</div>
+{/maccms:topic}
+</div>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>在线播放{$obj.vod_name} {$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']} - 高清资源 - {$maccms.site_name}</title>
+<meta name="keywords" content="{$obj.vod_name}{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}免费在线观看,{$obj.vod_name}剧情介绍" />
+<meta name="description" content="{$obj.vod_name}{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}免费在线观看,{$obj.vod_name}剧情介绍" />
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<meta name="generator" content="datll.10.2" />
+<meta name="author" content="datll.com" />
+<meta name="copyright" content="datll.com" />
+{include file="public/include"}
+</head>
+<body>
+<!--载入头部-->
+{include file="public/head"}
+<div class="playmian"></div>	
+<div class="layui-main margin-top">
+	 <div id="detail-box">
+    <div id="bofang_box">
+        {$player_data}
+        {$player_js}
+    </div>
+</div>
+ <div class="layui-elem-quote margin-top">
+		<span class="layui-breadcrumb">
+			<a href="{$maccms.path}">首页</a>
+			<a href="{:mac_url_type($obj.type_1)}">{$obj.type_1.type_name}</a>
+			<a href="{:mac_url_type($obj.type)}">{$obj.type.type_name}</a>
+			<a><cite>{$obj.vod_name}在线点播{$obj.vod_nmae}迅雷下载</cite></a>
+			 	
+		</span>
+	</div>
+	
+	<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+		  <ul class="layui-tab-title">
+			  
+			{maccms:foreach name="obj.vod_play_list" id="vo"}
+			<li class="{if condition="$key==1"}layui-this{/if}">{$vo.player_info.show}</li>
+			 {/maccms:foreach}
+
+		  </ul>
+		  <div class="layui-tab-content">
+			  {maccms:foreach name="obj.vod_play_list" id="vo"}
+				<div class="detaail_url layui-tab-item {if condition="$key==1"}layui-show{/if}">
+					  <span>[{$vo.player_info.show}-在线播放{$vo.player_info.tip}]</span>
+			          {maccms:foreach name="vo.urls" id="vo2"}
+						<a href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}" >{$vo2.name}</a>
+					  {/maccms:foreach}
+                 </div>
+			   {/maccms:foreach}
+           </div>
+		</div>
+<div style="clear:both"></div>	
+<div class="ui-box marg margin-top" id="pinglun" >
+				<div class="layui-elem-quote">
+					<h3>评论</h3>
+				</div>
+				<div class="mac_comment" data-id="{$obj.vod_id}" data-mid="{$maccms.mid}" ></div>
+				<script>
+					$(function(){
+						MAC.Comment.Login = {$comment.login};
+						MAC.Comment.Verify = {$comment.verify};
+						MAC.Comment.Init();
+						MAC.Comment.Show(1);
+					});
+				</script>
+			</div>
+
+<div style="clear:both"></div>
+</div>
+{include file="public/foot"}
+	
+<span style="display:none" class="mac_history_set" alt="设置视频历史记录" data-name="[{$obj.type.type_name}]{$obj.vod_name}" data-pic="{$obj.vod_pic|mac_url_img}"></span>	
+</body>
+</html>

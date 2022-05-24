@@ -1,0 +1,142 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{$maccms.site_name}</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="{$maccms.site_keywords}" />
+<meta name="description" content="{$maccms.site_description} " />
+<meta name="generator" content="datll.10.2" />
+<meta name="author" content="datll.com" />
+<meta name="copyright" content="datll.com" />
+{include file="public/include"}
+
+</head>
+
+<body>
+<!--载入头部-->
+{include file="public/head"}
+	 
+<div class="layui-main margin-top">
+	<div class="filter-wrap cl">
+	<div class="layui-elem-quote">
+		<a class="layui-btn layui-btn-primary btn_0" href="{:mac_url('label/new')}">全部影片</a>
+		<a class="layui-btn layui-btn-primary btn_1" href="{:mac_url('/label/new/by/time/tid/1')}">最新电影</a>
+		<a class="layui-btn layui-btn-primary btn_2" href="{:mac_url('/label/new/by/time/tid/2')}">最新电视剧</a>
+		<a class="layui-btn layui-btn-primary btn_3" href="{:mac_url('/label/new/by/time/tid/3')}">最新综艺</a>
+		<a class="layui-btn layui-btn-primary btn_4" href="{:mac_url('/label/new/by/time/tid/4')}">最新动漫</a>
+     </div>
+
+	  <script>
+	  var url = window.location.href;
+      if(url.indexOf("1.html") >= 0 ){
+		  $(".btn_1").removeClass("layui-btn-primary"); 
+	  }
+	  else if (url.indexOf("2.html") >= 0){
+         $(".btn_2").removeClass("layui-btn-primary");    
+     }
+	 else if (url.indexOf("3.html") >= 0){
+         $(".btn_3").removeClass("layui-btn-primary");    
+     }
+	 else if (url.indexOf("4.html") >= 0){
+         $(".btn_4").removeClass("layui-btn-primary");    
+     }else if(url.indexOf("4.html") < 0){
+		 $(".btn_0").removeClass("layui-btn-primary");
+		 
+	 };
+		  
+	  </script>
+  </div>
+ <!--<div class="show_top">
+	<div class="fl_lists"> 
+	  <div class="ui-cnt">
+		  <div class="filter-list fn-clear">
+            <h5>分类：
+				 
+			  </h5> 
+            <ul>
+                <li><a condition="($vo.type_name=="")"} class="layui-btn" {/if} href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>'','order'=>$param['order'],'by'=>$param['by'] ],'show')}">全部</a></li>
+		{if condition="($obj.type_pid ==0)"}
+			{maccms:type parent="current" order="asc" by="sort"}
+            <li><a {if condition="($vo.type_name==$obj.type_name)"}class="layui-btn"{/if} href="{:mac_url_type($vo,[],'show')}">{$vo.type_name}</a></li>
+	      	{/maccms:type}
+		{else /}
+			{maccms:type parent="'.$obj['type_pid'].'" order="asc" by="sort"}
+             <li><a {if condition="($vo.type_name==$obj.type_name)"}class="layui-btn"{/if} href="{:mac_url_type($vo,[],'show')}">{$vo.type_name}</a></li>
+		    {/maccms:type}
+	    {/if}
+            </ul>
+        </div>
+ 
+    </div>
+	  
+	</div>
+  
+<style>
+	.show_list>ul>li.new{width: 100%;}
+	.show_list>ul>li.new a{height: 100px;
+    display: block;
+    width: 100px;}
+	.layui-table th.key{width: 6%;
+    text-align: center;}
+
+	 
+	 </style>	
+</div>-->
+<div class="show_list">
+	
+	<table class="layui-table" lay-skin="line">
+  <colgroup>
+    <col width="150">
+    <col width="150">
+    <col width="200">
+    <col>
+  </colgroup>
+  <thead>
+    <tr>
+	  <th class="key"><div>序号</div></th>
+      <th>海报</th>
+      <th>片名</th>
+      <th>分类</th>
+      <th>年代</th>
+      <th>地区</th>
+      <th>更新</th>
+      <th>备注</th>
+      <th>评分</th>
+    </tr> 
+  </thead>
+  <tbody>
+	  {maccms:vod  num="36" paging="yes" pageurl="label/new" type="current" order="desc" by="time"}
+    <tr>
+	  <th class="key" width="5%"><div>{$key}</div></th>
+      <th><a href="{:mac_url_vod_detail($vo)} "><img src="{:mac_url_img($vo.vod_pic)}" class=""></a></th>
+		<th><a href="{:mac_url_vod_detail($vo)} ">{$vo.vod_name}</a></th>
+      <th>{$vo.type.type_name}</th>
+      <th>{$vo.vod_year}</th>
+      <th>{$vo.vod_area}</th>
+      <th>{$vo.vod_time|date='m-d',###}</th>
+      <th>{$vo.vod_remarks}</th>
+      <th>{$vo.vod_score}</th>
+    </tr> 
+	  {/maccms:vod}
+  </tbody>
+</table>   
+
+	
+
+	{include file="public/paging"}
+	
+</div>
+
+
+<div style="clear:both"></div>
+</div>
+{include file="public/foot"}
+
+</body>
+</html>

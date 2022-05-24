@@ -1,0 +1,39 @@
+
+<script src="{$maccms.path_tpl}datll.10.2/js/datll.1.2.js"></script>
+
+<div class="mac_pop" id="share">
+	<div class="pop_top"><h2>分享</h2><span class="pop_close">Ｘ</span></div>
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tqf" data-cmd="tqf" title="分享到腾讯朋友"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_kaixin001" data-cmd="kaixin001" title="分享到开心网"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a><a href="#" class="bds_print" data-cmd="print" title="分享到打印"></a></div>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+<footer>
+	<div class="layui-main">
+		<div class=" foot-nav">
+			{maccms:type order="asc" by="sort" parent="all"}
+                <a class="color" href="{:mac_url_type($vo2,[],'show')}" title="{$vo.type_name}">{$vo.type_name}</a>-
+			 {/maccms:type}
+        <a href="https://www.cunshao.com" title="村少博客">村少博客</a>-
+        <a href="{:mac_url('label/new')}" title="最近更新">最近更新</a>-
+        <a href="{:mac_url('gbook/index')}" title="反馈留言">反馈留言</a>-
+        <a href="{:mac_url('rss/index')}" title="rss">RSS</a>-
+        <a href="{:mac_url('rss/baidu')}" target="_blank" title="网站地图">Sitemap</a>
+    </div>
+	<p class="p1">{$maccms.site_name}影视通过链接的方式提供相关内容。所有内容（以下简称“内容”）均为第三方内容提供方（以下简称“第三方”）提供。
+
+{$maccms.site_name}自身不存储、控制编辑或修改被链接的第三方网页上的信息内容或其表现形式，对提供链接的内容不拥有任何权利，也不负任何责任，不提供任何明示或暗示的担保，不承担用户因使用这些内容资源对自己和他人造成任何形式的损失或伤害。
+
+{$maccms.site_name}承诺遵守并尊重中国现行法律法规及其他规范性文件对著作权人的保护，并依照规定制定了保护权利人权利的处理流程。作为权利人，当您发现在{$maccms.site_name}影视的链接所指向的第三方网页的内容侵犯了您的合法权益时，您应当按照处理流程首先向我们发送“权利通知”，我们将根据中国法律法规和政府规范性文件采取措施断开相关链接。<br></p>
+		<p class="p2">
+		站长QQ：{$maccms.site_qq} 站长邮箱：{$maccms.site_email}网站备案：{$maccms.site_icp}	
+			
+		{$maccms.site_tj}
+		
+		
+		</p>
+
+	</div>
+</footer>
+

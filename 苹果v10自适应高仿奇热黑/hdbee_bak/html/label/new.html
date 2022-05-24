@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<title>最近更新 - {$maccms.site_name}</title>
+<meta name="keywords" content="{$obj.type_key}"/>
+<meta name="description" content="{$obj.type_des}"/>
+<link rel="canonical" href="http://{$maccms.site_url}"/>
+<link rel="icon" href="{$maccms.path_tpl}cropped-dybee-32x32.png" sizes="32x32"/>
+<link rel="icon" href="{$maccms.path_tpl}cropped-dybee-192x192.png" sizes="192x192"/>
+<link rel="apple-touch-icon-precomposed" href="{$maccms.path_tpl}images/cropped-dybee-180x180.png"/>
+<meta name="msapplication-TileImage" content="{$maccms.path_tpl}images/cropped-dybee-270x270.png"/>
+{include file="public/include"}
+  <link type="text/css" media="all" href="{$maccms.path_tpl}css/new.css" rel="stylesheet" />
+</head>
+<body class="home blog" id="body-header-top" data-js="bottom">
+{include file="public/head"}
+ <div class="update_area">
+   <div class="update_area_content">
+    <div class="post-nt clearfix">
+     <div class="box boutique">
+      <div class="title t2">
+       <b>最近更新100部</b>
+      </div>
+      <div class="bd">
+       <div class="boutitle">
+        <p class="s1">状态</p>
+        <p class="s2">电影名称</p>
+        <p class="s4">豆瓣评分</p>
+        <p>分类</p>
+        <p class="s7">日期</p>
+       </div>
+       <div class="bdcon">
+        <div class="boutlist">
+         <ul>
+{maccms:vod num="100" type="1" order="desc" by="time"}         	
+          <li><p class="s1">[更新]</p><p class="s2 no"><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" rel="bookmark" target="_blank">{$vo.vod_name}</a></p><p class="s4"><span class="dbpf">{$vo.vod_score}</span></p><p><a href="Array" rel="bookmark" target="_blank">{$vo.type.type_name}</a></p><p class="s7">{$vo.vod_time_add|date='Y-m-d H:i:s',###}</p></li>
+{/maccms:vod}          
+   </ul>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>         
+  {include file="public/foot"}
+<script type="text/javascript" src="http://www.hdbee.net/wp-content/themes/dybee/js/script.js?ver=1.5"></script>
+  </body>
+</html>  

@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="minimum-scale=0.5,maximum-scale=1.0,user-scalable=no, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}搜索结果 - {$maccms.site_name}</title>
+<meta name="keywords" content="{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}搜索结果" />
+<meta name="description" content="{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}搜索结果" />
+{include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+<div class="container">
+<div id="content" class="row">
+<div class="col-xs-12 col-sm-12 col-md-2">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 class="panel-title">搜索</h3>
+</div>
+<div class="panel-body no-padding">
+<ul class="nav nav-stacked navigation">
+<ul class="nav nav-stacked navigation">
+{maccms:type ids="parent" order="asc" by="sort"}
+<li><a href="{:mac_url_type($vo)}">{$vo.type_name}<span class="badge category-count pull-right"></span></a></li>
+{/maccms:type}
+</ul>
+</div>
+</div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-10">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h1 class="panel-title pull-left">相关的视频结果: &quot;{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}&quot;</h1>
+<div class="btn-toolbar pull-right" role="group">
+</div>
+<div class="clearfix">
+</div>
+</div>
+<div class="panel-body panel-padding">
+<ul class="videos">
+{maccms:vod num="20" paging="yes" pageurl="vod/search" order="desc" by="time"}
+<li>
+<div class="video">
+<a href="{:mac_url_vod_play($vo)}" title="{$vo.vod_name}" class="thumbnail" target="_blank">
+<div class="video-thumb">
+<img src="{:mac_url_img($vo.vod_pic)}" alt="{$vo.vod_name}" />
+</div>
+<span class="video-title">{$vo.vod_name}</span>
+<span class="video-overlay badge transparent">
+{$vo.vod_length}
+</span>
+<div class="video-details hidden-xs hidden-sm">
+<span class="pull-left">{$vo.vod_time|date='Y-m-d',###}</span>
+<span class="pull-right text-right">{$vo.vod_hits} 次播放</span>
+</div>
+</a>
+</div>
+</li>
+{/maccms:vod}
+</ul>
+<div class="clearfix">
+</div>
+<nav class="text-center">
+{include file="public/paging"}
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div class="ads-footer">
+</div>
+</div>
+{include file="public/foot"}
+</body>
+</html>

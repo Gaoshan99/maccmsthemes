@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>专题列表 - {$maccms.site_name}</title>
+<meta name="keywords" content="{$maccms.site_keywords}" />
+<meta name="description" content="{$maccms.site_description}" />
+{include file="public/include"}
+</head>
+<body>
+<div class="movie-wrap">
+{include file="public/head"}
+<div class="header_bg"></div>
+<div class="details-body" style="margin-top:-85px;">
+
+<div class="crumbs">
+<span class="fl">您所在的位置：</span>
+<div class="crumbs-all fl">
+<a href="{$maccms.path}" class="blue">首页</a> <span>&gt;</span>
+<a href="{:mac_url_topic_index()}" class="active-style11">专题</a>
+</div>
+</div> 
+<div class="details-con1">
+<div class="filtrate-container-heads">
+<ul class="fchstar fch12 fl">
+<a class="active"><h2>专题</h2></a>
+</ul>
+<div class="fch2">
+{maccms:topic num="20" paging="yes" order="desc" by="time"}{/maccms:topic}
+<div class="fch2-btn fr">
+{if condition="$__PAGING__.page_current==1"}
+<a class="fch2-left-btn active-style9"></a>
+{else /}
+<a href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_prev}" class="fch2-left-btn active-style9"></a>
+{/if}
+{if condition="$__PAGING__.page_current==$__PAGING__.page_total"}
+<a class="fch2-right-btn active-style9"></a>
+{else /}
+<a href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_next}" class="fch2-right-btn active-style9"></a>
+{/if}
+</div>
+<div class="fch2-num fr">
+<span class="fch2-num-span">{$__PAGING__.page_current}</span>/<span>{$__PAGING__.page_total}</span>
+</div>
+</div>
+<div class="fch3 fr">
+全部共有 <span class="fch2-num-span">{$__PAGING__.record_total}</span> 个专题 </div></div>
+<div class="con2 margin-bottom-share">
+<ul class="special-all-img">
+{maccms:topic num="20" paging="yes" order="desc" by="time"}
+<li>
+<a class="special-img" href="{:mac_url_topic_detail($vo)}" title="{$vo.topic_name}" target="_blank">
+<img class="scrollLoading" src="{$maccms.path_tpl}images/pic.png" data-url="{$vo.topic_pic|mac_url_img}" alt="{$vo.topic_name}" />
+<label class="text">{$vo.topic_name}</label></a>
+</li>
+{/maccms:topic}
+</ul>
+</div>
+{include file="public/paging"}
+</div>
+{include file="public/foot"}
+</body>
+</html>

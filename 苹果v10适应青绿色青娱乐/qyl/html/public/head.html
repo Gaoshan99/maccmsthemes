@@ -1,0 +1,75 @@
+<div class="ads">
+</div>
+<header>
+<div class="nav-top navbar-inverse">
+	<div class="container">
+		<ul class="nav nav-pills social">
+		</ul>
+		<ul class="nav nav-pills top-menu">
+<li><a href="/" target=></i>{$maccms.site_name}</a></li>
+			</ul>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="nav-content">
+	<div class="container">
+		<div class="logo">
+			<a href="/"><img src="{$maccms.path_tpl}images/logo.png" alt="{$maccms.site_name}""/></a>
+		</div>
+		<div class="search">
+			<form id="search" name="search" method="POST" action="{:mac_url('vod/search')}" onsubmit="return qrsearch();">
+				<button type="submit" name="submit" id="searchbutton"class="btn btn-default btn-lg pull-right btn-submit"><i class="fa fa-search"></i></button>
+				<div class="input-group input-group-lg">
+					<input type="text" name="wd" class="form-control" onblur="if(this.value==''){ this.value='搜索';this.style.color='#cfcdcd';}" onfocus="if(this.value=='搜索'){this.value='';this.style.color='';}" value="搜索"/>
+					<div class="input-group-btn">
+						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+						<i id="search-icon" class="fa fa-video-camera"></i>
+						<span class="caret"></span>
+						<span class="sr-only">Toggle Dropdown</span>
+						</button>
+						<ul class="dropdown-menu pull-right" role="menu">
+							<li class="active"><a href="#search-videos" class="search-in-video"><i class="fa fa-video-camera"></i> 视频</a></li>
+						</ul>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="clearfix">
+		</div>
+		<script>dy("alldl");</script>
+		<nav class="navbar navbar-inverse" role="navigation" id="menu-main">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header" id="menu-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-main-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				</button>
+				<span class="navbar-toggle navbar-menu">Menu</span>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="menu-main-collapse">
+				<ul id="menu-main-content" class="nav navbar-nav">
+					<li class="{if condition="$maccms.aid eq 1"}active{/if}"><a class="nav-link" href="{$maccms.path}">网站首页</a></li>
+            {maccms:type ids="parent" order="asc" by="sort"}
+					<li class="{if condition="($vo.type_id eq MAC_TYPE_ID || $vo.type_id eq MAC_TYPE_PID)"}active{/if}"><a class="nav-link" href="{:mac_url_type($vo)}">{$vo.type_name}</a></li>
+            {/maccms:type}
+					<li><a href="http://{$maccms.site_url}" title="地址发布">地址发布</a></li>
+				</ul>
+				
+					<li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+		</nav>
+	</div>
+</div>
+</header>
+<div class="ads">
+
+</div>

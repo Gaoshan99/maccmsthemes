@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>会员中心 - {$maccms.site_name}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />    
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="keywords" content="">
+<meta name="description" content="">
+	{include file="user/include" /}
+</head>
+<body>
+{include file="user/head" /}
+<!-- 会员中心 -->
+<div id="member" class="fn-clear">
+	{include file="user/left" /}
+	<div id="right">
+		<h2>我的资料</h2>
+		<div id="tab">
+			<div class="list">
+				<ul class="fn-clear">
+					<li><a href="{:url('user/index')}">基本资料</a></li>
+					<li><a href="{:url('user/info')}">修改信息</a></li>
+					<li class="cur">我的权限</li>
+				</ul>
+			</div>
+			<div id="listCon">
+				<!-- 基本资料 -->
+				<div class="cur">
+					<p><span class="xiang">用户名：</span>{$obj.user_name}</p>
+					<p><span class="xiang">用户组：</span><span class="fen">{$obj.group.group_name}</span></p>
+					<p><span class="xiang">期限：</span><span class="fen">{if condition="$obj.group_id lt 3"}无限期{else} {$obj.user_end_time|mac_day}{/if}</span></p>
+					<p><span class="xiang">权限列表：</span>绿色表示用户有访问权限，灰色表示无访问权限，若你想要提升访问权限可选择升级会员组</p>
+					{volist name="type_tree" id="vo"}
+						<p>
+						<span class="quanxian i-user-q">{$vo.type_name}</span>
+						{foreach name="$vo.popedom" id="v2"}
+						{if condition="$v2 eq 1"}<span class="you i-user-q">{$key}</span>{else}<span class="wu">{$key}</span>{/if}
+						{/foreach}
+						</p>
+						<p>
+						{volist name="vo.child" id="child"}
+						<span class="quanxian i-user-q">{$child.type_name}</span>
+						{foreach name="$child.popedom" id="v2"}
+						{if condition="$v2 eq 1"}<span class="you i-user-q">{$key}</span>{else}<span class="wu">{$key}</span>{/if}
+						{/foreach}
+						</p>
+						{/volist}
+					{/volist}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
